@@ -10,6 +10,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
 
@@ -21,6 +24,11 @@ class PlayingScreen extends ScreenAdapter {
     private final AssetManager assetManager;
     private Animation anim;
     private float stateTime = 0f;
+
+    private TiledMap map;
+    private TmxMapLoader mapLoader;
+    private OrthogonalTiledMapRenderer renderer;
+
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -40,6 +48,12 @@ class PlayingScreen extends ScreenAdapter {
         initializeParticleEffects();
 
         startMusic();
+        loadMap();
+    }
+
+    private void loadMap(){
+        map = assetManager.get("speel_map1.tmx");
+        renderer = new OrthogonalTiledMapRenderer(map);
     }
 
     private void startMusic() {
@@ -53,16 +67,16 @@ class PlayingScreen extends ScreenAdapter {
     private void initializeParticleEffects() {
         Gdx.app.debug("Particles", "Initializing Particle Effects");
 
-        pEffect.load(Gdx.files.internal("fire"), Gdx.files.internal(""));
-        pEffect.getEmitters().first().setPosition(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
-        pEffect.start();
+      //  pEffect.load(Gdx.files.internal("fire"), Gdx.files.internal(""));
+       // pEffect.getEmitters().first().setPosition(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
+       // pEffect.start();
     }
 
     private void initializeCharacterAnimations() {
         Gdx.app.debug("Animations", "Initializing Character Animations");
 
-        TextureAtlas atlas = assetManager.get("character.atlas");
-        anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
+        //TextureAtlas atlas = assetManager.get("character.atlas");
+       // anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
     }
 
     private void initializeInputMultiplexer() {
@@ -118,10 +132,16 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
-        pEffect.draw(batch, delta);
+        camera.update();
+        renderer.setView(camera);
+        renderer.render();
+
+        //batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
+        //pEffect.draw(batch, delta);
 
         batch.end();
+
+
 
         if (pEffect.isComplete()) pEffect.reset();
     }
