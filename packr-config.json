@@ -1,7 +1,7 @@
 {
     "platform": "windows64",
     "jdk": "/usr/lib/jvm/java-1.8.0-openjdk-amd64",
-    "executable": "client64",
+    "executable": "win-64-client",
     "classpath": [
         "desktop-1.0.jar"
     ],
