@@ -10,7 +10,6 @@
        "Xmx1G"
     ],
     "minimizejre": "oraclejre8",
-    "cachejre": "cachejre",
     "output": "out-win64",
     "verbose": "true"
 }
