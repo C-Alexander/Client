@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package works.maatwerk.generals.models;
 
 /**
@@ -19,6 +14,11 @@ public class Growth {
     private int stats; //total stats gained from growth.
     private String[] ranks = new String[maxLevel];
     private String currentRank;
+    
+    public Growth(int totalXp, int level) {
+        this.totalXp = totalXp;
+        this.level = level;
+    }
     
     /***
      * Get value of stats earned through character growth.
@@ -58,11 +58,6 @@ public class Growth {
 
     public String getCurrentRank() {
         return currentRank;
-    }
-
-    public Growth(int totalXp, int level) {
-        this.totalXp = totalXp;
-        this.level = level;
     }
     
     /**
