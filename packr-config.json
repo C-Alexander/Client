@@ -3,7 +3,7 @@
     "jdk": "/usr/lib/jvm/java-1.8.0-openjdk-amd64",
     "executable": "win-64-client",
     "classpath": [
-        "desktop-1.0.jar"
+        "/var/lib/jenkins/workspace/PT-Client/desktop/build/libs/desktop-1.0.jar"
     ],
     "mainclass": "works.maatwerk.generals.desktop.DesktopLauncher",
     "vmargs": [
