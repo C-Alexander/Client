@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package works.maatwerk.generals.models;
 
 /**
@@ -16,6 +11,15 @@ public class Character {
     private Weapon wpn;
     private Debuff debuff;
     private boolean alive;
+    
+    public Character(Stats baseStats, Stats gameStats, Race race, Weapon wpn, Debuff debuff, boolean alive) {
+        this.baseStats = baseStats;
+        this.gameStats = gameStats;
+        this.race = race;
+        this.wpn = wpn;
+        this.debuff = debuff;
+        this.alive = alive;
+    }
 
     public Stats getBaseStats() {
         return baseStats;
@@ -64,16 +68,6 @@ public class Character {
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
-
-    public Character(Stats baseStats, Stats gameStats, Race race, Weapon wpn, Debuff debuff, boolean alive) {
-        this.baseStats = baseStats;
-        this.gameStats = gameStats;
-        this.race = race;
-        this.wpn = wpn;
-        this.debuff = debuff;
-        this.alive = alive;
-    }
-
 
     /**
      * updates the class's properties
