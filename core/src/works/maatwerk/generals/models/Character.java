@@ -109,13 +109,4 @@ public class Character {
     public void bonus(Tile bonusTile) {
         //implement
     }
-    
-    public void update() {
-        //implement
-    }
-    
-    public void update() {
-        //implement
-    }
-    
 }
