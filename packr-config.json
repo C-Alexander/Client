@@ -1,0 +1,16 @@
+{
+    "platform": "windows64",
+    "jdk": "C:\\Program Files\\Java\\jdk1.8.0_131",
+    "executable": "client64",
+    "classpath": [
+        "desktop-1.0.jar"
+    ],
+    "mainclass": "works.maatwerk.generals.desktop.DesktopLauncher",
+    "vmargs": [
+       "Xmx1G"
+    ],
+    "minimizejre": "oraclejre8",
+    "cachejre": "cachejre",
+    "output": "out-win64",
+    "verbose": "true"
+}
