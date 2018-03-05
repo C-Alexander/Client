@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package works.maatwerk.generals.models;
 
 /**
@@ -13,6 +8,12 @@ public class Weapon {
     private String name;
     private Stats stats;
     private boolean canHeal;
+    
+    public Weapon(String name, Stats stats, boolean canHeal) {
+        this.name = name;
+        this.stats = stats;
+        this.canHeal = canHeal;
+    }
 
     public String getName() {
         return name;
@@ -35,12 +36,6 @@ public class Weapon {
     }
 
     public void setCanHeal(boolean canHeal) {
-        this.canHeal = canHeal;
-    }
-
-    public Weapon(String name, Stats stats, boolean canHeal) {
-        this.name = name;
-        this.stats = stats;
         this.canHeal = canHeal;
     }
 
