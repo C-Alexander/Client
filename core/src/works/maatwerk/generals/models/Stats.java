@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package works.maatwerk.generals.models;
 
 /**
@@ -10,13 +5,21 @@ package works.maatwerk.generals.models;
  * @author Sam Dirkx
  */
 public class Stats {
-
     private int hp;
     private int att;
     private int def;
     private int rng;
     private int mvd;
     private int spd;
+    
+    public Stats(int hp, int att, int def, int rng, int mvd, int spd) {
+        this.hp = hp;
+        this.att = att;
+        this.def = def;
+        this.rng = rng;
+        this.mvd = mvd;
+        this.spd = spd;
+    }
     
     public int getHp() {
         return hp;
@@ -63,15 +66,6 @@ public class Stats {
     }
 
     public void setSpd(int spd) {
-        this.spd = spd;
-    }
-
-    public Stats(int hp, int att, int def, int rng, int mvd, int spd) {
-        this.hp = hp;
-        this.att = att;
-        this.def = def;
-        this.rng = rng;
-        this.mvd = mvd;
         this.spd = spd;
     }
 
