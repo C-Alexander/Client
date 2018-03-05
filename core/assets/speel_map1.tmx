@@ -165,6 +165,121 @@
  </tileset>
  <tileset firstgid="257" name="wood_tileset" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="wood_tileset.png" width="512" height="512"/>
+  <tile id="51">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="Flyable" type="bool" value="false"/>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="Flyable" type="bool" value="true"/>
+    <property name="Passable" type="bool" value="false"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="Flyable" type="bool" value="true"/>
+    <property name="Passable" type="bool" value="false"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="102">
+   <properties>
+    <property name="Flyable" type="bool" value="true"/>
+    <property name="Passable" type="bool" value="false"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="103">
+   <properties>
+    <property name="Flyable" type="bool" value="true"/>
+    <property name="Passable" type="bool" value="false"/>
+    <property name="Swimmable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="108">
+   <properties>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Slowing" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="109">
+   <properties>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Slowing" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="124">
+   <properties>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Slowing" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="125">
+   <properties>
+    <property name="Passable" type="bool" value="true"/>
+    <property name="Slowing" type="bool" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Tilelaag 1" width="31" height="31">
   <properties>
