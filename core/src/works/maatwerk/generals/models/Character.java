@@ -5,8 +5,14 @@ package works.maatwerk.generals.models;
  * @author Sam Dirkx
  */
 public class Character {
-    private Stats baseStats; //basisstats
-    private Stats gameStats; //echte/current stats na stat manipulatie (buffs / debuffs / ras / wapen / damage / heals etc.)
+    private Stats baseStats;    //basisstats
+    /**
+     * real /current stats after stat manipulation (buffs / debuffs / race / 
+     * weapon / damage / heals etc.) 
+     * 
+     * >> allways keep gamestats up-to-date!!! <<
+     */
+    private Stats gameStats;   
     private Race race;
     private Weapon wpn;
     private Debuff debuff;
@@ -78,14 +84,43 @@ public class Character {
     }
     
     /**
-     * Manipulates stats of this character and enemy character according to 
+     * Manipulates gameStats of this character and enemy character according to 
      * battle calculations
-     *
+     * 
      * @return the value of enemy character
      */
-    public Character attack(Character enemy) {
-        //implement
-        return null;
+    public Character attack(Character enemy) {      
+        //change stats of this according to battle calculations
+        int newHPattacker = this.gameStats.getHp() - this.calculateDmg(this.gameStats, enemy.gameStats);
+        this.gameStats.setHp(newHPattacker);
+        
+        //change stats of enemy according to battle calculations
+        int newHPdefender = enemy.gameStats.getHp() - this.calculateDmg(enemy.gameStats, this.gameStats);
+        enemy.gameStats.setHp(newHPdefender);
+               
+        return enemy;
+    }
+    
+    /**
+     * calculates damage done to defender according to battle formula
+     * 
+     * Formula: 
+     * Atk - Def = dmg
+     * if unit's spd 5 more than enemy spd then dmg x2
+     * 
+     * @param s1 attacker's gamestats
+     * @param s2 defender's gamestats
+     * @return dmg done to defender
+     */
+    private int calculateDmg(Stats s1, Stats s2) {
+        int dmg = 0;
+        
+        dmg = s1.getAtt() - s2.getDef();
+        if (s1.getSpd() - s2.getSpd() >= 5) {
+            dmg = dmg * 2;
+        }   
+        
+        return dmg;
     }
     
     /**
