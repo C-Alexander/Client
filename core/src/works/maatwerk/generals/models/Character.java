@@ -106,7 +106,6 @@ public class Character {
      * 
      * Formula: 
      * Atk - Def = dmg
-     * if unit's spd 5 more than enemy spd then dmg x2
      * 
      * @param s1 attacker's gamestats
      * @param s2 defender's gamestats
@@ -116,9 +115,11 @@ public class Character {
         int dmg = 0;
         
         dmg = s1.getAtt() - s2.getDef();
-        if (s1.getSpd() - s2.getSpd() >= 5) {
-            dmg = dmg * 2;
-        }   
+
+//          //if unit's spd 5 more than enemy spd then dmg x2 <-- not yet needed for sprint
+//        if (s1.getSpd() - s2.getSpd() >= 5) {
+//            dmg = dmg * 2;
+//        }   
         
         return dmg;
     }
