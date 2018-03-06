@@ -17,6 +17,9 @@ public class Character {
     private Weapon wpn;
     private Debuff debuff;
     private boolean alive;
+    private String rank;
+    private int xp; //cannot exceed xp needed for next level (100*1.2^lvl)
+    private int lvl;
     
     public Character(Stats baseStats, Stats gameStats, Race race, Weapon wpn, Debuff debuff, boolean alive) {
         this.baseStats = baseStats;
@@ -74,7 +77,61 @@ public class Character {
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
+    
+    /**
+     * Get the value of rank
+     *
+     * @return the value of rank
+     */
+    public String getRank() {
+        return rank;
+    }
 
+    /**
+     * Set the value of rank
+     *
+     * @param rank new value of rank
+     */
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+    
+    /**
+     * Get the value of xp
+     *
+     * @return the value of xp
+     */
+    public int getXp() {
+        return xp;
+    }
+
+    /**
+     * Set the value of xp
+     *
+     * @param xp new value of xp
+     */
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+    
+    /**
+     * Get the value of lvl
+     *
+     * @return the value of lvl
+     */
+    public int getLvl() {
+        return lvl;
+    }
+
+    /**
+     * Set the value of lvl
+     *
+     * @param lvl new value of lvl
+     */
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
+    }
+    
     /**
      * updates the class's properties
      * 
@@ -138,5 +195,22 @@ public class Character {
      */
     public void bonus(Tile bonusTile) {
         //implement
+    }
+    
+    /**
+     * level increases and therefore growth increases based on level
+     * 
+     * @param amount amount of levels you want to levelup
+     */
+    public void levelUp(int amount){
+        //implement basestat changes according to leveling system
+    }
+    
+    /**
+     * Rank changes and therefore growth changes based on rank
+     * 
+     */
+    public void Promote(){
+        //implement rank change depending on previous rank
     }
 }
