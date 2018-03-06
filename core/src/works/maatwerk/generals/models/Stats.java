@@ -8,15 +8,13 @@ public class Stats {
     private int hp;
     private int att;
     private int def;
-    private int rng;
     private int mvd;
     private int spd;
     
-    public Stats(int hp, int att, int def, int rng, int mvd, int spd) {
+    public Stats(int hp, int att, int def, int mvd, int spd) {
         this.hp = hp;
         this.att = att;
         this.def = def;
-        this.rng = rng;
         this.mvd = mvd;
         this.spd = spd;
     }
@@ -45,14 +43,6 @@ public class Stats {
         this.def = def;
     }
 
-    public int getRng() {
-        return rng;
-    }
-
-    public void setRng(int rng) {
-        this.rng = rng;
-    }
-
     public int getMvd() {
         return mvd;
     }
@@ -71,6 +61,6 @@ public class Stats {
 
     @Override
     public String toString() {
-        return "Stats{" + "hp=" + hp + ", att=" + att + ", def=" + def + ", rng=" + rng + ", mvd=" + mvd + ", spd=" + spd + '}';
+        return "Stats{" + "hp=" + hp + ", att=" + att + ", def=" + def + ", mvd=" + mvd + ", spd=" + spd + '}';
     }
 }

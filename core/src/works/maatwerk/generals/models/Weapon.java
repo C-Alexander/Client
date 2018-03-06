@@ -8,9 +8,11 @@ public class Weapon {
     private String name;
     private Stats stats;
     private boolean canHeal;
+    private int rng; //attack range
     
-    public Weapon(String name, Stats stats, boolean canHeal) {
+    public Weapon(String name, int rng, Stats stats, boolean canHeal) {
         this.name = name;
+        this.rng = rng;
         this.stats = stats;
         this.canHeal = canHeal;
     }
@@ -39,8 +41,16 @@ public class Weapon {
         this.canHeal = canHeal;
     }
 
+    public int getRng() {
+        return rng;
+    }
+
+    public void setRng(int rng) {
+        this.rng = rng;
+    }
+
     @Override
     public String toString() {
-        return "Weapon{" + "name=" + name + ", stats=" + stats + ", canHeal=" + canHeal + '}';
+        return "Weapon{" + "name=" + name + ", stats=" + stats + ", canHeal=" + canHeal + ", rng=" + rng + '}';
     }
 }
