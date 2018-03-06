@@ -5,62 +5,153 @@ package works.maatwerk.generals.models;
  * @author Sam Dirkx
  */
 public class Stats {
-    private int hp;
-    private int att;
-    private int def;
-    private int mvd;
-    private int spd;
+    private int healthPoints;
+    private int attack;
+    private int defence;
+    private int movement;
+    private int speed;
     
-    public Stats(int hp, int att, int def, int mvd, int spd) {
-        this.hp = hp;
-        this.att = att;
-        this.def = def;
-        this.mvd = mvd;
-        this.spd = spd;
+    /**
+     * Default constructor. All attributes are 0.
+     */
+    public Stats() {
+        healthPoints = 0;
+        attack = 0;
+        defence = 0;
+        movement = 0;
+        speed = 0;
     }
     
-    public int getHp() {
-        return hp;
+    /**
+     * 
+     * @param healthpoints
+     * @param attack
+     * @param defence
+     * @param movement
+     * @param speed 
+     */
+    public Stats(int healthpoints, int attack, int defence, int movement, int speed) {
+        this.healthPoints = healthpoints;
+        this.attack = attack;
+        this.defence = defence;
+        this.movement = movement;
+        this.speed = speed;
     }
-
-    public void setHp(int hp) {
-        this.hp = hp;
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getHealthPoints() {
+        return healthPoints;
     }
-
-    public int getAtt() {
-        return att;
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getAttack() {
+        return attack;
     }
-
-    public void setAtt(int att) {
-        this.att = att;
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getDefence() {
+        return defence;
     }
-
-    public int getDef() {
-        return def;
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getMovement() {
+        return movement;
     }
-
-    public void setDef(int def) {
-        this.def = def;
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getSpeed() {
+        return speed;
     }
-
-    public int getMvd() {
-        return mvd;
+    
+    /**
+     * 
+     * @param healthPoints 
+     */
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
-
-    public void setMvd(int mvd) {
-        this.mvd = mvd;
+    
+    /**
+     * 
+     * @param attack 
+     */
+    public void setAttack(int attack) {
+        this.attack = attack;
     }
-
-    public int getSpd() {
-        return spd;
+    
+    /**
+     * 
+     * @param defence 
+     */
+    public void setDefence(int defence) {
+        this.defence = defence;
     }
-
-    public void setSpd(int spd) {
-        this.spd = spd;
+    
+    /**
+     * 
+     * @param movement 
+     */
+    public void setMovement(int movement) {
+        this.movement = movement;
     }
-
+    
+    /**
+     * 
+     * @param speed 
+     */
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+    
+    /**
+     * Adds the stats argument to this instance
+     * 
+     * @param stats 
+     */
+    public void addToThis(Stats stats) {
+        if(stats == null)
+            return;
+        this.attack += stats.attack;
+        this.defence += stats.defence;
+        this.healthPoints += stats.healthPoints;
+        this.movement += stats.movement;
+        this.speed += stats.speed;
+    }
+    
+    /**
+     * Adds the stats argument to this instance values and creates a new Stats instance.
+     * 
+     * @param stats
+     * @return 
+     */
+    public Stats addToNew(Stats stats) {
+        Stats output = new Stats();
+        output.addToThis(this);
+        output.addToThis(stats);
+        return output;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
-        return "Stats{" + "hp=" + hp + ", att=" + att + ", def=" + def + ", mvd=" + mvd + ", spd=" + spd + '}';
+        return "Stats{" + "hp=" + healthPoints + ", att=" + attack + ", def=" + defence + ", mvd=" + movement + ", spd=" + speed + '}';
     }
 }

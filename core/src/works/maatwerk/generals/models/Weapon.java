@@ -5,52 +5,74 @@ package works.maatwerk.generals.models;
  * @author Sam Dirkx
  */
 public class Weapon {
-    private String name;
-    private Stats stats;
-    private boolean canHeal;
-    private int rng; //attack range
+    private final String name;
+    private final Stats stats;
+    private final Debuff statusEffect;
+    private final boolean canHeal;
+    private final int range; //attack range
     
-    public Weapon(String name, int rng, Stats stats, boolean canHeal) {
+    /**
+     * 
+     * @param name
+     * @param range
+     * @param stats
+     * @param canHeal
+     * @param statuseffect 
+     */
+    public Weapon(String name, int range, Stats stats, boolean canHeal, Debuff statuseffect) {
         this.name = name;
-        this.rng = rng;
+        this.range = range;
         this.stats = stats;
         this.canHeal = canHeal;
+        this.statusEffect = statuseffect;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public Stats getStats() {
         return stats;
     }
-
-    public void setStats(Stats stats) {
-        this.stats = stats;
+    
+    /**
+     * 
+     * @return 
+     */
+    public Debuff getStatusEffect() {
+        return statusEffect;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public boolean isCanHeal() {
         return canHeal;
     }
-
-    public void setCanHeal(boolean canHeal) {
-        this.canHeal = canHeal;
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getRange() {
+        return range;
     }
-
-    public int getRng() {
-        return rng;
-    }
-
-    public void setRng(int rng) {
-        this.rng = rng;
-    }
-
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
-        return "Weapon{" + "name=" + name + ", stats=" + stats + ", canHeal=" + canHeal + ", rng=" + rng + '}';
+        return "Weapon{" + "name=" + name + ", stats=" + stats + ", canHeal=" + canHeal + ", range=" + range + '}';
     }
 }

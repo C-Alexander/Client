@@ -9,5 +9,4 @@ public class Tile {
     //possibly with tile effects etc. for now this is just a stub class
     public Tile() {
     }
-    
 }
