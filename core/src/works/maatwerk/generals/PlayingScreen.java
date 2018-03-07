@@ -20,6 +20,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
+import works.maatwerk.generals.models.World;
 
 class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
@@ -30,7 +31,7 @@ class PlayingScreen extends ScreenAdapter {
     private final TileMapStage tileMapStage = new TileMapStage();
     private Animation anim;
     private float stateTime = 0f;
-
+    public World world;
     private TiledMap map;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
@@ -62,6 +63,7 @@ class PlayingScreen extends ScreenAdapter {
     private void loadMap(){
         map = assetManager.get("speel_map2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
+
         createMapActors(map.getLayers().get(1));
 
 
@@ -158,7 +160,11 @@ class PlayingScreen extends ScreenAdapter {
         renderer.render();
         batch.end();
         batch.begin();
-        batch.draw(character,32,32);
+        batch.draw(character,416,64);
+        batch.draw(character,448,64);
+        batch.draw(character,480,64);
+        batch.draw(character,448,96);
+        batch.draw(character,480,480);
         //batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
         //pEffect.draw(batch, delta);
 
