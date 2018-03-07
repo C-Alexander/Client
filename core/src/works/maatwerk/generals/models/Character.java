@@ -13,26 +13,22 @@ public class Character {
      * Modifier which specifies the percentage of damage that can be done by a healing weapon (25 means 25% of the attack)
      */
     private static final int HEALER_DAMAGE_MODIFIER = 25;
-    private final Stats baseStats;    //basisstats  
+    private static final int MAX_MINIONS = 3;
+    private final Stats baseStats;
     private final Race race;
-    private final String rank;
+    private final Rank rank;
     private final List<Debuff> debuffs;
     private Weapon weapon;
-    private int xp; //cannot exceed xp needed for next level (100*1.2^lvl)
-    private int lvl;
+    private List<Character> minions;
     
     /**
      * 
-     * @param baseStats
      * @param race
-     * @param weapon
-     * @param rank
      */
-    public Character(Stats baseStats, Race race, Weapon weapon, String rank) {
-        this.baseStats = baseStats;
+    public Character(Race race) {
+        this.baseStats = new Stats(50, 10, 5, 5, 1);
         this.race = race;
-        this.weapon = weapon;
-        this.rank = rank;
+        this.rank = new Rank();
         debuffs = new ArrayList<Debuff>();
     }
     
@@ -56,7 +52,7 @@ public class Character {
      * 
      * @return 
      */
-    public String getRank() {
+    public Rank getRank() {
         return rank;
     }
     
@@ -84,16 +80,8 @@ public class Character {
      * 
      * @return 
      */
-    public int getXp() {
-        return xp;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public int getLvl() {
-        return lvl;
+    public List<Character> getMinions() {
+       return minions; 
     }
     
     /**
@@ -114,18 +102,27 @@ public class Character {
     
     /**
      * 
-     * @param xp 
+     * @param minion
+     * @return 
      */
-    public void setXp(int xp) {
-        this.xp = xp;
+    public boolean addMinion(Character minion) {
+        if(rank.getRankName() != RankName.HERO || minion.rank.getRankName() != RankName.GENERAL)
+            throw new IllegalArgumentException();
+        if(minions.size() >= MAX_MINIONS)
+            return false;
+        if(minions.contains(minion))
+            return false;
+        minions.add(minion);
+        return true;
     }
     
     /**
      * 
-     * @param lvl 
+     * @param minion
+     * @return 
      */
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
+    public boolean removeMinion(Character minion) {
+       return minions.remove(minion);
     }
     
     /**
@@ -205,20 +202,16 @@ public class Character {
     }
     
     /**
-     * level increases and therefore growth increases based on level
+     * Called when match has ended to clear debuff list and set experience.
+     * Also returns list of minions which reached the same rank as this character.
      * 
-     * @param amount amount of levels you want to levelup
+     * @return 
      */
-    public void levelUp(int amount){
-        //implement basestat changes according to leveling system
-    }
-    
-    /**
-     * Rank changes and therefore growth changes based on rank
-     * 
-     */
-    public void Promote(){
-        //implement rank change depending on previous rank
+    public List<Character> matchEnded() {
+        if(!this.isAlive())
+            return null;
+        rank.update();
+        debuffs.clear();
     }
     
     /**
