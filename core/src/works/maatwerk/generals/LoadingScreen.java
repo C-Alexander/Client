@@ -92,7 +92,7 @@ class LoadingScreen extends ScreenAdapter {
 
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-        assetManager.load("speel_map1.tmx", TiledMap.class);
+        assetManager.load("speel_map2.tmx", TiledMap.class);
         assetManager.load("data/music/megalovania.mp3", Music.class);
     }
 
