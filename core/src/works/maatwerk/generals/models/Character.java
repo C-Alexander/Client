@@ -202,6 +202,17 @@ public class Character {
     }
     
     /**
+     * For generals checks if the amount of grunts is correct otherwise spawns them.
+     */
+    public void matchStart() {
+        if(rank.getRankName() != RankName.GENERAL)
+            return;
+        while(minions.size() <MAX_MINIONS) {
+            minions.add(new Character(race));
+        }
+    }
+    
+    /**
      * Called when match has ended to clear debuff list and set experience.
      * Also returns list of minions which reached the same rank as their master character.
      * This function calls the same function in all its minions.
