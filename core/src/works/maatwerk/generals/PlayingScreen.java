@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
+import works.maatwerk.generals.networking.NetworkManager;
 
 class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
@@ -28,6 +29,7 @@ class PlayingScreen extends ScreenAdapter {
     private TiledMap map;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
+    private NetworkManager networkManager;
 
 
     PlayingScreen(AssetManager assetManager) {
@@ -46,9 +48,15 @@ class PlayingScreen extends ScreenAdapter {
         initializeCameraInputController();
         initializeCharacterAnimations();
         initializeParticleEffects();
+        initializeNetworking();
 
         startMusic();
         loadMap();
+    }
+
+    private void initializeNetworking() {
+        networkManager = new NetworkManager();
+        networkManager.connect();
     }
 
     private void loadMap(){
@@ -144,6 +152,7 @@ class PlayingScreen extends ScreenAdapter {
 
 
         if (pEffect.isComplete()) pEffect.reset();
+
     }
 
     @Override
