@@ -203,7 +203,8 @@ public class Character {
     
     /**
      * Called when match has ended to clear debuff list and set experience.
-     * Also returns list of minions which reached the same rank as this character.
+     * Also returns list of minions which reached the same rank as their master character.
+     * This function calls the same function in all its minions.
      * 
      * @return 
      */
@@ -212,6 +213,7 @@ public class Character {
             return null;
         rank.update();
         debuffs.clear();
+        return matchEndedMinions();
     }
     
     /**
@@ -238,5 +240,26 @@ public class Character {
             dmg.setHealthPoints(damage);
             character.addDebuffs(new Debuff(-1, dmg, null));
         }
+    }
+    
+    /**
+     * Calls matchEnded in all minions and checks of one of the minions gained the same rank as this character.
+     * If same rank is achieved removes minion from the minion list and output it in the return list.
+     * 
+     * @return 
+     */
+    private List<Character> matchEndedMinions() {
+        List<Character> output = new ArrayList<Character>();
+        Iterator<Character> iterator = minions.iterator();
+        while(iterator.hasNext()) {
+            Character c = iterator.next();
+            output.addAll(c.matchEnded());
+            if(c.rank.getRankName() != rank.getRankName())
+                continue;
+            iterator.remove();
+            c.minions.clear();
+            output.add(c);
+        }
+        return output;
     }
 }
