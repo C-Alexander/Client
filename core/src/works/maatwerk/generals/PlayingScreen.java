@@ -63,7 +63,7 @@ class PlayingScreen extends ScreenAdapter {
 
     private void initializeNetworking() {
         networkManager = new NetworkManager();
-       // networkManager.connect();
+        networkManager.connect();
     }
 
     private void loadMap(){
