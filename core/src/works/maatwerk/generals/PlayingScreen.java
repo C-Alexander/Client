@@ -1,5 +1,6 @@
 package works.maatwerk.generals;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
@@ -14,8 +15,12 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
+import works.maatwerk.generals.inputcontrollers.PinchZoomController;
+import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
 import works.maatwerk.generals.networking.NetworkManager;
+
+import static com.badlogic.gdx.Input.Peripheral.Vibrator;
 
 class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
@@ -52,11 +57,13 @@ class PlayingScreen extends ScreenAdapter {
 
         startMusic();
         loadMap();
+
+        Gdx.input.vibrate(5000);
     }
 
     private void initializeNetworking() {
         networkManager = new NetworkManager();
-        networkManager.connect();
+       // networkManager.connect();
     }
 
     private void loadMap(){
@@ -91,6 +98,8 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.app.debug("Input", "Initializing Input Multiplexer");
 
         multiplexer.addProcessor(new ZoomController(camera));
+        multiplexer.addProcessor(new PinchZoomDetector(new PinchZoomController(camera)));
+
 
         Gdx.input.setInputProcessor(multiplexer);
     }
@@ -102,12 +111,14 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.app.debug("Input", "Initializing CameraInputController");
 
         CameraInputController cameraInputController = new CameraInputController(camera);
-        cameraInputController.translateUnits = 900;
+        if (Gdx.app.getType() == Application.ApplicationType.Android) cameraInputController.translateUnits = 1500;
+        else cameraInputController.translateUnits = 1000;
         cameraInputController.scrollFactor = 0;
         cameraInputController.forwardButton = -1000;
         cameraInputController.rotateButton = -1000;
         cameraInputController.rotateAngle = 0;
         cameraInputController.translateButton = Buttons.LEFT;
+        cameraInputController.pinchZoomFactor = 0;
 
         multiplexer.addProcessor(cameraInputController);
     }

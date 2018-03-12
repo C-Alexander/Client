@@ -7,7 +7,6 @@ import com.github.czyzby.websocket.WebSocket;
 import com.github.czyzby.websocket.WebSockets;
 import works.maatwerk.generals.networking.listeners.GameStatusWebSocketListener;
 import works.maatwerk.generals.networking.messages.Packet;
-import works.maatwerk.generals.networking.runnables.ConnectionRunnable;
 
 import java.io.StringWriter;
 import java.util.Random;
@@ -28,7 +27,12 @@ public class NetworkManager {
         webSocket.setSerializeAsString(true);
         webSocket.addListener(new GameStatusWebSocketListener());
         webSocket.setSendGracefully(true);
-        new Thread(() -> webSocket.connect()).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                webSocket.connect();
+            }
+        }).start();
     }
 
     public boolean isConnected() {

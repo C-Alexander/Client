@@ -35,7 +35,7 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
     }
 
     private void startKeepAlive(WebSocket webSocket) {
-        keepAliveTask = Timer.schedule(new KeepAlive(webSocket), 5, 15);
+       // keepAliveTask = Timer.schedule(new KeepAlive(webSocket), 5, 15);
     }
 
     @Override
@@ -76,6 +76,7 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
         Gdx.app.debug("Networking", "Sending a JoinGame request");
 
         sendPacket(packet, webSocket);
+
     }
 
     private void sendPacket(Packet packet, WebSocket webSocket) {
