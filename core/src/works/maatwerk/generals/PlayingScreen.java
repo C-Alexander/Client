@@ -35,7 +35,9 @@ class PlayingScreen extends ScreenAdapter {
     private TiledMap map;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
-    private Texture character;
+    private Texture SwordCharacter;
+    private Texture AxeCharacter;
+    private Texture SpearCharacter;
 
 
     PlayingScreen(AssetManager assetManager) {
@@ -50,23 +52,20 @@ class PlayingScreen extends ScreenAdapter {
     @Override
     public void show() {
         initializeCamera();
+        initializeMap();
         initializeInputMultiplexer();
         initializeCharacters();
         initializeCharacterAnimations();
         initializeParticleEffects();
-
         startMusic();
-        loadMap();
         initializeCameraInputController();
     }
 
-    private void loadMap(){
+    private void initializeMap(){
+        Gdx.app.debug("Map", "Initializing Map");
         map = assetManager.get("speel_map2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
-
         createMapActors(map.getLayers().get(1));
-
-
     }
 
     private void createMapActors(MapLayer layer) {
@@ -93,7 +92,7 @@ class PlayingScreen extends ScreenAdapter {
     private void initializeCharacterAnimations() {
         Gdx.app.debug("Animations", "Initializing Character Animations");
 
-        //TextureAtlas atlas = assetManager.get("character.atlas");
+        //TextureAtlas atlas = assetManager.get("SwordCharacter.atlas");
        // anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
     }
 
@@ -105,7 +104,10 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.input.setInputProcessor(multiplexer);
     }
     private void initializeCharacters(){
-        character = assetManager.get("GruntSword.png");
+        Gdx.app.debug("Characters", "Initializing Characters");
+        SwordCharacter = assetManager.get("GruntSword.png");
+        AxeCharacter = assetManager.get("GruntAxe.png");
+        SpearCharacter = assetManager.get("GruntSpear.png");
     }
     /**
      * Initializes an input controller that controls the camera.
@@ -160,11 +162,11 @@ class PlayingScreen extends ScreenAdapter {
         renderer.render();
         batch.end();
         batch.begin();
-        batch.draw(character,416,64);
-        batch.draw(character,448,64);
-        batch.draw(character,480,64);
-        batch.draw(character,448,96);
-        batch.draw(character,480,480);
+        batch.draw(SwordCharacter,416,64);
+        batch.draw(AxeCharacter,448,64);
+        batch.draw(SwordCharacter,480,64);
+        batch.draw(SpearCharacter,448,96);
+        batch.draw(AxeCharacter,480,480);
         //batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
         //pEffect.draw(batch, delta);
 

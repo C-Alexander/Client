@@ -7,11 +7,19 @@ public class World {
 
     public World(String mapName) {
 
-
-
     }
 
-    public void getTileInteract(){
 
-    }
+
+
+
+
+
+//    public Character getTileCharacter(int x ,int y){
+//
+//
+//
+//
+//    }
+
 }
