@@ -60,7 +60,7 @@ class PlayingScreen extends ScreenAdapter {
     }
 
     private void loadMap(){
-        map = assetManager.get("speel_map1.tmx");
+        map = assetManager.get("speel_map2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
     }
 
