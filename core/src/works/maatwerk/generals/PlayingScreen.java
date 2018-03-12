@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
+import works.maatwerk.generals.models.MapManager;
 
 class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
@@ -24,19 +25,19 @@ class PlayingScreen extends ScreenAdapter {
     private final AssetManager assetManager;
     private Animation anim;
     private float stateTime = 0f;
+    private MapManager map;
 
-    private TiledMap map;
-    private TmxMapLoader mapLoader;
-    private OrthogonalTiledMapRenderer renderer;
+
 
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
-
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
         pEffect = new ParticleEffect();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        map = new MapManager(this.assetManager);
+
     }
 
     @Override
@@ -48,13 +49,10 @@ class PlayingScreen extends ScreenAdapter {
         initializeParticleEffects();
 
         startMusic();
-        loadMap();
+        map.loadMap("");
     }
 
-    private void loadMap(){
-        map = assetManager.get("speel_map2.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map);
-    }
+
 
     private void startMusic() {
         Gdx.app.debug("Music", "Starting Background Music");
@@ -133,8 +131,7 @@ class PlayingScreen extends ScreenAdapter {
         batch.begin();
 
         camera.update();
-        renderer.setView(camera);
-        renderer.render();
+        map.render(delta,camera,batch);
 
         //batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
         //pEffect.draw(batch, delta);

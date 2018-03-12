@@ -1,5 +1,9 @@
 package works.maatwerk.generals.models;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,7 +12,7 @@ import java.util.List;
  *
  * @author Sam Dirkx
  */
-public class Character {
+public class Character extends Actor {
     /**
      * Modifier which specifies the percentage of damage that can be done by a healing weapon (25 means 25% of the attack)
      */
@@ -20,6 +24,9 @@ public class Character {
     private final List<Debuff> debuffs;
     private Weapon weapon;
     private List<Character> minions;
+    private Vector2 location;
+    private int id;
+
     
     /**
      * 
@@ -30,6 +37,20 @@ public class Character {
         this.race = race;
         this.rank = new Rank();
         debuffs = new ArrayList<Debuff>();
+    }
+
+    /**
+     * @return
+     */
+    public Vector2 getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location
+     */
+    public void setLocation(Vector2 location) {
+        this.location = location;
     }
     
     /**
@@ -272,5 +293,20 @@ public class Character {
             output.add(c);
         }
         return output;
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha){
+
+
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
