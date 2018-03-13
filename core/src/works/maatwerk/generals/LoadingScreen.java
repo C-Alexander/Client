@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+@SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
 
     private final Game game;

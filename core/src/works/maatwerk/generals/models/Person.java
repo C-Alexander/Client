@@ -1,5 +1,6 @@
 package works.maatwerk.generals.models;
 
+@SuppressWarnings({"SpellCheckingInspection", "unused"})
 public class Person {
     private String teun = "teun";
     private Boolean teLaat = true;
