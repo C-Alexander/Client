@@ -21,7 +21,7 @@ public class MapManager {
     private  Character characterSelected;
     private ArrayList<Character> characterMap;
     private Character[][] characterLayer;
-    private  Vector2 mapDimensions;
+    private static Vector2 mapDimensions;
 
 
 
