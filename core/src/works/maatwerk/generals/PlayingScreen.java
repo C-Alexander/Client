@@ -20,8 +20,7 @@ import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
 import works.maatwerk.generals.networking.NetworkManager;
 
-import static com.badlogic.gdx.Input.Peripheral.Vibrator;
-
+@SuppressWarnings("unused")
 class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
     private final OrthographicCamera camera;
@@ -31,9 +30,9 @@ class PlayingScreen extends ScreenAdapter {
     private Animation anim;
     private float stateTime = 0f;
 
-    private TiledMap map;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
+    @SuppressWarnings("FieldCanBeLocal")
     private NetworkManager networkManager;
 
 
@@ -67,14 +66,14 @@ class PlayingScreen extends ScreenAdapter {
     }
 
     private void loadMap(){
-        map = assetManager.get("speel_map2.tmx");
+        @SuppressWarnings("SpellCheckingInspection") TiledMap map = assetManager.get("speel_map2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
     }
 
     private void startMusic() {
         Gdx.app.debug("Music", "Starting Background Music");
 
-        Music bgm = assetManager.get("data/music/megalovania.mp3");
+        @SuppressWarnings("SpellCheckingInspection") Music bgm = assetManager.get("data/music/megalovania.mp3");
         multiplexer.addProcessor(new MusicController(bgm));
         bgm.play();
     }

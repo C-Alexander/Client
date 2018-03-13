@@ -17,8 +17,9 @@ import java.util.Random;
 public class GameStatusWebSocketListener extends WebSocketAdapter {
 
     private final Json json;
+    @SuppressWarnings({"FieldCanBeLocal", "CanBeFinal"})
     private boolean endGame = false;
-    Timer.Task keepAliveTask;
+    private Timer.Task keepAliveTask;
 
     public GameStatusWebSocketListener() {
         json = new Json(JsonWriter.OutputType.json);
@@ -35,7 +36,7 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
     }
 
     private void startKeepAlive(WebSocket webSocket) {
-       // keepAliveTask = Timer.schedule(new KeepAlive(webSocket), 5, 15);
+        keepAliveTask = Timer.schedule(new KeepAlive(webSocket), 5, 15);
     }
 
     @Override

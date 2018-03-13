@@ -1,10 +1,8 @@
 package works.maatwerk.generals.inputcontrollers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 public class PinchZoomController extends GestureDetector.GestureAdapter {
@@ -20,7 +18,7 @@ public class PinchZoomController extends GestureDetector.GestureAdapter {
 
     @Override
     public boolean zoom(float initialDistance, float distance) {
-        float change = 0;
+        float change;
         if (previousDistance == 0 && previousChange == 0) {
             change = initialDistance - distance;
         } else {

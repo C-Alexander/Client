@@ -8,8 +8,7 @@ import com.github.czyzby.websocket.WebSocket;
 import works.maatwerk.generals.networking.messages.MessageType;
 import works.maatwerk.generals.networking.messages.Packet;
 
-import java.util.TimerTask;
-
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class KeepAlive extends Timer.Task {
     private final WebSocket webSocket;
     private final String keepAlivePacket;

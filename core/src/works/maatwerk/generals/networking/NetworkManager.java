@@ -8,13 +8,11 @@ import com.github.czyzby.websocket.WebSockets;
 import works.maatwerk.generals.networking.listeners.GameStatusWebSocketListener;
 import works.maatwerk.generals.networking.messages.Packet;
 
-import java.io.StringWriter;
-import java.util.Random;
-
+@SuppressWarnings("unused")
 public class NetworkManager {
 
     private WebSocket webSocket;
-    private Json json;
+    private final Json json;
 
     public NetworkManager() {
         json = new Json(JsonWriter.OutputType.json);
