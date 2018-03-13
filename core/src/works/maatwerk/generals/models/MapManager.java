@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.sun.media.jfxmedia.logging.Logger;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -20,6 +21,7 @@ public class MapManager {
     private  Character characterSelected;
     private ArrayList<Character> characterMap;
     private Character[][] characterLayer;
+    private  Vector2 mapDimensions;
 
 
 
@@ -41,6 +43,8 @@ public class MapManager {
         renderer = new OrthogonalTiledMapRenderer(map);
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
         characterLayer = new Character[layer.getWidth()][layer.getHeight()];
+        this.mapDimensions = new Vector2(layer.getWidth(),layer.getHeight());
+
     }
 
 
@@ -78,16 +82,24 @@ public class MapManager {
         this.characterLayer[(int)character.getLocation().x][(int)character.getLocation().y]  = null;
     }
 
+    /**
+     * @param character
+     * @param location
+     */
     public void moveCharacter(Character character , Vector2 location){
-
-
+        if(location.x > this.mapDimensions.x || location.y > this.mapDimensions.y || location.x < 0 || location.y <0){
+            Logger.logMsg(1,"Out of boundaries");
+            return;
+        }
         removeCharacter(character);
         character.setLocation(location);
         addCharacter(character);
-
-
     }
 
+    /**
+     * @param id
+     * @return
+     */
     public Character getCharacterById(int id){
        return this.characterMap.get(id);
     }
@@ -106,10 +118,16 @@ public class MapManager {
         return cell;
     }
 
+    /**
+     * @return
+     */
     public Character getCharacterSelected() {
         return characterSelected;
     }
 
+    /**
+     * @param characterSelected
+     */
     public void setCharacterSelected(Character characterSelected) {
         this.characterSelected = characterSelected;
     }
