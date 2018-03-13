@@ -37,7 +37,7 @@ public class NetworkManager {
         return webSocket.isOpen();
     }
 
-    public void sendPacket(Packet packet, WebSocket webSocket) {
+    public void sendPacket(Packet packet) {
         String packetText = json.toJson(packet);
         Gdx.app.debug("Networking", "Sending packet: " + packetText);
 

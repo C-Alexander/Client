@@ -82,7 +82,7 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
 
     private void sendPacket(Packet packet, WebSocket webSocket) {
         String packetText = json.toJson(packet);
-        Gdx.app.debug("Networking", "Sending packet: " + packetText);
+        Gdx.app.debug("Networking", "Sending packet from listener: " + packetText);
 
         webSocket.send(packetText);
     }
