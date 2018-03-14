@@ -9,12 +9,21 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
+import works.maatwerk.generals.models.World;
 import works.maatwerk.generals.models.MapManager;
 import works.maatwerk.generals.networking.NetworkManager;
 
@@ -25,6 +34,15 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final ParticleEffect pEffect;
     private final AssetManager assetManager;
+    private final TileMapStage tileMapStage = new TileMapStage();
+    private Animation anim;
+    private float stateTime = 0f;
+    public World world;
+    private TmxMapLoader mapLoader;
+    private OrthogonalTiledMapRenderer renderer;
+    private Texture SwordCharacter;
+    private Texture AxeCharacter;
+    private Texture SpearCharacter;
     private MapManager map;
 
 
@@ -57,6 +75,12 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.input.vibrate(5000);
     }
 
+
+
+    private void createMapActors(MapLayer layer) {
+        multiplexer.addProcessor(tileMapStage);
+        tileMapStage.createMapActors((TiledMapTileLayer) layer);
+    }
     private void initializeNetworking() {
         networkManager = new NetworkManager();
         networkManager.connect();
@@ -83,7 +107,7 @@ class PlayingScreen extends ScreenAdapter {
     private void initializeCharacterAnimations() {
         Gdx.app.debug("Animations", "Initializing Character Animations");
 
-        //TextureAtlas atlas = assetManager.get("character.atlas");
+        //TextureAtlas atlas = assetManager.get("SwordCharacter.atlas");
        // anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
     }
 
@@ -96,7 +120,12 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.input.setInputProcessor(multiplexer);
     }
-
+    private void initializeCharacters(){
+        Gdx.app.debug("Characters", "Initializing Characters");
+        SwordCharacter = assetManager.get("GruntSword.png");
+        AxeCharacter = assetManager.get("GruntAxe.png");
+        SpearCharacter = assetManager.get("GruntSpear.png");
+    }
     /**
      * Initializes an input controller that controls the camera.
      **/
@@ -138,6 +167,8 @@ class PlayingScreen extends ScreenAdapter {
     public void render(float delta) {
         super.render(delta);
         batch.setProjectionMatrix(camera.combined);
+
+        tileMapStage.getViewport().setCamera(camera);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
