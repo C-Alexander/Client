@@ -1,9 +1,11 @@
 package works.maatwerk.generals.models;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import works.maatwerk.generals.ClassEnum;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,16 +29,21 @@ public class Character extends Actor {
     private List<Character> minions;
     private Vector2 location;
     private int id;
+    private AssetManager assetManager;
+    private ClassEnum classEnum;
 
     
     /**
      * 
      * @param race
      */
-    public Character(Race race) {
-        this.baseStats = new Stats(50, 10, 5, 5, 1);
+    public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
+        this.baseStats = new Stats(1, 0, 0, 0, 0);
         this.race = race;
         this.rank = new Rank();
+        this.assetManager = assetManager;
+        this.classEnum = classEnum;
+        this.location =location;
         debuffs = new ArrayList<Debuff>();
     }
 
@@ -156,7 +163,10 @@ public class Character extends Actor {
         Stats output = new Stats();
         output.addToThis(baseStats);
         output.addToThis(race.getStats());
-        output.addToThis(weapon.getStats());
+        if(weapon != null){
+            output.addToThis(weapon.getStats());
+        }
+
         output.addToThis(getDebuffs());
         return output;
     }
@@ -230,7 +240,7 @@ public class Character extends Actor {
         if(rank.getRankName() != RankName.GENERAL)
             return;
         while(minions.size() <MAX_MINIONS) {
-            minions.add(new Character(race));
+            minions.add(new Character(race,this.assetManager,this.classEnum,this.location));
         }
     }
     
@@ -298,10 +308,25 @@ public class Character extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha){
+        batch.draw(this.getTexture(),this.getLocation().x*32,this.getLocation().y*32);
+        System.out.println(this.getGameStats().getHealthPoints());
 
 
     }
 
+    private Texture getTexture(){
+        switch (this.classEnum) {
+            case AXE: return assetManager.get("GruntAxe.png");
+            case SWORD: return assetManager.get("characters/Sword.png");
+            case SPEAR: return assetManager.get("characters/Spear.png");
+            case ARCANE: return assetManager.get("characters/MageA.png");
+            case CORRUPT: return assetManager.get("characters/MageC.png");
+            case DIVINE: return assetManager.get("characters/MageD.png");
+            case VALKYRIE: return assetManager.get("characters/ValkyrieB.png");
+
+            default: return null;
+        }
+    }
 
     public int getId() {
         return id;

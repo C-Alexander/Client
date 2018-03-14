@@ -18,12 +18,13 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.World;
-import works.maatwerk.generals.models.MapManager;
+import works.maatwerk.generals.models.*;
+import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.networking.NetworkManager;
 
 @SuppressWarnings("unused")
@@ -51,6 +52,7 @@ class PlayingScreen extends ScreenAdapter {
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
+
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
         pEffect = new ParticleEffect();
@@ -63,12 +65,21 @@ class PlayingScreen extends ScreenAdapter {
     public void show() {
         initializeCamera();
         initializeInputMultiplexer();
-        initializeCameraInputController();
         initializeCharacterAnimations();
         initializeParticleEffects();
         initializeNetworking();
         map.initializeMap("");
+        Character character1 = new Character( new Race("Test",new Stats(3,1,1,1,1)),assetManager,ClassEnum.AXE,new Vector2(1,1));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character1);
+        Character character2 = new Character( new Race("Test",new Stats()),assetManager,ClassEnum.AXE,new Vector2(2,2));
+        character2.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character2);
+
         Gdx.input.vibrate(5000);
+
+
+        initializeCameraInputController();
     }
 
 
@@ -85,7 +96,7 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.app.debug("Music", "Starting Background Music");
 
         @SuppressWarnings("SpellCheckingInspection") Music bgm = assetManager.get("data/music/megalovania.mp3");
-        multiplexer.addProcessor(new MusicController(bgm));
+      //  multiplexer.addProcessor(new MusicController(bgm));
         bgm.play();
     }
 
@@ -100,8 +111,8 @@ class PlayingScreen extends ScreenAdapter {
     private void initializeCharacterAnimations() {
         Gdx.app.debug("Animations", "Initializing Character Animations");
 
-        //TextureAtlas atlas = assetManager.get("SwordCharacter.atlas");
-       // anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
+      //  TextureAtlas atlas = assetManager.get("SwordCharacter.atlas");
+     //   anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
     }
 
     private void initializeInputMultiplexer() {
@@ -132,7 +143,7 @@ class PlayingScreen extends ScreenAdapter {
         cameraInputController.forwardButton = -1000;
         cameraInputController.rotateButton = -1000;
         cameraInputController.rotateAngle = 0;
-        cameraInputController.translateButton = Buttons.LEFT;
+        cameraInputController.translateButton = Buttons.RIGHT;
         cameraInputController.pinchZoomFactor = 0;
 
         multiplexer.addProcessor(cameraInputController);
@@ -158,6 +169,7 @@ class PlayingScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
+        map.update();
         super.render(delta);
         batch.setProjectionMatrix(camera.combined);
 
@@ -168,6 +180,7 @@ class PlayingScreen extends ScreenAdapter {
         batch.begin();
 
         camera.update();
+
         map.render(delta,camera,batch);
 
         batch.end();
@@ -180,5 +193,6 @@ class PlayingScreen extends ScreenAdapter {
         super.dispose();
         batch.dispose();
     }
+
 
 }
