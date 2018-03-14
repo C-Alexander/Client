@@ -1,14 +1,20 @@
 package works.maatwerk.generals.models;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.sun.media.jfxmedia.logging.Logger;
+import works.maatwerk.generals.TileMapStage;
+import works.maatwerk.generals.inputcontrollers.MusicController;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -22,6 +28,8 @@ public class MapManager {
     private ArrayList<Character> characterMap;
     private Character[][] characterLayer;
     private static Vector2 mapDimensions;
+    private final TileMapStage tileMapStage = new TileMapStage();
+    private final InputMultiplexer multiplexer;
 
 
 
@@ -29,8 +37,10 @@ public class MapManager {
     /**
      * @param assetManager
      */
-    public MapManager(AssetManager assetManager) {
+    public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer) {
         this.assetManager = assetManager;
+        this.multiplexer = inputMultiplexer;
+        characterMap = new ArrayList<>();
 
     }
 
@@ -38,13 +48,33 @@ public class MapManager {
     /**
      * @param mapName
      */
-    public void loadMap(String mapName){
+    public void initializeMap(String mapName){
         map = assetManager.get("speel_map2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
-        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
         characterLayer = new Character[layer.getWidth()][layer.getHeight()];
         this.mapDimensions = new Vector2(layer.getWidth(),layer.getHeight());
+        this.characterLayer = new Character[layer.getWidth()][layer.getHeight()];
+        MapLayer layerTest = map.getLayers().get(1);
+        createMapActors(layerTest);
 
+
+
+
+    }
+
+    private void createMapActors(MapLayer layer) {
+
+        multiplexer.addProcessor(tileMapStage);
+        tileMapStage.createMapActors((TiledMapTileLayer) layer);
+
+    }
+
+    private void startMusic() {
+        Gdx.app.debug("Music", "Starting Background Music");
+        @SuppressWarnings("SpellCheckingInspection") Music bgm = assetManager.get("data/music/megalovania.mp3");
+        multiplexer.addProcessor(new MusicController(bgm));
+        bgm.play();
     }
 
 
@@ -54,7 +84,7 @@ public class MapManager {
      * @param batch
      */
     public void render(final float delta, OrthographicCamera camera, final SpriteBatch batch) {
-
+        tileMapStage.getViewport().setCamera(camera);
         renderer.setView(camera);
         renderer.render();
         for (Character c : this.characterMap) {

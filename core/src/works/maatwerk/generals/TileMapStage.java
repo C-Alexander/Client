@@ -8,7 +8,7 @@ public class TileMapStage  extends Stage {
     public TileMapStage() {
     }
 
-    void createMapActors(TiledMapTileLayer layer) {
+  public  void createMapActors(TiledMapTileLayer layer) {
         for (int x = 0; x < layer.getWidth(); x++) {
             for (int y = 0; y < layer.getHeight(); y++) {
                 TiledMapTileLayer.Cell cell = layer.getCell(x, y);

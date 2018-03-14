@@ -15,7 +15,6 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -34,7 +33,7 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final ParticleEffect pEffect;
     private final AssetManager assetManager;
-    private final TileMapStage tileMapStage = new TileMapStage();
+
     private Animation anim;
     private float stateTime = 0f;
     public World world;
@@ -56,7 +55,7 @@ class PlayingScreen extends ScreenAdapter {
         multiplexer = new InputMultiplexer();
         pEffect = new ParticleEffect();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        map = new MapManager(this.assetManager);
+        map = new MapManager(this.assetManager,multiplexer);
 
     }
 
@@ -68,19 +67,13 @@ class PlayingScreen extends ScreenAdapter {
         initializeCharacterAnimations();
         initializeParticleEffects();
         initializeNetworking();
-
-        startMusic();
-        map.loadMap("");
-
+        map.initializeMap("");
         Gdx.input.vibrate(5000);
     }
 
 
 
-    private void createMapActors(MapLayer layer) {
-        multiplexer.addProcessor(tileMapStage);
-        tileMapStage.createMapActors((TiledMapTileLayer) layer);
-    }
+
     private void initializeNetworking() {
         networkManager = new NetworkManager();
         networkManager.connect();
@@ -168,7 +161,7 @@ class PlayingScreen extends ScreenAdapter {
         super.render(delta);
         batch.setProjectionMatrix(camera.combined);
 
-        tileMapStage.getViewport().setCamera(camera);
+
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
