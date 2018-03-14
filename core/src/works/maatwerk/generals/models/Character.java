@@ -309,7 +309,7 @@ public class Character extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha){
         batch.draw(this.getTexture(),this.getLocation().x*32,this.getLocation().y*32);
-        System.out.println(this.getGameStats().getHealthPoints());
+
 
 
     }
