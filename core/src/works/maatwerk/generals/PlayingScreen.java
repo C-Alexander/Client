@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -28,7 +29,7 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final ParticleEffect pEffect;
     private final AssetManager assetManager;
-    private final TileMapStage tileMapStage = new TileMapStage();
+    private final TileMapStage tileMapStage;
     private Animation anim;
     private float stateTime = 0f;
     public World world;
@@ -38,15 +39,18 @@ class PlayingScreen extends ScreenAdapter {
     private Texture SwordCharacter;
     private Texture AxeCharacter;
     private Texture SpearCharacter;
+    private FPSLogger fpsLogger;
 
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
-
+        tileMapStage = new TileMapStage(assetManager);
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
         pEffect = new ParticleEffect();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.fpsLogger = new FPSLogger();
+
     }
 
     @Override
@@ -61,7 +65,7 @@ class PlayingScreen extends ScreenAdapter {
         initializeCameraInputController();
     }
 
-    private void initializeMap(){
+    private void initializeMap() {
         Gdx.app.debug("Map", "Initializing Map");
         map = assetManager.get("speel_map2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -70,7 +74,7 @@ class PlayingScreen extends ScreenAdapter {
 
     private void createMapActors(MapLayer layer) {
         multiplexer.addProcessor(tileMapStage);
-        tileMapStage.createMapActors((TiledMapTileLayer)layer);
+        tileMapStage.createMapActors((TiledMapTileLayer) layer);
     }
 
     private void startMusic() {
@@ -103,7 +107,8 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.input.setInputProcessor(multiplexer);
     }
-    private void initializeCharacters(){
+
+    private void initializeCharacters() {
         Gdx.app.debug("Characters", "Initializing Characters");
         SwordCharacter = assetManager.get("GruntSword.png");
         AxeCharacter = assetManager.get("GruntAxe.png");
@@ -147,6 +152,7 @@ class PlayingScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         super.render(delta);
+        fpsLogger.log();
         batch.setProjectionMatrix(camera.combined);
         stateTime += Gdx.graphics.getDeltaTime();
 
@@ -154,19 +160,25 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        tileMapStage.act();
+
         batch.begin();
 
         camera.update();
         renderer.setView(camera);
 
         renderer.render();
+        tileMapStage.draw();
+
         batch.end();
         batch.begin();
-        batch.draw(SwordCharacter,416,64);
-        batch.draw(AxeCharacter,448,64);
-        batch.draw(SwordCharacter,480,64);
-        batch.draw(SpearCharacter,448,96);
-        batch.draw(AxeCharacter,480,480);
+
+        batch.draw(SwordCharacter, 416, 64);
+        batch.draw(AxeCharacter, 448, 64);
+        batch.draw(SwordCharacter, 480, 64);
+        batch.draw(SpearCharacter, 448, 96);
+        batch.draw(AxeCharacter, 480, 480);
         //batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
         //pEffect.draw(batch, delta);
 

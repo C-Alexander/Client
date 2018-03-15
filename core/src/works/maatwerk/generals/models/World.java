@@ -10,11 +10,6 @@ public class World {
     }
 
 
-
-
-
-
-
 //    public Character getTileCharacter(int x ,int y){
 //
 //

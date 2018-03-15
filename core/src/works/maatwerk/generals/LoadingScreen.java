@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
@@ -90,15 +91,20 @@ class LoadingScreen extends ScreenAdapter {
     private void loadAssets() {
         Gdx.app.debug("Loading", "Loading assets");
 
+        loadTileStatus();
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
         assetManager.load("speel_map1.tmx", TiledMap.class);
-        assetManager.load("GruntSword.png",Texture.class);
-        assetManager.load("GruntAxe.png",Texture.class);
-        assetManager.load("GruntSpear.png",Texture.class);
+        assetManager.load("GruntSword.png", Texture.class);
+        assetManager.load("GruntAxe.png", Texture.class);
+        assetManager.load("GruntSpear.png", Texture.class);
         assetManager.load("speel_map2.tmx", TiledMap.class);
         assetManager.load("data/music/megalovania.mp3", Music.class);
+    }
+
+    private void loadTileStatus() {
+        assetManager.load("tileobjects/tilestatus.atlas", TextureAtlas.class);
     }
 
     @Override

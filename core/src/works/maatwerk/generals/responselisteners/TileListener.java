@@ -7,7 +7,7 @@ import works.maatwerk.generals.actors.ClickableMapActor;
 /**
  * Created by teund on 06/03/2018.
  */
-public class TileListener extends ClickListener{
+public class TileListener extends ClickListener {
 
     private final ClickableMapActor clickableMapActor;
 
