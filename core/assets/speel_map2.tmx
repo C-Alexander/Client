@@ -1296,7 +1296,7 @@
   <image source="wood_tileset.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="513" name="custom" tilewidth="32" tileheight="32" tilecount="154" columns="11">
-  <image source="C:/Users/Bas van Wijk/Google Drive/MWKS-S41M Proftaak/Sprites/-5abnjred.png" width="352" height="448"/>
+  <image source="-5abnjred.png" width="352" height="448"/>
   <tile id="0">
    <properties>
     <property name="flyable" type="bool" value="true"/>

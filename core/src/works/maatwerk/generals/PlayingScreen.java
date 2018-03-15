@@ -8,14 +8,19 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.MapManager;
+import works.maatwerk.generals.models.World;
 
 class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
@@ -23,36 +28,50 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final ParticleEffect pEffect;
     private final AssetManager assetManager;
+    private final TileMapStage tileMapStage = new TileMapStage();
     private Animation anim;
     private float stateTime = 0f;
-    private MapManager map;
-
-
+    public World world;
+    private TiledMap map;
+    private TmxMapLoader mapLoader;
+    private OrthogonalTiledMapRenderer renderer;
+    private Texture SwordCharacter;
+    private Texture AxeCharacter;
+    private Texture SpearCharacter;
 
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
+
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
         pEffect = new ParticleEffect();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        map = new MapManager(this.assetManager);
-
     }
 
     @Override
     public void show() {
         initializeCamera();
+        initializeMap();
         initializeInputMultiplexer();
-        initializeCameraInputController();
+        initializeCharacters();
         initializeCharacterAnimations();
         initializeParticleEffects();
-
         startMusic();
-        map.loadMap("");
+        initializeCameraInputController();
     }
 
+    private void initializeMap(){
+        Gdx.app.debug("Map", "Initializing Map");
+        map = assetManager.get("speel_map2.tmx");
+        renderer = new OrthogonalTiledMapRenderer(map);
+        createMapActors(map.getLayers().get(1));
+    }
 
+    private void createMapActors(MapLayer layer) {
+        multiplexer.addProcessor(tileMapStage);
+        tileMapStage.createMapActors((TiledMapTileLayer)layer);
+    }
 
     private void startMusic() {
         Gdx.app.debug("Music", "Starting Background Music");
@@ -73,7 +92,7 @@ class PlayingScreen extends ScreenAdapter {
     private void initializeCharacterAnimations() {
         Gdx.app.debug("Animations", "Initializing Character Animations");
 
-        //TextureAtlas atlas = assetManager.get("character.atlas");
+        //TextureAtlas atlas = assetManager.get("SwordCharacter.atlas");
        // anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
     }
 
@@ -84,7 +103,12 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.input.setInputProcessor(multiplexer);
     }
-
+    private void initializeCharacters(){
+        Gdx.app.debug("Characters", "Initializing Characters");
+        SwordCharacter = assetManager.get("GruntSword.png");
+        AxeCharacter = assetManager.get("GruntAxe.png");
+        SpearCharacter = assetManager.get("GruntSpear.png");
+    }
     /**
      * Initializes an input controller that controls the camera.
      **/
@@ -97,7 +121,7 @@ class PlayingScreen extends ScreenAdapter {
         cameraInputController.forwardButton = -1000;
         cameraInputController.rotateButton = -1000;
         cameraInputController.rotateAngle = 0;
-        cameraInputController.translateButton = Buttons.LEFT;
+        cameraInputController.translateButton = Buttons.RIGHT;
 
         multiplexer.addProcessor(cameraInputController);
     }
@@ -126,13 +150,23 @@ class PlayingScreen extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
         stateTime += Gdx.graphics.getDeltaTime();
 
+        tileMapStage.getViewport().setCamera(camera);
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
         camera.update();
-        map.render(delta,camera,batch);
+        renderer.setView(camera);
 
+        renderer.render();
+        batch.end();
+        batch.begin();
+        batch.draw(SwordCharacter,416,64);
+        batch.draw(AxeCharacter,448,64);
+        batch.draw(SwordCharacter,480,64);
+        batch.draw(SpearCharacter,448,96);
+        batch.draw(AxeCharacter,480,480);
         //batch.draw((TextureRegion)anim.getKeyFrame(stateTime, true), 0, 0);
         //pEffect.draw(batch, delta);
 
