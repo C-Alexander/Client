@@ -134,7 +134,9 @@ public class Character {
         Stats output = new Stats();
         output.addToThis(baseStats);
         output.addToThis(race.getStats());
-        output.addToThis(weapon.getStats());
+        if(weapon != null) {
+            output.addToThis(weapon.getStats());
+        }
         output.addToThis(getDebuffs());
         return output;
     }
@@ -157,8 +159,8 @@ public class Character {
     public void attack(Character enemy) {
         Stats enemyStats = enemy.getGameStats();
         Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(weapon.isCanHeal(), enemyStats.getDefence(), ownStats.getAttack());
-        int damageToSelf = calculateDamage(enemy.weapon.isCanHeal(), ownStats.getDefence(), enemyStats.getAttack());
+        int damageToEnemy = calculateDamage(((weapon == null) ? false : weapon.isCanHeal()), enemyStats.getDefence(), ownStats.getAttack());
+        int damageToSelf = calculateDamage(((enemy.weapon == null) ? false : enemy.weapon.isCanHeal()), ownStats.getDefence(), enemyStats.getAttack());
         this.addDamageToCharacter(enemy, damageToEnemy);
         this.addDamageToCharacter(this, damageToSelf);
     }
@@ -169,6 +171,8 @@ public class Character {
      * @param ally
      */
     public void heal(Character ally) {
+        if(weapon == null)
+            return;
         if(!weapon.isCanHeal())
             return;
         Stats added = new Stats();
