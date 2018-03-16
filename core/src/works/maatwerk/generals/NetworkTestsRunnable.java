@@ -12,6 +12,7 @@ import works.maatwerk.generals.responselisteners.TestSocketListener;
 
 import java.io.StringWriter;
 
+@SuppressWarnings("SpellCheckingInspection")
 class NetworkTestsRunnable implements Runnable {
 
     private void testWebSockets() {

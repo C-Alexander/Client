@@ -4,15 +4,18 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+@SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
 
     private final Game game;
@@ -89,7 +92,8 @@ class LoadingScreen extends ScreenAdapter {
         Gdx.app.debug("Loading", "Loading assets");
 
 
-        assetManager.load("character.atlas", TextureAtlas.class);
+        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+        assetManager.load("speel_map2.tmx", TiledMap.class);
         assetManager.load("data/music/megalovania.mp3", Music.class);
     }
 
