@@ -32,7 +32,7 @@ public class Character extends Actor {
     private AssetManager assetManager;
     private ClassEnum classEnum;
 
-    
+
     /**
      * 
      * @param race
@@ -60,9 +60,9 @@ public class Character extends Actor {
     public void setLocation(Vector2 location) {
         this.location = location;
     }
-    
+
     /**
-     * 
+     *
      * @return 
      */
     public Stats getBaseStats() {
@@ -163,7 +163,7 @@ public class Character extends Actor {
         Stats output = new Stats();
         output.addToThis(baseStats);
         output.addToThis(race.getStats());
-        if(weapon != null){
+        if(weapon != null) {
             output.addToThis(weapon.getStats());
         }
 
@@ -189,8 +189,8 @@ public class Character extends Actor {
     public void attack(Character enemy) {
         Stats enemyStats = enemy.getGameStats();
         Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(weapon.isCanHeal(), enemyStats.getDefence(), ownStats.getAttack());
-        int damageToSelf = calculateDamage(enemy.weapon.isCanHeal(), ownStats.getDefence(), enemyStats.getAttack());
+        int damageToEnemy = calculateDamage(((weapon == null) ? false : weapon.isCanHeal()), enemyStats.getDefence(), ownStats.getAttack());
+        int damageToSelf = calculateDamage(((enemy.weapon == null) ? false : enemy.weapon.isCanHeal()), ownStats.getDefence(), enemyStats.getAttack());
         this.addDamageToCharacter(enemy, damageToEnemy);
         this.addDamageToCharacter(this, damageToSelf);
     }
@@ -201,6 +201,8 @@ public class Character extends Actor {
      * @param ally
      */
     public void heal(Character ally) {
+        if(weapon == null)
+            return;
         if(!weapon.isCanHeal())
             return;
         Stats added = new Stats();
