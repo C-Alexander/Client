@@ -6,7 +6,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -18,7 +17,6 @@ import works.maatwerk.generals.TileMapStage;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class MapManager extends Stage {
     private TiledMap map;
@@ -39,7 +37,7 @@ public class MapManager extends Stage {
     public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer) {
         this.assetManager = assetManager;
         this.multiplexer = inputMultiplexer;
-        characterMap = new ArrayList<>();
+        characterMap = new ArrayList<Character>();
 
 
     }
@@ -194,7 +192,7 @@ public class MapManager extends Stage {
     }
 
     public void update(){
-        ArrayList<Character> remove = new ArrayList<>();
+        ArrayList<Character> remove = new ArrayList<Character>();
         for (Character c: characterMap){
             if(!c.isAlive()){
                 characterLayer[(int)c.getLocation().x][(int)c.getLocation().y] = null;
