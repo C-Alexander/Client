@@ -10,9 +10,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -100,6 +102,8 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("GruntSpear.png",Texture.class);
         assetManager.load("speel_map2.tmx", TiledMap.class);
         assetManager.load("data/music/megalovania.mp3", Music.class);
+        assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
+        assetManager.load("skin/uiskin.json", Skin.class);
     }
 
     @Override
