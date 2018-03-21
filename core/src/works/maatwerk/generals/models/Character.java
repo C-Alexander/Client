@@ -1,5 +1,12 @@
 package works.maatwerk.generals.models;
 
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import works.maatwerk.generals.ClassEnum;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,7 +15,7 @@ import java.util.List;
  *
  * @author Sam Dirkx
  */
-public class Character {
+public class Character extends Actor {
     /**
      * Modifier which specifies the percentage of damage that can be done by a healing weapon (25 means 25% of the attack)
      */
@@ -20,20 +27,42 @@ public class Character {
     private final List<Debuff> debuffs;
     private Weapon weapon;
     private List<Character> minions;
-    
+    private Vector2 location;
+    private int id;
+    private AssetManager assetManager;
+    private ClassEnum classEnum;
+
+
     /**
      * 
      * @param race
      */
-    public Character(Race race) {
-        this.baseStats = new Stats(50, 10, 5, 5, 1);
+    public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
+        this.baseStats = new Stats(1, 1, 1, 1, 1);
         this.race = race;
         this.rank = new Rank();
+        this.assetManager = assetManager;
+        this.classEnum = classEnum;
+        this.location =location;
         debuffs = new ArrayList<Debuff>();
     }
-    
+
     /**
-     * 
+     * @return
+     */
+    public Vector2 getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location
+     */
+    public void setLocation(Vector2 location) {
+        this.location = location;
+    }
+
+    /**
+     *
      * @return 
      */
     public Stats getBaseStats() {
@@ -137,6 +166,7 @@ public class Character {
         if(weapon != null) {
             output.addToThis(weapon.getStats());
         }
+
         output.addToThis(getDebuffs());
         return output;
     }
@@ -212,7 +242,7 @@ public class Character {
         if(rank.getRankName() != RankName.GENERAL)
             return;
         while(minions.size() <MAX_MINIONS) {
-            minions.add(new Character(race));
+            minions.add(new Character(race,this.assetManager,this.classEnum,this.location));
         }
     }
     
@@ -276,5 +306,35 @@ public class Character {
             output.add(c);
         }
         return output;
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha){
+        batch.draw(this.getTexture(),this.getLocation().x*32,this.getLocation().y*32);
+
+
+
+    }
+
+    private Texture getTexture(){
+        switch (this.classEnum) {
+            case AXE: return assetManager.get("GruntAxe.png");
+            case SWORD: return assetManager.get("characters/Sword.png");
+            case SPEAR: return assetManager.get("characters/Spear.png");
+            case ARCANE: return assetManager.get("characters/MageA.png");
+            case CORRUPT: return assetManager.get("characters/MageC.png");
+            case DIVINE: return assetManager.get("characters/MageD.png");
+            case VALKYRIE: return assetManager.get("characters/ValkyrieB.png");
+
+            default: return null;
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

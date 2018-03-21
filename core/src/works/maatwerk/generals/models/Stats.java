@@ -15,11 +15,11 @@ public class Stats {
      * Default constructor. All attributes are 0.
      */
     public Stats() {
-        healthPoints = 0;
-        attack = 0;
+        healthPoints = 2;
+        attack = 1;
         defence = 0;
-        movement = 0;
-        speed = 0;
+        movement = 1;
+        speed = 1;
     }
     
     /**
