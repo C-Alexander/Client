@@ -1,0 +1,2537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Map Id="Untiled map">
+  <Description><![CDATA[]]></Description>
+  <TileSheets>
+    <TileSheet Id="custom">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[-5abnjred.png]]></ImageSource>
+      <Alignment SheetSize="11 x 14" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[513]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[666]]></Property>
+        <Property Key="@Tile@0@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@0@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@1@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@1@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@2@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@2@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@3@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@3@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@4@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@4@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@5@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@5@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@6@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@6@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@7@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@7@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@8@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@8@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@9@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@9@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@10@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@11@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@11@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@12@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@12@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@13@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@13@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@14@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@14@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@15@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@15@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@16@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@16@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@17@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@17@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@18@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@18@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@19@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@19@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@20@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@20@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@21@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@22@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@22@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@23@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@23@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@24@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@24@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@25@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@25@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@26@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@26@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@27@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@27@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@28@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@28@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@29@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@29@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@30@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@30@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@31@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@31@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@32@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@32@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@33@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@33@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@34@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@34@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@35@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@35@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@36@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@36@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@37@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@37@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@38@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@38@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@39@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@39@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@40@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@40@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@41@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@41@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@42@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@42@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@43@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@43@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@44@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@44@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@45@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@45@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@46@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@46@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@47@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@47@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@48@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@48@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@49@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@49@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@50@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@50@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@51@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@51@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@52@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@52@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@53@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@53@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@54@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@54@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@55@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@55@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@56@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@56@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@57@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@57@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@58@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@58@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@59@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@59@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@60@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@60@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@61@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@61@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@62@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@62@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@63@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@63@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@64@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@64@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@65@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@65@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@66@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@66@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@67@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@67@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@68@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@68@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@69@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@69@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@70@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@71@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@72@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@73@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@74@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@75@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@76@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@77@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@77@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@78@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@78@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@79@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@79@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@80@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@80@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@81@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@82@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@83@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@84@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@85@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@86@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@87@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@88@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@88@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@89@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@89@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@90@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@90@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@91@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@91@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@92@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@92@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@93@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@93@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@94@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@94@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@95@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@95@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@96@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@96@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@97@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@97@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@98@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@98@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@99@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@99@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@100@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@100@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@101@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@101@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@102@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@102@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@103@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@103@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@104@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@104@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@105@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@105@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@106@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@106@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@107@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@107@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@108@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@108@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@109@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@109@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@110@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@110@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@111@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@111@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@112@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@112@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@113@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@113@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@114@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@114@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@115@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@115@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@116@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@116@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@117@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@117@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@118@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@118@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@119@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@119@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@120@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@120@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@121@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@121@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@122@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@122@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@123@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@123@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@124@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@124@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@125@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@125@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@126@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@126@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@127@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@127@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@128@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@128@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@129@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@129@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@130@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@130@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@131@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@131@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@132@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@132@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@133@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@133@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@134@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@134@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@135@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@135@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@136@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@136@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@137@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@137@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@138@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@138@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@139@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@139@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@140@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@140@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@141@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@141@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@142@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@142@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@143@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@143@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@144@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@144@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@145@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@145@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@146@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@146@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@147@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@147@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@148@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@148@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@149@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@149@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@150@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@150@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@151@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@151@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@152@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@152@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@153@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@153@passable" Type="String"><![CDATA[true]]></Property>
+      </Properties>
+    </TileSheet>
+    <TileSheet Id="mountain_landscape">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[mountain_landscape.png]]></ImageSource>
+      <Alignment SheetSize="16 x 16" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[1]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[256]]></Property>
+        <Property Key="@Tile@0@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@1@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@2@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@3@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@4@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@5@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@6@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@7@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@8@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@9@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@10@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@11@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@12@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@13@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@14@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@15@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@16@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@17@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@18@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@19@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@20@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@21@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@22@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@23@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@24@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@25@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@26@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@27@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@28@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@29@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@30@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@31@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@32@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@33@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@34@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@35@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@36@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@37@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@38@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@39@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@40@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@41@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@42@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@43@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@44@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@45@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@46@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@47@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@48@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@49@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@50@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@51@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@52@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@53@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@54@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@55@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@56@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@57@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@58@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@59@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@59@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@60@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@60@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@61@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@61@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@62@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@63@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@64@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@65@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@66@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@67@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@68@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@69@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@70@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@71@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@72@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@73@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@74@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@75@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@75@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@76@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@77@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@77@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@78@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@79@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@80@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@81@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@82@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@83@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@84@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@85@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@86@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@87@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@88@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@89@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@90@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@91@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@91@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@92@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@92@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@93@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@93@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@94@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@95@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@96@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@97@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@98@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@99@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@100@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@101@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@102@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@103@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@104@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@105@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@106@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@107@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@108@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@109@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@110@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@111@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@112@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@113@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@114@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@115@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@116@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@117@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@118@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@119@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@120@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@121@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@122@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@123@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@124@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@125@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@126@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@127@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@128@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@129@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@130@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@131@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@132@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@133@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@134@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@135@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@136@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@137@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@138@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@139@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@140@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@141@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@142@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@143@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@144@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@145@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@146@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@147@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@148@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@149@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@150@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@151@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@152@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@153@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@154@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@155@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@156@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@157@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@158@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@159@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@160@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@161@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@162@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@163@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@164@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@165@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@166@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@167@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@168@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@169@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@170@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@171@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@172@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@173@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@174@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@175@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@176@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@177@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@178@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@179@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@180@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@181@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@182@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@183@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@184@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@185@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@186@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@187@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@188@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@189@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@190@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@191@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@192@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@193@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@194@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@195@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@196@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@197@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@198@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@199@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@200@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@201@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@202@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@203@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@204@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@205@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@206@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@207@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@208@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@209@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@210@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@211@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@212@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@213@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@214@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@215@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@216@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@217@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@218@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@219@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@220@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@221@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@222@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@223@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@224@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@225@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@226@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@227@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@228@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@229@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@230@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@231@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@232@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@233@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@234@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@235@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@236@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@237@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@238@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@239@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@240@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@241@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@242@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@243@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@244@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@245@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@246@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@247@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@248@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@249@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@250@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@251@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@252@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@252@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@253@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@254@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@255@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@TileIndex@14@hi" Type="Int32"><![CDATA[1]]></Property>
+      </Properties>
+    </TileSheet>
+    <TileSheet Id="obstacles">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[obstacles.png]]></ImageSource>
+      <Alignment SheetSize="2 x 3" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[781]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[786]]></Property>
+        <Property Key="@Tile@0@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@1@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@2@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@3@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@4@passable" Type="String"><![CDATA[false]]></Property>
+      </Properties>
+    </TileSheet>
+    <TileSheet Id="obstacles">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[obstacles.png]]></ImageSource>
+      <Alignment SheetSize="2 x 3" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[667]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[672]]></Property>
+        <Property Key="@Tile@0@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@0@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@1@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@1@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@2@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@2@passable" Type="String"><![CDATA[false]]></Property>
+        <Property Key="@Tile@3@flyable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@3@passable" Type="String"><![CDATA[false]]></Property>
+      </Properties>
+    </TileSheet>
+    <TileSheet Id="Tileset_Sand">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[Tileset_Sand.png]]></ImageSource>
+      <Alignment SheetSize="9 x 6" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[727]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[780]]></Property>
+        <Property Key="@Tile@0@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@1@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@2@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@3@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@4@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@5@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@6@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@7@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@8@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@9@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@10@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@11@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@12@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@13@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@14@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@15@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@16@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@17@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@18@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@19@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@20@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@21@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@22@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@23@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@24@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@25@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@26@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@27@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@28@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@29@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@30@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@31@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@32@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@33@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@34@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@35@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@36@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@37@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@38@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@39@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@40@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@41@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@42@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@43@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@44@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@45@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@46@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@47@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@48@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@49@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@50@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@51@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@52@passable" Type="String"><![CDATA[true]]></Property>
+        <Property Key="@Tile@53@passable" Type="String"><![CDATA[true]]></Property>
+      </Properties>
+    </TileSheet>
+    <TileSheet Id="Tileset_Water">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[Tileset_Water.png]]></ImageSource>
+      <Alignment SheetSize="9 x 6" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[673]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[726]]></Property>
+      </Properties>
+    </TileSheet>
+    <TileSheet Id="wood_tileset">
+      <Description><![CDATA[]]></Description>
+      <ImageSource><![CDATA[wood_tileset.png]]></ImageSource>
+      <Alignment SheetSize="16 x 16" TileSize="32 x 32" Margin="0 x 0" Spacing="0 x 0" />
+      <Properties>
+        <Property Key="@FirstGid" Type="Int32"><![CDATA[257]]></Property>
+        <Property Key="@LastGid" Type="Int32"><![CDATA[512]]></Property>
+      </Properties>
+    </TileSheet>
+  </TileSheets>
+  <Layers>
+    <Layer Id="Tilelaag 1" Visible="True">
+      <Description><![CDATA[]]></Description>
+      <Dimensions LayerSize="31 x 31" TileSize="32 x 32" />
+      <TileArray>
+        <Row>
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <Static Index="27" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+        </Row>
+      </TileArray>
+      <Properties />
+    </Layer>
+    <Layer Id="Tilelaag 2" Visible="True">
+      <Description><![CDATA[]]></Description>
+      <Dimensions LayerSize="31 x 31" TileSize="32 x 32" />
+      <TileArray>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="14" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <Null Count="14" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="0" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="24" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="23" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="13" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="0" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="2" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="5" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="5" />
+        </Row>
+        <Row>
+          <Null Count="5" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Null Count="5" />
+        </Row>
+        <Row>
+          <Null Count="5" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Null Count="5" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="14" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="14" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="6" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="18" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="19" BlendMode="Alpha" />
+          <Static Index="20" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="6" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="6" />
+          <Static Index="21" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="24" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <TileSheet Ref="Tileset_Water" />
+          <Static Index="23" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="5" BlendMode="Alpha" />
+          <Static Index="22" BlendMode="Alpha" />
+          <Null Count="6" />
+        </Row>
+        <Row>
+          <Null Count="14" />
+          <TileSheet Ref="Tileset_Sand" />
+          <Static Index="9" BlendMode="Alpha" />
+          <Static Index="10" BlendMode="Alpha" />
+          <Static Index="11" BlendMode="Alpha" />
+          <Null Count="14" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+        <Row>
+          <Null Count="31" />
+        </Row>
+      </TileArray>
+      <Properties />
+    </Layer>
+    <Layer Id="Tilelaag 3" Visible="True">
+      <Description><![CDATA[]]></Description>
+      <Dimensions LayerSize="31 x 31" TileSize="32 x 32" />
+      <TileArray>
+        <Row>
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="22" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="21" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="23" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="22" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="21" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="26" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="19" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="8" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="3" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="8" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="4" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="19" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="4" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="4" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="19" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="4" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="29" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="8" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="3" />
+          <Static Index="1" BlendMode="Alpha" />
+          <Null Count="12" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="24" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="2" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="26" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="25" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="22" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="2" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="19" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="3" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="1" />
+          <Static Index="3" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="23" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Null Count="1" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="2" BlendMode="Alpha" />
+          <Null Count="21" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="2" />
+          <Static Index="3" BlendMode="Alpha" />
+          <Null Count="1" />
+          <Static Index="3" BlendMode="Alpha" />
+          <TileSheet Ref="obstacles" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+        <Row>
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+          <Static Index="4" BlendMode="Alpha" />
+        </Row>
+      </TileArray>
+      <Properties />
+    </Layer>
+  </Layers>
+  <Properties />
+</Map>
