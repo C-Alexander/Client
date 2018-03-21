@@ -8,5 +8,7 @@ public enum ClassEnum {
     ARCANE,
     CORRUPT,
     DIVINE,
+    HEALER,
+    ARCHER,
     VALKYRIE
 }
