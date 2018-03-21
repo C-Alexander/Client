@@ -67,8 +67,9 @@ public class RegistrationScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (txtPassword.equals(txtPassword)) {
-                    new Account(txtUsername.getText(), txtPassword.getText());
-                    game.setScreen(new PickingScreen(game, assetManager));
+                    Account account = new Account(txtUsername.getText(), txtPassword.getText());
+
+                    game.setScreen(new LogInScreen(game, assetManager));
                 }
             }
         });
@@ -76,7 +77,7 @@ public class RegistrationScreen extends ScreenAdapter {
         btnBack.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new PickingScreen(game, assetManager));
+                game.setScreen(new LogInScreen(game, assetManager));
             }
         });
 

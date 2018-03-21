@@ -18,7 +18,7 @@ public class Account {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        System.out.println(this.Username + " " + this.Password);
+        System.out.println(this.toString());
     }
 
     public static String byteArray2Hex(byte[] bytes) {
@@ -34,5 +34,13 @@ public class Account {
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
         messageDigest.update(stringToEncrypt.getBytes());
         return byteArray2Hex(messageDigest.digest());
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"Username\":\"" + Username + "\"" +
+                ",\"Password\":\"" + Password + "\"" +
+                "}";
     }
 }
