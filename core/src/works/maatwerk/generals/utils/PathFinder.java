@@ -21,7 +21,7 @@ public class PathFinder {
     public static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
         return getPossibleMoves(tiles, character, x, y, 0);
     }
-    
+    //
     private static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed) {
         boolean[][] output = getBooleanArray(tiles);
         output[x][y] = true;
