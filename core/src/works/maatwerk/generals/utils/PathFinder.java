@@ -18,12 +18,13 @@ public class PathFinder {
      * @param y Position of the character in the array. This is for the column.
      * @return 
      */
-    public static boolean[][] getPossibleMoves(int[][] tiles, Character character, int x, int y) {
+    public static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
         return getPossibleMoves(tiles, character, x, y, 0);
     }
     
-    private static boolean[][] getPossibleMoves(int[][] tiles, Character character, int x, int y, int movesUsed) {
+    private static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed) {
         boolean[][] output = getBooleanArray(tiles);
+        output[x][y] = true;
         int moves = character.getGameStats().getMovement() - movesUsed;
         if(moves <= 0)
             return output;
@@ -44,7 +45,7 @@ public class PathFinder {
      * @param y Position of the character in the array. This is for the column.
      * @return 
      */
-    public static boolean[][] getAttackRange(int[][] tiles, Character character, int x, int y) {
+    public static boolean[][] getAttackRange(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
         boolean[][] output = getBooleanArray(tiles);
         
         return output;
@@ -62,7 +63,7 @@ public class PathFinder {
         return new boolean[x][y];
     }
     
-    private static boolean[][] calcMove(int[][] tiles, Character character, int x, int y, int movesUsed, int moves, boolean[][] array) {
+    private static boolean[][] calcMove(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed, int moves, boolean[][] array) {
         boolean[][] output = array;
         if((x) >= 0 && tiles[x][y] >= 0 && tiles[x][y] <= moves) {
             output = addBooleanArray(output, getPossibleMoves(tiles, character, x, y, movesUsed + tiles[x][y]));
