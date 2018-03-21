@@ -44,7 +44,8 @@ public class Character extends Actor {
         this.assetManager = assetManager;
         this.classEnum = classEnum;
         this.location =location;
-        debuffs = new ArrayList<Debuff>();
+        debuffs = new ArrayList<>();
+        minions = new ArrayList<>();
     }
 
     /**
@@ -92,10 +93,17 @@ public class Character extends Actor {
     public Weapon getWeapon() {
         return weapon;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @param weapon
+     */
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    /**
+     *
+     * @return
      */
     public Stats getDebuffs() {
         Stats output = new Stats();
@@ -106,21 +114,13 @@ public class Character extends Actor {
     }
     
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<Character> getMinions() {
-       return minions; 
+        return minions;
     }
-    
-    /**
-     * 
-     * @param weapon 
-     */
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-    
+
     /**
      * 
      * @param debuff 
@@ -241,7 +241,7 @@ public class Character extends Actor {
     public void matchStart() {
         if(rank.getRankName() != RankName.GENERAL)
             return;
-        while(minions.size() <MAX_MINIONS) {
+        while (minions.size() < MAX_MINIONS) {
             minions.add(new Character(race,this.assetManager,this.classEnum,this.location));
         }
     }
@@ -255,7 +255,7 @@ public class Character extends Actor {
      */
     public List<Character> matchEnded() {
         if(!this.isAlive())
-            return null;
+            return new ArrayList<>();
         rank.update();
         debuffs.clear();
         return matchEndedMinions();
@@ -318,13 +318,24 @@ public class Character extends Actor {
 
     private Texture getTexture(){
         switch (this.classEnum) {
-            case AXE: return assetManager.get("GruntAxe.png");
-            case SWORD: return assetManager.get("characters/Sword.png");
-            case SPEAR: return assetManager.get("characters/Spear.png");
-            case ARCANE: return assetManager.get("characters/MageA.png");
-            case CORRUPT: return assetManager.get("characters/MageC.png");
-            case DIVINE: return assetManager.get("characters/MageD.png");
-            case VALKYRIE: return assetManager.get("characters/ValkyrieB.png");
+            case AXE:
+                return assetManager.get("characters/mAxe.png");
+            case SWORD:
+                return assetManager.get("characters/mSword.png");
+            case SPEAR:
+                return assetManager.get("characters/mSpear.png");
+            case ARCANE:
+                return assetManager.get("characters/mArcane.png");
+            case CORRUPT:
+                return assetManager.get("characters/mCorrupt.png");
+            case DIVINE:
+                return assetManager.get("characters/mDivine.png");
+            case HEALER:
+                return assetManager.get("characters/mHealer.png");
+            case ARCHER:
+                return assetManager.get("characters/mBow.png");
+            case VALKYRIE:
+                return assetManager.get("characters/hValkyrie.png");
 
             default: return null;
         }

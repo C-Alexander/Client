@@ -19,17 +19,28 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 class LoadingScreen extends ScreenAdapter {
 
     private final Game game;
-
+    private final SpriteBatch batch;
+    private final AssetManager assetManager;
     private FitViewport viewport;
     private OrthographicCamera camera;
-    private final SpriteBatch batch;
     private Texture logo;
     private Texture fullBar;
     private Texture emptyBar;
     private Vector2 logoPos;
     private Vector2 ebPos;
     private Vector2 fbPos;
-    private final AssetManager assetManager;
+
+    LoadingScreen(Game game, AssetManager assetManager) {
+        this.game = game;
+        this.assetManager = assetManager;
+
+        batch = new SpriteBatch();
+
+        initializeCamera();
+
+        loadLoadingBar();
+        initializeLoadingBar();
+    }
 
     private void initializeCamera() {
         Gdx.app.debug("Camera", "Initializing");
@@ -59,18 +70,6 @@ class LoadingScreen extends ScreenAdapter {
         fbPos = new Vector2((ebPos.x + (emptyBar.getWidth() / 2)) - (fullBar.getWidth()/2), (ebPos.y + (emptyBar.getHeight() / 2)) - (fullBar.getHeight()/2));
     }
 
-    LoadingScreen(Game game, AssetManager assetManager) {
-        this.game = game;
-        this.assetManager = assetManager;
-
-        batch = new SpriteBatch();
-
-        initializeCamera();
-
-        loadLoadingBar();
-        initializeLoadingBar();
-    }
-
     @Override
     public void show() {
         super.show();
@@ -94,11 +93,17 @@ class LoadingScreen extends ScreenAdapter {
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
-        assetManager.load("speel_map1.tmx", TiledMap.class);
-        assetManager.load("GruntSword.png",Texture.class);
-        assetManager.load("GruntAxe.png",Texture.class);
-        assetManager.load("GruntSpear.png",Texture.class);
         assetManager.load("speel_map2.tmx", TiledMap.class);
+
+        assetManager.load("characters/hValkyrie.png", Texture.class);
+        assetManager.load("characters/mArcane.png", Texture.class);
+        assetManager.load("characters/mAxe.png", TiledMap.class);
+        assetManager.load("characters/mBow.png", TiledMap.class);
+        assetManager.load("characters/mCorrupt", TiledMap.class);
+        assetManager.load("characters/mDivine", TiledMap.class);
+        assetManager.load("characters/mSpear", TiledMap.class);
+        assetManager.load("characters/mSword", TiledMap.class);
+
         assetManager.load("data/music/megalovania.mp3", Music.class);
     }
 
