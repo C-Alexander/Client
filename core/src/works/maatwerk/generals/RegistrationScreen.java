@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import works.maatwerk.generals.models.Account;
 
 /**
  * Created by teund on 21/03/2018.
@@ -20,13 +21,13 @@ public class RegistrationScreen extends ScreenAdapter {
     private final Game game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
-    private TextField txtUsername,txtPassword, txtPasswordRepeat;
+    private TextField txtUsername, txtPassword, txtPasswordRepeat;
     private Stage stage;
     private OrthographicCamera camera;
 
 
     public RegistrationScreen(final Game game, final AssetManager assetManager) {
-        this.game=game;
+        this.game = game;
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
         this.stage = new Stage();
@@ -35,7 +36,7 @@ public class RegistrationScreen extends ScreenAdapter {
 
         Table table = new Table(skin);
         table.setFillParent(true);
-        table.setBounds(0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         Label lblTitle = new Label("Register", skin);
         lblTitle.setFontScale(2);
@@ -62,16 +63,19 @@ public class RegistrationScreen extends ScreenAdapter {
         table.row().pad(20);
 
         TextButton btnRegister = new TextButton("Register", skin);
-        btnRegister.addListener(new ClickListener(){
+        btnRegister.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y){
-
+            public void clicked(InputEvent event, float x, float y) {
+                if (txtPassword.equals(txtPassword)) {
+                    new Account(txtUsername.getText(), txtPassword.getText());
+                    game.setScreen(new PickingScreen(game, assetManager));
+                }
             }
         });
         TextButton btnBack = new TextButton("Back", skin);
-        btnBack.addListener(new ClickListener(){
+        btnBack.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y){
+            public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new PickingScreen(game, assetManager));
             }
         });
@@ -93,7 +97,7 @@ public class RegistrationScreen extends ScreenAdapter {
         super.render(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-       stage.act(delta);
-       stage.draw();
+        stage.act(delta);
+        stage.draw();
     }
 }
