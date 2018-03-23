@@ -97,12 +97,12 @@ class LoadingScreen extends ScreenAdapter {
 
         assetManager.load("characters/hValkyrie.png", Texture.class);
         assetManager.load("characters/mArcane.png", Texture.class);
-        assetManager.load("characters/mAxe.png", TiledMap.class);
-        assetManager.load("characters/mBow.png", TiledMap.class);
-        assetManager.load("characters/mCorrupt", TiledMap.class);
-        assetManager.load("characters/mDivine", TiledMap.class);
-        assetManager.load("characters/mSpear", TiledMap.class);
-        assetManager.load("characters/mSword", TiledMap.class);
+        assetManager.load("characters/mAxe.png", Texture.class);
+        assetManager.load("characters/mBow.png", Texture.class);
+        assetManager.load("characters/mCorrupt.png", Texture.class);
+        assetManager.load("characters/mDivine.png", Texture.class);
+        assetManager.load("characters/mSpear.png", Texture.class);
+        assetManager.load("characters/mSword.png", Texture.class);
 
         assetManager.load("data/music/megalovania.mp3", Music.class);
     }
