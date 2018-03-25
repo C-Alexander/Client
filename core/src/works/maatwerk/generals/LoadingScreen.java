@@ -105,6 +105,7 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("characters/mDivine.png", Texture.class);
         assetManager.load("characters/mSpear.png", Texture.class);
         assetManager.load("characters/mSword.png", Texture.class);
+        assetManager.load("hud/uiBG.png", Texture.class);
 
         assetManager.load("data/music/megalovania.mp3", Music.class);
     }

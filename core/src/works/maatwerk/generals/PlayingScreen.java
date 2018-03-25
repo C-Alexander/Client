@@ -195,6 +195,4 @@ class PlayingScreen extends ScreenAdapter {
         super.dispose();
         batch.dispose();
     }
-
-
 }

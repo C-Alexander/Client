@@ -1,0 +1,13 @@
+
+bg.png
+size: 2048,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+uiBG
+  rotate: false
+  xy: 2, 2
+  size: 1200, 80
+  orig: 1200, 80
+  offset: 0, 0
+  index: -1
