@@ -1,10 +1,7 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
@@ -19,6 +16,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
@@ -44,6 +44,7 @@ class PlayingScreen extends ScreenAdapter {
     private Texture AxeCharacter;
     private Texture SpearCharacter;
     private MapManager map;
+    private Stage stage;
 
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -52,6 +53,7 @@ class PlayingScreen extends ScreenAdapter {
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
+        this.stage = new Stage();
 
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
@@ -59,6 +61,7 @@ class PlayingScreen extends ScreenAdapter {
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         map = new MapManager(this.assetManager,multiplexer);
 
+        addUI();
     }
 
     @Override
@@ -187,12 +190,29 @@ class PlayingScreen extends ScreenAdapter {
 
         if (pEffect.isComplete()) pEffect.reset();
 
-
+        stage.act(delta);
+        stage.draw();
     }
 
     @Override
     public void dispose() {
         super.dispose();
         batch.dispose();
+    }
+
+    private void addUI(){
+        Gdx.input.setInputProcessor(stage);
+
+        Table table = new Table();
+        table.setFillParent(true);
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        Texture texture = assetManager.get("hud/uiBG.png", Texture.class);
+        Image image = new Image(texture);
+
+        table.bottom();
+        table.add(image);
+
+        stage.addActor(table);
     }
 }
