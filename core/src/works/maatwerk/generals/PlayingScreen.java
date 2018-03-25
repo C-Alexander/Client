@@ -186,6 +186,8 @@ class PlayingScreen extends ScreenAdapter {
         batch.end();
 
         if (pEffect.isComplete()) pEffect.reset();
+
+
     }
 
     @Override
