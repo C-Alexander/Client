@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -107,6 +108,9 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("characters/mDivine.png", Texture.class);
         assetManager.load("characters/mSpear.png", Texture.class);
         assetManager.load("characters/mSword.png", Texture.class);
+        assetManager.load("hud/uiBG.png", Texture.class);
+        assetManager.load("skin/uiskin.json", Skin.class);
+        assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
 
         assetManager.load("data/music/megalovania.mp3", Music.class);
         assetManager.load("skin/uiskin.json", Skin.class);

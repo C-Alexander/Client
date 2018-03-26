@@ -86,6 +86,7 @@ public class MapManager extends Stage {
 
         if (character != null && this.getCharacterSelected() == null) {
             this.setCharacterSelected(character);
+            //TODO: UpdateUI
         } else {
             if (character == null && this.getCharacterSelected() !=null) {
                 moveCharacter(this.getCharacterSelected(), location);
@@ -99,8 +100,6 @@ public class MapManager extends Stage {
                 }
             }
         }
-
-
     }
 
 
@@ -119,8 +118,6 @@ public class MapManager extends Stage {
         for (Character c : this.characterMap) {
             c.draw(batch, delta);
         }
-
-
     }
 
 
