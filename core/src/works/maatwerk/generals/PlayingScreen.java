@@ -7,13 +7,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -22,13 +17,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
 import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.networking.NetworkManager;
+import works.maatwerk.generals.utils.BackgroundColor;
+import works.maatwerk.generals.utils.StringUtils;
 
 @SuppressWarnings("unused")
 class PlayingScreen extends ScreenAdapter {
@@ -48,6 +44,7 @@ class PlayingScreen extends ScreenAdapter {
     private Texture SpearCharacter;
     private MapManager map;
     private Stage stage;
+    private Table table;
 
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -57,6 +54,8 @@ class PlayingScreen extends ScreenAdapter {
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
         this.stage = new Stage();
+        table = new Table();
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), 80);
 
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
@@ -64,7 +63,7 @@ class PlayingScreen extends ScreenAdapter {
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         map = new MapManager(this.assetManager,multiplexer);
 
-        addUI();
+        addUI(table);
     }
 
     @Override
@@ -188,6 +187,7 @@ class PlayingScreen extends ScreenAdapter {
         camera.update();
 
         map.render(delta,camera,batch);
+        updateCharacterLabel(table, map.getCharacterSelected());
 
         batch.end();
 
@@ -195,8 +195,6 @@ class PlayingScreen extends ScreenAdapter {
 
         stage.act(delta);
         stage.draw();
-
-
     }
 
     @Override
@@ -205,24 +203,64 @@ class PlayingScreen extends ScreenAdapter {
         batch.dispose();
     }
 
-    private void addUI(){
+    private void addUI(Table table){
         Skin skin = assetManager.get("skin/uiskin.json");
 
         Gdx.input.setInputProcessor(stage);
 
-        Table table = new Table();
-        table.setFillParent(true);
-        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        Texture texture = assetManager.get("hud/uiBG.png", Texture.class);
-        Image image = new Image(texture);
-
         Label label = new Label("Character X", skin);
-        label.setFontScale(2);
+        label.setFontScale(1);
 
-        table.bottom();
-        table.add(image);
-        table.add(label);
+        BackgroundColor backgroundColor = new BackgroundColor("skin/white.png");
+        backgroundColor.setColor(0, 129, 128, 255);
+        table.setBackground(backgroundColor);
+
+        updateCharacterLabel(table, map.getCharacterSelected());
+    }
+
+    private void updateCharacterLabel(Table table, Character character){
+        table.clearChildren();
+        if (character != null){
+            Skin skin = assetManager.get("skin/uiskin.json");
+
+            Image image = new Image(character.getTexture());
+
+            Label lblName = new Label("Name:", skin);
+            Label lblNameValue = new Label(character.getName(), skin);
+
+            Label lblRace = new Label("Race:", skin);
+            Label lblRaceValue = new Label(character.getRace().getName(), skin);
+
+            Label lblRank = new Label("Rank:", skin);
+            Label lblRankValue = new Label(StringUtils.UcFirst(character.getRank().getRankName().toString()), skin);
+
+            Label lblStats = new Label(character.getBaseStats().toUsefulString(), skin);
+
+
+            table.top().left();
+            float cellsize = table.add(image).padRight(30).getActorWidth();
+
+            //Name
+            table.add(lblName).left().padRight(10);
+            table.add(lblNameValue).left();
+            table.add(lblStats).left().padLeft(60);
+
+            table.row().padTop(-10);
+            table.add().padRight(30).setActorWidth(cellsize);
+            table.add(lblRace).left();
+            table.add(lblRaceValue).left();
+
+            table.row().padTop(-7);
+            table.add().padRight(30).setActorWidth(cellsize);
+            table.add(lblRank).left();
+            table.add(lblRankValue).left();
+
+
+
+
+        }else{
+            //TODO: Draw empty HUD
+        }
 
         stage.addActor(table);
     }
