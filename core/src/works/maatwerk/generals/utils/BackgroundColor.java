@@ -12,6 +12,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class BackgroundColor implements Drawable {
 
     private Float x;
@@ -26,6 +29,8 @@ public class BackgroundColor implements Drawable {
     private TextureRegion textureRegion;
     private Sprite sprite;
     private Color color;
+
+    private static final Logger LOGGER = Logger.getLogger(BackgroundColor.class.getName());
 
     public BackgroundColor(String filename) {
         this(filename, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -44,16 +49,16 @@ public class BackgroundColor implements Drawable {
     private void initialize(String filename) {
         setFilename(filename);
         if (x == null || y == null)
-            setPosition();	// x = 0.0f; y = 0.0f;
+            setPosition();
         if (width == null || height == null || width < 0.0f || height < 0.0f)
-            setSize();		// width = 0.0f; height = 0.0f;
+            setSize();
         if (color == null)
             setColor(255, 255, 255, 255);
         if (sprite == null) {
             try {
                 setSprite();
             } catch (Exception e) {
-                System.err.println(e);
+                LOGGER.log(Level.INFO, e.toString());
             }
         }
         if (fillParent == null)
@@ -134,75 +139,64 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public float getLeftWidth() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void setLeftWidth(float leftWidth) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public float getRightWidth() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void setRightWidth(float rightWidth) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public float getTopHeight() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void setTopHeight(float topHeight) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public float getBottomHeight() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void setBottomHeight(float bottomHeight) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public float getMinWidth() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void setMinWidth(float minWidth) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public float getMinHeight() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void setMinHeight(float minHeight) {
-        // TODO Auto-generated method stub
 
     }
+
 
     private void setFilename(String filename) {
         this.filename = filename;
