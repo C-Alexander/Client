@@ -17,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
@@ -25,6 +27,8 @@ import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.networking.NetworkManager;
 import works.maatwerk.generals.utils.BackgroundColor;
 import works.maatwerk.generals.utils.StringUtils;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 @SuppressWarnings("unused")
 class PlayingScreen extends ScreenAdapter {
@@ -135,6 +139,23 @@ class PlayingScreen extends ScreenAdapter {
         AxeCharacter = assetManager.get("GruntAxe.png");
         SpearCharacter = assetManager.get("GruntSpear.png");
     }
+
+    /**
+     * Start code for a end game button. Doesn't do anything now. Need to update this when the game can be ended.
+     **/
+    /*private void initializeEndGame(){
+        Skin skin = assetManager.get("skin/uiskin.json");
+        TextButton btnRegister = new TextButton("Register", skin);
+
+        btnRegister.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if ()) {
+
+                }
+            }
+        });
+    }*/
     /**
      * Initializes an input controller that controls the camera.
      **/

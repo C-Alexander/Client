@@ -39,7 +39,7 @@ public class MapManager extends Stage {
     public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer) {
         this.assetManager = assetManager;
         this.multiplexer = inputMultiplexer;
-        characterMap = new ArrayList<>();
+        characterMap = new ArrayList<Character>();
 
 
     }
@@ -191,7 +191,7 @@ public class MapManager extends Stage {
     }
 
     public void update(){
-        ArrayList<Character> remove = new ArrayList<>();
+        ArrayList<Character> remove = new ArrayList<Character>();
         for (Character c: characterMap){
             if(!c.isAlive()){
                 characterLayer[(int)c.getLocation().x][(int)c.getLocation().y] = null;
@@ -200,6 +200,7 @@ public class MapManager extends Stage {
         }
         for (Character c:remove){
             characterMap.remove(c);
+
         }
 
     }
