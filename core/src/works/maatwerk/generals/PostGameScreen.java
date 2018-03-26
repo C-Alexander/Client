@@ -19,11 +19,7 @@ public class PostGameScreen extends ScreenAdapter {
     private final SpriteBatch batch;
     private Stage stage;
     private OrthographicCamera camera;
-    private String opponentName;
-    private Integer expGained;
-    private Integer turnsPlayed;
-    private Integer movesPlayed ;
-    private boolean isVictory;
+
 
 
 
@@ -33,12 +29,8 @@ public class PostGameScreen extends ScreenAdapter {
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
         this.stage = new Stage();
-        this.opponentName = opponentName;
-        this.expGained = expGained;
-        this.turnsPlayed = turnsPlayed;
-        this.movesPlayed = movesPlayed;
-        this.isVictory = isVictory;
-      
+        
+
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
 
