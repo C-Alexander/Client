@@ -17,9 +17,15 @@ public class PostGameScreen extends ScreenAdapter {
     private final Game game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
-    private TextField txtUsername, txtPassword, txtPasswordRepeat;
     private Stage stage;
     private OrthographicCamera camera;
+    private String opponentName;
+    private int expGained;
+    private int turnsPlayed;
+    private int movesPlayed;
+    private boolean isVictory;
+
+
 
 
     public PostGameScreen(final Game game, final AssetManager assetManager) {
@@ -27,6 +33,8 @@ public class PostGameScreen extends ScreenAdapter {
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
         this.stage = new Stage();
+        opponentName = "Boxershort01";
+        isVictory = true;
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
 
@@ -34,51 +42,44 @@ public class PostGameScreen extends ScreenAdapter {
         table.setFillParent(true);
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        Label lblTitle = new Label("Register", skin);
+        Label lblTitle = new Label("Victory!", skin);
         lblTitle.setFontScale(2);
         table.add(lblTitle).colspan(2).pad(20);
         table.row().pad(20);
 
-        table.add(new Label("username:", skin));
-        txtUsername = new TextField("", skin);
-        table.add(txtUsername).minWidth(250).pad(10);
+        table.add(new Label("Defeated by:", skin));
+        Label lblDefeatedBy = new Label(opponentName, skin);
+        table.add(lblDefeatedBy).minWidth(250).pad(10);
         table.row().pad(20);
 
-        table.add(new Label("password:", skin));
-        txtPassword = new TextField("", skin);
-        txtPassword.setPasswordMode(true);
-        txtPassword.setPasswordCharacter('*');
-        table.add(txtPassword).minWidth(250).pad(10);
+        table.add(new Label("Exp gained:", skin));
+        Label lblExp = new Label("150", skin);
+        table.add(lblExp).minWidth(250).pad(10);
         table.row().pad(20);
 
-        table.add(new Label("password repeat:", skin));
-        txtPasswordRepeat = new TextField("", skin);
-        txtPasswordRepeat.setPasswordMode(true);
-        txtPasswordRepeat.setPasswordCharacter('*');
-        table.add(txtPasswordRepeat).minWidth(250).pad(10);
+        table.add(new Label("Turns:", skin));
+        Label lblTurns = new Label("13" , skin);
+        table.add(lblTurns).minWidth(250).pad(10);
         table.row().pad(20);
 
-        TextButton btnRegister = new TextButton("Register", skin);
-        /*btnRegister.addListener(new ClickListener() {
+        table.add(new Label("Moves:", skin));
+        Label lblMoves = new Label("100" , skin);
+        table.add(lblMoves).minWidth(250).pad(10);
+        table.row().pad(20);
+
+        TextButton btnContinue = new TextButton("Continue", skin);
+
+        btnContinue.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if (txtPassword.equals(txtPassword)) {
-                    Account account = new Account(txtUsername.getText(), txtPassword.getText());
 
-                    game.setScreen(new LogInScreen(game, assetManager));
+
+                    game.setScreen(new PlayingScreen(assetManager));
                 }
-            }
-        });
-        TextButton btnBack = new TextButton("Back", skin);
-        btnBack.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new LogInScreen(game, assetManager));
-            }
-        });*/
 
-        //table.add(btnBack).bottom().right().width(100).height(50);
-        table.add(btnRegister).bottom().right().width(100).height(50);
+        });
+
+        table.add(btnContinue).bottom().right().width(100).height(50);
         table.row();
         stage.addActor(table);
     }
