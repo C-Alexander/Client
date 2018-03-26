@@ -23,6 +23,6 @@ class NetworkingScreen extends ScreenAdapter {
         new Thread(new NetworkTestsRunnable()).start();
         Gdx.app.log("Screens", "Starting PlayingScreen");
         game.setScreen(new PlayingScreen(assetManager));
-        game.setScreen(new PostGameScreen(game, assetManager));
+        game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
     }
 }

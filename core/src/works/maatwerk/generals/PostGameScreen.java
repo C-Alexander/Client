@@ -20,21 +20,25 @@ public class PostGameScreen extends ScreenAdapter {
     private Stage stage;
     private OrthographicCamera camera;
     private String opponentName;
-    private int expGained;
-    private int turnsPlayed;
-    private int movesPlayed;
+    private Integer expGained;
+    private Integer turnsPlayed;
+    private Integer movesPlayed ;
     private boolean isVictory;
 
 
 
 
-    public PostGameScreen(final Game game, final AssetManager assetManager) {
+    public PostGameScreen(final Game game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) {
         this.game = game;
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
         this.stage = new Stage();
-        opponentName = "Boxershort01";
-        isVictory = true;
+        this.opponentName = opponentName;
+        this.expGained = expGained;
+        this.turnsPlayed = turnsPlayed;
+        this.movesPlayed = movesPlayed;
+        this.isVictory = isVictory;
+      
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
 
@@ -42,7 +46,13 @@ public class PostGameScreen extends ScreenAdapter {
         table.setFillParent(true);
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        Label lblTitle = new Label("Victory!", skin);
+
+        Label lblTitle;
+        if(isVictory){
+             lblTitle = new Label("Victory!", skin);
+        }else {
+             lblTitle = new Label("Defeat!", skin);
+        }
         lblTitle.setFontScale(2);
         table.add(lblTitle).colspan(2).pad(20);
         table.row().pad(20);
@@ -53,17 +63,17 @@ public class PostGameScreen extends ScreenAdapter {
         table.row().pad(20);
 
         table.add(new Label("Exp gained:", skin));
-        Label lblExp = new Label("150", skin);
+        Label lblExp = new Label(expGained.toString(), skin);
         table.add(lblExp).minWidth(250).pad(10);
         table.row().pad(20);
 
         table.add(new Label("Turns:", skin));
-        Label lblTurns = new Label("13" , skin);
+        Label lblTurns = new Label(turnsPlayed.toString() , skin);
         table.add(lblTurns).minWidth(250).pad(10);
         table.row().pad(20);
 
         table.add(new Label("Moves:", skin));
-        Label lblMoves = new Label("100" , skin);
+        Label lblMoves = new Label(movesPlayed.toString() , skin);
         table.add(lblMoves).minWidth(250).pad(10);
         table.row().pad(20);
 
