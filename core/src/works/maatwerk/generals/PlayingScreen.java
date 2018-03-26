@@ -232,7 +232,7 @@ class PlayingScreen extends ScreenAdapter {
             Label lblRaceValue = new Label(character.getRace().getName(), skin);
 
             Label lblRank = new Label("Rank:", skin);
-            Label lblRankValue = new Label(StringUtils.UcFirst(character.getRank().getRankName().toString()), skin);
+            Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
 
             Label lblStats = new Label(character.getBaseStats().toUsefulString(), skin);
 
@@ -258,8 +258,6 @@ class PlayingScreen extends ScreenAdapter {
 
 
 
-        }else{
-            //TODO: Draw empty HUD
         }
 
         stage.addActor(table);

@@ -13,7 +13,7 @@ public final class StringUtils {
      * @param string
      * @return
      */
-    public static String UcFirst(String string){
+    public static String ucFirst(String string){
         return string.substring(0,1) + string.substring(1).toLowerCase();
     }
 }
