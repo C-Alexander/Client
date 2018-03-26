@@ -244,8 +244,6 @@ class PlayingScreen extends ScreenAdapter {
         if (character != null){
             Skin skin = assetManager.get("skin/uiskin.json");
 
-            Image image = new Image(character.getTexture());
-
             Label lblName = new Label("Name:", skin);
             Label lblNameValue = new Label(character.getName(), skin);
 
@@ -259,9 +257,8 @@ class PlayingScreen extends ScreenAdapter {
 
 
             table.top().left();
-            float cellsize = table.add(image).padRight(30).getActorWidth();
+            float cellsize = table.add(new Image(character.getTexture())).padRight(30).getActorWidth();
 
-            //Name
             table.add(lblName).left().padRight(10);
             table.add(lblNameValue).left();
             table.add(lblStats).left().padLeft(60);
@@ -275,10 +272,6 @@ class PlayingScreen extends ScreenAdapter {
             table.add().padRight(30).setActorWidth(cellsize);
             table.add(lblRank).left();
             table.add(lblRankValue).left();
-
-
-
-
         }
 
         stage.addActor(table);
