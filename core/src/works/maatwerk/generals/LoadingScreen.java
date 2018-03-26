@@ -106,6 +106,8 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("characters/mSpear.png", Texture.class);
         assetManager.load("characters/mSword.png", Texture.class);
         assetManager.load("hud/uiBG.png", Texture.class);
+        assetManager.load("skin/uiskin.json", Skin.class);
+        assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
 
         assetManager.load("data/music/megalovania.mp3", Music.class);
     }

@@ -13,12 +13,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import works.maatwerk.generals.models.Character;
 
 public class UiScreen extends ScreenAdapter {
     private Game game;
     private AssetManager assetManager;
     private SpriteBatch spriteBatch;
     private Stage stage;
+    private Character character;
 
     public UiScreen(Game game, AssetManager assetManager){
         this.game = game;
@@ -39,6 +41,10 @@ public class UiScreen extends ScreenAdapter {
         table.add(image);
 
         stage.addActor(table);
+    }
+
+    public void setCharacter(Character character){
+        this.character = character;
     }
 
     @Override
