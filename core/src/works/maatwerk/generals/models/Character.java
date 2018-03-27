@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @author Sam Dirkx
  */
+@SuppressWarnings("WeakerAccess")
 public class Character extends Actor {
     /**
      * Modifier which specifies the percentage of damage that can be done by a healing weapon (25 means 25% of the attack)
@@ -183,6 +184,7 @@ public class Character extends Actor {
      * 
      * @return 
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAlive() {
         return getGameStats().getHealthPoints() > 0;
     }
@@ -196,8 +198,8 @@ public class Character extends Actor {
     public void attack(Character enemy) {
         Stats enemyStats = enemy.getGameStats();
         Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(((weapon == null) ? false : weapon.isCanHeal()), enemyStats.getDefence(), ownStats.getAttack());
-        int damageToSelf = calculateDamage(((enemy.weapon == null) ? false : enemy.weapon.isCanHeal()), ownStats.getDefence(), enemyStats.getAttack());
+        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats.getDefence(), ownStats.getAttack());
+        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats.getDefence(), enemyStats.getAttack());
         this.addDamageToCharacter(enemy, damageToEnemy);
         this.addDamageToCharacter(this, damageToSelf);
     }
@@ -222,6 +224,7 @@ public class Character extends Actor {
      *
      * @param bonusTile
      */
+    @SuppressWarnings("EmptyMethod")
     public void bonus(Tile bonusTile) {
         //implement
     }
