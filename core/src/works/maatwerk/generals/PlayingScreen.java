@@ -73,7 +73,7 @@ class PlayingScreen extends ScreenAdapter {
         initializeParticleEffects();
         initializeNetworking();
         map.initializeMap("");
-        Character character1 = new Character( new Race("Test",new Stats(3,1,1,1,1)),assetManager,ClassEnum.AXE,new Vector2(1,1));
+        Character character1 = new Character(new Race("Test",new Stats(3,1,1,1,1,0)),assetManager,ClassEnum.AXE,new Vector2(1,1));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character1);
         Character character2 = new Character( new Race("Test",new Stats()),assetManager,ClassEnum.AXE,new Vector2(2,2));

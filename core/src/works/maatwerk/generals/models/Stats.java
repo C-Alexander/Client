@@ -10,16 +10,18 @@ public class Stats {
     private int defence;
     private int movement;
     private int speed;
+    private int weaponClass;
     
     /**
      * Default constructor. All attributes are 0.
      */
     public Stats() {
-        healthPoints = 2;
-        attack = 1;
+        healthPoints = 0;
+        attack = 0;
         defence = 0;
-        movement = 1;
-        speed = 1;
+        movement = 0;
+        speed = 0;
+        weaponClass = 0;
     }
     
     /**
@@ -29,13 +31,15 @@ public class Stats {
      * @param defence
      * @param movement
      * @param speed 
+     * @param weaponclass 
      */
-    public Stats(int healthpoints, int attack, int defence, int movement, int speed) {
+    public Stats(int healthpoints, int attack, int defence, int movement, int speed, int weaponclass) {
         this.healthPoints = healthpoints;
         this.attack = attack;
         this.defence = defence;
         this.movement = movement;
         this.speed = speed;
+        this.weaponClass = weaponclass;
     }
     
     /**
@@ -79,6 +83,15 @@ public class Stats {
     }
     
     /**
+     * Use class WeaponClass to decode this.
+     * 
+     * @return 
+     */
+    public int getWeaponClass() {
+        return weaponClass;
+    }
+    
+    /**
      * 
      * @param healthPoints 
      */
@@ -119,6 +132,14 @@ public class Stats {
     }
     
     /**
+     * 
+     * @param weaponClass 
+     */
+    public void setWeaponClass(int weaponClass) {
+        this.weaponClass = weaponClass;
+    }
+    
+    /**
      * Adds the stats argument to this instance
      * 
      * @param stats 
@@ -131,6 +152,7 @@ public class Stats {
         this.healthPoints += stats.healthPoints;
         this.movement += stats.movement;
         this.speed += stats.speed;
+        this.weaponClass |= stats.weaponClass;
     }
     
     /**
