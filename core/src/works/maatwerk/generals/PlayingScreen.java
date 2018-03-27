@@ -9,27 +9,26 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import works.maatwerk.generals.inputcontrollers.MusicController;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.models.Character;
+import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.networking.NetworkManager;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import works.maatwerk.generals.utils.BackgroundColor;
+import works.maatwerk.generals.utils.StringUtils;
 
 @SuppressWarnings("unused")
 class PlayingScreen extends ScreenAdapter {
@@ -38,16 +37,14 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final ParticleEffect pEffect;
     private final AssetManager assetManager;
-
+    public World world;
     private Animation anim;
     private float stateTime = 0f;
-    public World world;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
-    private Texture SwordCharacter;
-    private Texture AxeCharacter;
-    private Texture SpearCharacter;
     private MapManager map;
+    private Stage stage;
+    private Table table;
 
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -56,6 +53,9 @@ class PlayingScreen extends ScreenAdapter {
 
     PlayingScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
+        this.stage = new Stage();
+        table = new Table();
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), 80);
 
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
@@ -63,6 +63,7 @@ class PlayingScreen extends ScreenAdapter {
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         map = new MapManager(this.assetManager,multiplexer);
 
+        addUI(table);
     }
 
     @Override
@@ -73,15 +74,9 @@ class PlayingScreen extends ScreenAdapter {
         initializeParticleEffects();
         initializeNetworking();
         map.initializeMap("");
-        Character character1 = new Character( new Race("Test",new Stats(3,1,1,1,1)),assetManager,ClassEnum.AXE,new Vector2(1,1));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
-        map.addCharacter(character1);
-        Character character2 = new Character( new Race("Test",new Stats()),assetManager,ClassEnum.AXE,new Vector2(2,2));
-        character2.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
-        map.addCharacter(character2);
+        initializeCharacters();
 
         Gdx.input.vibrate(5000);
-
 
         initializeCameraInputController();
     }
@@ -130,9 +125,12 @@ class PlayingScreen extends ScreenAdapter {
     }
     private void initializeCharacters(){
         Gdx.app.debug("Characters", "Initializing Characters");
-        SwordCharacter = assetManager.get("GruntSword.png");
-        AxeCharacter = assetManager.get("GruntAxe.png");
-        SpearCharacter = assetManager.get("GruntSpear.png");
+        Character character1 = new Character(new Race("Test", new Stats(3, 1, 1, 1, 1)), assetManager, ClassEnum.CORRUPT, new Vector2(1, 1));
+        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character1);
+        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.ARCHER, new Vector2(2, 2));
+        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character2);
     }
 
     /**
@@ -203,10 +201,14 @@ class PlayingScreen extends ScreenAdapter {
         camera.update();
 
         map.render(delta,camera,batch);
+        updateCharacterLabel(table, map.getCharacterSelected());
 
         batch.end();
 
         if (pEffect.isComplete()) pEffect.reset();
+
+        stage.act(delta);
+        stage.draw();
     }
 
     @Override
@@ -215,5 +217,56 @@ class PlayingScreen extends ScreenAdapter {
         batch.dispose();
     }
 
+    private void addUI(Table table){
+        Skin skin = assetManager.get("skin/uiskin.json");
 
+        Gdx.input.setInputProcessor(stage);
+
+        Label label = new Label("Character X", skin);
+        label.setFontScale(1);
+
+        BackgroundColor backgroundColor = new BackgroundColor("skin/white.png");
+        backgroundColor.setColor(0, 129, 128, 255);
+        table.setBackground(backgroundColor);
+
+        updateCharacterLabel(table, map.getCharacterSelected());
+    }
+
+    private void updateCharacterLabel(Table table, Character character){
+        table.clearChildren();
+        if (character != null){
+            Skin skin = assetManager.get("skin/uiskin.json");
+
+            Label lblName = new Label("Name:", skin);
+            Label lblNameValue = new Label(character.getName(), skin);
+
+            Label lblRace = new Label("Race:", skin);
+            Label lblRaceValue = new Label(character.getRace().getName(), skin);
+
+            Label lblRank = new Label("Rank:", skin);
+            Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
+
+            Label lblStats = new Label(character.getBaseStats().toUsefulString(), skin);
+
+
+            table.top().left();
+            float cellsize = table.add(new Image(character.getTexture())).padRight(30).getActorWidth();
+
+            table.add(lblName).left().padRight(10);
+            table.add(lblNameValue).left();
+            table.add(lblStats).left().padLeft(60);
+
+            table.row().padTop(-10);
+            table.add().padRight(30).setActorWidth(cellsize);
+            table.add(lblRace).left();
+            table.add(lblRaceValue).left();
+
+            table.row().padTop(-7);
+            table.add().padRight(30).setActorWidth(cellsize);
+            table.add(lblRank).left();
+            table.add(lblRankValue).left();
+        }
+
+        stage.addActor(table);
+    }
 }

@@ -21,21 +21,24 @@ public class Character extends Actor {
      */
     private static final int HEALER_DAMAGE_MODIFIER = 25;
     private static final int MAX_MINIONS = 3;
-    private final Stats baseStats;
-    private final Race race;
-    private final Rank rank;
-    private final List<Debuff> debuffs;
+    private Stats baseStats;
+    private Race race;
+    private Rank rank;
+    private List<Debuff> debuffs;
     private Weapon weapon;
     private List<Character> minions;
     private Vector2 location;
     private int id;
     private AssetManager assetManager;
     private ClassEnum classEnum;
-
+    private String name;
 
     /**
-     * 
+     * Creates an instance of the Character class
      * @param race
+     * @param assetManager
+     * @param classEnum
+     * @param location
      */
     public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
         this.baseStats = new Stats(1, 1, 1, 1, 1);
@@ -43,13 +46,17 @@ public class Character extends Actor {
         this.rank = new Rank();
         this.assetManager = assetManager;
         this.classEnum = classEnum;
-        this.location =location;
+        this.location = location;
         debuffs = new ArrayList<>();
         minions = new ArrayList<>();
     }
 
+
+    public Character(){ }
+
     /**
-     * @return
+     *
+     * @return a Vector2
      */
     public Vector2 getLocation() {
         return location;
@@ -316,29 +323,60 @@ public class Character extends Actor {
 
     }
 
-    private Texture getTexture(){
-        switch (this.classEnum) {
-            case AXE:
-                return assetManager.get("characters/mAxe.png");
-            case SWORD:
-                return assetManager.get("characters/mSword.png");
-            case SPEAR:
-                return assetManager.get("characters/mSpear.png");
-            case ARCANE:
-                return assetManager.get("characters/mArcane.png");
-            case CORRUPT:
-                return assetManager.get("characters/mCorrupt.png");
-            case DIVINE:
-                return assetManager.get("characters/mDivine.png");
-            case HEALER:
-                return assetManager.get("characters/mHealer.png");
-            case ARCHER:
-                return assetManager.get("characters/mBow.png");
-            case VALKYRIE:
-                return assetManager.get("characters/hValkyrie.png");
-
-            default: return null;
+    public Texture getTexture() {
+        switch (this.rank.getRankName()) {
+            case GRUNT:
+                switch (this.classEnum) {
+                    case AXE:
+                        return assetManager.get("characters/mAxe.png");
+                    case SWORD:
+                        return assetManager.get("characters/mSword.png");
+                    case SPEAR:
+                        return assetManager.get("characters/mSpear.png");
+                    case ARCANE:
+                        return assetManager.get("characters/mArcane.png");
+                    case CORRUPT:
+                        return assetManager.get("characters/mCorrupt.png");
+                    case DIVINE:
+                        return assetManager.get("characters/mDivine.png");
+                    case HEALER:
+                        return assetManager.get("characters/mHealer.png");
+                    case ARCHER:
+                        return assetManager.get("characters/mBow.png");
+                    default:
+                }
+                break;
+            case GENERAL:
+                switch (this.classEnum) {
+                    case AXE:
+                        return assetManager.get("characters/gAxe.png");
+                    case SWORD:
+                        return assetManager.get("characters/gSword.png");
+                    case SPEAR:
+                        return assetManager.get("characters/gSpear.png");
+                    case ARCANE:
+                        return assetManager.get("characters/gArcane.png");
+                    case CORRUPT:
+                        return assetManager.get("characters/gCorrupt.png");
+                    case DIVINE:
+                        return assetManager.get("characters/gDivine.png");
+                    case HEALER:
+                        return assetManager.get("characters/gHealer.png");
+                    case ARCHER:
+                        return assetManager.get("characters/gBow.png");
+                    default:
+                }
+                break;
+            case HERO:
+                switch (this.classEnum) {
+                    case VALKYRIE:
+                        return assetManager.get("characters/hValkyrie.png");
+                    default:
+                }
+                break;
+            default:
         }
+        return null;
     }
 
     public int getId() {
@@ -348,4 +386,12 @@ public class Character extends Actor {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String getName(){
+        return this.name != null ? this.name : "Generic Unit";
+    }
+
+    @Override
+    public void setName(String name){ this.name = name; }
 }
