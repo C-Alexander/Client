@@ -46,6 +46,7 @@ public class PathFinder {
      * @return 
      */
     public static boolean[][] getAttackRange(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
+        //noinspection UnnecessaryLocalVariable
         boolean[][] output = getBooleanArray(tiles);
         
         return output;

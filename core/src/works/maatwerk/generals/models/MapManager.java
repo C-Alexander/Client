@@ -3,10 +3,8 @@ package works.maatwerk.generals.models;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -15,17 +13,19 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.sun.media.jfxmedia.logging.Logger;
 import works.maatwerk.generals.TileMapStage;
-import works.maatwerk.generals.inputcontrollers.MusicController;
+import works.maatwerk.generals.music.MusicManager;
 
 import java.util.ArrayList;
-import java.util.Map;
 
+@SuppressWarnings("WeakerAccess")
 public class MapManager extends Stage {
+    private final MusicManager musicManager;
     private TiledMap map;
     private final AssetManager assetManager;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
     private Character characterSelected;
+    @SuppressWarnings("CanBeFinal")
     private ArrayList<Character> characterMap;
     private Character[][] characterLayer;
     private static Vector2 mapDimensions;
@@ -36,12 +36,11 @@ public class MapManager extends Stage {
     /**
      * @param assetManager
      */
-    public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer) {
+    public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer, MusicManager musicManager) {
         this.assetManager = assetManager;
         this.multiplexer = inputMultiplexer;
+        this.musicManager = musicManager;
         characterMap = new ArrayList<Character>();
-
-
     }
 
 
@@ -54,8 +53,11 @@ public class MapManager extends Stage {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
         createMapActors(layer);
         characterLayer = new Character[layer.getWidth()][layer.getHeight()];
-        this.mapDimensions = new Vector2(layer.getWidth(), layer.getHeight());
+        mapDimensions = new Vector2(layer.getWidth(), layer.getHeight());
         this.characterLayer = new Character[layer.getWidth()][layer.getHeight()];
+
+        startMusic();
+
     }
 
     private void createMapActors(TiledMapTileLayer layer) {
@@ -70,9 +72,12 @@ public class MapManager extends Stage {
      */
     private void startMusic() {
         Gdx.app.debug("Music", "Starting Background Music");
-        @SuppressWarnings("SpellCheckingInspection") Music bgm = assetManager.get("data/music/megalovania.mp3");
-        multiplexer.addProcessor(new MusicController(bgm));
-        bgm.play();
+
+        musicManager.stopAllMusic();
+        if (map.getProperties().containsKey("BGM"))
+            musicManager.playMusic(map.getProperties().get("BGM").toString());
+        else
+            musicManager.playRandomMusic();
     }
 
     /**
@@ -92,11 +97,10 @@ public class MapManager extends Stage {
                 moveCharacter(this.getCharacterSelected(), location);
                 this.setCharacterSelected(null);
 
-            }
-            else {
+            } else {
                 if(this.getCharacterSelected() !=null){
-                this.getCharacterSelected().attack(character);
-                this.setCharacterSelected(null);
+                    this.getCharacterSelected().attack(character);
+                    this.setCharacterSelected(null);
                 }
             }
         }
@@ -145,7 +149,7 @@ public class MapManager extends Stage {
      * @param location
      */
     public void moveCharacter(Character character, Vector2 location) {
-        if (location.x > this.mapDimensions.x || location.y > this.mapDimensions.y || location.x < 0 || location.y < 0) {
+        if (location.x > mapDimensions.x || location.y > mapDimensions.y || location.x < 0 || location.y < 0) {
             Logger.logMsg(1, "Out of boundaries");
             return;
         }
@@ -171,7 +175,7 @@ public class MapManager extends Stage {
 
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
 
-        TiledMapTileLayer.Cell cell = layer.getCell((int) location.x, (int) location.y);
+        @SuppressWarnings("UnnecessaryLocalVariable") TiledMapTileLayer.Cell cell = layer.getCell((int) location.x, (int) location.y);
 
         return cell;
     }
