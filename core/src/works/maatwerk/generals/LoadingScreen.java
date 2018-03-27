@@ -1,11 +1,11 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,14 +14,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import works.maatwerk.generals.utils.files.*;
 
 
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
 
-    private final Game game;
+    private final Generals game;
     private final SpriteBatch batch;
     private final AssetManager assetManager;
     private FitViewport viewport;
@@ -33,7 +34,7 @@ class LoadingScreen extends ScreenAdapter {
     private Vector2 ebPos;
     private Vector2 fbPos;
 
-    LoadingScreen(Game game, AssetManager assetManager) {
+    LoadingScreen(Generals game, AssetManager assetManager) {
         this.game = game;
         this.assetManager = assetManager;
 
@@ -119,11 +120,24 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("hud/uiBG.png", Texture.class);
         assetManager.load("skin/uiskin.json", Skin.class);
         assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
-
-        assetManager.load("data/music/megalovania.mp3", Music.class);
         assetManager.load("skin/uiskin.json", Skin.class);
         assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
 
+        loadMusic();
+
+    }
+
+    private void loadMusic() {
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".mp3")) {
+            assetManager.load(fileHandle.path(), Music.class);
+        }
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".wav")) {
+            assetManager.load(fileHandle.path(), Music.class);
+        }
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".ogg")) {
+            assetManager.load(fileHandle.path(), Music.class);
+        }
+        // todo:: figure out a way to make this prettier
     }
 
     @Override
@@ -146,6 +160,9 @@ class LoadingScreen extends ScreenAdapter {
         batch.end();
 
         if (assetManager.getProgress() == 1.0f) {
+
+            game.getMusicManager().initializeMusic();
+
             Gdx.app.log("Screens", "Starting NetworkingScreen");
             game.setScreen(new NetworkingScreen(game, assetManager));
         }

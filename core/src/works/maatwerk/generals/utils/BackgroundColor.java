@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@SuppressWarnings("WeakerAccess")
 public class BackgroundColor implements Drawable {
 
     private Float x;
