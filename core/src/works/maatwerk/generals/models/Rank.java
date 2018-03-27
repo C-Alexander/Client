@@ -5,6 +5,7 @@ package works.maatwerk.generals.models;
  * @author Rick Pijnenburg - REXOTIUM
  * @email m.a.a.pijnenburg@gmail.com
  */
+@SuppressWarnings("WeakerAccess")
 public class Rank {
     /**
      * Level cap for the ranks

@@ -1,11 +1,11 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,22 +16,35 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import works.maatwerk.generals.utils.files.Paths;
+
 
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
 
-    private final Game game;
-
+    private final Generals game;
+    private final SpriteBatch batch;
+    private final AssetManager assetManager;
     private FitViewport viewport;
     private OrthographicCamera camera;
-    private final SpriteBatch batch;
     private Texture logo;
     private Texture fullBar;
     private Texture emptyBar;
     private Vector2 logoPos;
     private Vector2 ebPos;
     private Vector2 fbPos;
-    private final AssetManager assetManager;
+
+    LoadingScreen(Generals game, AssetManager assetManager) {
+        this.game = game;
+        this.assetManager = assetManager;
+
+        batch = new SpriteBatch();
+
+        initializeCamera();
+
+        loadLoadingBar();
+        initializeLoadingBar();
+    }
 
     private void initializeCamera() {
         Gdx.app.debug("Camera", "Initializing");
@@ -46,6 +59,7 @@ class LoadingScreen extends ScreenAdapter {
         this.assetManager.load("loader/main_bar.png", Texture.class);
         this.assetManager.load("loader/bar_full.png", Texture.class);
 
+
         this.assetManager.finishLoading();
     }
 
@@ -59,18 +73,6 @@ class LoadingScreen extends ScreenAdapter {
         logoPos = new Vector2((Gdx.graphics.getWidth()-logo.getWidth())/2 , (Gdx.graphics.getHeight() / 2)-100);
         ebPos = new Vector2((Gdx.graphics.getWidth()-emptyBar.getWidth())/2 , logoPos.y - emptyBar.getHeight() + 40);
         fbPos = new Vector2((ebPos.x + (emptyBar.getWidth() / 2)) - (fullBar.getWidth()/2), (ebPos.y + (emptyBar.getHeight() / 2)) - (fullBar.getHeight()/2));
-    }
-
-    LoadingScreen(Game game, AssetManager assetManager) {
-        this.game = game;
-        this.assetManager = assetManager;
-
-        batch = new SpriteBatch();
-
-        initializeCamera();
-
-        loadLoadingBar();
-        initializeLoadingBar();
     }
 
     @Override
@@ -96,14 +98,45 @@ class LoadingScreen extends ScreenAdapter {
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
-        assetManager.load("speel_map1.tmx", TiledMap.class);
-        assetManager.load("GruntSword.png",Texture.class);
-        assetManager.load("GruntAxe.png",Texture.class);
-        assetManager.load("GruntSpear.png",Texture.class);
         assetManager.load("speel_map2.tmx", TiledMap.class);
-        assetManager.load("data/music/megalovania.mp3", Music.class);
+        assetManager.load("characters/hValkyrie.png", Texture.class);
+        assetManager.load("characters/gArcane.png", Texture.class);
+        assetManager.load("characters/gAxe.png", Texture.class);
+        assetManager.load("characters/gBow.png", Texture.class);
+        assetManager.load("characters/gCorrupt.png", Texture.class);
+        assetManager.load("characters/gDivine.png", Texture.class);
+        assetManager.load("characters/gHealer.png", Texture.class);
+        assetManager.load("characters/gSpear.png", Texture.class);
+        assetManager.load("characters/gSword.png", Texture.class);
+        assetManager.load("characters/mArcane.png", Texture.class);
+        assetManager.load("characters/mAxe.png", Texture.class);
+        assetManager.load("characters/mBow.png", Texture.class);
+        assetManager.load("characters/mCorrupt.png", Texture.class);
+        assetManager.load("characters/mDivine.png", Texture.class);
+        assetManager.load("characters/mHealer.png", Texture.class);
+        assetManager.load("characters/mSpear.png", Texture.class);
+        assetManager.load("characters/mSword.png", Texture.class);
+        assetManager.load("hud/uiBG.png", Texture.class);
+        assetManager.load("skin/uiskin.json", Skin.class);
         assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
         assetManager.load("skin/uiskin.json", Skin.class);
+        assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
+
+        loadMusic();
+
+    }
+
+    private void loadMusic() {
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".mp3")) {
+            assetManager.load(fileHandle.path(), Music.class);
+        }
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".wav")) {
+            assetManager.load(fileHandle.path(), Music.class);
+        }
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".ogg")) {
+            assetManager.load(fileHandle.path(), Music.class);
+        }
+        // todo:: figure out a way to make this prettier
     }
 
     @Override
@@ -126,6 +159,9 @@ class LoadingScreen extends ScreenAdapter {
         batch.end();
 
         if (assetManager.getProgress() == 1.0f) {
+
+            game.getMusicManager().initializeMusic();
+
             Gdx.app.log("Screens", "Starting NetworkingScreen");
             game.setScreen(new NetworkingScreen(game, assetManager));
         }

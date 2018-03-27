@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  * Created by teund on 21/03/2018.
  */
 public class LogInScreen extends ScreenAdapter{
-    private final Game game;
+    private final Generals game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
     private TextField txtUsername, txtPassword, txtPasswordRepeat;
@@ -24,7 +24,7 @@ public class LogInScreen extends ScreenAdapter{
     private OrthographicCamera camera;
 
 
-    public LogInScreen(final Game game, final AssetManager assetManager) {
+    public LogInScreen(final Generals game, final AssetManager assetManager) {
         this.game = game;
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
@@ -64,7 +64,7 @@ public class LogInScreen extends ScreenAdapter{
         btnLogIn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new PlayingScreen(assetManager));
+                game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
             }
         });
 

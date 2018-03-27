@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import works.maatwerk.generals.ClassEnum;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,40 +14,49 @@ import java.util.List;
  *
  * @author Sam Dirkx
  */
+@SuppressWarnings("WeakerAccess")
 public class Character extends Actor {
     /**
      * Modifier which specifies the percentage of damage that can be done by a healing weapon (25 means 25% of the attack)
      */
     private static final int HEALER_DAMAGE_MODIFIER = 25;
     private static final int MAX_MINIONS = 3;
-    private final Stats baseStats;
-    private final Race race;
-    private final Rank rank;
-    private final List<Debuff> debuffs;
+    private Stats baseStats;
+    private Race race;
+    private Rank rank;
+    private List<Debuff> debuffs;
     private Weapon weapon;
     private List<Character> minions;
     private Vector2 location;
     private int id;
     private AssetManager assetManager;
     private ClassEnum classEnum;
-
+    private String name;
 
     /**
-     * 
+     * Creates an instance of the Character class
      * @param race
+     * @param assetManager
+     * @param classEnum
+     * @param location
      */
     public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
-        this.baseStats = new Stats(1, 1, 1, 1, 1);
+        this.baseStats = new Stats(1, 1, 1, 1, 1, 0);
         this.race = race;
         this.rank = new Rank();
         this.assetManager = assetManager;
         this.classEnum = classEnum;
         this.location =location;
         debuffs = new ArrayList<Debuff>();
+        minions = new ArrayList<Character>();
     }
 
+
+    public Character(){ }
+
     /**
-     * @return
+     *
+     * @return a Vector2
      */
     public Vector2 getLocation() {
         return location;
@@ -92,10 +100,17 @@ public class Character extends Actor {
     public Weapon getWeapon() {
         return weapon;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @param weapon
+     */
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    /**
+     *
+     * @return
      */
     public Stats getDebuffs() {
         Stats output = new Stats();
@@ -106,21 +121,13 @@ public class Character extends Actor {
     }
     
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<Character> getMinions() {
-       return minions; 
+        return minions;
     }
-    
-    /**
-     * 
-     * @param weapon 
-     */
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-    
+
     /**
      * 
      * @param debuff 
@@ -176,6 +183,7 @@ public class Character extends Actor {
      * 
      * @return 
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAlive() {
         return getGameStats().getHealthPoints() > 0;
     }
@@ -189,8 +197,8 @@ public class Character extends Actor {
     public void attack(Character enemy) {
         Stats enemyStats = enemy.getGameStats();
         Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(((weapon == null) ? false : weapon.isCanHeal()), enemyStats.getDefence(), ownStats.getAttack());
-        int damageToSelf = calculateDamage(((enemy.weapon == null) ? false : enemy.weapon.isCanHeal()), ownStats.getDefence(), enemyStats.getAttack());
+        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, ownStats);
+        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, enemyStats);
         this.addDamageToCharacter(enemy, damageToEnemy);
         this.addDamageToCharacter(this, damageToSelf);
     }
@@ -215,6 +223,7 @@ public class Character extends Actor {
      *
      * @param bonusTile
      */
+    @SuppressWarnings("EmptyMethod")
     public void bonus(Tile bonusTile) {
         //implement
     }
@@ -241,7 +250,7 @@ public class Character extends Actor {
     public void matchStart() {
         if(rank.getRankName() != RankName.GENERAL)
             return;
-        while(minions.size() <MAX_MINIONS) {
+        while (minions.size() < MAX_MINIONS) {
             minions.add(new Character(race,this.assetManager,this.classEnum,this.location));
         }
     }
@@ -255,7 +264,7 @@ public class Character extends Actor {
      */
     public List<Character> matchEnded() {
         if(!this.isAlive())
-            return null;
+            return new ArrayList<Character>();
         rank.update();
         debuffs.clear();
         return matchEndedMinions();
@@ -269,8 +278,8 @@ public class Character extends Actor {
      * @param attack
      * @return 
      */
-    private int calculateDamage(boolean weaponCanHeal, int defence, int attack) {
-        return defence - (weaponCanHeal ? ((attack * HEALER_DAMAGE_MODIFIER) / 100) : attack);
+    private int calculateDamage(boolean weaponCanHeal, Stats defence, Stats attack) {
+        return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(attack.getWeaponClass(), defence.getWeaponClass())) / 100;
     }
     
     /**
@@ -316,18 +325,60 @@ public class Character extends Actor {
 
     }
 
-    private Texture getTexture(){
-        switch (this.classEnum) {
-            case AXE: return assetManager.get("GruntAxe.png");
-            case SWORD: return assetManager.get("characters/Sword.png");
-            case SPEAR: return assetManager.get("characters/Spear.png");
-            case ARCANE: return assetManager.get("characters/MageA.png");
-            case CORRUPT: return assetManager.get("characters/MageC.png");
-            case DIVINE: return assetManager.get("characters/MageD.png");
-            case VALKYRIE: return assetManager.get("characters/ValkyrieB.png");
-
-            default: return null;
+    public Texture getTexture() {
+        switch (this.rank.getRankName()) {
+            case GRUNT:
+                switch (this.classEnum) {
+                    case AXE:
+                        return assetManager.get("characters/mAxe.png");
+                    case SWORD:
+                        return assetManager.get("characters/mSword.png");
+                    case SPEAR:
+                        return assetManager.get("characters/mSpear.png");
+                    case ARCANE:
+                        return assetManager.get("characters/mArcane.png");
+                    case CORRUPT:
+                        return assetManager.get("characters/mCorrupt.png");
+                    case DIVINE:
+                        return assetManager.get("characters/mDivine.png");
+                    case HEALER:
+                        return assetManager.get("characters/mHealer.png");
+                    case ARCHER:
+                        return assetManager.get("characters/mBow.png");
+                    default:
+                }
+                break;
+            case GENERAL:
+                switch (this.classEnum) {
+                    case AXE:
+                        return assetManager.get("characters/gAxe.png");
+                    case SWORD:
+                        return assetManager.get("characters/gSword.png");
+                    case SPEAR:
+                        return assetManager.get("characters/gSpear.png");
+                    case ARCANE:
+                        return assetManager.get("characters/gArcane.png");
+                    case CORRUPT:
+                        return assetManager.get("characters/gCorrupt.png");
+                    case DIVINE:
+                        return assetManager.get("characters/gDivine.png");
+                    case HEALER:
+                        return assetManager.get("characters/gHealer.png");
+                    case ARCHER:
+                        return assetManager.get("characters/gBow.png");
+                    default:
+                }
+                break;
+            case HERO:
+                switch (this.classEnum) {
+                    case VALKYRIE:
+                        return assetManager.get("characters/hValkyrie.png");
+                    default:
+                }
+                break;
+            default:
         }
+        return null;
     }
 
     public int getId() {
@@ -337,4 +388,12 @@ public class Character extends Actor {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String getName(){
+        return this.name != null ? this.name : "Generic Unit";
+    }
+
+    @Override
+    public void setName(String name){ this.name = name; }
 }

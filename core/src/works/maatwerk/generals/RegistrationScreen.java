@@ -18,7 +18,7 @@ import works.maatwerk.generals.models.Account;
  */
 public class RegistrationScreen extends ScreenAdapter {
 
-    private final Game game;
+    private final Generals game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
     private TextField txtUsername, txtPassword, txtPasswordRepeat;
@@ -26,7 +26,7 @@ public class RegistrationScreen extends ScreenAdapter {
     private OrthographicCamera camera;
 
 
-    public RegistrationScreen(final Game game, final AssetManager assetManager) {
+    public RegistrationScreen(final Generals game, final AssetManager assetManager) {
         this.game = game;
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
