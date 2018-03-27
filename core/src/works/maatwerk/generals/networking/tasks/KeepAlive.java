@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.github.czyzby.websocket.WebSocket;
 import works.maatwerk.generals.networking.messages.MessageType;
 import works.maatwerk.generals.networking.messages.Packet;
+import works.maatwerk.generals.utils.logger.Tag;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class KeepAlive extends Timer.Task {
@@ -15,7 +16,7 @@ public class KeepAlive extends Timer.Task {
 
     @Override
     public void run() {
-        Gdx.app.debug("Networking", "Sending KeepAlive to WebSocket");
+        Gdx.app.debug(Tag.NETWORKING, "Sending KeepAlive to WebSocket");
         webSocket.send(keepAlivePacket);
     }
 
