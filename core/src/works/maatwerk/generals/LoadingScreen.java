@@ -17,6 +17,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import works.maatwerk.generals.utils.files.*;
+
 
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
@@ -118,13 +120,13 @@ class LoadingScreen extends ScreenAdapter {
     }
 
     private void loadMusic() {
-        for (FileHandle fileHandle : Gdx.files.internal("data/music").list(".mp3")) {
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".mp3")) {
             assetManager.load(fileHandle.path(), Music.class);
         }
-        for (FileHandle fileHandle : Gdx.files.internal("data/music").list(".wav")) {
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".wav")) {
             assetManager.load(fileHandle.path(), Music.class);
         }
-        for (FileHandle fileHandle : Gdx.files.internal("data/music").list(".ogg")) {
+        for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".ogg")) {
             assetManager.load(fileHandle.path(), Music.class);
         }
         // todo:: figure out a way to make this prettier

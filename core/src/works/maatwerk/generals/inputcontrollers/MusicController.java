@@ -3,6 +3,7 @@ package works.maatwerk.generals.inputcontrollers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import works.maatwerk.generals.utils.logger.Tag;
 import works.maatwerk.generals.music.MusicManager;
 
 public class MusicController extends InputAdapter {
@@ -32,8 +33,8 @@ public class MusicController extends InputAdapter {
         float newVolume = Math.min(Math.max(musicManager.getCurrentSong().getVolume() + volumeChange, 0f), 1f);
         musicManager.getCurrentSong().setVolume(newVolume);
 
-        Gdx.app.getPreferences("Music").putFloat("Volume", newVolume);
-        Gdx.app.debug("Music", "Set volume to: " + newVolume);
+        Gdx.app.getPreferences(Tag.MUSIC).putFloat("Volume", newVolume);
+        Gdx.app.debug(Tag.MUSIC, "Set volume to: " + newVolume);
 
     }
 

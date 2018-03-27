@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.sun.media.jfxmedia.logging.Logger;
 import works.maatwerk.generals.TileMapStage;
+import works.maatwerk.generals.utils.logger.*;
 import works.maatwerk.generals.music.MusicManager;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class MapManager extends Stage {
      *
      */
     private void startMusic() {
-        Gdx.app.debug("Music", "Starting Background Music");
+        Gdx.app.debug(Tag.MUSIC, "Starting Background Music");
 
         musicManager.stopAllMusic();
         if (map.getProperties().containsKey("BGM"))

@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import works.maatwerk.generals.music.MusicManager;
 
-class Generals extends Game {
+public class Generals extends Game {
 
     private MusicManager musicManager;
     private AssetManager assetManager;
