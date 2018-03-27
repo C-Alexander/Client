@@ -323,29 +323,60 @@ public class Character extends Actor {
 
     }
 
-    public Texture getTexture(){
-        switch (this.classEnum) {
-            case AXE:
-                return assetManager.get("characters/mAxe.png");
-            case SWORD:
-                return assetManager.get("characters/mSword.png");
-            case SPEAR:
-                return assetManager.get("characters/mSpear.png");
-            case ARCANE:
-                return assetManager.get("characters/mArcane.png");
-            case CORRUPT:
-                return assetManager.get("characters/mCorrupt.png");
-            case DIVINE:
-                return assetManager.get("characters/mDivine.png");
-            case HEALER:
-                return assetManager.get("characters/mHealer.png");
-            case ARCHER:
-                return assetManager.get("characters/mBow.png");
-            case VALKYRIE:
-                return assetManager.get("characters/hValkyrie.png");
-
-            default: return null;
+    public Texture getTexture() {
+        switch (this.rank.getRankName()) {
+            case GRUNT:
+                switch (this.classEnum) {
+                    case AXE:
+                        return assetManager.get("characters/mAxe.png");
+                    case SWORD:
+                        return assetManager.get("characters/mSword.png");
+                    case SPEAR:
+                        return assetManager.get("characters/mSpear.png");
+                    case ARCANE:
+                        return assetManager.get("characters/mArcane.png");
+                    case CORRUPT:
+                        return assetManager.get("characters/mCorrupt.png");
+                    case DIVINE:
+                        return assetManager.get("characters/mDivine.png");
+                    case HEALER:
+                        return assetManager.get("characters/mHealer.png");
+                    case ARCHER:
+                        return assetManager.get("characters/mBow.png");
+                    default:
+                }
+                break;
+            case GENERAL:
+                switch (this.classEnum) {
+                    case AXE:
+                        return assetManager.get("characters/gAxe.png");
+                    case SWORD:
+                        return assetManager.get("characters/gSword.png");
+                    case SPEAR:
+                        return assetManager.get("characters/gSpear.png");
+                    case ARCANE:
+                        return assetManager.get("characters/gArcane.png");
+                    case CORRUPT:
+                        return assetManager.get("characters/gCorrupt.png");
+                    case DIVINE:
+                        return assetManager.get("characters/gDivine.png");
+                    case HEALER:
+                        return assetManager.get("characters/gHealer.png");
+                    case ARCHER:
+                        return assetManager.get("characters/gBow.png");
+                    default:
+                }
+                break;
+            case HERO:
+                switch (this.classEnum) {
+                    case VALKYRIE:
+                        return assetManager.get("characters/hValkyrie.png");
+                    default:
+                }
+                break;
+            default:
         }
+        return null;
     }
 
     public int getId() {

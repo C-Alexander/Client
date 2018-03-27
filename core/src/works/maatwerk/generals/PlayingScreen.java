@@ -1,13 +1,17 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -17,18 +21,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.models.Character;
+import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.networking.NetworkManager;
 import works.maatwerk.generals.utils.BackgroundColor;
 import works.maatwerk.generals.utils.StringUtils;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 @SuppressWarnings("unused")
 class PlayingScreen extends ScreenAdapter {
@@ -37,15 +37,11 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final ParticleEffect pEffect;
     private final AssetManager assetManager;
-
+    public World world;
     private Animation anim;
     private float stateTime = 0f;
-    public World world;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
-    private Texture SwordCharacter;
-    private Texture AxeCharacter;
-    private Texture SpearCharacter;
     private MapManager map;
     private Stage stage;
     private Table table;
@@ -78,15 +74,9 @@ class PlayingScreen extends ScreenAdapter {
         initializeParticleEffects();
         initializeNetworking();
         map.initializeMap("");
-        Character character1 = new Character( new Race("Test",new Stats(3,1,1,1,1)),assetManager,ClassEnum.AXE,new Vector2(1,1));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
-        map.addCharacter(character1);
-        Character character2 = new Character( new Race("Test",new Stats()),assetManager,ClassEnum.AXE,new Vector2(2,2));
-        character2.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
-        map.addCharacter(character2);
+        initializeCharacters();
 
         Gdx.input.vibrate(5000);
-
 
         initializeCameraInputController();
     }
@@ -135,9 +125,12 @@ class PlayingScreen extends ScreenAdapter {
     }
     private void initializeCharacters(){
         Gdx.app.debug("Characters", "Initializing Characters");
-        SwordCharacter = assetManager.get("GruntSword.png");
-        AxeCharacter = assetManager.get("GruntAxe.png");
-        SpearCharacter = assetManager.get("GruntSpear.png");
+        Character character1 = new Character(new Race("Test", new Stats(3, 1, 1, 1, 1)), assetManager, ClassEnum.CORRUPT, new Vector2(1, 1));
+        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character1);
+        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.ARCHER, new Vector2(2, 2));
+        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character2);
     }
 
     /**

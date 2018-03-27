@@ -16,7 +16,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -101,11 +100,20 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("speel_map2.tmx", TiledMap.class);
 
         assetManager.load("characters/hValkyrie.png", Texture.class);
+        assetManager.load("characters/gArcane.png", Texture.class);
+        assetManager.load("characters/gAxe.png", Texture.class);
+        assetManager.load("characters/gBow.png", Texture.class);
+        assetManager.load("characters/gCorrupt.png", Texture.class);
+        assetManager.load("characters/gDivine.png", Texture.class);
+        assetManager.load("characters/gHealer.png", Texture.class);
+        assetManager.load("characters/gSpear.png", Texture.class);
+        assetManager.load("characters/gSword.png", Texture.class);
         assetManager.load("characters/mArcane.png", Texture.class);
         assetManager.load("characters/mAxe.png", Texture.class);
         assetManager.load("characters/mBow.png", Texture.class);
         assetManager.load("characters/mCorrupt.png", Texture.class);
         assetManager.load("characters/mDivine.png", Texture.class);
+        assetManager.load("characters/mHealer.png", Texture.class);
         assetManager.load("characters/mSpear.png", Texture.class);
         assetManager.load("characters/mSword.png", Texture.class);
         assetManager.load("hud/uiBG.png", Texture.class);
