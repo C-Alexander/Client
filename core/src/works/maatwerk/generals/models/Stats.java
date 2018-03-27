@@ -1,5 +1,7 @@
 package works.maatwerk.generals.models;
 
+import java.text.MessageFormat;
+
 /**
  *
  * @author Sam Dirkx
@@ -175,5 +177,9 @@ public class Stats {
     @Override
     public String toString() {
         return "Stats{" + "hp=" + healthPoints + ", att=" + attack + ", def=" + defence + ", mvd=" + movement + ", spd=" + speed + '}';
+    }
+
+    public String toUsefulString(){
+        return MessageFormat.format("hp={0}  att={1}  def={2}  mvd={3}  spd={4}", healthPoints, attack, defence, movement, speed);
     }
 }

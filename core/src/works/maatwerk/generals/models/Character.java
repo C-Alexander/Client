@@ -20,20 +20,20 @@ public class Character extends Actor {
      */
     private static final int HEALER_DAMAGE_MODIFIER = 25;
     private static final int MAX_MINIONS = 3;
-    private final Stats baseStats;
-    private final Race race;
-    private final Rank rank;
-    private final List<Debuff> debuffs;
+    private Stats baseStats;
+    private Race race;
+    private Rank rank;
+    private List<Debuff> debuffs;
     private Weapon weapon;
     private List<Character> minions;
     private Vector2 location;
     private int id;
     private AssetManager assetManager;
     private ClassEnum classEnum;
-
+    private String name;
 
     /**
-     * 
+     * Creates an instance of the Character class
      * @param race
      * @param assetManager
      * @param classEnum
@@ -50,8 +50,12 @@ public class Character extends Actor {
         minions = new ArrayList<Character>();
     }
 
+
+    public Character(){ }
+
     /**
-     * @return
+     *
+     * @return a Vector2
      */
     public Vector2 getLocation() {
         return location;
@@ -318,7 +322,7 @@ public class Character extends Actor {
 
     }
 
-    private Texture getTexture(){
+    public Texture getTexture(){
         switch (this.classEnum) {
             case AXE:
                 return assetManager.get("characters/mAxe.png");
@@ -350,4 +354,12 @@ public class Character extends Actor {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String getName(){
+        return this.name != null ? this.name : "Generic Unit";
+    }
+
+    @Override
+    public void setName(String name){ this.name = name; }
 }
