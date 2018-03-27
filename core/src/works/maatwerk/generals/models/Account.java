@@ -21,11 +21,9 @@ public class Account {
 
     public Account(String username, String password) {
         Username = username;
-        try {
-            Password = getStringFromSHA256(password);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+
+            Password = password;
+
         System.out.println(this.toString());
     }
 
