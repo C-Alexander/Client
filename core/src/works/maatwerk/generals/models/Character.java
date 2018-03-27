@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import works.maatwerk.generals.ClassEnum;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -42,14 +41,14 @@ public class Character extends Actor {
      * @param location
      */
     public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
-        this.baseStats = new Stats(1, 1, 1, 1, 1);
+        this.baseStats = new Stats(1, 1, 1, 1, 1, 0);
         this.race = race;
         this.rank = new Rank();
         this.assetManager = assetManager;
         this.classEnum = classEnum;
-        this.location = location;
-        debuffs = new ArrayList<>();
-        minions = new ArrayList<>();
+        this.location =location;
+        debuffs = new ArrayList<Debuff>();
+        minions = new ArrayList<Character>();
     }
 
 
@@ -198,8 +197,8 @@ public class Character extends Actor {
     public void attack(Character enemy) {
         Stats enemyStats = enemy.getGameStats();
         Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats.getDefence(), ownStats.getAttack());
-        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats.getDefence(), enemyStats.getAttack());
+        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, ownStats);
+        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, enemyStats);
         this.addDamageToCharacter(enemy, damageToEnemy);
         this.addDamageToCharacter(this, damageToSelf);
     }
@@ -265,7 +264,7 @@ public class Character extends Actor {
      */
     public List<Character> matchEnded() {
         if(!this.isAlive())
-            return new ArrayList<>();
+            return new ArrayList<Character>();
         rank.update();
         debuffs.clear();
         return matchEndedMinions();
@@ -279,8 +278,8 @@ public class Character extends Actor {
      * @param attack
      * @return 
      */
-    private int calculateDamage(boolean weaponCanHeal, int defence, int attack) {
-        return defence - (weaponCanHeal ? ((attack * HEALER_DAMAGE_MODIFIER) / 100) : attack);
+    private int calculateDamage(boolean weaponCanHeal, Stats defence, Stats attack) {
+        return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(attack.getWeaponClass(), defence.getWeaponClass())) / 100;
     }
     
     /**
