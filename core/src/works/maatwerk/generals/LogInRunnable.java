@@ -2,9 +2,11 @@ package works.maatwerk.generals;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import works.maatwerk.generals.models.Account;
+import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
 
 import java.io.StringWriter;
 
@@ -13,9 +15,13 @@ import java.io.StringWriter;
  */
 @SuppressWarnings("SpellCheckingInspection")
 class LogInRunnable implements Runnable {
+    private final Generals game;
+    private final AssetManager assetManager;
 private Account account;
-    public LogInRunnable(Account account) {
+    public LogInRunnable(Account account, Generals game, AssetManager assetManager) {
         this.account=account;
+        this.game=game;
+        this.assetManager=assetManager;
     }
 
     /**
@@ -37,16 +43,34 @@ private Account account;
         Gdx.app.debug("Network", "Register REST POST");
 
         request.setMethod(Net.HttpMethods.POST);
-        request.setUrl("http://52.28.233.213:9000/Login");
+        request.setUrl("http://dev.maatwerk.works/login");
         request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
 
         Json json = getJson();
         //put the object as a string in the request body
         //ok so this is ugly. First getWriter gets a JSonwriter -- we dont want that. Second gets the native java stringwriter.
         request.setContent(json.getWriter().getWriter().toString());
+        Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
+            @Override
+            public void handleHttpResponse(Net.HttpResponse httpResponse) {
+                String status = httpResponse.getResultAsString();
+                System.out.println(status);
+                game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
+            }
+
+            @Override
+            public void failed(Throwable t) {
+
+            }
+
+            @Override
+            public void cancelled() {
+
+            }
+        });
 
         //send!
-        Gdx.net.sendHttpRequest(request, null);
+
     }
 
     private Json getJson() {
@@ -58,8 +82,8 @@ private Account account;
         json.setWriter(new StringWriter());
         //start creating the object
         json.writeObjectStart();
-        json.writeValue("Username", account.getUsername());
-        json.writeValue("Password", account.getPassword());
+        json.writeValue("username", account.getUsername());
+        json.writeValue("uassword", account.getPassword());
         json.writeObjectEnd();
         return json;
     }
