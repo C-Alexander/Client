@@ -4,7 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -32,6 +35,7 @@ public class MapManager extends Stage {
     private static Vector2 mapDimensions;
     private final TileMapStage tileMapStage = new TileMapStage();
     private final InputMultiplexer multiplexer;
+    private TextureRegion grid;
 
 
     /**
@@ -43,6 +47,7 @@ public class MapManager extends Stage {
 
         this.musicManager = musicManager;
         characterMap = new ArrayList<Character>();
+        this.grid = new TextureRegion();
     }
 
 
@@ -57,10 +62,27 @@ public class MapManager extends Stage {
         characterLayer = new Character[layer.getWidth()][layer.getHeight()];
         mapDimensions = new Vector2(layer.getWidth(), layer.getHeight());
         this.characterLayer = new Character[layer.getWidth()][layer.getHeight()];
+        this.initializeGrid();
 
         startMusic();
 
     }
+
+    private void initializeGrid() {
+        Gdx.app.debug("Grid", "Initializing Grid");
+        Texture gridTexture = assetManager.get("GridGrayDotted.png");
+        gridTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+
+        MapProperties prop = map.getProperties();
+
+        int mapWidth = prop.get("width", Integer.class);
+        int mapHeight = prop.get("height", Integer.class);
+        int tilePixelWidth = prop.get("tilewidth", Integer.class);
+        int tilePixelHeight = prop.get("tileheight", Integer.class);
+
+        grid = new TextureRegion(gridTexture, mapWidth * tilePixelWidth, mapHeight * tilePixelHeight);
+    }
+
 
     private void createMapActors(TiledMapTileLayer layer) {
 
@@ -124,6 +146,7 @@ public class MapManager extends Stage {
         for (Character c : this.characterMap) {
             c.draw(batch, delta);
         }
+        batch.draw(grid, 0,0);
     }
 
 
