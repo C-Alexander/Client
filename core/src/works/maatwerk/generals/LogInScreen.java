@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import works.maatwerk.generals.models.Account;
 
 /**
  * Created by teund on 21/03/2018.
@@ -64,6 +65,8 @@ public class LogInScreen extends ScreenAdapter{
         btnLogIn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                Thread thread = new Thread(new LogInRunnable(new Account(txtUsername.getText(),txtPassword.getText())));
+
                 game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
             }
         });
