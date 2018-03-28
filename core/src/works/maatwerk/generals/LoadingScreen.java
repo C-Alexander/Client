@@ -99,7 +99,6 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
         assetManager.load("speel_map2.tmx", TiledMap.class);
-
         assetManager.load("characters/hValkyrie.png", Texture.class);
         assetManager.load("characters/gArcane.png", Texture.class);
         assetManager.load("characters/gAxe.png", Texture.class);
