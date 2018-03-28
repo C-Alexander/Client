@@ -44,6 +44,7 @@ public class MapManager extends Stage {
     public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer, MusicManager musicManager) {
         this.assetManager = assetManager;
         this.multiplexer = inputMultiplexer;
+
         this.musicManager = musicManager;
         characterMap = new ArrayList<Character>();
         this.grid = new TextureRegion();
