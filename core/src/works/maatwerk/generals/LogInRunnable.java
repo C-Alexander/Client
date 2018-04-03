@@ -79,7 +79,7 @@ private Account account;
 
         json.writeObjectStart();
         json.writeValue("username", account.getUsername());
-        json.writeValue("uassword", account.getPassword());
+        json.writeValue("password", account.getPassword());
         json.writeObjectEnd();
         return json;
     }
