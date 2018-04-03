@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import works.maatwerk.generals.models.Account;
 import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
+import works.maatwerk.generals.utils.logger.Tag;
 
 import java.io.StringWriter;
 
@@ -59,12 +60,12 @@ private Account account;
 
             @Override
             public void failed(Throwable t) {
-
+                Gdx.app.error(Tag.NETWORKING, t.getMessage(), t);
             }
 
             @Override
             public void cancelled() {
-
+                Gdx.app.error(Tag.NETWORKING, "Cancelled... why ");
             }
         });
 
