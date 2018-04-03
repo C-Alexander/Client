@@ -1,8 +1,5 @@
 package works.maatwerk.generals.models;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created by teund on 21/03/2018.
  */

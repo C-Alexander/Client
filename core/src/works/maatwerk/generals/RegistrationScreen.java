@@ -1,12 +1,9 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -18,18 +15,11 @@ import works.maatwerk.generals.models.Account;
  */
 public class RegistrationScreen extends ScreenAdapter {
 
-    private final Generals game;
-    private final AssetManager assetManager;
-    private final SpriteBatch batch;
     private TextField txtUsername, txtPassword, txtPasswordRepeat;
     private Stage stage;
-    private OrthographicCamera camera;
 
 
     public RegistrationScreen(final Generals game, final AssetManager assetManager) {
-        this.game = game;
-        this.assetManager = assetManager;
-        this.batch = new SpriteBatch();
         this.stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
