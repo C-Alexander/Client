@@ -9,14 +9,14 @@ import com.github.czyzby.websocket.WebSockets;
 import works.maatwerk.generals.models.Person;
 import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
 import works.maatwerk.generals.responselisteners.TestSocketListener;
-
+import works.maatwerk.generals.utils.logger.Tag;
 import java.io.StringWriter;
 
 @SuppressWarnings("SpellCheckingInspection")
 class NetworkTestsRunnable implements Runnable {
 
     private void testWebSockets() {
-        Gdx.app.debug("Network", "Beginning websocket test");
+        Gdx.app.debug(Tag.NETWORKING, "Beginning websocket test");
         WebSocket socket = WebSockets.newSocket("ws://52.28.233.213:9000/game");
         socket.setSerializeAsString(true);
         socket.addListener(new TestSocketListener());
@@ -30,16 +30,15 @@ class NetworkTestsRunnable implements Runnable {
         teun.setTriggerLevel(9001);
         String packet = json.toJson(teun);
 
-        Gdx.app.debug("Network", "Sending packet to websocket: " + packet);
+        Gdx.app.debug(Tag.NETWORKING, "Sending packet to websocket: " + packet);
         socket.send(packet);
-
     }
 
     /**
      * Testing the http functions of libgdx
      */
     private void testRestAPI() {
-        Gdx.app.debug("Network", "Testing REST API");
+        Gdx.app.debug(Tag.NETWORKING, "Testing REST API");
 
         //request to use for future networking
         Net.HttpRequest request = new Net.HttpRequest();
@@ -48,12 +47,10 @@ class NetworkTestsRunnable implements Runnable {
 
         //post request
         testRESTPost(request);
-
-
     }
 
     private void testRESTGet(Net.HttpRequest request) {
-        Gdx.app.debug("Network", "Testing REST GET");
+        Gdx.app.debug(Tag.NETWORKING, "Testing REST GET");
 
         //get request
         request.setMethod(Net.HttpMethods.GET);
@@ -62,7 +59,7 @@ class NetworkTestsRunnable implements Runnable {
     }
 
     private void testRESTPost(Net.HttpRequest request) {
-        Gdx.app.debug("Network", "Testing REST POST");
+        Gdx.app.debug(Tag.NETWORKING, "Testing REST POST");
 
         request.setMethod(Net.HttpMethods.POST);
         request.setUrl("http://52.28.233.213:9000/games");

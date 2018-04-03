@@ -1,17 +1,11 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -21,11 +15,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.models.*;
+import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.networking.NetworkManager;
 import works.maatwerk.generals.utils.BackgroundColor;
 import works.maatwerk.generals.utils.StringUtils;
@@ -35,33 +30,28 @@ class PlayingScreen extends ScreenAdapter {
     private final SpriteBatch batch;
     private final OrthographicCamera camera;
     private final InputMultiplexer multiplexer;
-    private final ParticleEffect pEffect;
     private final AssetManager assetManager;
-    public World world;
-    private Animation anim;
-    private float stateTime = 0f;
+    private final Generals game;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
     private MapManager map;
     private Stage stage;
     private Table table;
-
-
     @SuppressWarnings("FieldCanBeLocal")
     private NetworkManager networkManager;
 
-
-    PlayingScreen(AssetManager assetManager) {
+    PlayingScreen(Generals game, AssetManager assetManager) {
         this.assetManager = assetManager;
         this.stage = new Stage();
+        this.game = game;
+
         table = new Table();
         table.setBounds(0, 0, Gdx.graphics.getWidth(), 80);
 
         batch = new SpriteBatch();
         multiplexer = new InputMultiplexer();
-        pEffect = new ParticleEffect();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        map = new MapManager(this.assetManager,multiplexer);
+        map = new MapManager(this.assetManager, multiplexer, this.game.getMusicManager());
 
         addUI(table);
     }
@@ -70,48 +60,30 @@ class PlayingScreen extends ScreenAdapter {
     public void show() {
         initializeCamera();
         initializeInputMultiplexer();
-        initializeCharacterAnimations();
-        initializeParticleEffects();
         initializeNetworking();
+
         map.initializeMap("");
-        initializeCharacters();
+        Character character1 = new Character(new Race("Test", new Stats(3, 1, 1, 1, 1, 0)), assetManager, ClassEnum.AXE, new Vector2(1,1));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character1);
+        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(2, 2));
+        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character2);
 
         Gdx.input.vibrate(5000);
 
+
+        initializeVolumeControls();
         initializeCameraInputController();
     }
 
-
-
+    private void initializeVolumeControls() {
+        multiplexer.addProcessor(new MusicController(game.getMusicManager()));
+    }
 
     private void initializeNetworking() {
         networkManager = new NetworkManager();
         networkManager.connect();
-    }
-
-
-
-    private void startMusic() {
-        Gdx.app.debug("Music", "Starting Background Music");
-
-        @SuppressWarnings("SpellCheckingInspection") Music bgm = assetManager.get("data/music/megalovania.mp3");
-      //  multiplexer.addProcessor(new MusicController(bgm));
-        bgm.play();
-    }
-
-    private void initializeParticleEffects() {
-        Gdx.app.debug("Particles", "Initializing Particle Effects");
-
-      //  pEffect.load(Gdx.files.internal("fire"), Gdx.files.internal(""));
-       // pEffect.getEmitters().first().setPosition(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
-       // pEffect.start();
-    }
-
-    private void initializeCharacterAnimations() {
-        Gdx.app.debug("Animations", "Initializing Character Animations");
-
-      //  TextureAtlas atlas = assetManager.get("SwordCharacter.atlas");
-     //   anim = new Animation<TextureRegion>(0.1f, atlas.getRegions());
     }
 
     private void initializeInputMultiplexer() {
@@ -122,15 +94,6 @@ class PlayingScreen extends ScreenAdapter {
 
 
         Gdx.input.setInputProcessor(multiplexer);
-    }
-    private void initializeCharacters(){
-        Gdx.app.debug("Characters", "Initializing Characters");
-        Character character1 = new Character(new Race("Test", new Stats(3, 1, 1, 1, 1)), assetManager, ClassEnum.CORRUPT, new Vector2(1, 1));
-        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
-        map.addCharacter(character1);
-        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.ARCHER, new Vector2(2, 2));
-        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
-        map.addCharacter(character2);
     }
 
     /**
@@ -149,6 +112,7 @@ class PlayingScreen extends ScreenAdapter {
             }
         });
     }*/
+    
     /**
      * Initializes an input controller that controls the camera.
      **/
@@ -192,8 +156,6 @@ class PlayingScreen extends ScreenAdapter {
         super.render(delta);
         batch.setProjectionMatrix(camera.combined);
 
-
-
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
@@ -205,16 +167,8 @@ class PlayingScreen extends ScreenAdapter {
 
         batch.end();
 
-        if (pEffect.isComplete()) pEffect.reset();
-
         stage.act(delta);
         stage.draw();
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
-        batch.dispose();
     }
 
     private void addUI(Table table){
@@ -232,6 +186,7 @@ class PlayingScreen extends ScreenAdapter {
         updateCharacterLabel(table, map.getCharacterSelected());
     }
 
+    //todo:: Move the UI stuff to another class.
     private void updateCharacterLabel(Table table, Character character){
         table.clearChildren();
         if (character != null){
@@ -246,7 +201,7 @@ class PlayingScreen extends ScreenAdapter {
             Label lblRank = new Label("Rank:", skin);
             Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
 
-            Label lblStats = new Label(character.getBaseStats().toUsefulString(), skin);
+            Label lblStats = new Label(character.getBaseStats().toString(), skin);
 
 
             table.top().left();
@@ -268,5 +223,11 @@ class PlayingScreen extends ScreenAdapter {
         }
 
         stage.addActor(table);
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        batch.dispose();
     }
 }

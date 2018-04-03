@@ -1,7 +1,3 @@
-//Project: Client
-//Author: J Putters
-//Creation date: 26-Mar-18
-
 package works.maatwerk.generals.utils;
 
 import com.badlogic.gdx.Gdx;
@@ -11,26 +7,25 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//Project: Client
+//Author: J Putters
+//Creation date: 26-Mar-18
+@SuppressWarnings("WeakerAccess")
 public class BackgroundColor implements Drawable {
-
+    private static final Logger LOGGER = Logger.getLogger(BackgroundColor.class.getName());
     private Float x;
     private Float y;
     private Float width;
     private Float height;
-
     private Boolean fillParent;
-
     private String filename;
     private Texture texture;
     private TextureRegion textureRegion;
     private Sprite sprite;
     private Color color;
-
-    private static final Logger LOGGER = Logger.getLogger(BackgroundColor.class.getName());
 
     public BackgroundColor(String filename) {
         this(filename, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -48,12 +43,15 @@ public class BackgroundColor implements Drawable {
 
     private void initialize(String filename) {
         setFilename(filename);
-        if (x == null || y == null)
+        if (x == null || y == null) {
             setPosition();
-        if (width == null || height == null || width < 0.0f || height < 0.0f)
+        }
+        if (width == null || height == null || width < 0.0f || height < 0.0f) {
             setSize();
-        if (color == null)
+        }
+        if (color == null) {
             setColor(255, 255, 255, 255);
+        }
         if (sprite == null) {
             try {
                 setSprite();
@@ -61,13 +59,15 @@ public class BackgroundColor implements Drawable {
                 LOGGER.log(Level.INFO, e.toString());
             }
         }
-        if (fillParent == null)
+        if (fillParent == null) {
             fillParent = true;
+        }
     }
 
     private void setTexture() {
-        if (texture != null)
+        if (texture != null) {
             texture.dispose();
+        }
         texture = new Texture(Gdx.files.internal(getFilename()));
     }
 
@@ -76,8 +76,9 @@ public class BackgroundColor implements Drawable {
     }
 
     private void setSprite() {
-        if (texture == null)
+        if (texture == null) {
             setTexture();
+        }
         setTextureRegion();
         sprite = new Sprite(textureRegion);
         setSpriteColor();
@@ -108,11 +109,11 @@ public class BackgroundColor implements Drawable {
     }
 
     public void setColor(int r, int g, int b, int a) {
-        color = new Color(r/255f, g/255f, b/255f, a/255f);
+        color = new Color(r / 255f, g / 255f, b / 255f, a / 255f);
     }
 
     public void setColor(float r, float g, float b, float a) {
-        color = new Color(r/255f, g/255f, b/255f, a/255f);
+        color = new Color(r / 255f, g / 255f, b / 255f, a / 255f);
     }
 
     private void setSpritePosition(float x, float y) {
@@ -123,8 +124,8 @@ public class BackgroundColor implements Drawable {
     private void updateSprite(float x, float y, float width, float height) {
         if (fillParent) {
             setSpritePosition(x, y);
-            if (width != textureRegion.getRegionWidth() ||
-                    height != textureRegion.getRegionHeight()) {
+            if (width != textureRegion.getRegionWidth()
+                    || height != textureRegion.getRegionHeight()) {
                 setSize(width, height);
                 setSprite();
             }
@@ -144,7 +145,6 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public void setLeftWidth(float leftWidth) {
-
     }
 
     @Override
@@ -154,7 +154,6 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public void setRightWidth(float rightWidth) {
-
     }
 
     @Override
@@ -164,7 +163,6 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public void setTopHeight(float topHeight) {
-
     }
 
     @Override
@@ -174,7 +172,6 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public void setBottomHeight(float bottomHeight) {
-
     }
 
     @Override
@@ -184,7 +181,6 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public void setMinWidth(float minWidth) {
-
     }
 
     @Override
@@ -194,9 +190,7 @@ public class BackgroundColor implements Drawable {
 
     @Override
     public void setMinHeight(float minHeight) {
-
     }
-
 
     private void setFilename(String filename) {
         this.filename = filename;
@@ -245,5 +239,4 @@ public class BackgroundColor implements Drawable {
     public void setFillParent(Boolean fillParent) {
         this.fillParent = fillParent;
     }
-
 }

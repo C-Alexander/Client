@@ -1,6 +1,5 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
@@ -12,24 +11,20 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+@SuppressWarnings("WeakerAccess")
 public class PostGameScreen extends ScreenAdapter {
-
-    private final Game game;
+    private final Generals game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
-    private Stage stage;
+    private final Stage stage;
     private OrthographicCamera camera;
 
-
-
-
-
-    public PostGameScreen(final Game game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) {
+    public PostGameScreen(final Generals game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) {
         this.game = game;
         this.assetManager = assetManager;
         this.batch = new SpriteBatch();
         this.stage = new Stage();
-        
+
 
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
@@ -41,9 +36,9 @@ public class PostGameScreen extends ScreenAdapter {
 
         Label lblTitle;
         if(isVictory){
-             lblTitle = new Label("Victory!", skin);
+            lblTitle = new Label("Victory!", skin);
         }else {
-             lblTitle = new Label("Defeat!", skin);
+            lblTitle = new Label("Defeat!", skin);
         }
         lblTitle.setFontScale(2);
         table.add(lblTitle).colspan(2).pad(20);
@@ -74,21 +69,14 @@ public class PostGameScreen extends ScreenAdapter {
         btnContinue.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
-
-                    game.setScreen(new PlayingScreen(assetManager));
-                }
+                game.setScreen(new PlayingScreen(game, assetManager));
+            }
 
         });
 
         table.add(btnContinue).bottom().right().width(100).height(50);
         table.row();
         stage.addActor(table);
-    }
-
-    @Override
-    public void show() {
-        super.show();
     }
 
 
