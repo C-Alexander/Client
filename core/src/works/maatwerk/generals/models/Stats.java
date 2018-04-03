@@ -23,7 +23,7 @@ public class Stats {
         defence = 0;
         movement = 0;
         speed = 0;
-        weaponClass = 0;
+        weaponClass = WeaponClass.NO_CLASS;
     }
     
     /**
