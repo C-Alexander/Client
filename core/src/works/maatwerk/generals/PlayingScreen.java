@@ -32,18 +32,13 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final AssetManager assetManager;
     private final Generals game;
-
-    public World world;
     private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
     private MapManager map;
     private Stage stage;
     private Table table;
-
-
     @SuppressWarnings("FieldCanBeLocal")
     private NetworkManager networkManager;
-
 
     PlayingScreen(Generals game, AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -86,7 +81,6 @@ class PlayingScreen extends ScreenAdapter {
         multiplexer.addProcessor(new MusicController(game.getMusicManager()));
     }
 
-
     private void initializeNetworking() {
         networkManager = new NetworkManager();
         networkManager.connect();
@@ -101,7 +95,6 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.input.setInputProcessor(multiplexer);
     }
-
 
     /**
      * Start code for a end game button. Doesn't do anything now. Need to update this when the game can be ended.
@@ -119,6 +112,7 @@ class PlayingScreen extends ScreenAdapter {
             }
         });
     }*/
+    
     /**
      * Initializes an input controller that controls the camera.
      **/
@@ -162,8 +156,6 @@ class PlayingScreen extends ScreenAdapter {
         super.render(delta);
         batch.setProjectionMatrix(camera.combined);
 
-
-
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
@@ -194,7 +186,6 @@ class PlayingScreen extends ScreenAdapter {
         updateCharacterLabel(table, map.getCharacterSelected());
     }
 
-
     //todo:: Move the UI stuff to another class.
     private void updateCharacterLabel(Table table, Character character){
         table.clearChildren();
@@ -210,7 +201,7 @@ class PlayingScreen extends ScreenAdapter {
             Label lblRank = new Label("Rank:", skin);
             Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
 
-            Label lblStats = new Label(character.getBaseStats().toUsefulString(), skin);
+            Label lblStats = new Label(character.getBaseStats().toString(), skin);
 
 
             table.top().left();

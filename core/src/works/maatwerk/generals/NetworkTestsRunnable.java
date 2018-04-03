@@ -10,7 +10,6 @@ import works.maatwerk.generals.models.Person;
 import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
 import works.maatwerk.generals.responselisteners.TestSocketListener;
 import works.maatwerk.generals.utils.logger.Tag;
-
 import java.io.StringWriter;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -33,7 +32,6 @@ class NetworkTestsRunnable implements Runnable {
 
         Gdx.app.debug(Tag.NETWORKING, "Sending packet to websocket: " + packet);
         socket.send(packet);
-
     }
 
     /**
@@ -49,8 +47,6 @@ class NetworkTestsRunnable implements Runnable {
 
         //post request
         testRESTPost(request);
-
-
     }
 
     private void testRESTGet(Net.HttpRequest request) {

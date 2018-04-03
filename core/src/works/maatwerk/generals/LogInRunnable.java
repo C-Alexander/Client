@@ -16,6 +16,7 @@ import java.io.StringWriter;
  */
 @SuppressWarnings("SpellCheckingInspection")
 class LogInRunnable implements Runnable {
+
     private final Generals game;
     private final AssetManager assetManager;
 private Account account;
@@ -23,24 +24,23 @@ private Account account;
         this.account=account;
         this.game=game;
         this.assetManager=assetManager;
+
     }
 
     /**
      * Testing the http functions of libgdx
      */
-    private void RestAPI() {
+    private void restAPI() {
         Gdx.app.debug("Network", "Testing REST API");
 
         //request to use for future networking
         Net.HttpRequest request = new Net.HttpRequest();
 
         //post request
-        RESTPost(request);
+        restPost(request);
     }
 
-
-
-    private void RESTPost(Net.HttpRequest request) {
+    private void restPost(Net.HttpRequest request) {
         Gdx.app.debug("Network", "Register REST POST");
 
         request.setMethod(Net.HttpMethods.POST);
@@ -87,6 +87,6 @@ private Account account;
 
     @Override
     public void run() {
-        RestAPI();
+        restAPI();
     }
 }

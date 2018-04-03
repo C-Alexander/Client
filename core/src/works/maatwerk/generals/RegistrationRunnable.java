@@ -4,12 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
-import com.github.czyzby.websocket.WebSocket;
-import com.github.czyzby.websocket.WebSockets;
 import works.maatwerk.generals.models.Account;
-import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
-import works.maatwerk.generals.responselisteners.TestSocketListener;
-
 import java.io.StringWriter;
 
 /**
@@ -17,7 +12,8 @@ import java.io.StringWriter;
  */
 @SuppressWarnings("SpellCheckingInspection")
 class RegistrationRunnable implements Runnable {
-private Account account;
+    private Account account;
+    
     public RegistrationRunnable(Account account) {
         this.account=account;
     }
@@ -25,19 +21,17 @@ private Account account;
     /**
      * Testing the http functions of libgdx
      */
-    private void RestAPI() {
+    private void restAPI() {
         Gdx.app.debug("Network", "Testing REST API");
 
         //request to use for future networking
         Net.HttpRequest request = new Net.HttpRequest();
 
         //post request
-        RESTPost(request);
+        restPost(request);
     }
 
-
-
-    private void RESTPost(Net.HttpRequest request) {
+    private void restPost(Net.HttpRequest request) {
         Gdx.app.debug("Network", "Register REST POST");
 
         request.setMethod(Net.HttpMethods.POST);
@@ -70,6 +64,6 @@ private Account account;
 
     @Override
     public void run() {
-        RestAPI();
+        restAPI();
     }
 }
