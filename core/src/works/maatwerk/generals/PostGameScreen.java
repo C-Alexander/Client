@@ -14,10 +14,17 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 @SuppressWarnings("WeakerAccess")
 public class PostGameScreen extends ScreenAdapter {
 
+    private final Generals game;
+    private final AssetManager assetManager;
+    private final SpriteBatch batch;
     private final Stage stage;
+    private OrthographicCamera camera;
 
 
     public PostGameScreen(final Generals game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) {
+        this.game = game;
+        this.assetManager = assetManager;
+        this.batch = new SpriteBatch();
         this.stage = new Stage();
 
 
