@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Vector3;
 
 public class ZoomController extends InputAdapter {
     private final Vector3 touchPoint = new Vector3();
-
     private final OrthographicCamera camera;
 
     public ZoomController(OrthographicCamera camera) {

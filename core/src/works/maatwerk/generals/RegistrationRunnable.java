@@ -5,7 +5,6 @@ import com.badlogic.gdx.Net;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import works.maatwerk.generals.models.Account;
-
 import java.io.StringWriter;
 
 /**
@@ -13,7 +12,8 @@ import java.io.StringWriter;
  */
 @SuppressWarnings("SpellCheckingInspection")
 class RegistrationRunnable implements Runnable {
-private Account account;
+    private Account account;
+    
     public RegistrationRunnable(Account account) {
         this.account=account;
     }
@@ -30,8 +30,6 @@ private Account account;
         //post request
         restPost(request);
     }
-
-
 
     private void restPost(Net.HttpRequest request) {
         Gdx.app.debug("Network", "Register REST POST");

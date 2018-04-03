@@ -18,7 +18,6 @@ import com.sun.media.jfxmedia.logging.Logger;
 import works.maatwerk.generals.TileMapStage;
 import works.maatwerk.generals.utils.logger.*;
 import works.maatwerk.generals.music.MusicManager;
-
 import java.util.ArrayList;
 
 @SuppressWarnings("WeakerAccess")
@@ -37,9 +36,10 @@ public class MapManager extends Stage {
     private final InputMultiplexer multiplexer;
     private TextureRegion grid;
 
-
     /**
      * @param assetManager
+     * @param inputMultiplexer
+     * @param musicManager
      */
     public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer, MusicManager musicManager) {
         this.assetManager = assetManager;
@@ -49,7 +49,6 @@ public class MapManager extends Stage {
         characterMap = new ArrayList<Character>();
         this.grid = new TextureRegion();
     }
-
 
     /**
      * @param mapName
@@ -65,7 +64,6 @@ public class MapManager extends Stage {
         this.initializeGrid();
 
         startMusic();
-
     }
 
     private void initializeGrid() {
@@ -83,12 +81,9 @@ public class MapManager extends Stage {
         grid = new TextureRegion(gridTexture, mapWidth * tilePixelWidth, mapHeight * tilePixelHeight);
     }
 
-
     private void createMapActors(TiledMapTileLayer layer) {
-
         multiplexer.addProcessor(tileMapStage);
         tileMapStage.createMapActors(layer, this);
-
     }
 
     /**
@@ -98,10 +93,11 @@ public class MapManager extends Stage {
         Gdx.app.debug(Tag.MUSIC, "Starting Background Music");
 
         musicManager.stopAllMusic();
-        if (map.getProperties().containsKey("BGM"))
+        if (map.getProperties().containsKey("BGM")) {
             musicManager.playMusic(map.getProperties().get("BGM").toString());
-        else
+        } else {
             musicManager.playRandomMusic();
+        }
     }
 
     /**
@@ -109,27 +105,24 @@ public class MapManager extends Stage {
      */
     public void leftClickTile(Vector2 location) {
 
-
         Character character = characterLayer[(int) location.x][(int) location.y];
-
 
         if (character != null && this.getCharacterSelected() == null) {
             this.setCharacterSelected(character);
             //TODO: UpdateUI
         } else {
-            if (character == null && this.getCharacterSelected() !=null) {
+            if (character == null && this.getCharacterSelected() != null) {
                 moveCharacter(this.getCharacterSelected(), location);
                 this.setCharacterSelected(null);
 
             } else {
-                if(this.getCharacterSelected() !=null){
+                if (this.getCharacterSelected() != null) {
                     this.getCharacterSelected().attack(character);
                     this.setCharacterSelected(null);
                 }
             }
         }
     }
-
 
     /**
      * @param delta
@@ -146,9 +139,8 @@ public class MapManager extends Stage {
         for (Character c : this.characterMap) {
             c.draw(batch, delta);
         }
-        batch.draw(grid, 0,0);
+        batch.draw(grid, 0, 0);
     }
-
 
     /**
      * @param character adds a character to the game
@@ -191,7 +183,6 @@ public class MapManager extends Stage {
         return this.characterMap.get(id);
     }
 
-
     /**
      * @param location
      * @return cell from location
@@ -200,7 +191,8 @@ public class MapManager extends Stage {
 
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
 
-        @SuppressWarnings("UnnecessaryLocalVariable") TiledMapTileLayer.Cell cell = layer.getCell((int) location.x, (int) location.y);
+        @SuppressWarnings("UnnecessaryLocalVariable")
+        TiledMapTileLayer.Cell cell = layer.getCell((int) location.x, (int) location.y);
 
         return cell;
     }
@@ -219,18 +211,16 @@ public class MapManager extends Stage {
         this.characterSelected = characterSelected;
     }
 
-    public void update(){
+    public void update() {
         ArrayList<Character> remove = new ArrayList<Character>();
-        for (Character c: characterMap){
-            if(!c.isAlive()){
-                characterLayer[(int)c.getLocation().x][(int)c.getLocation().y] = null;
+        for (Character c : characterMap) {
+            if (!c.isAlive()) {
+                characterLayer[(int) c.getLocation().x][(int) c.getLocation().y] = null;
                 remove.add(c);
             }
         }
-        for (Character c:remove){
+        for (Character c : remove) {
             characterMap.remove(c);
-
         }
-
     }
 }

@@ -6,7 +6,6 @@ import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector3;
 
 public class PinchZoomController extends GestureDetector.GestureAdapter {
-
     private final OrthographicCamera camera;
     private final Vector3 touchPoint = new Vector3();
     private float previousChange = 0;
@@ -27,7 +26,9 @@ public class PinchZoomController extends GestureDetector.GestureAdapter {
         previousDistance = distance;
         change = change * 0.01f;
 
-        if (change == previousChange) return false;
+        if (change == previousChange) {
+            return false;
+        }
 
         previousChange = change;
 

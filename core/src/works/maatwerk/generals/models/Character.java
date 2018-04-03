@@ -32,6 +32,9 @@ public class Character extends Actor {
     private AssetManager assetManager;
     private ClassEnum classEnum;
     private String name;
+    
+    public Character() {
+    }
 
     /**
      * Creates an instance of the Character class
@@ -50,9 +53,6 @@ public class Character extends Actor {
         debuffs = new ArrayList<Debuff>();
         minions = new ArrayList<Character>();
     }
-
-
-    public Character(){ }
 
     /**
      *
@@ -320,9 +320,6 @@ public class Character extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha){
         batch.draw(this.getTexture(),this.getLocation().x*32,this.getLocation().y*32);
-
-
-
     }
 
     public Texture getTexture() {
@@ -390,10 +387,12 @@ public class Character extends Actor {
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return this.name != null ? this.name : "Generic Unit";
     }
 
     @Override
-    public void setName(String name){ this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 }

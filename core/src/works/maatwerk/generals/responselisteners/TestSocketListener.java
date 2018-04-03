@@ -11,7 +11,6 @@ public class TestSocketListener extends WebSocketAdapter {
     @Override
     public boolean onOpen(WebSocket webSocket) {
         Gdx.app.log(Tag.NETWORKING, "Websocket opened");
-
         return super.onOpen(webSocket);
     }
 

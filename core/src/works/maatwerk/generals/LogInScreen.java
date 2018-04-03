@@ -17,7 +17,6 @@ public class LogInScreen extends ScreenAdapter{
     private TextField txtUsername, txtPassword;
     private Stage stage;
 
-
     public LogInScreen(final Generals game, final AssetManager assetManager) {
         this.stage = new Stage();
         Gdx.input.setInputProcessor(stage);

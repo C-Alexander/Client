@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Disposable;
 import works.maatwerk.generals.utils.files.Paths;
 import works.maatwerk.generals.utils.logger.Tag;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class MusicManager implements Disposable {
             }
         }
         Gdx.app.log(Tag.MUSIC, "Finished/gave up looking for " + filename + " to play");
-
     }
 
     public void playRandomMusic() {
@@ -68,13 +66,11 @@ public class MusicManager implements Disposable {
 
     public void stopCurrentMusic() {
         Gdx.app.log(Tag.MUSIC, "Stopping current song");
-
         currentSong.stop();
     }
 
     public void pauseCurrentMusic() {
         Gdx.app.log(Tag.MUSIC, "Pausing current song");
-
         currentSong.pause();
     }
 
@@ -110,8 +106,9 @@ public class MusicManager implements Disposable {
         songToPlay.setLooping(!playDifferentSongAfter);
         songToPlay.setVolume(Gdx.app.getPreferences(Tag.MUSIC).getFloat("Volume", 0.5f));
         songToPlay.play();
-        if (playDifferentSongAfter)
+        if (playDifferentSongAfter) {
             songToPlay.setOnCompletionListener(musicListener);
+        }
     }
 
     private void playNextSong() {
@@ -119,9 +116,11 @@ public class MusicManager implements Disposable {
 
         int currentSongIndex = songs.indexOf(currentSong);
 
-        if (currentSongIndex + 1 < songs.size())
+        if (currentSongIndex + 1 < songs.size()) {
             playSongFromStart(songs.get(currentSongIndex + 1), true);
-        else playSongFromStart(songs.get(0), true);
+        } else {
+            playSongFromStart(songs.get(0), true);
+        }
     }
 
     public Music getCurrentSong() {
@@ -136,8 +135,8 @@ public class MusicManager implements Disposable {
         }
     }
 
-
     private class MusicListener implements Music.OnCompletionListener {
+
         private final MusicManager musicManager;
 
         MusicListener(MusicManager musicManager) {
@@ -150,5 +149,4 @@ public class MusicManager implements Disposable {
             musicManager.playNextSong();
         }
     }
-
 }

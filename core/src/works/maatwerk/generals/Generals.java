@@ -7,21 +7,19 @@ import com.badlogic.gdx.assets.AssetManager;
 import works.maatwerk.generals.music.MusicManager;
 
 public class Generals extends Game {
-
     private MusicManager musicManager;
     private AssetManager assetManager;
 
-	@Override
-	public void create() {
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+    @Override
+    public void create() {
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
         assetManager = new AssetManager();
         musicManager = new MusicManager(assetManager);
 
-		Gdx.app.log("Screens", "Starting LoadingScreen");
+        Gdx.app.log("Screens", "Starting LoadingScreen");
         this.setScreen(new LoadingScreen(this, assetManager));
-	}
-
+    }
 
     public MusicManager getMusicManager() {
         return musicManager;

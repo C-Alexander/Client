@@ -14,10 +14,8 @@ import works.maatwerk.generals.models.Account;
  * Created by teund on 21/03/2018.
  */
 public class RegistrationScreen extends ScreenAdapter {
-
     private TextField txtUsername, txtPassword, txtPasswordRepeat;
     private Stage stage;
-
 
     public RegistrationScreen(final Generals game, final AssetManager assetManager) {
         this.stage = new Stage();
@@ -81,7 +79,6 @@ public class RegistrationScreen extends ScreenAdapter {
     public void show() {
         super.show();
     }
-
 
     @Override
     public void render(float delta) {

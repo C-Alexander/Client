@@ -22,9 +22,9 @@ public class Account {
 
     @Override
     public String toString() {
-        return "{" +
-                "\"Username\":\"" + Username + "\"" +
-                ",\"Password\":\"" + Password + "\"" +
-                "}";
+        return "{"
+                + "\"Username\":\"" + Username + "\""
+                + ",\"Password\":\"" + Password + "\""
+                + "}";
     }
 }
