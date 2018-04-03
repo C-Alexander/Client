@@ -54,7 +54,6 @@ private Account account;
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
                 String status = httpResponse.getResultAsString();
-                System.out.println(status);
                 game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
             }
 

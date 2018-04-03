@@ -66,8 +66,6 @@ public class LogInScreen extends ScreenAdapter{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 new Thread(new LogInRunnable(new Account(txtUsername.getText(),txtPassword.getText()),game,assetManager));
-
-
             }
         });
 
