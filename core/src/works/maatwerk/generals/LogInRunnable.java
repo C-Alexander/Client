@@ -74,13 +74,10 @@ private Account account;
     }
 
     private Json getJson() {
-        Gdx.app.debug("JSON", "Writing JSON objects from scratch");
-
-        //creating a json body to post
         Json json = new Json(JsonWriter.OutputType.json);
-        //write to a string
+
         json.setWriter(new StringWriter());
-        //start creating the object
+
         json.writeObjectStart();
         json.writeValue("username", account.getUsername());
         json.writeValue("uassword", account.getPassword());
