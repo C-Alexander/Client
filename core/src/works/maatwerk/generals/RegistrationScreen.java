@@ -15,7 +15,8 @@ import works.maatwerk.generals.models.Account;
  */
 public class RegistrationScreen extends ScreenAdapter {
 
-    private TextField txtUsername, txtPassword, txtPasswordRepeat;
+    private TextField txtUsername;
+    private TextField txtPassword;
     private Stage stage;
 
 
@@ -46,7 +47,7 @@ public class RegistrationScreen extends ScreenAdapter {
         table.row().pad(20);
 
         table.add(new Label("password repeat:", skin));
-        txtPasswordRepeat = new TextField("", skin);
+        TextField txtPasswordRepeat = new TextField("", skin);
         txtPasswordRepeat.setPasswordMode(true);
         txtPasswordRepeat.setPasswordCharacter('*');
         table.add(txtPasswordRepeat).minWidth(250).pad(10);
@@ -58,7 +59,7 @@ public class RegistrationScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 if (txtPassword.equals(txtPassword)) {
                     Account account = new Account(txtUsername.getText(), txtPassword.getText());
-                    new Thread(new RegistrationRunnable(account)).start();
+                    new Thread(new AccountRunnable(account, false)).start();
                     game.setScreen(new LogInScreen(game, assetManager));
                 }
             }

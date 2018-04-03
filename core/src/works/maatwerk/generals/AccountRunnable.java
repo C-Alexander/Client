@@ -12,32 +12,56 @@ import java.io.StringWriter;
  * Created by teund on 26/03/2018.
  */
 @SuppressWarnings("SpellCheckingInspection")
-class LogInRunnable implements Runnable {
+class AccountRunnable implements Runnable {
 private Account account;
-    public LogInRunnable(Account account) {
-        this.account=account;
+private boolean IsloggingIn;
+
+    public AccountRunnable(Account account, boolean IsloggingIn) {
+        this.account = account;
+        this.IsloggingIn = true;
     }
 
     /**
      * Testing the http functions of libgdx
      */
     private void restAPI() {
+
         Gdx.app.debug("Network", "Testing REST API");
 
         //request to use for future networking
         Net.HttpRequest request = new Net.HttpRequest();
 
         //post request
-        restPost(request);
+        if (this.IsloggingIn){
+            restPostLogin(request);
+        }else{
+            restPostRegistration(request);
+        }
     }
 
 
 
-    private void restPost(Net.HttpRequest request) {
+    private void restPostLogin(Net.HttpRequest request) {
         Gdx.app.debug("Network", "Register REST POST");
 
         request.setMethod(Net.HttpMethods.POST);
-        request.setUrl("http://52.28.233.213:9000/Login");
+        request.setUrl("http://dev.maatwerk.works/Login");
+        request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
+
+        Json json = getJson();
+        //put the object as a string in the request body
+        //ok so this is ugly. First getWriter gets a JSonwriter -- we dont want that. Second gets the native java stringwriter.
+        request.setContent(json.getWriter().getWriter().toString());
+
+        //send!
+        Gdx.net.sendHttpRequest(request, null);
+    }
+
+    private void restPostRegistration(Net.HttpRequest request) {
+        Gdx.app.debug("Network", "Register REST POST");
+
+        request.setMethod(Net.HttpMethods.POST);
+        request.setUrl("http://dev.maatwerk.works/register");
         request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
 
         Json json = getJson();
