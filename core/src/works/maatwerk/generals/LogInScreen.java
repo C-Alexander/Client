@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -16,18 +14,10 @@ import works.maatwerk.generals.models.Account;
  * Created by teund on 21/03/2018.
  */
 public class LogInScreen extends ScreenAdapter{
-    private final Generals game;
-    private final AssetManager assetManager;
-    private final SpriteBatch batch;
-    private TextField txtUsername, txtPassword, txtPasswordRepeat;
+    private TextField txtUsername, txtPassword;
     private Stage stage;
-    private OrthographicCamera camera;
-
 
     public LogInScreen(final Generals game, final AssetManager assetManager) {
-        this.game = game;
-        this.assetManager = assetManager;
-        this.batch = new SpriteBatch();
         this.stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
@@ -65,6 +55,7 @@ public class LogInScreen extends ScreenAdapter{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Thread thread = new Thread(new LogInRunnable(new Account(txtUsername.getText(),txtPassword.getText())));
+                thread.start();
 
                 game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
             }
