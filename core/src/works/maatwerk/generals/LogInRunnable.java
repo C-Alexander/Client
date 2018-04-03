@@ -53,7 +53,7 @@ private Account account;
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
-                String status = httpResponse.getResultAsString();
+                if (httpResponse.getStatus().getStatusCode()== 200)
                 game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
             }
 
