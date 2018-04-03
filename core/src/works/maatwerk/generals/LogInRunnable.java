@@ -6,7 +6,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import works.maatwerk.generals.models.Account;
-import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
 import works.maatwerk.generals.utils.logger.Tag;
 
 import java.io.StringWriter;
