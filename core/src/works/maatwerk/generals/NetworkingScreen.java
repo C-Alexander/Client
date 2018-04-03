@@ -5,7 +5,6 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 
 class NetworkingScreen extends ScreenAdapter {
-
     private final Generals game;
     private final AssetManager assetManager;
 

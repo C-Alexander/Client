@@ -11,7 +11,6 @@ import works.maatwerk.generals.utils.logger.Tag;
 
 @SuppressWarnings("unused")
 public class NetworkManager {
-
     private WebSocket webSocket;
     private final Json json;
 

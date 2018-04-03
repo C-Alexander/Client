@@ -1,8 +1,5 @@
 package works.maatwerk.generals.models;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created by teund on 21/03/2018.
  */
@@ -25,9 +22,9 @@ public class Account {
 
     @Override
     public String toString() {
-        return "{" +
-                "\"Username\":\"" + Username + "\"" +
-                ",\"Password\":\"" + Password + "\"" +
-                "}";
+        return "{"
+                + "\"Username\":\"" + Username + "\""
+                + ",\"Password\":\"" + Password + "\""
+                + "}";
     }
 }

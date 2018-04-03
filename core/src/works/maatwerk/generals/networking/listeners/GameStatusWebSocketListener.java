@@ -12,11 +12,9 @@ import works.maatwerk.generals.networking.messages.MessageType;
 import works.maatwerk.generals.networking.messages.Packet;
 import works.maatwerk.generals.networking.tasks.KeepAlive;
 import works.maatwerk.generals.utils.logger.Tag;
-
 import java.util.Random;
 
 public class GameStatusWebSocketListener extends WebSocketAdapter {
-
     private final Json json;
     @SuppressWarnings({"FieldCanBeLocal", "CanBeFinal"})
     private boolean endGame = false;
@@ -32,7 +30,6 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
         Gdx.app.log(Tag.NETWORKING, "Websocket connection opened");
         joinGame(webSocket);
         startKeepAlive(webSocket);
-
         return false;
     }
 
@@ -63,7 +60,6 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
     @Override
     public boolean onError(WebSocket webSocket, Throwable error) {
         Gdx.app.error(Tag.NETWORKING, "Error in the websocket connection", error);
-
         return false;
     }
 
@@ -78,7 +74,6 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
         Gdx.app.debug(Tag.NETWORKING, "Sending a JoinGame request");
 
         sendPacket(packet, webSocket);
-
     }
 
     private void sendPacket(Packet packet, WebSocket webSocket) {

@@ -13,9 +13,10 @@ import java.io.StringWriter;
  */
 @SuppressWarnings("SpellCheckingInspection")
 class LogInRunnable implements Runnable {
-private Account account;
+    private Account account;
+
     public LogInRunnable(Account account) {
-        this.account=account;
+        this.account = account;
     }
 
     /**
@@ -30,8 +31,6 @@ private Account account;
         //post request
         RESTPost(request);
     }
-
-
 
     private void RESTPost(Net.HttpRequest request) {
         Gdx.app.debug("Network", "Register REST POST");

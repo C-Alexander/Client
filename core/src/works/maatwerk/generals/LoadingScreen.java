@@ -18,10 +18,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import works.maatwerk.generals.utils.files.Paths;
 
-
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
-
     private final Generals game;
     private final SpriteBatch batch;
     private final AssetManager assetManager;
@@ -59,7 +57,6 @@ class LoadingScreen extends ScreenAdapter {
         this.assetManager.load("loader/main_bar.png", Texture.class);
         this.assetManager.load("loader/bar_full.png", Texture.class);
 
-
         this.assetManager.finishLoading();
     }
 
@@ -70,9 +67,9 @@ class LoadingScreen extends ScreenAdapter {
         emptyBar = this.assetManager.get("loader/main_bar.png");
         fullBar = this.assetManager.get("loader/bar_full.png");
 
-        logoPos = new Vector2((Gdx.graphics.getWidth()-logo.getWidth())/2 , (Gdx.graphics.getHeight() / 2)-100);
-        ebPos = new Vector2((Gdx.graphics.getWidth()-emptyBar.getWidth())/2 , logoPos.y - emptyBar.getHeight() + 40);
-        fbPos = new Vector2((ebPos.x + (emptyBar.getWidth() / 2)) - (fullBar.getWidth()/2), (ebPos.y + (emptyBar.getHeight() / 2)) - (fullBar.getHeight()/2));
+        logoPos = new Vector2((Gdx.graphics.getWidth() - logo.getWidth()) / 2, (Gdx.graphics.getHeight() / 2) - 100);
+        ebPos = new Vector2((Gdx.graphics.getWidth() - emptyBar.getWidth()) / 2, logoPos.y - emptyBar.getHeight() + 40);
+        fbPos = new Vector2((ebPos.x + (emptyBar.getWidth() / 2)) - (fullBar.getWidth() / 2), (ebPos.y + (emptyBar.getHeight() / 2)) - (fullBar.getHeight() / 2));
     }
 
     @Override
@@ -94,7 +91,6 @@ class LoadingScreen extends ScreenAdapter {
 
     private void loadAssets() {
         Gdx.app.debug("Loading", "Loading assets");
-
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
@@ -146,7 +142,6 @@ class LoadingScreen extends ScreenAdapter {
         super.render(delta);
 
         assetManager.update();
-
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

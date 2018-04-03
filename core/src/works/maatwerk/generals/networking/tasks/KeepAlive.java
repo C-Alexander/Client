@@ -22,8 +22,8 @@ public class KeepAlive extends Timer.Task {
 
     public KeepAlive(WebSocket webSocket) {
         this.webSocket = webSocket;
-        Packet keepAlivePacket = new Packet(MessageType.KEEPALIVE, null);
+        Packet Packet = new Packet(MessageType.KEEPALIVE, null);
         Json json = new Json(JsonWriter.OutputType.json);
-        this.keepAlivePacket = json.toJson(keepAlivePacket);
+        this.keepAlivePacket = json.toJson(Packet);
     }
 }

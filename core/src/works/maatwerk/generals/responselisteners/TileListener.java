@@ -10,11 +10,11 @@ import works.maatwerk.generals.models.MapManager;
 /**
  * Created by teund on 06/03/2018.
  */
-public class TileListener extends ClickListener{
-
+public class TileListener extends ClickListener {
     private final ClickableMapActor clickableMapActor;
     private final int tileSize;
     private final MapManager map;
+
     public TileListener(ClickableMapActor clickableMapActor, int tileSize, MapManager map) {
         this.clickableMapActor = clickableMapActor;
         this.tileSize = tileSize;
@@ -32,7 +32,7 @@ public class TileListener extends ClickListener{
         super.clicked(event, x, y);
         Gdx.app.log("TileListener", "An actor was clicked");
 
-        Vector2 location = new Vector2(clickableMapActor.getX()/this.tileSize,clickableMapActor.getY()/this.tileSize);
+        Vector2 location = new Vector2(clickableMapActor.getX() / this.tileSize, clickableMapActor.getY() / this.tileSize);
         this.map.leftClickTile(location);
 
     }

@@ -1,6 +1,5 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
@@ -17,14 +16,12 @@ import works.maatwerk.generals.models.Account;
  * Created by teund on 21/03/2018.
  */
 public class RegistrationScreen extends ScreenAdapter {
-
     private final Generals game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
     private TextField txtUsername, txtPassword, txtPasswordRepeat;
     private Stage stage;
     private OrthographicCamera camera;
-
 
     public RegistrationScreen(final Generals game, final AssetManager assetManager) {
         this.game = game;
@@ -91,7 +88,6 @@ public class RegistrationScreen extends ScreenAdapter {
     public void show() {
         super.show();
     }
-
 
     @Override
     public void render(float delta) {
