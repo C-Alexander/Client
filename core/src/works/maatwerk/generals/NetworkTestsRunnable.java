@@ -17,7 +17,7 @@ class NetworkTestsRunnable implements Runnable {
 
     private void testWebSockets() {
         Gdx.app.debug(Tag.NETWORKING, "Beginning websocket test");
-        WebSocket socket = WebSockets.newSocket("ws://52.28.233.213:9000/game");
+        WebSocket socket = WebSockets.newSocket("ws://dev.maatwerk.works/game");
         socket.setSerializeAsString(true);
         socket.addListener(new TestSocketListener());
         socket.connect();
@@ -54,7 +54,7 @@ class NetworkTestsRunnable implements Runnable {
 
         //get request
         request.setMethod(Net.HttpMethods.GET);
-        request.setUrl("http://52.28.233.213:9000/games");
+        request.setUrl("http://dev.maatwerk.works/games");
         Gdx.net.sendHttpRequest(request, new AllGamesResponseListener());
     }
 
@@ -62,7 +62,7 @@ class NetworkTestsRunnable implements Runnable {
         Gdx.app.debug(Tag.NETWORKING, "Testing REST POST");
 
         request.setMethod(Net.HttpMethods.POST);
-        request.setUrl("http://52.28.233.213:9000/games");
+        request.setUrl("http://dev.maatwerk.works/games");
         request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
 
         Json json = getTestingJson();

@@ -56,8 +56,8 @@ class RegistrationRunnable implements Runnable {
         json.setWriter(new StringWriter());
         //start creating the object
         json.writeObjectStart();
-        json.writeValue("Username", account.getUsername());
-        json.writeValue("Password", account.getPassword());
+        json.writeValue("username", account.getUsername());
+        json.writeValue("password", account.getPassword());
         json.writeObjectEnd();
         return json;
     }
