@@ -63,12 +63,21 @@ class PlayingScreen extends ScreenAdapter {
         initializeNetworking();
 
         map.initializeMap("");
-        Character character1 = new Character(new Race("Test", new Stats(3, 1, 1, 1, 1, 0)), assetManager, ClassEnum.AXE, new Vector2(1,1));
+        Character character1 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(6,2));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character1);
-        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(2, 2));
+        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(5, 2));
         character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character2);
+        Character character3 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.SWORD, new Vector2(4,2));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character3);
+        Character character4 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.CORRUPT, new Vector2(6,29));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character4);
+        Character character5 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.ARCANE, new Vector2(5,29));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character5);
 
         Gdx.input.vibrate(5000);
 
@@ -204,7 +213,7 @@ class PlayingScreen extends ScreenAdapter {
             Label lblRank = new Label("Rank:", skin);
             Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
 
-            Label lblStats = new Label(character.getBaseStats().toString(), skin);
+            Label lblStats = new Label(character.getGameStats().toString(), skin);
 
 
             table.top().left();

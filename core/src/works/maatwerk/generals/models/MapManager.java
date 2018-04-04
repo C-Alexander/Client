@@ -37,6 +37,7 @@ public class MapManager extends Stage {
     private final TileMapStage tileMapStage;
     private final InputMultiplexer multiplexer;
     private TextureRegion grid;
+    private boolean[][] movementRange;
 
     /**
      * @param assetManager
@@ -107,27 +108,27 @@ public class MapManager extends Stage {
      * @param location
      */
     public void leftClickTile(Vector2 location) {
-
         Character character = characterLayer[(int) location.x][(int) location.y];
+        if (character != null) {
+            if (this.getCharacterSelected() == null) {
+                this.setCharacterSelected(character);
 
-        if (character != null && this.getCharacterSelected() == null) {
-            this.setCharacterSelected(character);
-
-            tileMapStage.setSelectedTile((int)location.x, (int)location.y);
-            tileMapStage.setMovementStatuses(PathFinder.getPossibleMoves(getMovementMap(), character, (int)location.x, (int)location.y));
-            //TODO: UpdateUI
-        } else {
-            if (character == null && this.getCharacterSelected() != null) {
-                moveCharacter(this.getCharacterSelected(), location);
-                this.setCharacterSelected(null);
-                tileMapStage.clearAllStatuses();
-
+                tileMapStage.setSelectedTile((int) location.x, (int) location.y);
+                movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, (int) location.x, (int) location.y);
+                tileMapStage.setMovementStatuses(movementRange);
+                //TODO: UpdateUI
             } else {
                 if (this.getCharacterSelected() != null) {
                     this.getCharacterSelected().attack(character);
                     this.setCharacterSelected(null);
                     tileMapStage.clearAllStatuses();
                 }
+            }
+        } else {
+            if (this.getCharacterSelected() != null && this.movementRange[(int) location.x][(int) location.y]) {
+                moveCharacter(this.getCharacterSelected(), location);
+                this.setCharacterSelected(null);
+                tileMapStage.clearAllStatuses();
             }
         }
     }
