@@ -4,12 +4,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import works.maatwerk.generals.actors.TileActor;
 import works.maatwerk.generals.actors.TileActor;
 import works.maatwerk.generals.enums.TileStatus;
 import works.maatwerk.generals.models.MapManager;
-import works.maatwerk.generals.models.Tile;
 
 import java.util.*;
 

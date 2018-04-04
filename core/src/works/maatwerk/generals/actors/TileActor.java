@@ -1,6 +1,5 @@
 package works.maatwerk.generals.actors;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -24,10 +23,6 @@ public class TileActor extends Actor {
         this.assetManager = assetManager;
         this.addListener(new TileListener(this, mapManager));
         this.tilestatuses = tilestatuses;
-    }
-
-    public TileActor(int tileHeight, MapManager map) {
-
     }
 
     public TileStatus getStatus() {

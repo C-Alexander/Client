@@ -20,8 +20,6 @@ import works.maatwerk.generals.utils.logger.*;
 import works.maatwerk.generals.music.MusicManager;
 import java.util.ArrayList;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
-
 @SuppressWarnings("WeakerAccess")
 public class MapManager extends Stage {
     private final MusicManager musicManager;
