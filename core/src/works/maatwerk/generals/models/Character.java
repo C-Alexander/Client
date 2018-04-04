@@ -38,15 +38,30 @@ public class Character extends Actor {
      * Creates an instance of the Character class
      *
      * @param race
+     * @param rank
      * @param weaponclass
      * @param assetManager
      * @param location
      */
-    public Character(Race race, int weaponclass, AssetManager assetManager, Vector2 location) {
-        this.baseStats = new Stats(10, 5, 2, 5, 10);
+    public Character(Race race, Rank rank, int weaponclass, AssetManager assetManager, Vector2 location) {
+        switch (rank.getRankName()) {
+            //TODO: Maybe we can refactor this and make it separate
+            case GRUNT:
+                this.baseStats = new Stats(10, 7, 2, 5, 10);
+                break;
+            case GENERAL:
+                this.baseStats = new Stats(15, 10, 4, 5, 10);
+                break;
+            case HERO:
+                this.baseStats = new Stats(20, 10, 6, 5, 10);
+                break;
+            default:
+                this.baseStats = new Stats(10, 7, 2, 5, 10);
+                break;
+        }
         this.race = race;
         this.weaponClass = weaponclass;
-        this.rank = new Rank();
+        this.rank = rank;
         this.assetManager = assetManager;
         this.location = location;
         debuffs = new ArrayList<Debuff>(); //INFO: Houd de class in de diamond
@@ -225,7 +240,7 @@ public class Character extends Actor {
             int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, this.weaponClass, enemyStats, enemy.weaponClass);
             this.addDamageToCharacter(enemy, damageToEnemy);
             if(enemy.isAlive())
-            this.addDamageToCharacter(this, damageToSelf);
+                this.addDamageToCharacter(this, damageToSelf);
         }
     }
 
@@ -276,7 +291,7 @@ public class Character extends Actor {
         if (rank.getRankName() != RankName.GENERAL)
             return;
         while (minions.size() < MAX_MINIONS) {
-            minions.add(new Character(race, this.weaponClass, this.assetManager, this.location));
+            minions.add(new Character(race, new Rank(), this.weaponClass, this.assetManager, this.location));
         }
     }
 

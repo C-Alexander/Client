@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.models.Race;
+import works.maatwerk.generals.models.Rank;
 import works.maatwerk.generals.models.Stats;
 import works.maatwerk.generals.models.Weapon;
 
@@ -14,7 +15,7 @@ import works.maatwerk.generals.models.Weapon;
  */
 public class PathFinderTest {
     private Race race = new Race("Test", new Stats(9, 3, 1, 0, 1));
-    private Character character = new Character(race, 0, null, null);
+    private Character character = new Character(race, new Rank(), 0, null, null);
 
     /**
      * Test of getPossibleMoves method, of class PathFinder.
