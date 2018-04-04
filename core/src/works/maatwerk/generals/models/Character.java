@@ -90,13 +90,6 @@ public class Character extends Actor {
     }
 
     /**
-     * @param weapon
-     */
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    /**
      * @return
      */
     public Stats getDebuffs() {

@@ -180,19 +180,7 @@ public class Stats {
             return false;
         }
         final Stats other = (Stats) obj;
-        if (this.healthPoints != other.healthPoints) {
-            return false;
-        }
-        if (this.attack != other.attack) {
-            return false;
-        }
-        if (this.defence != other.defence) {
-            return false;
-        }
-        if (this.movement != other.movement) {
-            return false;
-        }
-        return this.speed == other.speed;
+        return this.hashCode() == other.hashCode();
     }
 
     public Stats cloneStats() {
