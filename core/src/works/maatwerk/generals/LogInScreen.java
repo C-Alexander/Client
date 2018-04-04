@@ -55,7 +55,6 @@ public class LogInScreen extends ScreenAdapter{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 new Thread(new LogInRunnable(new Account(txtUsername.getText(),txtPassword.getText()),game,assetManager)).start();
-                game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
             }
         });
 

@@ -145,6 +145,9 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.app.debug("Camera", "Resizing screen");
 
+        map.getViewport().update(width, height);
+        map.getTileMapStage().getViewport().update(width, height);
+
         camera.viewportWidth = width;
         camera.viewportHeight = height;
         camera.update();
