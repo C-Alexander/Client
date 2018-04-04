@@ -1,16 +1,15 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
+import javafx.util.Pair;
 import works.maatwerk.generals.models.Account;
 import works.maatwerk.generals.utils.logger.Tag;
 
 import java.io.StringWriter;
-import java.util.Optional;
 
 /**
  * Created by teund on 26/03/2018.
@@ -44,26 +43,26 @@ class AccountRunnable implements Runnable {
         Gdx.app.debug("Network", "Testing REST API");
 
         //request to use for future networking
-        Net.HttpRequest request = new Net.HttpRequest();
 
         //post request
         if (isLoggingIn){
-            restPostLogin(request);
+            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
         }else{
-            restPostRegister(request);
+            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
         }
     }
 
+    private Net.HttpRequest getHttpRequest(String url, String method, Pair<String, String> contentType){
+        Net.HttpRequest request = new Net.HttpRequest();
+        request.setUrl(url);
+        request.setMethod(method);
+        request.setHeader(contentType.getKey(), contentType.getValue());
+
+        return request;
+    }
+
     private void restPostLogin(Net.HttpRequest request) {
-        Gdx.app.debug("Network", "Register REST POST");
-
-        request.setMethod(Net.HttpMethods.POST);
-        request.setUrl(URL_LOGIN);
-        request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
-
         Json json = getJson();
-        //put the object as a string in the request body
-        //ok so this is ugly. First getWriter gets a JSonwriter -- we dont want that. Second gets the native java stringwriter.
         request.setContent(json.getWriter().getWriter().toString());
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
@@ -87,18 +86,9 @@ class AccountRunnable implements Runnable {
                 Gdx.app.error(Tag.NETWORKING, "Cancelled... why ");
             }
         });
-
-        //send!
-
     }
 
     private void restPostRegister(Net.HttpRequest request) {
-        Gdx.app.debug("Network", "Register REST POST");
-
-        request.setMethod(Net.HttpMethods.POST);
-        request.setUrl(URL_REGISTER);
-        request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
-
         Json json = getJson();
         //put the object as a string in the request body
         //ok so this is ugly. First getWriter gets a JSonwriter -- we dont want that. Second gets the native java stringwriter.
