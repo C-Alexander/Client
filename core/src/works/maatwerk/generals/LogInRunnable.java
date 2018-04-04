@@ -54,7 +54,12 @@ private Account account;
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
                 if (httpResponse.getStatus().getStatusCode()== 200)
-                game.setScreen(new PostGameScreen(game, assetManager,"BoxerShort1",150,20,60,false));
+                Gdx.app.postRunnable(new Runnable() {
+                    @Override
+                    public void run() {
+                        game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+                    }
+                });
             }
 
             @Override

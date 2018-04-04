@@ -44,7 +44,7 @@ public class Character extends Actor {
      * @param location
      */
     public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
-        this.baseStats = new Stats(1, 1, 1, 1, 1, 0);
+        this.baseStats = new Stats(1, 1, 1, 10, 10, 0);
         this.race = race;
         this.rank = new Rank();
         this.assetManager = assetManager;
