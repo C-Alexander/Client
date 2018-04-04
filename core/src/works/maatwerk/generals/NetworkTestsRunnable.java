@@ -6,11 +6,11 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import com.github.czyzby.websocket.WebSocket;
 import com.github.czyzby.websocket.WebSockets;
-import works.maatwerk.generals.models.Person;
 import works.maatwerk.generals.responselisteners.AllGamesResponseListener;
 import works.maatwerk.generals.responselisteners.TestSocketListener;
 import works.maatwerk.generals.utils.logger.Tag;
 import java.io.StringWriter;
+import works.maatwerk.generals.models.Stats;
 
 @SuppressWarnings("SpellCheckingInspection")
 class NetworkTestsRunnable implements Runnable {
@@ -24,11 +24,8 @@ class NetworkTestsRunnable implements Runnable {
 
         Gdx.app.debug("JSON", "Serializing object to json");
         Json json = new Json(JsonWriter.OutputType.json);
-        Person teun = new Person();
-        teun.setTeLaat(true);
-        teun.setTeun("ja");
-        teun.setTriggerLevel(9001);
-        String packet = json.toJson(teun);
+        Stats stats = new Stats(1, 2, 3, 4, 5);
+        String packet = json.toJson(stats);
 
         Gdx.app.debug(Tag.NETWORKING, "Sending packet to websocket: " + packet);
         socket.send(packet);
