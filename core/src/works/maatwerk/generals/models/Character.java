@@ -46,6 +46,7 @@ public class Character extends Actor {
      */
     public Character(Race race, Rank rank, AssetManager assetManager, ClassEnum classEnum, Vector2 location) {
         switch (rank.getRankName()) {
+            //TODO: Maybe we can refactor this and make it separate
             case GRUNT:
                 this.baseStats = new Stats(10, 7, 2, 5, 10, 0);
                 break;

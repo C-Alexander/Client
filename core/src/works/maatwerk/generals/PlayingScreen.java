@@ -54,6 +54,7 @@ class PlayingScreen extends ScreenAdapter {
         addUI(table);
     }
 
+    //TODO: Jesus fucking christ Teun wat is dit
     private void loadOwnTeam(){
         Character character1 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), assetManager, ClassEnum.AXE, new Vector2(13,3));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
@@ -87,6 +88,7 @@ class PlayingScreen extends ScreenAdapter {
         map.addCharacter(character10);
     }
 
+    //TODO: Jesus fucking christ Teun wat is dit
     private void loadEnemyTeam(){
         Character character11 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), assetManager, ClassEnum.ARCANE, new Vector2(13,27));
         character11.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
