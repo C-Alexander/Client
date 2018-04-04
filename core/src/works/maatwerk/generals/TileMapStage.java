@@ -14,16 +14,14 @@ import works.maatwerk.generals.models.Tile;
 import java.util.*;
 
 public class TileMapStage extends Stage {
-    private final Random rand;
     private final MapManager mapManager;
     private AssetManager assetManager;
-    List<List<TileActor>> tileActors;
+    private List<List<TileActor>> tileActors;
 
     public TileMapStage(AssetManager assetManager, MapManager mapManager) {
         this.assetManager = assetManager;
         this.mapManager = mapManager;
         setDebugUnderMouse(true);
-        rand = new Random();
     }
 
     @Override
@@ -83,14 +81,6 @@ public class TileMapStage extends Stage {
             }
         }
     }
-
-//    public void replaceTileStatusesFromList(List<List<TileStatus>> tiles, HashSet<TileStatus> statusesToReplace) {
-//
-//    }
-//
-//    public void replaceTileStatusesFromList(List<List<Boolean>> tiles, TileStatus trueStatus, TileStatus falseStatus, TileStatus replacedStatus, Boolean replaceNONE) {
-//
-//    }
 
     public void setTileStatuses(List<List<Boolean>> tiles, TileStatus trueStatus, TileStatus falseStatus) {
         for (int x = 0; x < tiles.size(); x++) {

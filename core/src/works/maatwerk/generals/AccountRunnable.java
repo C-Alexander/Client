@@ -5,6 +5,7 @@ import com.badlogic.gdx.Net;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
+import javafx.util.Pair;
 import works.maatwerk.generals.models.Account;
 import works.maatwerk.generals.utils.logger.Tag;
 
@@ -14,41 +15,49 @@ import java.io.StringWriter;
  * Created by teund on 26/03/2018.
  */
 @SuppressWarnings("SpellCheckingInspection")
-class LogInRunnable implements Runnable {
+class AccountRunnable implements Runnable {
 
-    private final Generals game;
-    private final AssetManager assetManager;
-private Account account;
-    public LogInRunnable(Account account, Generals game, AssetManager assetManager) {
-        this.account=account;
-        this.game=game;
-        this.assetManager=assetManager;
+    private static final String URL_LOGIN = "http://dev.maatwerk.works/login";
+    private static final String URL_REGISTER = "http://dev.maatwerk.works/register";
+    private Generals game = new Generals();
+    private AssetManager assetManager = new AssetManager();
+    private boolean isLoggingIn;
+    private Account account;
 
+    public AccountRunnable(Account account, Generals game, AssetManager assetManager, boolean isLoggingIn) {
+        this.account = account;
+        this.game = game;
+        this.assetManager = assetManager;
+        this.isLoggingIn = isLoggingIn;
+    }
+
+    public AccountRunnable(Account account, boolean isLoggingIn){
+        this.account = account;
+        this.isLoggingIn = isLoggingIn;
     }
 
     /**
      * Testing the http functions of libgdx
      */
     private void restAPI() {
-        Gdx.app.debug("Network", "Testing REST API");
-
-        //request to use for future networking
-        Net.HttpRequest request = new Net.HttpRequest();
-
-        //post request
-        restPost(request);
+        if (isLoggingIn){
+            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
+        }else{
+            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
+        }
     }
 
-    private void restPost(Net.HttpRequest request) {
-        Gdx.app.debug("Network", "Register REST POST");
+    private Net.HttpRequest getHttpRequest(String url, String method, Pair<String, String> contentType){
+        Net.HttpRequest request = new Net.HttpRequest();
+        request.setUrl(url);
+        request.setMethod(method);
+        request.setHeader(contentType.getKey(), contentType.getValue());
 
-        request.setMethod(Net.HttpMethods.POST);
-        request.setUrl("http://dev.maatwerk.works/login");
-        request.setHeader("Content-Type", "application/json"); //needed so the server knows what to expect ;)
+        return request;
+    }
 
+    private void restPostLogin(Net.HttpRequest request) {
         Json json = getJson();
-        //put the object as a string in the request body
-        //ok so this is ugly. First getWriter gets a JSonwriter -- we dont want that. Second gets the native java stringwriter.
         request.setContent(json.getWriter().getWriter().toString());
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
@@ -72,9 +81,16 @@ private Account account;
                 Gdx.app.error(Tag.NETWORKING, "Cancelled... why ");
             }
         });
+    }
+
+    private void restPostRegister(Net.HttpRequest request) {
+        Json json = getJson();
+        //put the object as a string in the request body
+        //ok so this is ugly. First getWriter gets a JSonwriter -- we dont want that. Second gets the native java stringwriter.
+        request.setContent(json.getWriter().getWriter().toString());
 
         //send!
-
+        Gdx.net.sendHttpRequest(request, null);
     }
 
     private Json getJson() {
