@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import works.maatwerk.generals.ClassEnum;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,6 +55,8 @@ public class Character extends Actor {
             case HERO:
                 this.baseStats = new Stats(20, 10, 6, 5, 10, 0);
                 break;
+            default:
+                this.baseStats = new Stats(10, 7, 2, 5, 10, 0);
         }
         this.race = race;
         this.rank = rank;
@@ -201,8 +204,8 @@ public class Character extends Actor {
             int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, ownStats);
             int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, enemyStats);
             this.addDamageToCharacter(enemy, damageToEnemy);
-            if(enemy.isAlive())
-            this.addDamageToCharacter(this, damageToSelf);
+            if (enemy.isAlive())
+                this.addDamageToCharacter(this, damageToSelf);
         }
     }
 

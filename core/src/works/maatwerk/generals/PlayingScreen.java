@@ -54,13 +54,7 @@ class PlayingScreen extends ScreenAdapter {
         addUI(table);
     }
 
-    @Override
-    public void show() {
-        initializeCamera();
-        initializeInputMultiplexer();
-        initializeNetworking();
-
-        map.initializeMap("");
+    private void LoadOwnTeam(){
         Character character1 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), assetManager, ClassEnum.AXE, new Vector2(13,3));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character1);
@@ -91,40 +85,51 @@ class PlayingScreen extends ScreenAdapter {
         Character character10 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT),assetManager, ClassEnum.ARCHER, new Vector2(18,2));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character10);
+    }
 
-
+    private void LoadEnemyTeam(){
         Character character11 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), assetManager, ClassEnum.ARCANE, new Vector2(13,27));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character11.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character11);
         Character character12 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), assetManager, ClassEnum.ARCANE, new Vector2(12, 28));
-        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        character12.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character12);
         Character character13 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), assetManager, ClassEnum.ARCANE, new Vector2(14,28));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character13.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character13);
         Character character14 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), assetManager, ClassEnum.SPEAR,new Vector2(15,25));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character14.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character14);
         Character character15 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), assetManager, ClassEnum.SPEAR, new Vector2(14,26));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character15.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character15);
         Character character16 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT),assetManager, ClassEnum.SPEAR, new Vector2(16,26));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character16.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character16);
         Character character17 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO),assetManager, ClassEnum.VALKYRIE, new Vector2(15, 27));
-        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        character17.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character17);
         Character character18 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), assetManager, ClassEnum.CORRUPT, new Vector2(17,27));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character18.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character18);
         Character character19 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), assetManager, ClassEnum.CORRUPT, new Vector2(16,28));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character19.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character19);
         Character character20 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT),assetManager, ClassEnum.CORRUPT, new Vector2(18,28));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character20.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character20);
-        Gdx.input.vibrate(5000);
+    }
 
+    @Override
+    public void show() {
+        initializeCamera();
+        initializeInputMultiplexer();
+        initializeNetworking();
+
+        map.initializeMap("");
+        LoadOwnTeam();
+        LoadEnemyTeam();
+        Gdx.input.vibrate(5000);
 
         initializeVolumeControls();
         initializeCameraInputController();
