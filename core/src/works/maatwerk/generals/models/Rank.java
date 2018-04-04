@@ -1,7 +1,5 @@
 package works.maatwerk.generals.models;
 
-import works.maatwerk.generals.enums.RankName;
-
 /**
  *
  * @author Rick Pijnenburg - REXOTIUM
@@ -27,8 +25,8 @@ public class Rank {
     /**
      * Constructor
      */
-    public Rank() {
-        rankName = RankName.GRUNT;
+    public Rank(RankName rank) {
+        rankName = rank;
         matchExperience = 0;
         experience = 0;
         level = 0;
@@ -115,7 +113,6 @@ public class Rank {
      */
     public void update() {
         experience += matchExperience;
-        matchExperience = 0;
         checkLevelUp();
     }
     

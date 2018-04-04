@@ -12,6 +12,7 @@ public class Stats {
     private int defence;
     private int movement;
     private int speed;
+    private int weaponClass;
     
     /**
      * Default constructor. All attributes are 0.
@@ -22,6 +23,7 @@ public class Stats {
         defence = 0;
         movement = 0;
         speed = 0;
+        weaponClass = 0;
     }
     
     /**
@@ -30,14 +32,16 @@ public class Stats {
      * @param attack
      * @param defence
      * @param movement
-     * @param speed
+     * @param speed 
+     * @param weaponclass 
      */
-    public Stats(int healthpoints, int attack, int defence, int movement, int speed) {
+    public Stats(int healthpoints, int attack, int defence, int movement, int speed, int weaponclass) {
         this.healthPoints = healthpoints;
         this.attack = attack;
         this.defence = defence;
         this.movement = movement;
         this.speed = speed;
+        this.weaponClass = weaponclass;
     }
     
     /**
@@ -81,6 +85,15 @@ public class Stats {
     }
     
     /**
+     * Use class WeaponClass to decode this.
+     * 
+     * @return 
+     */
+    public int getWeaponClass() {
+        return weaponClass;
+    }
+    
+    /**
      * 
      * @param healthPoints 
      */
@@ -121,6 +134,14 @@ public class Stats {
     }
     
     /**
+     * 
+     * @param weaponClass 
+     */
+    public void setWeaponClass(int weaponClass) {
+        this.weaponClass = weaponClass;
+    }
+    
+    /**
      * Adds the stats argument to this instance
      * 
      * @param stats 
@@ -133,6 +154,7 @@ public class Stats {
         this.healthPoints += stats.healthPoints;
         this.movement += stats.movement;
         this.speed += stats.speed;
+        this.weaponClass |= stats.weaponClass;
     }
     
     /**
@@ -155,41 +177,5 @@ public class Stats {
     @Override
     public String toString() {
         return MessageFormat.format("hp={0}  att={1}  def={2}  mvd={3}  spd={4}", healthPoints, attack, defence, movement, speed);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + this.healthPoints;
-        hash = 41 * hash + this.attack;
-        hash = 41 * hash + this.defence;
-        hash = 41 * hash + this.movement;
-        hash = 41 * hash + this.speed;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Stats other = (Stats) obj;
-        return this.hashCode() == other.hashCode();
-    }
-
-    public Stats cloneStats() {
-        Stats output = new Stats();
-        output.attack = this.attack;
-        output.defence = this.defence;
-        output.healthPoints = this.healthPoints;
-        output.movement = this.movement;
-        output.speed = this.speed;
-        return output;
     }
 }
