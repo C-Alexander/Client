@@ -13,7 +13,7 @@ import works.maatwerk.generals.models.Weapon;
  * @email m.a.a.pijnenburg@gmail.com
  */
 public class PathFinderTest {
-    private Race race = new Race("Test", new Stats(9, 3, 1, 4, 1));
+    private Race race = new Race("Test", new Stats(9, 3, 1, 0, 1));
     private Character character = new Character(race, 0, null, null);
 
     /**
