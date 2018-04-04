@@ -56,7 +56,7 @@ public class RegistrationScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 if (txtPassword.getText().equals(txtPasswordRepeat.getText())) {
                     Account account = new Account(txtUsername.getText(), txtPassword.getText());
-                    new Thread(new RegistrationRunnable(account)).start();
+                    new Thread(new AccountRunnable(account, false)).start();
                     game.setScreen(new LogInScreen(game, assetManager));
                 }
             }
