@@ -120,8 +120,13 @@ class LoadingScreen extends ScreenAdapter {
         assetManager.load("skin/uiskin.json", Skin.class);
         assetManager.load("skin/uiskin.atlas", TextureAtlas.class);
 
+        loadTileStatuses();
         loadMusic();
 
+    }
+
+    private void loadTileStatuses() {
+        assetManager.load("tileobjects/tilestatus.atlas", TextureAtlas.class);
     }
 
     private void loadMusic() {
