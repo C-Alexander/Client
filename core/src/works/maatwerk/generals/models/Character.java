@@ -43,10 +43,20 @@ public class Character extends Actor {
      * @param classEnum
      * @param location
      */
-    public Character(Race race, AssetManager assetManager, ClassEnum classEnum, Vector2 location) {
-        this.baseStats = new Stats(10, 5, 2, 5, 10, 0);
+    public Character(Race race, Rank rank, AssetManager assetManager, ClassEnum classEnum, Vector2 location) {
+        switch (rank.getRankName()) {
+            case GRUNT:
+                this.baseStats = new Stats(10, 7, 2, 5, 10, 0);
+                break;
+            case GENERAL:
+                this.baseStats = new Stats(15, 10, 4, 5, 10, 0);
+                break;
+            case HERO:
+                this.baseStats = new Stats(20, 10, 6, 5, 10, 0);
+                break;
+        }
         this.race = race;
-        this.rank = new Rank();
+        this.rank = rank;
         this.assetManager = assetManager;
         this.classEnum = classEnum;
         this.location = location;
@@ -243,7 +253,7 @@ public class Character extends Actor {
         if (rank.getRankName() != RankName.GENERAL)
             return;
         while (minions.size() < MAX_MINIONS) {
-            minions.add(new Character(race, this.assetManager, this.classEnum, this.location));
+            minions.add(new Character(race, new Rank(RankName.GRUNT), this.assetManager, this.classEnum, this.location));
         }
     }
 

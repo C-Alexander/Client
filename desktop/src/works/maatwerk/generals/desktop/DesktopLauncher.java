@@ -14,7 +14,7 @@ public class DesktopLauncher {
 		config.samples = 16;
 		config.allowSoftwareMode = true;
 		config.vSyncEnabled = true;
-
+		config.fullscreen = true;
 		new LwjglApplication(new Generals(), config);
 	}
 }

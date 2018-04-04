@@ -25,8 +25,8 @@ public class Rank {
     /**
      * Constructor
      */
-    public Rank() {
-        rankName = RankName.GRUNT;
+    public Rank(RankName rank) {
+        rankName = rank;
         matchExperience = 0;
         experience = 0;
         level = 0;
