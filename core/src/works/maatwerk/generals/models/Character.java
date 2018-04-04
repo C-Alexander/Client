@@ -11,7 +11,6 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
  * @author Sam Dirkx
  */
 @SuppressWarnings("WeakerAccess")
@@ -37,13 +36,14 @@ public class Character extends Actor {
 
     /**
      * Creates an instance of the Character class
+     *
      * @param race
      * @param weaponclass
      * @param assetManager
      * @param location
      */
     public Character(Race race, int weaponclass, AssetManager assetManager, Vector2 location) {
-        this.baseStats = new Stats(1, 1, 1, 1, 1);
+        this.baseStats = new Stats(10, 5, 2, 5, 10);
         this.race = race;
         this.weaponClass = weaponclass;
         this.rank = new Rank();
@@ -62,51 +62,52 @@ public class Character extends Actor {
     }
 
     /**
-     *
-     * @return 
+     * @return
      */
     public Stats getBaseStats() {
         return baseStats;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @return
      */
     public Race getRace() {
         return race;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @return
      */
     public Rank getRank() {
         return rank;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @return
      */
     public Weapon getWeapon() {
         return weapon;
     }
 
     /**
-     *
+     * @param weapon
+     */
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    /**
      * @return
      */
     public Stats getDebuffs() {
         Stats output = new Stats();
-        for(Debuff d : debuffs) {
+        for (Debuff d : debuffs) {
             output.addToThis(d.getStaticDebuff());
         }
         return output;
     }
-    
+
     /**
-     *
      * @return
      */
     public List<Character> getMinions() {
@@ -161,95 +162,95 @@ public class Character extends Actor {
     }
 
     /**
-     * 
-     * @param debuff 
+     * @param debuff
      */
     public void addDebuffs(Debuff debuff) {
         this.debuffs.add(debuff);
     }
-    
+
     /**
-     * 
      * @param minion
-     * @return 
+     * @return
      */
     public boolean addMinion(Character minion) {
-        if(rank.getRankName() != RankName.HERO || minion.rank.getRankName() != RankName.GENERAL)
+        if (rank.getRankName() != RankName.HERO || minion.rank.getRankName() != RankName.GENERAL)
             throw new IllegalArgumentException();
-        if(minions.size() >= MAX_MINIONS)
+        if (minions.size() >= MAX_MINIONS)
             return false;
-        if(minions.contains(minion))
+        if (minions.contains(minion))
             return false;
         minions.add(minion);
         return true;
     }
-    
+
     /**
-     * 
      * @param minion
-     * @return 
+     * @return
      */
     public boolean removeMinion(Character minion) {
-       return minions.remove(minion);
+        return minions.remove(minion);
     }
-    
+
     /**
      * Gets the stats of the character for this turn.
-     * 
-     * @return 
+     *
+     * @return
      */
     public Stats getGameStats() {
         Stats output = new Stats();
         output.addToThis(baseStats);
         output.addToThis(race.getStats());
-        if(weapon != null) {
+        if (weapon != null) {
             output.addToThis(weapon.getStats());
         }
 
         output.addToThis(getDebuffs());
         return output;
     }
-    
+
     /**
      * To check if this character is still alive
-     * 
-     * @return 
+     *
+     * @return
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAlive() {
         return getGameStats().getHealthPoints() > 0;
     }
-    
+
     /**
-     * Manipulates gameStats of this character and enemy character according to 
+     * Manipulates gameStats of this character and enemy character according to
      * battle calculations
-     * 
+     *
      * @param enemy
      */
     public void attack(Character enemy) {
-        Stats enemyStats = enemy.getGameStats();
-        Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, enemy.weaponClass, ownStats, this.weaponClass);
-        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, this.weaponClass, enemyStats, enemy.weaponClass);
-        this.addDamageToCharacter(enemy, damageToEnemy);
-        this.addDamageToCharacter(this, damageToSelf);
+        if (!enemy.equals(this)) {
+            Stats enemyStats = enemy.getGameStats();
+            Stats ownStats = this.getGameStats();
+            int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, enemy.weaponClass, ownStats, this.weaponClass);
+            int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, this.weaponClass, enemyStats, enemy.weaponClass);
+            this.addDamageToCharacter(enemy, damageToEnemy);
+            if(enemy.isAlive())
+            this.addDamageToCharacter(this, damageToSelf);
+        }
     }
-    
+
     /**
      * Manipulates gameStats of this character according to healing calculations
      *
      * @param ally
      */
     public void heal(Character ally) {
-        if(weapon == null)
+        if (weapon == null)
             return;
-        if(!weapon.isCanHeal())
+        if (!weapon.isCanHeal())
             return;
         Stats added = new Stats();
         added.setHealthPoints(this.getGameStats().getAttack());
         ally.addDebuffs(new Debuff(-1, added, null));
     }
-    
+
     /**
      * manipulates gameStats temporarily according to tile effect
      *
@@ -259,43 +260,42 @@ public class Character extends Actor {
     public void bonus(Tile bonusTile) {
         //implement
     }
-    
+
     /**
      * updates the class's properties
-     * 
      */
     public void update() {
         Iterator<Debuff> iterator = debuffs.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Debuff debuff = iterator.next();
-            if(debuff.getTurns() == 0) {
+            if (debuff.getTurns() == 0) {
                 iterator.remove();
                 continue;
             }
             debuff.update();
         }
     }
-    
+
     /**
      * For generals checks if the amount of grunts is correct otherwise spawns them.
      */
     public void matchStart() {
-        if(rank.getRankName() != RankName.GENERAL)
+        if (rank.getRankName() != RankName.GENERAL)
             return;
         while (minions.size() < MAX_MINIONS) {
             minions.add(new Character(race, this.weaponClass, this.assetManager, this.location));
         }
     }
-    
+
     /**
      * Called when match has ended to clear debuff list and set experience.
      * Also returns list of minions which reached the same rank as their master character.
      * This function calls the same function in all its minions.
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<Character> matchEnded() {
-        if(!this.isAlive())
+        if (!this.isAlive())
             return new ArrayList<Character>();
         rank.update();
         debuffs.clear();
@@ -354,43 +354,43 @@ public class Character extends Actor {
     
     /**
      * Calculates the damage that will be done by the character.
-     * 
+     *
      * @param weaponCanHeal
      * @param defence
      * @param attack
-     * @return 
+     * @return
      */
     private int calculateDamage(boolean weaponCanHeal, Stats defence, int weaponClassDefence, Stats attack, int weaponClassAttack) {
         return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(weaponClassAttack, weaponClassDefence)) / 100;
     }
-    
+
     /**
      * Adds the damage the the debufflist for infinity (and beyond!)
-     * 
+     *
      * @param character
-     * @param damage 
+     * @param damage
      */
     private void addDamageToCharacter(Character character, int damage) {
-        if(damage < 0) {
+        if (damage < 0) {
             Stats dmg = new Stats();
             dmg.setHealthPoints(damage);
             character.addDebuffs(new Debuff(-1, dmg, null));
         }
     }
-    
+
     /**
      * Calls matchEnded in all minions and checks of one of the minions gained the same rank as this character.
      * If same rank is achieved removes minion from the minion list and output it in the return list.
-     * 
-     * @return 
+     *
+     * @return
      */
     private List<Character> matchEndedMinions() {
         List<Character> output = new ArrayList<Character>();
         Iterator<Character> iterator = minions.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Character c = iterator.next();
             output.addAll(c.matchEnded());
-            if(c.rank.getRankName() != rank.getRankName())
+            if (c.rank.getRankName() != rank.getRankName())
                 continue;
             iterator.remove();
             c.minions.clear();
