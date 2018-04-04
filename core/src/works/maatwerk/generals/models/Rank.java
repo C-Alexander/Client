@@ -33,6 +33,13 @@ public class Rank {
         experience = 0;
         level = 0;
     }
+
+    public Rank(RankName rankName) {
+        this.rankName = rankName;
+        matchExperience = 0;
+        experience = 0;
+        level = 0;
+    }
     
     /**
      * 
