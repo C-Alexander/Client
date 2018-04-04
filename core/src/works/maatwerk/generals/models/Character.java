@@ -57,6 +57,7 @@ public class Character extends Actor {
                 break;
             default:
                 this.baseStats = new Stats(10, 7, 2, 5, 10, 0);
+                break;
         }
         this.race = race;
         this.rank = rank;
