@@ -21,6 +21,19 @@ public class PathFinder {
     public static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
         return getPossibleMoves(tiles, character, x, y, 0);
     }
+    
+    private static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed) {
+        boolean[][] output = getBooleanArray(tiles);
+        output[x][y] = true;
+            int moves = character.getGameStats().getMovement() - movesUsed;
+        if(moves <= 0)
+            return output;
+
+        output = calcMove(tiles, character, Math.max(x - 1, 0), y, movesUsed, moves, output);
+        output = calcMove(tiles, character, Math.min(x + 1, tiles.length-1), y, movesUsed, moves, output);
+        output = calcMove(tiles, character, x, Math.max(y - 1, 0), movesUsed, moves, output);
+        return calcMove(tiles, character, x, Math.min(y + 1, tiles[0].length-1), movesUsed, moves, output);
+    }
 
     /**
      * Calculates the possiblities where a character can attack according to the field.
@@ -34,38 +47,10 @@ public class PathFinder {
      * @return 
      */
     public static boolean[][] getAttackRange(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
-        return getAttackRange(tiles, character, x, y, 0);
-    }
-    
-    private static boolean[][] getAttackRange(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int rangeUsed) {
+        //noinspection UnnecessaryLocalVariable
         boolean[][] output = getBooleanArray(tiles);
-        if(x < 0 || y < 0 || x >= output.length || y >= output[0].length) {
-            return output;
-        }
-        output[x][y] = true;
-        int range = (character.getWeapon() == null ? 1 : character.getWeapon().getRange()) - rangeUsed;
-        if(range <= 0)
-            return output;
-        output = calcRange(tiles, character, x - 1, y, rangeUsed, range, output);
-        output = calcRange(tiles, character, x + 1, y, rangeUsed, range, output);
-        output = calcRange(tiles, character, x, y - 1, rangeUsed, range, output);
-        return calcRange(tiles, character, x, y + 1, rangeUsed, range, output);
-    }
-    
-    private static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed) {
-        boolean[][] output = getBooleanArray(tiles);
-        if(x < 0 || y < 0 || x >= output.length || y >= output[0].length) {
-            return output;
-        }
-        output[x][y] = true;
-        int moves = character.getGameStats().getMovement() - movesUsed;
-        if (moves <= 0) {
-            return output;
-        }
-        output = calcMove(tiles, character, x - 1, y, movesUsed, moves, output);
-        output = calcMove(tiles, character, x + 1, y, movesUsed, moves, output);
-        output = calcMove(tiles, character, x, y - 1, movesUsed, moves, output);
-        return calcMove(tiles, character, x, y + 1, movesUsed, moves, output);
+        
+        return output;
     }
     
     private static boolean[][] getBooleanArray(int[][] tiles) {
@@ -80,23 +65,9 @@ public class PathFinder {
         return new boolean[x][y];
     }
     
-    private static boolean[][] calcRange(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int rangeUsed, int range, boolean[][] array) {
-        boolean[][] output = array;
-        if(x < 0 || y < 0 || x >= output.length || y >= output[0].length) {
-            return output;
-        }
-        if (tiles[x][y] >= 0 && tiles[x][y] <= range) {
-            output = addBooleanArray(output, getAttackRange(tiles, character, x, y, rangeUsed + tiles[x][y]));
-        }
-        return output;
-    }
-
     private static boolean[][] calcMove(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed, int moves, boolean[][] array) {
         boolean[][] output = array;
-        if(x < 0 || y < 0 || x >= output.length || y >= output[0].length) {
-            return output;
-        }
-        if (tiles[x][y] >= 0 && tiles[x][y] <= moves) {
+        if((x) >= 0 && tiles[x][y] >= 0 && tiles[x][y] <= moves) {
             output = addBooleanArray(output, getPossibleMoves(tiles, character, x, y, movesUsed + tiles[x][y]));
         }
         return output;

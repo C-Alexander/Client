@@ -1,7 +1,5 @@
 package works.maatwerk.generals.models;
 
-import works.maatwerk.generals.enums.RankName;
-
 /**
  *
  * @author Rick Pijnenburg - REXOTIUM
@@ -115,7 +113,6 @@ public class Rank {
      */
     public void update() {
         experience += matchExperience;
-        matchExperience = 0;
         checkLevelUp();
     }
     

@@ -6,7 +6,6 @@ package works.maatwerk.generals.models;
  * @email m.a.a.pijnenburg@gmail.com
  */
 public class WeaponClass {
-    public static final int NO_CLASS = 0x00000000;
     public static final int SWORD    = 0x00000001;
     public static final int AXE      = 0x00000002;
     public static final int SPEAR    = 0x00000004;
@@ -14,8 +13,7 @@ public class WeaponClass {
     public static final int CORRUPT  = 0x00000010;
     public static final int ARCANE   = 0x00000020;
     public static final int BOW      = 0x00000040;
-    public static final int HEALER   = 0x00000080;
-    public static final int VALKYRIE = 0x00000100;
+    public static final int F_HEALER = 0x00000080;
     
     private WeaponClass() {
     }
@@ -34,7 +32,7 @@ public class WeaponClass {
             output = 120;
         } else if(((self & ARCANE) > 0 && (enemy & DIVINE) > 0)) {
             output = 120;
-        } else if(((self & BOW) > 0 && (enemy & HEALER) > 0)) {
+        } else if(((self & BOW) > 0 && (enemy & F_HEALER) > 0)) {
             output = 120;
         }
         return output;
