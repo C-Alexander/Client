@@ -27,7 +27,6 @@ public class MapManager extends Stage {
     private final MusicManager musicManager;
     private TiledMap map;
     private final AssetManager assetManager;
-    private TmxMapLoader mapLoader;
     private OrthogonalTiledMapRenderer renderer;
     private Character characterSelected;
     @SuppressWarnings("CanBeFinal")

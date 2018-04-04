@@ -37,8 +37,6 @@ class PlayingScreen extends ScreenAdapter {
     private MapManager map;
     private Stage stage;
     private Table table;
-    @SuppressWarnings("FieldCanBeLocal")
-    private NetworkManager networkManager;
 
     PlayingScreen(Generals game, AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -82,7 +80,7 @@ class PlayingScreen extends ScreenAdapter {
     }
 
     private void initializeNetworking() {
-        networkManager = new NetworkManager();
+        NetworkManager networkManager = new NetworkManager();
         networkManager.connect();
     }
 

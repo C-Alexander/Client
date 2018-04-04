@@ -14,10 +14,11 @@ import works.maatwerk.generals.models.Account;
  * Created by teund on 21/03/2018.
  */
 public class RegistrationScreen extends ScreenAdapter {
-    private TextField txtUsername, txtPassword, txtPasswordRepeat;
+    private TextField txtUsername, txtPassword;
     private Stage stage;
 
     public RegistrationScreen(final Generals game, final AssetManager assetManager) {
+        final TextField txtPasswordRepeat;
         this.stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
