@@ -50,7 +50,12 @@ public final class PathFinder {
         }
         output[x][y] = true;
         int range = (character.getWeapon() == null ? 1 : character.getWeapon().getRange()) - rangeUsed;
-        return output;
+        if(range <= 0)
+            return output;
+        output = calcRange(tiles, character, x - 1, y, rangeUsed, range, output);
+        output = calcRange(tiles, character, x + 1, y, rangeUsed, range, output);
+        output = calcRange(tiles, character, x, y - 1, rangeUsed, range, output);
+        return calcRange(tiles, character, x, y + 1, rangeUsed, range, output);
     }
     
     private static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, int movesUsed) {

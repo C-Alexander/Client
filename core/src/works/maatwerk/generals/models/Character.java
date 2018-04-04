@@ -1,5 +1,6 @@
 package works.maatwerk.generals.models;
 
+import works.maatwerk.generals.enums.RankName;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -29,7 +30,7 @@ public class Character extends Actor {
     private List<Character> minions;
     private Vector2 location;
     private AssetManager assetManager;
-    private String name;
+    private int weaponClass;
     
     public Character() {
     }
@@ -37,15 +38,17 @@ public class Character extends Actor {
     /**
      * Creates an instance of the Character class
      * @param race
+     * @param weaponclass
      * @param assetManager
      * @param location
      */
-    public Character(Race race, AssetManager assetManager, Vector2 location) {
-        this.baseStats = new Stats(1, 1, 1, 1, 1, 0);
+    public Character(Race race, int weaponclass, AssetManager assetManager, Vector2 location) {
+        this.baseStats = new Stats(1, 1, 1, 1, 1);
         this.race = race;
+        this.weaponClass = weaponclass;
         this.rank = new Rank();
         this.assetManager = assetManager;
-        this.location =location;
+        this.location = location;
         debuffs = new ArrayList<Debuff>(); //INFO: Houd de class in de diamond
         minions = new ArrayList<Character>(); //INFO: Houd de class in de diamond
     }
@@ -91,13 +94,6 @@ public class Character extends Actor {
     }
 
     /**
-     * @param weapon
-     */
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    /**
      *
      * @return
      */
@@ -127,10 +123,25 @@ public class Character extends Actor {
     
     /**
      * 
+     * @return 
+     */
+    public int getWeaponClass() {
+        return weaponClass;
+    }
+    
+    /**
+     * 
      * @param id 
      */
     public void setId(int id) {
         this.id = id;
+    }
+    
+    /**
+     * @param weapon
+     */
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
     
     /**
@@ -139,6 +150,14 @@ public class Character extends Actor {
      */
     public void setLocation(Vector2 location) {
         this.location = location;
+    }
+    
+    /**
+     * 
+     * @param weaponClass 
+     */
+    public void setWeaponClass(int weaponClass) {
+        this.weaponClass = weaponClass;
     }
 
     /**
@@ -210,8 +229,8 @@ public class Character extends Actor {
     public void attack(Character enemy) {
         Stats enemyStats = enemy.getGameStats();
         Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, ownStats);
-        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, enemyStats);
+        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, enemy.weaponClass, ownStats, this.weaponClass);
+        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, this.weaponClass, enemyStats, enemy.weaponClass);
         this.addDamageToCharacter(enemy, damageToEnemy);
         this.addDamageToCharacter(this, damageToSelf);
     }
@@ -264,7 +283,7 @@ public class Character extends Actor {
         if(rank.getRankName() != RankName.GENERAL)
             return;
         while (minions.size() < MAX_MINIONS) {
-            minions.add(new Character(race, this.assetManager, this.location));
+            minions.add(new Character(race, this.weaponClass, this.assetManager, this.location));
         }
     }
     
@@ -299,7 +318,7 @@ public class Character extends Actor {
             default:
                 return null;
         }
-        switch(getGameStats().getWeaponClass()) {
+        switch(this.weaponClass) {
             case WeaponClass.ARCANE:
                 clazz = "Arcane";
                 break;
@@ -341,8 +360,8 @@ public class Character extends Actor {
      * @param attack
      * @return 
      */
-    private int calculateDamage(boolean weaponCanHeal, Stats defence, Stats attack) {
-        return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(attack.getWeaponClass(), defence.getWeaponClass())) / 100;
+    private int calculateDamage(boolean weaponCanHeal, Stats defence, int weaponClassDefence, Stats attack, int weaponClassAttack) {
+        return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(weaponClassAttack, weaponClassDefence)) / 100;
     }
     
     /**
@@ -384,14 +403,9 @@ public class Character extends Actor {
     public void draw(Batch batch, float parentAlpha){
         batch.draw(this.getTexture(), this.getLocation().x * 32, this.getLocation().y * 32);
     }
-
+    
     @Override
     public String getName() {
-        return this.name != null ? this.name : "Generic Unit";
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
+        return super.getName() != null ? super.getName() : "Generic Unit";
     }
 }
