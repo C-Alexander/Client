@@ -1,5 +1,4 @@
 buildscript {
-    
 
     repositories {
         mavenLocal()
@@ -39,7 +38,6 @@ allprojects {
 project(":desktop") {
     apply plugin: "java"
 
-
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -48,14 +46,12 @@ project(":desktop") {
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:1.2.5"
         compile "de.tomgrill.gdxfacebook:gdx-facebook-desktop:1.4.1"
         compile "com.github.czyzby:gdx-websocket-common:$wsVersion"
-        
     }
 }
 
 project(":html") {
     apply plugin: "gwt"
     apply plugin: "war"
-
 
     dependencies {
         compile project(":core")
@@ -74,7 +70,6 @@ project(":html") {
         compile "com.github.czyzby:gdx-websocket:$wsVersion:sources"
         compile "com.github.czyzby:gdx-websocket-gwt:$wsVersion"
         compile "com.github.czyzby:gdx-websocket-gwt:$wsVersion:sources"
-        
     }
 }
 
@@ -92,13 +87,13 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
         compile "com.github.czyzby:gdx-websocket-common:$wsVersion"
-
     }
 }
 
 project(":core") {
     apply plugin: "java"
-
+    
+    sourceSets.test.java.srcDirs = ["/test"]
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -108,9 +103,15 @@ project(":core") {
         compile "net.dermetfan.libgdx-utils:libgdx-utils:0.13.4"
         compile "de.tomgrill.gdxfacebook:gdx-facebook-core:1.4.1"
         compile "com.github.czyzby:gdx-websocket:$wsVersion"
+        
+        testCompile "junit:junit:4.12"
+        testCompile "org.mockito:mockito-core:2.2.7"
 
-
-
+        testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        testCompile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        testCompile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        testCompile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        testCompile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
     }
 }
 

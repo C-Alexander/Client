@@ -61,24 +61,23 @@ class PlayingScreen extends ScreenAdapter {
         initializeNetworking();
 
         map.initializeMap("");
-        Character character1 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(6,2));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        Character character1 = new Character(new Race("Test", new Stats()), WeaponClass.AXE, assetManager, new Vector2(6,2));
+        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false,null));
         map.addCharacter(character1);
-        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(5, 2));
+        Character character2 = new Character(new Race("Test", new Stats()), WeaponClass.AXE, assetManager, new Vector2(5, 2));
         character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character2);
-        Character character3 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.SWORD, new Vector2(4,2));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        Character character3 = new Character(new Race("Test", new Stats()), WeaponClass.SWORD, assetManager, new Vector2(4,2));
+        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character3);
-        Character character4 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.CORRUPT, new Vector2(6,29));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        Character character4 = new Character(new Race("Test", new Stats()), WeaponClass.CORRUPT, assetManager, new Vector2(6,29));
+        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character4);
-        Character character5 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.ARCANE, new Vector2(5,29));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        Character character5 = new Character(new Race("Test", new Stats()), WeaponClass.ARCANE, assetManager, new Vector2(5,29));
+        character1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character5);
 
         Gdx.input.vibrate(5000);
-
 
         initializeVolumeControls();
         initializeCameraInputController();
