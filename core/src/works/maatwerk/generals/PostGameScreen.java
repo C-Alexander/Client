@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class PostGameScreen extends ScreenAdapter {
     private final Stage stage;
 
-    public PostGameScreen(final Generals game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) { ;
+    public PostGameScreen(final Generals game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) {
         this.stage = new Stage();
 
 

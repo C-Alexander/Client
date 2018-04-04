@@ -21,7 +21,7 @@ class AccountRunnable implements Runnable {
     private static final String URL_REGISTER = "http://dev.maatwerk.works/register";
     private Generals game = new Generals();
     private AssetManager assetManager = new AssetManager();
-    boolean isLoggingIn;
+    private boolean isLoggingIn;
     private Account account;
 
     public AccountRunnable(Account account, Generals game, AssetManager assetManager, boolean isLoggingIn) {
@@ -40,11 +40,6 @@ class AccountRunnable implements Runnable {
      * Testing the http functions of libgdx
      */
     private void restAPI() {
-        Gdx.app.debug("Network", "Testing REST API");
-
-        //request to use for future networking
-
-        //post request
         if (isLoggingIn){
             restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
         }else{
