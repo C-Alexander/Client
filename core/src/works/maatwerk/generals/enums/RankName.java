@@ -1,4 +1,4 @@
-package works.maatwerk.generals.models;
+package works.maatwerk.generals.enums;
 
 /**
  *
@@ -13,7 +13,7 @@ public enum RankName {
      * 
      * @return 
      */
-    RankName getNext() {
+    public RankName getNext() {
         switch(this) {
             case GRUNT:
                 return GENERAL;

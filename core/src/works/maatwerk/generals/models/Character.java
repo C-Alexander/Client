@@ -1,17 +1,16 @@
 package works.maatwerk.generals.models;
 
+import works.maatwerk.generals.enums.RankName;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import works.maatwerk.generals.ClassEnum;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- *
  * @author Sam Dirkx
  */
 @SuppressWarnings("WeakerAccess")
@@ -21,6 +20,7 @@ public class Character extends Actor {
      */
     private static final int HEALER_DAMAGE_MODIFIER = 25;
     private static final int MAX_MINIONS = 3;
+    private int id;
     private Stats baseStats;
     private Race race;
     private Rank rank;
@@ -28,196 +28,237 @@ public class Character extends Actor {
     private Weapon weapon;
     private List<Character> minions;
     private Vector2 location;
-    private int id;
     private AssetManager assetManager;
-    private ClassEnum classEnum;
-    private String name;
+    private int weaponClass;
     
     public Character() {
     }
 
     /**
      * Creates an instance of the Character class
+     *
      * @param race
+     * @param rank
+     * @param weaponclass
      * @param assetManager
-     * @param classEnum
      * @param location
      */
-    public Character(Race race,AssetManager assetManager,ClassEnum classEnum,Vector2 location) {
-        this.baseStats = new Stats(1, 1, 1, 1, 1, 0);
+    public Character(Race race, Rank rank, int weaponclass, AssetManager assetManager, Vector2 location) {
+        switch (rank.getRankName()) {
+            //TODO: Maybe we can refactor this and make it separate
+            case GRUNT:
+                this.baseStats = new Stats(10, 7, 2, 5, 10);
+                break;
+            case GENERAL:
+                this.baseStats = new Stats(15, 10, 4, 5, 10);
+                break;
+            case HERO:
+                this.baseStats = new Stats(20, 10, 6, 5, 10);
+                break;
+            default:
+                this.baseStats = new Stats(10, 7, 2, 5, 10);
+                break;
+        }
         this.race = race;
-        this.rank = new Rank();
+        this.weaponClass = weaponclass;
+        this.rank = rank;
         this.assetManager = assetManager;
-        this.classEnum = classEnum;
-        this.location =location;
-        debuffs = new ArrayList<Debuff>();
-        minions = new ArrayList<Character>();
-    }
-
-    /**
-     *
-     * @return a Vector2
-     */
-    public Vector2 getLocation() {
-        return location;
-    }
-
-    /**
-     * @param location
-     */
-    public void setLocation(Vector2 location) {
         this.location = location;
+        debuffs = new ArrayList<Debuff>(); //INFO: Houd de class in de diamond
+        minions = new ArrayList<Character>(); //INFO: Houd de class in de diamond
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getId() {
+        return id;
     }
 
     /**
-     *
-     * @return 
+     * @return
      */
     public Stats getBaseStats() {
         return baseStats;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @return
      */
     public Race getRace() {
         return race;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @return
      */
     public Rank getRank() {
         return rank;
     }
-    
+
     /**
-     * 
-     * @return 
+     * @return
      */
     public Weapon getWeapon() {
         return weapon;
     }
 
     /**
-     * @param weapon
-     */
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    /**
-     *
      * @return
      */
     public Stats getDebuffs() {
         Stats output = new Stats();
-        for(Debuff d : debuffs) {
+        for (Debuff d : debuffs) {
             output.addToThis(d.getStaticDebuff());
         }
         return output;
     }
-    
+
     /**
-     *
      * @return
      */
     public List<Character> getMinions() {
         return minions;
     }
-
+    
     /**
      * 
-     * @param debuff 
+     * @return 
+     */
+    public Vector2 getLocation() {
+        return location;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getWeaponClass() {
+        return weaponClass;
+    }
+    
+    /**
+     * 
+     * @param id 
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    /**
+     * @param weapon
+     */
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+    
+    /**
+     * 
+     * @param location 
+     */
+    public void setLocation(Vector2 location) {
+        this.location = location;
+    }
+    
+    /**
+     * 
+     * @param weaponClass 
+     */
+    public void setWeaponClass(int weaponClass) {
+        this.weaponClass = weaponClass;
+    }
+
+    /**
+     * @param debuff
      */
     public void addDebuffs(Debuff debuff) {
         this.debuffs.add(debuff);
     }
-    
+
     /**
-     * 
      * @param minion
-     * @return 
+     * @return
      */
     public boolean addMinion(Character minion) {
-        if(rank.getRankName() != RankName.HERO || minion.rank.getRankName() != RankName.GENERAL)
+        if (rank.getRankName() != RankName.HERO || minion.rank.getRankName() != RankName.GENERAL)
             throw new IllegalArgumentException();
-        if(minions.size() >= MAX_MINIONS)
+        if (minions.size() >= MAX_MINIONS)
             return false;
-        if(minions.contains(minion))
+        if (minions.contains(minion))
             return false;
         minions.add(minion);
         return true;
     }
-    
+
     /**
-     * 
      * @param minion
-     * @return 
+     * @return
      */
     public boolean removeMinion(Character minion) {
-       return minions.remove(minion);
+        return minions.remove(minion);
     }
-    
+
     /**
      * Gets the stats of the character for this turn.
-     * 
-     * @return 
+     *
+     * @return
      */
     public Stats getGameStats() {
         Stats output = new Stats();
         output.addToThis(baseStats);
         output.addToThis(race.getStats());
-        if(weapon != null) {
+        if (weapon != null) {
             output.addToThis(weapon.getStats());
         }
 
         output.addToThis(getDebuffs());
         return output;
     }
-    
+
     /**
      * To check if this character is still alive
-     * 
-     * @return 
+     *
+     * @return
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAlive() {
         return getGameStats().getHealthPoints() > 0;
     }
-    
+
     /**
-     * Manipulates gameStats of this character and enemy character according to 
+     * Manipulates gameStats of this character and enemy character according to
      * battle calculations
-     * 
+     *
      * @param enemy
      */
     public void attack(Character enemy) {
-        Stats enemyStats = enemy.getGameStats();
-        Stats ownStats = this.getGameStats();
-        int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, ownStats);
-        int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, enemyStats);
-        this.addDamageToCharacter(enemy, damageToEnemy);
-        this.addDamageToCharacter(this, damageToSelf);
+        if (!enemy.equals(this)) {
+            Stats enemyStats = enemy.getGameStats();
+            Stats ownStats = this.getGameStats();
+            int damageToEnemy = calculateDamage(((weapon != null) && weapon.isCanHeal()), enemyStats, enemy.weaponClass, ownStats, this.weaponClass);
+            int damageToSelf = calculateDamage(((enemy.weapon != null) && enemy.weapon.isCanHeal()), ownStats, this.weaponClass, enemyStats, enemy.weaponClass);
+            this.addDamageToCharacter(enemy, damageToEnemy);
+            if(enemy.isAlive())
+                this.addDamageToCharacter(this, damageToSelf);
+        }
     }
-    
+
     /**
      * Manipulates gameStats of this character according to healing calculations
      *
      * @param ally
      */
     public void heal(Character ally) {
-        if(weapon == null)
+        if (weapon == null)
             return;
-        if(!weapon.isCanHeal())
+        if (!weapon.isCanHeal())
             return;
         Stats added = new Stats();
         added.setHealthPoints(this.getGameStats().getAttack());
         ally.addDebuffs(new Debuff(-1, added, null));
     }
-    
+
     /**
      * manipulates gameStats temporarily according to tile effect
      *
@@ -227,88 +268,137 @@ public class Character extends Actor {
     public void bonus(Tile bonusTile) {
         //implement
     }
-    
+
     /**
      * updates the class's properties
-     * 
      */
     public void update() {
         Iterator<Debuff> iterator = debuffs.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Debuff debuff = iterator.next();
-            if(debuff.getTurns() == 0) {
+            if (debuff.getTurns() == 0) {
                 iterator.remove();
                 continue;
             }
             debuff.update();
         }
     }
-    
+
     /**
      * For generals checks if the amount of grunts is correct otherwise spawns them.
      */
     public void matchStart() {
-        if(rank.getRankName() != RankName.GENERAL)
+        if (rank.getRankName() != RankName.GENERAL)
             return;
         while (minions.size() < MAX_MINIONS) {
-            minions.add(new Character(race,this.assetManager,this.classEnum,this.location));
+            minions.add(new Character(race, new Rank(), this.weaponClass, this.assetManager, this.location));
         }
     }
-    
+
     /**
      * Called when match has ended to clear debuff list and set experience.
      * Also returns list of minions which reached the same rank as their master character.
      * This function calls the same function in all its minions.
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<Character> matchEnded() {
-        if(!this.isAlive())
+        if (!this.isAlive())
             return new ArrayList<Character>();
         rank.update();
         debuffs.clear();
         return matchEndedMinions();
     }
     
-    /**
-     * Calculates the damage that will be done by the character.
-     * 
-     * @param weaponCanHeal
-     * @param defence
-     * @param attack
-     * @return 
-     */
-    private int calculateDamage(boolean weaponCanHeal, Stats defence, Stats attack) {
-        return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(attack.getWeaponClass(), defence.getWeaponClass())) / 100;
+    public Texture getTexture() {
+        String prefix;
+        String clazz;
+        switch(this.rank.getRankName()) {
+            case GRUNT:
+                prefix = "m";
+                break;
+            case GENERAL:
+                prefix = "g";
+                break;
+            case HERO:
+                prefix = "h";
+                break;
+            default:
+                return null;
+        }
+        switch(this.weaponClass) {
+            case WeaponClass.ARCANE:
+                clazz = "Arcane";
+                break;
+            case WeaponClass.AXE:
+                clazz = "Axe";
+                break;
+            case WeaponClass.BOW:
+                clazz = "Bow";
+                break;
+            case WeaponClass.CORRUPT:
+                clazz = "Corrupt";
+                break;
+            case WeaponClass.DIVINE:
+                clazz = "Divine";
+                break;
+            case WeaponClass.HEALER:
+                clazz = "Healer";
+                break;
+            case WeaponClass.SPEAR:
+                clazz = "Spear";
+                break;
+            case WeaponClass.SWORD:
+                clazz = "Sword";
+                break;
+            case WeaponClass.VALKYRIE:
+                clazz = "Valkyrie";
+                break;
+            default:
+                return null;
+        }
+        return assetManager.get("characters/" + prefix + clazz + ".png");
     }
     
     /**
+     * Calculates the damage that will be done by the character.
+     *
+     * @param weaponCanHeal
+     * @param defence
+     * @param attack
+     * @return
+     */
+    private int calculateDamage(boolean weaponCanHeal, Stats defence, int weaponClassDefence, Stats attack, int weaponClassAttack) {
+        return ((defence.getDefence() - (weaponCanHeal ? ((attack.getAttack() * HEALER_DAMAGE_MODIFIER) / 100) : attack.getAttack())) * WeaponClass.getWeaponModifier(weaponClassAttack, weaponClassDefence)) / 100;
+    }
+
+    /**
      * Adds the damage the the debufflist for infinity (and beyond!)
-     * 
+     *
      * @param character
-     * @param damage 
+     * @param damage
      */
     private void addDamageToCharacter(Character character, int damage) {
-        if(damage < 0) {
+        if (damage < 0) {
             Stats dmg = new Stats();
             dmg.setHealthPoints(damage);
             character.addDebuffs(new Debuff(-1, dmg, null));
         }
     }
-    
+
     /**
      * Calls matchEnded in all minions and checks of one of the minions gained the same rank as this character.
      * If same rank is achieved removes minion from the minion list and output it in the return list.
-     * 
-     * @return 
+     *
+     * @return
      */
     private List<Character> matchEndedMinions() {
         List<Character> output = new ArrayList<Character>();
         Iterator<Character> iterator = minions.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Character c = iterator.next();
             output.addAll(c.matchEnded());
-            if(c.rank.getRankName() != rank.getRankName())
+            if (c.rank.getRankName() != rank.getRankName())
                 continue;
             iterator.remove();
             c.minions.clear();
@@ -319,80 +409,11 @@ public class Character extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha){
-        batch.draw(this.getTexture(),this.getLocation().x*32,this.getLocation().y*32);
+        batch.draw(this.getTexture(), this.getLocation().x * 32, this.getLocation().y * 32);
     }
-
-    public Texture getTexture() {
-        switch (this.rank.getRankName()) {
-            case GRUNT:
-                switch (this.classEnum) {
-                    case AXE:
-                        return assetManager.get("characters/mAxe.png");
-                    case SWORD:
-                        return assetManager.get("characters/mSword.png");
-                    case SPEAR:
-                        return assetManager.get("characters/mSpear.png");
-                    case ARCANE:
-                        return assetManager.get("characters/mArcane.png");
-                    case CORRUPT:
-                        return assetManager.get("characters/mCorrupt.png");
-                    case DIVINE:
-                        return assetManager.get("characters/mDivine.png");
-                    case HEALER:
-                        return assetManager.get("characters/mHealer.png");
-                    case ARCHER:
-                        return assetManager.get("characters/mBow.png");
-                    default:
-                }
-                break;
-            case GENERAL:
-                switch (this.classEnum) {
-                    case AXE:
-                        return assetManager.get("characters/gAxe.png");
-                    case SWORD:
-                        return assetManager.get("characters/gSword.png");
-                    case SPEAR:
-                        return assetManager.get("characters/gSpear.png");
-                    case ARCANE:
-                        return assetManager.get("characters/gArcane.png");
-                    case CORRUPT:
-                        return assetManager.get("characters/gCorrupt.png");
-                    case DIVINE:
-                        return assetManager.get("characters/gDivine.png");
-                    case HEALER:
-                        return assetManager.get("characters/gHealer.png");
-                    case ARCHER:
-                        return assetManager.get("characters/gBow.png");
-                    default:
-                }
-                break;
-            case HERO:
-                switch (this.classEnum) {
-                    case VALKYRIE:
-                        return assetManager.get("characters/hValkyrie.png");
-                    default:
-                }
-                break;
-            default:
-        }
-        return null;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     @Override
     public String getName() {
-        return this.name != null ? this.name : "Generic Unit";
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
+        return super.getName() != null ? super.getName() : "Generic Unit";
     }
 }

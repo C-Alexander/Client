@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import works.maatwerk.generals.enums.RankName;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
@@ -37,8 +38,6 @@ class PlayingScreen extends ScreenAdapter {
     private MapManager map;
     private Stage stage;
     private Table table;
-    @SuppressWarnings("FieldCanBeLocal")
-    private NetworkManager networkManager;
 
     PlayingScreen(Generals game, AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -56,23 +55,83 @@ class PlayingScreen extends ScreenAdapter {
         addUI(table);
     }
 
+    //TODO: Jesus fucking christ Teun wat is dit
+    private void loadOwnTeam(){
+        Character character1 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), WeaponClass.AXE, assetManager, new Vector2(13,3));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character1);
+        Character character2 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.AXE, assetManager, new Vector2(12, 2));
+        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character2);
+        Character character3 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.AXE, assetManager, new Vector2(14,2));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character3);
+        Character character4 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.SWORD, assetManager, new Vector2(15,5));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character4);
+        Character character5 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(14,4));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character5);
+        Character character6 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(16,4));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character6);
+        Character character7 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 3));
+        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character7);
+        Character character8 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.BOW, assetManager, new Vector2(17,3));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character8);
+        Character character9 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.BOW, assetManager, new Vector2(16,2));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character9);
+        Character character10 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.BOW, assetManager, new Vector2(18,2));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character10);
+    }
+
+    //TODO: Jesus fucking christ Teun wat is dit
+    private void loadEnemyTeam(){
+        Character character11 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), WeaponClass.ARCANE, assetManager, new Vector2(13,27));
+        character11.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character11);
+        Character character12 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.ARCANE, assetManager, new Vector2(12, 28));
+        character12.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character12);
+        Character character13 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.ARCANE, assetManager, new Vector2(14,28));
+        character13.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character13);
+        Character character14 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.SPEAR, assetManager, new Vector2(15,25));
+        character14.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character14);
+        Character character15 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.SPEAR, assetManager, new Vector2(14,26));
+        character15.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character15);
+        Character character16 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SPEAR, assetManager, new Vector2(16,26));
+        character16.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character16);
+        Character character17 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 27));
+        character17.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character17);
+        Character character18 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.CORRUPT, assetManager, new Vector2(17,27));
+        character18.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character18);
+        Character character19 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.CORRUPT, assetManager, new Vector2(16,28));
+        character19.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character19);
+        Character character20 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.CORRUPT, assetManager, new Vector2(18,28));
+        character20.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character20);
+    }
+
     @Override
     public void show() {
         initializeCamera();
         initializeInputMultiplexer();
         initializeNetworking();
-
         map.initializeMap("");
-        Character character1 = new Character(new Race("Test", new Stats(3, 1, 1, 1, 1, 0)), assetManager, ClassEnum.AXE, new Vector2(1,1));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
-        map.addCharacter(character1);
-        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(2, 2));
-        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
-        map.addCharacter(character2);
-
+        loadOwnTeam();
+        loadEnemyTeam();
         Gdx.input.vibrate(5000);
-
-
         initializeVolumeControls();
         initializeCameraInputController();
     }
@@ -82,7 +141,7 @@ class PlayingScreen extends ScreenAdapter {
     }
 
     private void initializeNetworking() {
-        networkManager = new NetworkManager();
+        NetworkManager networkManager = new NetworkManager();
         networkManager.connect();
     }
 
@@ -145,6 +204,9 @@ class PlayingScreen extends ScreenAdapter {
 
         Gdx.app.debug("Camera", "Resizing screen");
 
+        map.getViewport().update(width, height);
+        map.getTileMapStage().getViewport().update(width, height);
+
         camera.viewportWidth = width;
         camera.viewportHeight = height;
         camera.update();
@@ -201,7 +263,7 @@ class PlayingScreen extends ScreenAdapter {
             Label lblRank = new Label("Rank:", skin);
             Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
 
-            Label lblStats = new Label(character.getBaseStats().toString(), skin);
+            Label lblStats = new Label(character.getGameStats().toString(), skin);
 
 
             table.top().left();
