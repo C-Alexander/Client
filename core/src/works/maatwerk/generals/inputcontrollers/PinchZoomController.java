@@ -25,13 +25,10 @@ public class PinchZoomController extends GestureDetector.GestureAdapter {
         }
         previousDistance = distance;
         change = change * 0.01f;
-
         if (change == previousChange) {
             return false;
         }
-
         previousChange = change;
-
         Gdx.app.debug("Input", "Original pinch distance: " + initialDistance + " New pinch distance: " + distance);
         Gdx.app.debug("Input", "PinchZoom: " + change);
         camera.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
@@ -50,7 +47,6 @@ public class PinchZoomController extends GestureDetector.GestureAdapter {
     @Override
     public void pinchStop() {
         super.pinchStop();
-
         previousChange = 0;
         previousDistance = 0;
     }

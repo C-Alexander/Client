@@ -41,9 +41,9 @@ class AccountRunnable implements Runnable {
      */
     private void restAPI() {
         if (isLoggingIn){
-            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
+            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<String, String>("Content-Type", "application/json")));
         }else{
-            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
+            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<String, String>("Content-Type", "application/json")));
         }
     }
 

@@ -35,6 +35,7 @@ public class MapManager extends Stage {
     private final InputMultiplexer multiplexer;
     private TextureRegion grid;
     private boolean[][] movementRange;
+    private boolean[][] attackRange;
 
     /**
      * @param assetManager
@@ -107,56 +108,85 @@ public class MapManager extends Stage {
     public void leftClickTile(Vector2 location) {
         Character character = characterLayer[(int) location.x][(int) location.y];
         if (character != null) {
-            if (this.getCharacterSelected() == null) {
-                this.setCharacterSelected(character);
-
-                tileMapStage.setSelectedTile((int) location.x, (int) location.y);
-                movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, (int) location.x, (int) location.y);
-                tileMapStage.setMovementStatuses(movementRange);
-                //TODO: UpdateUI
-            } else {
-                if (this.getCharacterSelected() != null) {
-                    this.getCharacterSelected().attack(character);
-                    this.setCharacterSelected(null);
-                    tileMapStage.clearAllStatuses();
-                }
-            }
-        } else {
-            if (this.getCharacterSelected() != null && this.movementRange[(int) location.x][(int) location.y]) {
-                moveCharacter(this.getCharacterSelected(), location);
-                this.setCharacterSelected(null);
+            if(attackRange != null && attackRange[(int) location.x][(int) location.y]){
+                getCharacterSelected().attack(character);
+                setCharacterSelected(null);
+                attackRange = null;
                 tileMapStage.clearAllStatuses();
+                return;
+            }
+            setCharacterSelected(character);
+            tileMapStage.setSelectedTile((int) location.x, (int) location.y);
+            movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, (int) location.x, (int) location.y);
+            tileMapStage.setMovementStatuses(movementRange);
+            attackRange = null;
+            //TODO: UpdateUI
+        } else if (this.getCharacterSelected() != null) {
+            tileMapStage.clearAllStatuses();
+            if(movementRange != null && movementRange[(int) location.x][(int) location.y]) {
+                moveCharacter(getCharacterSelected(), location);
+                movementRange = null;
+                attackRange = PathFinder.getAttackRange(getRangeMap(), getCharacterSelected(), (int) location.x, (int) location.y);
+                tileMapStage.setAttackStatuses(attackRange);
+                return;
+            }
+            setCharacterSelected(null);
+            attackRange = null;
+        }
+    }
+    
+    private int[][] getRangeMap() {
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
+        int horizontalTiles = layer.getWidth();
+        int verticalTiles = layer.getHeight();
+        int[][] rangeMap = new int[horizontalTiles][verticalTiles];
+        for (int x = 0; x < horizontalTiles; x++) {
+            for (int y = 0; y < verticalTiles; y++) {
+                rangeMap[x][y] = getRangeCost(layer, x, y);
             }
         }
+        return rangeMap;
     }
 
     private int[][] getMovementMap() {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
-
         int horizontalTiles = layer.getWidth();
         int verticalTiles = layer.getHeight();
-
         int[][] movementMap = new int[horizontalTiles][verticalTiles];
-
         for (int x = 0; x < horizontalTiles; x++) {
             for (int y = 0; y < verticalTiles; y++) {
-                boolean passable = true;
-                int cost = 1;
-
-                for (MapLayer mapLayer : map.getLayers()) {
-                    layer = (TiledMapTileLayer) mapLayer;
-
-                    if (layer.getCell(x, y) == null) continue;
-
-                    if (layer.getCell(x, y).getTile().getProperties().containsKey("passable"))
-                                    passable = layer.getCell(x, y).getTile().getProperties().get("passable", true, Boolean.class);
-                                    cost += layer.getCell(x, y).getTile().getProperties().get("movementCost", 0, Integer.class);
-                }
-
-                movementMap[x][y] = passable ? cost : -1;
+                movementMap[x][y] = getMovementCost(layer, x, y);
             }
         }
         return movementMap;
+    }
+    
+    private int getRangeCost(TiledMapTileLayer layer, int x, int y) {
+        boolean passable = true;
+        int cost = 1;
+        for (MapLayer mapLayer : map.getLayers()) {
+            layer = (TiledMapTileLayer) mapLayer;
+            if (layer.getCell(x, y) == null)
+                continue;
+            if (layer.getCell(x, y).getTile().getProperties().containsKey("noAttack"))
+                passable = layer.getCell(x, y).getTile().getProperties().get("noAttack", true, Boolean.class);
+            cost += layer.getCell(x, y).getTile().getProperties().get("rangeCost", 0, Integer.class);
+        }
+        return passable ? cost : -1;
+    }
+    
+    private int getMovementCost(TiledMapTileLayer layer, int x, int y) {
+        boolean passable = true;
+        int cost = 1;
+        for (MapLayer mapLayer : map.getLayers()) {
+            layer = (TiledMapTileLayer) mapLayer;
+            if (layer.getCell(x, y) == null)
+                continue;
+            if (layer.getCell(x, y).getTile().getProperties().containsKey("passable"))
+                passable = layer.getCell(x, y).getTile().getProperties().get("passable", true, Boolean.class);
+            cost += layer.getCell(x, y).getTile().getProperties().get("movementCost", 0, Integer.class);
+        }
+        return passable ? cost : -1;
     }
 
     /**

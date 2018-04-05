@@ -41,7 +41,6 @@ class NetworkTestsRunnable implements Runnable {
         Net.HttpRequest request = new Net.HttpRequest();
         testRESTGet(request);
 
-
         //post request
         testRESTPost(request);
     }

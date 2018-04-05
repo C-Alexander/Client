@@ -122,7 +122,6 @@ class LoadingScreen extends ScreenAdapter {
 
         loadTileStatuses();
         loadMusic();
-
     }
 
     private void loadTileStatuses() {
