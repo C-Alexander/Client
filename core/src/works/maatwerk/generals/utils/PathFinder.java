@@ -8,6 +8,7 @@ package works.maatwerk.generals.utils;
 public class PathFinder {
     
     private PathFinder() {
+        throw new IllegalStateException("Utility class");
     }
     
     /**

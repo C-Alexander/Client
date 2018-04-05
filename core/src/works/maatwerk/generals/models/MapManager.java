@@ -161,21 +161,14 @@ public class MapManager extends Stage {
     }
     
     private int getRangeCost(int x, int y) {
-        boolean passable = true;
-        int cost = 1;
-        TiledMapTileLayer layer;
-        for (MapLayer mapLayer : map.getLayers()) {
-            layer = (TiledMapTileLayer) mapLayer;
-            if (layer.getCell(x, y) == null)
-                continue;
-            if (layer.getCell(x, y).getTile().getProperties().containsKey("noAttack"))
-                passable = layer.getCell(x, y).getTile().getProperties().get("noAttack", true, Boolean.class);
-            cost += layer.getCell(x, y).getTile().getProperties().get("rangeCost", 0, Integer.class);
-        }
-        return passable ? cost : -1;
+        return getCost(x, y, "noAttack", "rangeCost");
     }
     
     private int getMovementCost(int x, int y) {
+        return getCost(x, y, "passable", "movementCost");
+    }
+    
+    private int getCost(int x, int y, String key, String property) {
         boolean passable = true;
         int cost = 1;
         TiledMapTileLayer layer;
@@ -183,9 +176,9 @@ public class MapManager extends Stage {
             layer = (TiledMapTileLayer) mapLayer;
             if (layer.getCell(x, y) == null)
                 continue;
-            if (layer.getCell(x, y).getTile().getProperties().containsKey("passable"))
-                passable = layer.getCell(x, y).getTile().getProperties().get("passable", true, Boolean.class);
-            cost += layer.getCell(x, y).getTile().getProperties().get("movementCost", 0, Integer.class);
+            if (layer.getCell(x, y).getTile().getProperties().containsKey(key))
+                passable = layer.getCell(x, y).getTile().getProperties().get(key, true, Boolean.class);
+            cost += layer.getCell(x, y).getTile().getProperties().get(property, 0, Integer.class);
         }
         return passable ? cost : -1;
     }

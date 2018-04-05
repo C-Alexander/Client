@@ -24,6 +24,10 @@ import works.maatwerk.generals.models.Account;
  */
 public class ScreensUtils {
     
+    private ScreensUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+    
     public static Stage createStage(String label, final Generals game, final AssetManager assets) {
         Skin skin = assets.get("skin/uiskin.json");
         Stage stage = new Stage();

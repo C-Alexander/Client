@@ -11,6 +11,10 @@ import com.badlogic.gdx.math.Vector3;
  */
 public class ZoomUtils {
     
+    private ZoomUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+    
     public static boolean zoom(String label, float change, OrthographicCamera camera, Vector3 touchPoint) {
         Gdx.app.debug("Input", label + change);
         camera.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
