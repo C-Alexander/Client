@@ -56,7 +56,7 @@ public class ScreensUtils {
         
         TextButton btnRegister = new TextButton("Register", skin);
         
-        if(label.equals("Register")) {
+        if("Register".equals(label)) {
             table.add(new Label("password repeat:", skin));
             final TextField txtPasswordRepeat = new TextField("", skin);
             txtPasswordRepeat.setPasswordMode(true);
