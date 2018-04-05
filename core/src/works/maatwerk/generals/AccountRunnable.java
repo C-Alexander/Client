@@ -90,6 +90,7 @@ public class AccountRunnable implements Runnable {
 
         //send!
         Gdx.net.sendHttpRequest(request, null);
+        game.setScreen(new LogInScreen(game, assetManager));
     }
 
     private Json getJson() {

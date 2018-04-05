@@ -8,7 +8,7 @@ import works.maatwerk.generals.utils.ScreensUtils;
 /**
  * Created by teund on 21/03/2018.
  */
-public class LogInScreen extends ScreenAdapter{
+public class LogInScreen extends ScreenAdapter {
     private final Stage stage;
 
     public LogInScreen(final Generals game, final AssetManager assetManager) {
