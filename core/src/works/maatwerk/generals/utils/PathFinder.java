@@ -7,6 +7,9 @@ package works.maatwerk.generals.utils;
  */
 public class PathFinder {
     
+    private PathFinder() {
+    }
+    
     /**
      * Calculates the possiblities where a character can move according to the field.
      * 

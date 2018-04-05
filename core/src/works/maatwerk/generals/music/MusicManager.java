@@ -35,9 +35,9 @@ public class MusicManager implements Disposable {
 
     public void playRandomMusic() {
         Gdx.app.log(Tag.MUSIC, "Playing random song");
-        if (songs.size() < 1) {
+        if (songs.isEmpty()) {
             initializeMusic();
-            if (songs.size() < 1) {
+            if (songs.isEmpty()) {
                 Gdx.app.error(Tag.MUSIC, "Could not find any music to play randomly.");
                 return;
             }

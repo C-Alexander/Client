@@ -15,8 +15,7 @@ import java.io.StringWriter;
  * Created by teund on 26/03/2018.
  */
 @SuppressWarnings("SpellCheckingInspection")
-class AccountRunnable implements Runnable {
-
+public class AccountRunnable implements Runnable {
     private static final String URL_LOGIN = "http://dev.maatwerk.works/login";
     private static final String URL_REGISTER = "http://dev.maatwerk.works/register";
     private Generals game = new Generals();

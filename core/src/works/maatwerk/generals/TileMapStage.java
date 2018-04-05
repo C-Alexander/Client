@@ -47,10 +47,10 @@ public class TileMapStage extends Stage {
         for (int x = 0; x < layer.getWidth(); x++) {
             ArrayList<TileActor> xActorList = new ArrayList<TileActor>();
             for (int y = 0; y < layer.getHeight(); y++) {
-                TileActor TileActor = new TileActor(tilestatuses, assetManager, mapManager);
-                TileActor.setBounds(x * layer.getTileWidth(), y * layer.getTileHeight(), layer.getTileWidth(), layer.getTileHeight());
-                addActor(TileActor);
-                xActorList.add(y, TileActor);
+                TileActor tileActor = new TileActor(tilestatuses, assetManager, mapManager);
+                tileActor.setBounds(x * layer.getTileWidth(), y * layer.getTileHeight(), layer.getTileWidth(), layer.getTileHeight());
+                addActor(tileActor);
+                xActorList.add(y, tileActor);
             }
             tileActors.add(x, xActorList);
         }

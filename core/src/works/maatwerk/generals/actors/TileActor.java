@@ -8,19 +8,19 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import works.maatwerk.generals.enums.TileStatus;
 import works.maatwerk.generals.models.MapManager;
 import works.maatwerk.generals.responselisteners.TileListener;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by teund on 06/03/2018.
  */
 public class TileActor extends Actor {
-    private AssetManager assetManager;
-    private HashMap<String, Sprite> tilestatuses;
+    private final AssetManager assetManager;
+    private final Map<String, Sprite> tilestatuses;
     private TileStatus status = TileStatus.NONE;
 
-    public TileActor(HashMap<String, Sprite> tilestatuses, AssetManager assetManager, MapManager mapManager) {
+    public TileActor(Map<String, Sprite> tilestatuses, AssetManager assetManager, MapManager mapManager) {
         this.assetManager = assetManager;
-        this.addListener(new TileListener(this, mapManager));
+        addListener(new TileListener(this, mapManager));
         this.tilestatuses = tilestatuses;
     }
 

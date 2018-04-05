@@ -20,6 +20,8 @@ import works.maatwerk.generals.utils.files.Paths;
 
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
+    private static final String LOADING = "Loading";
+    private static final String CAMERA = "Camera";
     private final Generals game;
     private final SpriteBatch batch;
     private final AssetManager assetManager;
@@ -45,14 +47,14 @@ class LoadingScreen extends ScreenAdapter {
     }
 
     private void initializeCamera() {
-        Gdx.app.debug("Camera", "Initializing");
+        Gdx.app.debug(CAMERA, "Initializing");
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
     }
 
     private void loadLoadingBar() {
-        Gdx.app.debug("Loading", "Loading Loadingbar");
+        Gdx.app.debug(LOADING, "Loading Loadingbar");
         this.assetManager.load("loader/logo.jpg", Texture.class);
         this.assetManager.load("loader/main_bar.png", Texture.class);
         this.assetManager.load("loader/bar_full.png", Texture.class);
@@ -61,7 +63,7 @@ class LoadingScreen extends ScreenAdapter {
     }
 
     private void initializeLoadingBar() {
-        Gdx.app.debug("Loading", "Initializing Loadingbar");
+        Gdx.app.debug(LOADING, "Initializing Loadingbar");
 
         logo = this.assetManager.get("loader/logo.jpg");
         emptyBar = this.assetManager.get("loader/main_bar.png");
@@ -83,14 +85,14 @@ class LoadingScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         super.resize(width, height);
 
-        Gdx.app.debug("Camera", "Resizing screen");
+        Gdx.app.debug(CAMERA, "Resizing screen");
 
         viewport.update(width, height);
         camera.update();
     }
 
     private void loadAssets() {
-        Gdx.app.debug("Loading", "Loading assets");
+        Gdx.app.debug(LOADING, "Loading assets");
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 

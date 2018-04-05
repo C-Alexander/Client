@@ -2,9 +2,8 @@ package works.maatwerk.generals.networking.messages;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class Packet {
-    public MessageType type;
-    @SuppressWarnings("WeakerAccess")
-    public Message data;
+    private MessageType type;
+    private Message data;
     
     public Packet() {
     }

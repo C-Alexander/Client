@@ -13,12 +13,13 @@ import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.sun.media.jfxmedia.logging.Logger;
 import works.maatwerk.generals.TileMapStage;
 import works.maatwerk.generals.utils.PathFinder;
 import works.maatwerk.generals.utils.logger.*;
 import works.maatwerk.generals.music.MusicManager;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @SuppressWarnings("WeakerAccess")
 public class MapManager extends Stage {
@@ -30,7 +31,7 @@ public class MapManager extends Stage {
     @SuppressWarnings("CanBeFinal")
     private ArrayList<Character> characterMap;
     private Character[][] characterLayer;
-    private static Vector2 mapDimensions;
+    private Vector2 mapDimensions;
     private final TileMapStage tileMapStage;
     private final InputMultiplexer multiplexer;
     private TextureRegion grid;
@@ -45,7 +46,6 @@ public class MapManager extends Stage {
     public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer, MusicManager musicManager) {
         this.assetManager = assetManager;
         this.multiplexer = inputMultiplexer;
-
         tileMapStage = new TileMapStage(assetManager, this);
         this.musicManager = musicManager;
         characterMap = new ArrayList<Character>();
@@ -64,7 +64,6 @@ public class MapManager extends Stage {
         mapDimensions = new Vector2(layer.getWidth(), layer.getHeight());
         this.characterLayer = new Character[layer.getWidth()][layer.getHeight()];
         this.initializeGrid();
-
         startMusic();
     }
 
@@ -142,7 +141,7 @@ public class MapManager extends Stage {
         int[][] rangeMap = new int[horizontalTiles][verticalTiles];
         for (int x = 0; x < horizontalTiles; x++) {
             for (int y = 0; y < verticalTiles; y++) {
-                rangeMap[x][y] = getRangeCost(layer, x, y);
+                rangeMap[x][y] = getRangeCost(x, y);
             }
         }
         return rangeMap;
@@ -155,15 +154,16 @@ public class MapManager extends Stage {
         int[][] movementMap = new int[horizontalTiles][verticalTiles];
         for (int x = 0; x < horizontalTiles; x++) {
             for (int y = 0; y < verticalTiles; y++) {
-                movementMap[x][y] = getMovementCost(layer, x, y);
+                movementMap[x][y] = getMovementCost(x, y);
             }
         }
         return movementMap;
     }
     
-    private int getRangeCost(TiledMapTileLayer layer, int x, int y) {
+    private int getRangeCost(int x, int y) {
         boolean passable = true;
         int cost = 1;
+        TiledMapTileLayer layer;
         for (MapLayer mapLayer : map.getLayers()) {
             layer = (TiledMapTileLayer) mapLayer;
             if (layer.getCell(x, y) == null)
@@ -175,9 +175,10 @@ public class MapManager extends Stage {
         return passable ? cost : -1;
     }
     
-    private int getMovementCost(TiledMapTileLayer layer, int x, int y) {
+    private int getMovementCost(int x, int y) {
         boolean passable = true;
         int cost = 1;
+        TiledMapTileLayer layer;
         for (MapLayer mapLayer : map.getLayers()) {
             layer = (TiledMapTileLayer) mapLayer;
             if (layer.getCell(x, y) == null)
@@ -233,7 +234,7 @@ public class MapManager extends Stage {
      */
     public void moveCharacter(Character character, Vector2 location) {
         if (location.x > mapDimensions.x || location.y > mapDimensions.y || location.x < 0 || location.y < 0) {
-            Logger.logMsg(1, "Out of boundaries");
+            Logger.getLogger(MapManager.class.getName()).log(Level.FINE, "Out of boundaries");
             return;
         }
         removeCharacter(character);
@@ -254,12 +255,8 @@ public class MapManager extends Stage {
      * @return cell from location
      */
     public TiledMapTileLayer.Cell getCell(Vector2 location) {
-
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
-
-        @SuppressWarnings("UnnecessaryLocalVariable") TiledMapTileLayer.Cell cell = layer.getCell((int) location.x, (int) location.y);
-
-        return cell;
+        return layer.getCell((int) location.x, (int) location.y);
     }
 
     /**
@@ -291,8 +288,8 @@ public class MapManager extends Stage {
 
     public Vector2 getTileSize() {
         return new Vector2(
-                ((TiledMapTileLayer)map.getLayers().get(0)).getTileWidth(),
-                ((TiledMapTileLayer)map.getLayers().get(0)).getTileHeight()
+            ((TiledMapTileLayer)map.getLayers().get(0)).getTileWidth(),
+            ((TiledMapTileLayer)map.getLayers().get(0)).getTileHeight()
         );
     }
 
