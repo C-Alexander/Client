@@ -13,17 +13,18 @@ import works.maatwerk.generals.networking.runnables.GetSessionRunnable;
 import works.maatwerk.generals.utils.logger.Tag;
 
 public class AccountManager implements Disposable {
-    Session session;
-    LoginStatus loginStatus = LoginStatus.LOGGED_OUT;
-    public static final String PLAYER_IDENTIFIER = "player";
+    private static final String PLAYER_IDENTIFIER = "player";
+    private static final String USERID_IDENTIFIER = "userId";
+    private static final String SESSIONID_IDENTIFIER = "sessionId";
+    private Session session;
+    private LoginStatus loginStatus = LoginStatus.LOGGED_OUT;
 
+    void init() {
+        if (!getPreferences().contains(USERID_IDENTIFIER)) return;
+        if (!getPreferences().contains(SESSIONID_IDENTIFIER)) return;
 
-    public void init() {
-        if (!getPreferences().contains("userId")) return;
-        if (!getPreferences().contains("sessionId")) return;
-
-        int userId = getPreferences().getInteger("userId");
-        String sessionId = getPreferences().getString("sessionId");
+        int userId = getPreferences().getInteger(USERID_IDENTIFIER);
+        String sessionId = getPreferences().getString(SESSIONID_IDENTIFIER);
 
         Gdx.app.log(Tag.ACCOUNT, "Checking for existing session...");
         setLoginStatus(LoginStatus.CHECKING_SESSION);
@@ -85,8 +86,8 @@ public class AccountManager implements Disposable {
         setSession(session);
 
         if (saveInPreferences) {
-            getPreferences().putString("sessionId", session.getId());
-            getPreferences().putInteger("userId", session.getPlayer().getId());
+            getPreferences().putString(SESSIONID_IDENTIFIER, session.getId());
+            getPreferences().putInteger(USERID_IDENTIFIER, session.getPlayer().getId());
         }
     }
 }
