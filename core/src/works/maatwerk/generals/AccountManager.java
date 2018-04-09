@@ -45,17 +45,17 @@ public class AccountManager implements Disposable {
         JsonValue body = jsonReader.parse(responseText);
 
 
-        Session session = new Session();
-        session.setId(body.getString("id"));
+        Session newSession = new Session();
+        newSession.setId(body.getString("id"));
 
         Account player = new Account();
         player.setId(body.get(PLAYER_IDENTIFIER).getInt("id"));
         player.setUsername(body.get(PLAYER_IDENTIFIER).getString("username"));
         player.setPassword(body.get(PLAYER_IDENTIFIER).getString("password"));
 
-        session.setPlayer(player);
+        newSession.setPlayer(player);
 
-        return session;
+        return newSession;
     }
 
     public boolean hasLegalSession() {
