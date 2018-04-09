@@ -65,7 +65,7 @@ class AccountRunnable implements Runnable {
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(final Net.HttpResponse httpResponse) {
-                handleResponse(httpResponse);
+                setSessionFromResponse(httpResponse);
             }
 
             @Override
@@ -80,7 +80,7 @@ class AccountRunnable implements Runnable {
         });
     }
 
-    private void handleResponse(Net.HttpResponse httpResponse) {
+    private void setSessionFromResponse(Net.HttpResponse httpResponse) {
         if (httpResponse.getStatus().getStatusCode() == 200) {
             Session session = game.getAccountManager().getSessionFromResponse(httpResponse);
 
