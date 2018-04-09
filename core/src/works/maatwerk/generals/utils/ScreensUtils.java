@@ -79,7 +79,6 @@ public class ScreensUtils {
                 }
             });
         }
-        
         table.add(btnLeft).bottom().right().width(100).height(50);
         table.add(btnRight).bottom().right().width(100).height(50);
         table.row();

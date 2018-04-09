@@ -14,7 +14,7 @@ public class LogInScreen extends ScreenAdapter {
     public LogInScreen(final Generals game, final AssetManager assetManager) {
         this.stage = ScreensUtils.createStage("Log in", game, assetManager);
     }
-    
+
     @Override
     public void render(float delta) {
         super.render(delta);

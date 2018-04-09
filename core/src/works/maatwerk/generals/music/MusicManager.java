@@ -19,7 +19,7 @@ public class MusicManager implements Disposable {
 
     public MusicManager(AssetManager assetManager) {
         this.assetManager = assetManager;
-        this.songs = new ArrayList<Music>();
+        this.songs = new ArrayList<>();
         musicListener = new MusicListener(this);
     }
 
@@ -122,8 +122,8 @@ public class MusicManager implements Disposable {
     public void dispose() {
         for (Music song : songs) {
             song.dispose();
-            Gdx.app.getPreferences(Tag.MUSIC).flush();
         }
+        Gdx.app.getPreferences(Tag.MUSIC).flush();
     }
 
     private class MusicListener implements Music.OnCompletionListener {

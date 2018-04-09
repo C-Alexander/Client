@@ -28,24 +28,11 @@ public class TileMapStage extends Stage {
         replaceTileStatuses(tiles, TileStatus.ATTACK_AVAILABLE, TileStatus.NONE);
     }
 
-    private void replaceTileStatuses(boolean[][] tiles, TileStatus trueStatus, TileStatus falseStatus) {
-        for (int x = 0; x < tiles.length; x++) {
-            int length = tiles[x].length;
-            for (int y = 0; y < length; y++) {
-                TileActor actor = tileActors.get(x).get(y);
-                if (tiles[x][y])
-                    actor.setStatus(trueStatus);
-                else
-                    actor.setStatus(falseStatus);
-            }
-        }
-    }
-
     public void createMapActors(TiledMapTileLayer layer) {
-        HashMap<String, Sprite> tilestatuses = new HashMap<String, Sprite>();
-        tileActors = new ArrayList<List<TileActor>>();
+        HashMap<String, Sprite> tilestatuses = new HashMap<>();
+        tileActors = new ArrayList<>();
         for (int x = 0; x < layer.getWidth(); x++) {
-            ArrayList<TileActor> xActorList = new ArrayList<TileActor>();
+            ArrayList<TileActor> xActorList = new ArrayList<>();
             for (int y = 0; y < layer.getHeight(); y++) {
                 TileActor tileActor = new TileActor(tilestatuses, assetManager, mapManager);
                 tileActor.setBounds(x * layer.getTileWidth(), y * layer.getTileHeight(), layer.getTileWidth(), layer.getTileHeight());
@@ -70,5 +57,18 @@ public class TileMapStage extends Stage {
 
     public void setSelectedTile(int x, int y) {
         tileActors.get(x).get(y).setStatus(TileStatus.MOVE_SELECT);
+    }
+    
+    private void replaceTileStatuses(boolean[][] tiles, TileStatus trueStatus, TileStatus falseStatus) {
+        for (int x = 0; x < tiles.length; x++) {
+            int length = tiles[x].length;
+            for (int y = 0; y < length; y++) {
+                TileActor actor = tileActors.get(x).get(y);
+                if (tiles[x][y])
+                    actor.setStatus(trueStatus);
+                else
+                    actor.setStatus(falseStatus);
+            }
+        }
     }
 }

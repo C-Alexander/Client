@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import works.maatwerk.generals.utils.files.Paths;
+import works.maatwerk.generals.utils.logger.Tag;
 
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
@@ -33,6 +34,7 @@ class LoadingScreen extends ScreenAdapter {
     private Vector2 logoPos;
     private Vector2 ebPos;
     private Vector2 fbPos;
+    private Boolean waitingForLogin = false;
 
     LoadingScreen(Generals game, AssetManager assetManager) {
         this.game = game;
@@ -153,9 +155,31 @@ class LoadingScreen extends ScreenAdapter {
         batch.end();
 
         if (assetManager.getProgress() == 1.0f) {
-            game.getMusicManager().initializeMusic();
-            Gdx.app.log("Screens", "Starting NetworkingScreen");
-            game.setScreen(new NetworkingScreen(game, assetManager));
+            finishLoading();
         }
+    }
+
+    private void finishLoading() {
+        if (waitingForLogin) {
+            switch (game.getAccountManager().getLoginStatus()) {
+                case LOGGED_OUT:
+                    game.setScreen(new LogInScreen(game, assetManager));
+                    break;
+                case LOGGED_IN:
+                    game.setScreen(new PlayingScreen(game, assetManager));
+                    break;
+                default:
+                    Gdx.app.log(Tag.ACCOUNT, "Searching for session...");
+                    break;
+            }
+            return;
+        }
+        game.getMusicManager().initializeMusic();
+
+        Gdx.app.log("Screens", "Starting NetworkingScreen");
+
+        game.getAccountManager().init();
+
+        waitingForLogin = true;
     }
 }

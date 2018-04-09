@@ -18,6 +18,7 @@ public class WeaponClass {
     public static final int VALKYRIE = 0x00000100;
     
     private WeaponClass() {
+        throw new IllegalStateException("Utility class");
     }
     
     public static int getWeaponModifier(int self, int enemy) {

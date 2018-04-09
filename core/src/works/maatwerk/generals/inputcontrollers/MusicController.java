@@ -13,15 +13,6 @@ public class MusicController extends InputAdapter {
         this.musicManager = musicManager;
     }
 
-    @Override
-    public boolean scrolled(int change) {
-        super.scrolled(change);
-        if (!Gdx.input.isKeyPressed(Input.Keys.ALT_LEFT))
-            return false;
-        adjustVolume(change);
-        return true;
-    }
-
     private void adjustVolume(int change) {
         float volumeChange = getVolumeChange(change);
         if (volumeChange < 0 && musicManager.getCurrentSong().getVolume() < 0) {
@@ -38,5 +29,14 @@ public class MusicController extends InputAdapter {
         if (change > 0) volumeChange = -0.1f;
         if (change < 0 && musicManager.getCurrentSong().getVolume() < 1f) volumeChange = +0.1f;
         return volumeChange;
+    }
+
+    @Override
+    public boolean scrolled(int change) {
+        super.scrolled(change);
+        if (!Gdx.input.isKeyPressed(Input.Keys.ALT_LEFT))
+            return false;
+        adjustVolume(change);
+        return true;
     }
 }

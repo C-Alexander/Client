@@ -23,17 +23,17 @@ import java.util.logging.Logger;
 
 @SuppressWarnings("WeakerAccess")
 public class MapManager extends Stage {
-    private final MusicManager musicManager;
-    private TiledMap map;
-    private final AssetManager assetManager;
-    private OrthogonalTiledMapRenderer renderer;
-    private Character characterSelected;
-    @SuppressWarnings("CanBeFinal")
-    private ArrayList<Character> characterMap;
-    private Character[][] characterLayer;
-    private Vector2 mapDimensions;
     private final TileMapStage tileMapStage;
     private final InputMultiplexer multiplexer;
+    private final MusicManager musicManager;
+    private final AssetManager assetManager;
+    private final ArrayList<Character> characterMap;
+    private TiledMap map;
+    private OrthogonalTiledMapRenderer renderer;
+    private Character characterSelected;
+    private Character[][] characterLayer;
+    private Vector2 mapDimensions;
+    
     private TextureRegion grid;
     private boolean[][] movementRange;
     private boolean[][] attackRange;
@@ -48,7 +48,7 @@ public class MapManager extends Stage {
         this.multiplexer = inputMultiplexer;
         tileMapStage = new TileMapStage(assetManager, this);
         this.musicManager = musicManager;
-        characterMap = new ArrayList<Character>();
+        characterMap = new ArrayList<>();
         this.grid = new TextureRegion();
     }
 

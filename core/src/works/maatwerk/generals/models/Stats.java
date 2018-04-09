@@ -147,6 +147,16 @@ public class Stats {
         output.addToThis(stats);
         return output;
     }
+
+    public Stats cloneStats() {
+        Stats output = new Stats();
+        output.attack = this.attack;
+        output.defence = this.defence;
+        output.healthPoints = this.healthPoints;
+        output.movement = this.movement;
+        output.speed = this.speed;
+        return output;
+    }
     
     /**
      * 
@@ -181,15 +191,5 @@ public class Stats {
         }
         final Stats other = (Stats) obj;
         return this.hashCode() == other.hashCode();
-    }
-
-    public Stats cloneStats() {
-        Stats output = new Stats();
-        output.attack = this.attack;
-        output.defence = this.defence;
-        output.healthPoints = this.healthPoints;
-        output.movement = this.movement;
-        output.speed = this.speed;
-        return output;
     }
 }

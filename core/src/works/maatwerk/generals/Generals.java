@@ -9,20 +9,24 @@ import works.maatwerk.generals.music.MusicManager;
 public class Generals extends Game {
     private MusicManager musicManager;
     private AssetManager assetManager;
-
-    @Override
-    public void create() {
-        Gdx.app.setLogLevel(Application.LOG_DEBUG);
-
-        assetManager = new AssetManager();
-        musicManager = new MusicManager(assetManager);
-
-        Gdx.app.log("Screens", "Starting LoadingScreen");
-        this.setScreen(new LoadingScreen(this, assetManager));
-    }
+    private AccountManager accountManager;
 
     public MusicManager getMusicManager() {
         return musicManager;
+    }
+
+    public AccountManager getAccountManager() {
+        return accountManager;
+    }
+    
+    @Override
+    public void create() {
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
+        assetManager = new AssetManager();
+        musicManager = new MusicManager(assetManager);
+        accountManager = new AccountManager();
+        Gdx.app.log("Screens", "Starting LoadingScreen");
+        this.setScreen(new LoadingScreen(this, assetManager));
     }
 
     @Override
@@ -30,5 +34,6 @@ public class Generals extends Game {
         super.dispose();
         musicManager.dispose();
         assetManager.dispose();
+        accountManager.dispose();
     }
 }

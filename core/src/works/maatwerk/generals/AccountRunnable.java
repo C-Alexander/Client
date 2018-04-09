@@ -3,10 +3,13 @@ package works.maatwerk.generals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.net.HttpStatus;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import javafx.util.Pair;
 import works.maatwerk.generals.models.Account;
+import works.maatwerk.generals.models.Session;
+import works.maatwerk.generals.utils.Settings;
 import works.maatwerk.generals.utils.logger.Tag;
 
 import java.io.StringWriter;
@@ -16,12 +19,17 @@ import java.io.StringWriter;
  */
 @SuppressWarnings("SpellCheckingInspection")
 public class AccountRunnable implements Runnable {
-    private static final String URL_LOGIN = "http://dev.maatwerk.works/login";
-    private static final String URL_REGISTER = "http://dev.maatwerk.works/register";
+    private static final String URL_LOGIN = Settings.getRestUrl() + "/login";
+    private static final String URL_REGISTER = Settings.getRestUrl() + "/register";
     private Generals game = new Generals();
     private AssetManager assetManager = new AssetManager();
     private boolean isLoggingIn;
     private Account account;
+    
+    public AccountRunnable(Account account, boolean isLoggingIn){
+        this.account = account;
+        this.isLoggingIn = isLoggingIn;
+    }
 
     public AccountRunnable(Account account, Generals game, AssetManager assetManager, boolean isLoggingIn) {
         this.account = account;
@@ -30,19 +38,14 @@ public class AccountRunnable implements Runnable {
         this.isLoggingIn = isLoggingIn;
     }
 
-    public AccountRunnable(Account account, boolean isLoggingIn){
-        this.account = account;
-        this.isLoggingIn = isLoggingIn;
-    }
-
     /**
      * Testing the http functions of libgdx
      */
     private void restAPI() {
         if (isLoggingIn){
-            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<String, String>("Content-Type", "application/json")));
+            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
         }else{
-            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<String, String>("Content-Type", "application/json")));
+            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
         }
     }
 
@@ -51,7 +54,6 @@ public class AccountRunnable implements Runnable {
         request.setUrl(url);
         request.setMethod(method);
         request.setHeader(contentType.getKey(), contentType.getValue());
-
         return request;
     }
 
@@ -60,14 +62,8 @@ public class AccountRunnable implements Runnable {
         request.setContent(json.getWriter().getWriter().toString());
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
-            public void handleHttpResponse(Net.HttpResponse httpResponse) {
-                if (httpResponse.getStatus().getStatusCode()== 200)
-                Gdx.app.postRunnable(new Runnable() {
-                    @Override
-                    public void run() {
-                        game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
-                    }
-                });
+            public void handleHttpResponse(final Net.HttpResponse httpResponse) {
+                setSessionFromResponse(httpResponse);
             }
 
             @Override
@@ -80,6 +76,25 @@ public class AccountRunnable implements Runnable {
                 Gdx.app.error(Tag.NETWORKING, "Cancelled... why ");
             }
         });
+    }
+
+    private void setSessionFromResponse(Net.HttpResponse httpResponse) {
+        if (httpResponse.getStatus().getStatusCode() == HttpStatus.SC_OK) {
+            Session session = game.getAccountManager().getSessionFromResponse(httpResponse);
+
+            if (session == null) {
+                Gdx.app.error(Tag.ACCOUNT, "Failed to deserialize");
+            } else game.getAccountManager().setSession(session, true);
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+                }
+            });
+        } else {
+            Gdx.app.log(Tag.NETWORKING, "Bad Status Code from Login Attempt: " + httpResponse.getStatus().getStatusCode()
+                    + " response: \n" + httpResponse.getResultAsString());
+        }
     }
 
     private void restPostRegister(Net.HttpRequest request) {
@@ -95,9 +110,7 @@ public class AccountRunnable implements Runnable {
 
     private Json getJson() {
         Json json = new Json(JsonWriter.OutputType.json);
-
         json.setWriter(new StringWriter());
-
         json.writeObjectStart();
         json.writeValue("username", account.getUsername());
         json.writeValue("password", account.getPassword());

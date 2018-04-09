@@ -32,12 +32,6 @@ public class TileActor extends Actor {
         this.status = status;
     }
 
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
-        drawStatus(batch);
-    }
-
     private void drawStatus(Batch batch) {
         String statusString;
         switch (status) {
@@ -79,5 +73,11 @@ public class TileActor extends Actor {
                     assetManager.get("tileobjects/tilestatus.atlas", TextureAtlas.class).createSprite(statusString));
         }
         batch.draw(tilestatuses.get(statusString), getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        drawStatus(batch);
     }
 }
