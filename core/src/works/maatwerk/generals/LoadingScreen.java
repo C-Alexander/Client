@@ -178,6 +178,7 @@ class LoadingScreen extends ScreenAdapter {
                     break;
                 default:
                     Gdx.app.log(Tag.ACCOUNT, "Searching for session...");
+                    break;
             }
             return;
         }

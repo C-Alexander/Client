@@ -19,7 +19,7 @@ public class AccountManager implements Disposable {
     private Session session;
     private LoginStatus loginStatus = LoginStatus.LOGGED_OUT;
 
-    void init() {
+    public void init() {
         if (!getPreferences().contains(USERID_IDENTIFIER)) return;
         if (!getPreferences().contains(SESSIONID_IDENTIFIER)) return;
 
