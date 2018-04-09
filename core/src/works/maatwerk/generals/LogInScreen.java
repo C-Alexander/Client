@@ -65,12 +65,6 @@ public class LogInScreen extends ScreenAdapter{
     }
 
     @Override
-    public void show() {
-        super.show();
-    }
-
-
-    @Override
     public void render(float delta) {
         super.render(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -78,4 +72,5 @@ public class LogInScreen extends ScreenAdapter{
         stage.act(delta);
         stage.draw();
     }
+
 }

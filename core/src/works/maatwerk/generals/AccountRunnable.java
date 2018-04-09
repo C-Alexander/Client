@@ -7,6 +7,8 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import javafx.util.Pair;
 import works.maatwerk.generals.models.Account;
+import works.maatwerk.generals.models.Session;
+import works.maatwerk.generals.utils.Settings;
 import works.maatwerk.generals.utils.logger.Tag;
 
 import java.io.StringWriter;
@@ -17,8 +19,9 @@ import java.io.StringWriter;
 @SuppressWarnings("SpellCheckingInspection")
 class AccountRunnable implements Runnable {
 
-    private static final String URL_LOGIN = "http://dev.maatwerk.works/login";
-    private static final String URL_REGISTER = "http://dev.maatwerk.works/register";
+    private static final String URL_LOGIN = Settings.getRestUrl() + "/login";
+    private static final String URL_REGISTER = Settings.getRestUrl() + "/register";
+
     private Generals game = new Generals();
     private AssetManager assetManager = new AssetManager();
     private boolean isLoggingIn;
@@ -61,14 +64,23 @@ class AccountRunnable implements Runnable {
         request.setContent(json.getWriter().getWriter().toString());
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
-            public void handleHttpResponse(Net.HttpResponse httpResponse) {
-                if (httpResponse.getStatus().getStatusCode()== 200)
-                Gdx.app.postRunnable(new Runnable() {
-                    @Override
-                    public void run() {
-                        game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
-                    }
-                });
+            public void handleHttpResponse(final Net.HttpResponse httpResponse) {
+                if (httpResponse.getStatus().getStatusCode() == 200) {
+                    Session session = game.getAccountManager().getSessionFromResponse(httpResponse);
+
+                    if (session == null) {
+                        Gdx.app.error(Tag.ACCOUNT, "Failed to deserialize");
+                    } else game.getAccountManager().setSession(session, true);
+                    Gdx.app.postRunnable(new Runnable() {
+                        @Override
+                        public void run() {
+                            game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+                        }
+                    });
+                } else {
+                    Gdx.app.log(Tag.NETWORKING, "Bad Status Code from Login Attempt: " + httpResponse.getStatus().getStatusCode()
+                            + " response: \n" + httpResponse.getResultAsString());
+                }
             }
 
             @Override

@@ -1,11 +1,14 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -20,8 +23,8 @@ import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.models.Character;
+import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.networking.NetworkManager;
 import works.maatwerk.generals.utils.BackgroundColor;
 import works.maatwerk.generals.utils.StringUtils;
@@ -141,7 +144,7 @@ class PlayingScreen extends ScreenAdapter {
     }
 
     private void initializeNetworking() {
-        NetworkManager networkManager = new NetworkManager();
+        NetworkManager networkManager = new NetworkManager(game);
         networkManager.connect();
     }
 

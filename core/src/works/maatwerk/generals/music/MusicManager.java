@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Disposable;
 import works.maatwerk.generals.utils.files.Paths;
 import works.maatwerk.generals.utils.logger.Tag;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,8 +132,8 @@ public class MusicManager implements Disposable {
     public void dispose() {
         for (Music song : songs) {
             song.dispose();
-            Gdx.app.getPreferences(Tag.MUSIC).flush();
         }
+        Gdx.app.getPreferences(Tag.MUSIC).flush();
     }
 
     private class MusicListener implements Music.OnCompletionListener {

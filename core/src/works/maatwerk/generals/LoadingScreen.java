@@ -31,6 +31,7 @@ class LoadingScreen extends ScreenAdapter {
     private Vector2 logoPos;
     private Vector2 ebPos;
     private Vector2 fbPos;
+    private Boolean waitingForLogin = false;
 
     LoadingScreen(Generals game, AssetManager assetManager) {
         this.game = game;
@@ -161,11 +162,24 @@ class LoadingScreen extends ScreenAdapter {
         batch.end();
 
         if (assetManager.getProgress() == 1.0f) {
-
+            if (waitingForLogin) {
+                switch (game.getAccountManager().getLoginStatus()) {
+                    case LOGGED_OUT:
+                        game.setScreen(new LogInScreen(game, assetManager));
+                        break;
+                    case LOGGED_IN:
+                        game.setScreen(new PlayingScreen(game, assetManager));
+                        break;
+                }
+                return;
+            }
             game.getMusicManager().initializeMusic();
 
             Gdx.app.log("Screens", "Starting NetworkingScreen");
-            game.setScreen(new NetworkingScreen(game, assetManager));
+
+            game.getAccountManager().init();
+
+            waitingForLogin = true;
         }
     }
 }
