@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -18,14 +16,12 @@ public class PostGameScreen extends ScreenAdapter {
     public PostGameScreen(final Generals game, final AssetManager assetManager, String opponentName, Integer expGained, Integer turnsPlayed, Integer movesPlayed, boolean isVictory) {
         this.stage = new Stage();
 
-
         Gdx.input.setInputProcessor(stage);
         Skin skin = assetManager.get("skin/uiskin.json");
 
         Table table = new Table(skin);
         table.setFillParent(true);
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
 
         Label lblTitle;
         if(isVictory){
@@ -64,14 +60,12 @@ public class PostGameScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new PlayingScreen(game, assetManager));
             }
-
         });
 
         table.add(btnContinue).bottom().right().width(100).height(50);
         table.row();
         stage.addActor(table);
     }
-
 
     @Override
     public void render(float delta) {

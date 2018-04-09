@@ -20,11 +20,13 @@ import works.maatwerk.generals.utils.files.Paths;
 
 @SuppressWarnings("SpellCheckingInspection")
 class LoadingScreen extends ScreenAdapter {
+    private static final String LOADING = "Loading";
+    private static final String CAMERA = "Camera";
     private final Generals game;
     private final SpriteBatch batch;
     private final AssetManager assetManager;
     private FitViewport viewport;
-    private OrthographicCamera camera;
+    private OrthographicCamera cam;
     private Texture logo;
     private Texture fullBar;
     private Texture emptyBar;
@@ -45,28 +47,25 @@ class LoadingScreen extends ScreenAdapter {
     }
 
     private void initializeCamera() {
-        Gdx.app.debug("Camera", "Initializing");
-        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
-        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+        Gdx.app.debug(CAMERA, "Initializing");
+        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        cam.position.set(cam.viewportWidth / 2, cam.viewportHeight / 2, 0);
+        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), cam);
     }
 
     private void loadLoadingBar() {
-        Gdx.app.debug("Loading", "Loading Loadingbar");
+        Gdx.app.debug(LOADING, "Loading Loadingbar");
         this.assetManager.load("loader/logo.jpg", Texture.class);
         this.assetManager.load("loader/main_bar.png", Texture.class);
         this.assetManager.load("loader/bar_full.png", Texture.class);
-
         this.assetManager.finishLoading();
     }
 
     private void initializeLoadingBar() {
-        Gdx.app.debug("Loading", "Initializing Loadingbar");
-
+        Gdx.app.debug(LOADING, "Initializing Loadingbar");
         logo = this.assetManager.get("loader/logo.jpg");
         emptyBar = this.assetManager.get("loader/main_bar.png");
         fullBar = this.assetManager.get("loader/bar_full.png");
-
         logoPos = new Vector2((Gdx.graphics.getWidth() - logo.getWidth()) / 2, (Gdx.graphics.getHeight() / 2) - 100);
         ebPos = new Vector2((Gdx.graphics.getWidth() - emptyBar.getWidth()) / 2, logoPos.y - emptyBar.getHeight() + 40);
         fbPos = new Vector2((ebPos.x + (emptyBar.getWidth() / 2)) - (fullBar.getWidth() / 2), (ebPos.y + (emptyBar.getHeight() / 2)) - (fullBar.getHeight() / 2));
@@ -75,27 +74,24 @@ class LoadingScreen extends ScreenAdapter {
     @Override
     public void show() {
         super.show();
-
         loadAssets();
     }
 
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
-
-        Gdx.app.debug("Camera", "Resizing screen");
-
+        Gdx.app.debug(CAMERA, "Resizing screen");
         viewport.update(width, height);
-        camera.update();
+        cam.update();
     }
 
     private void loadAssets() {
-        Gdx.app.debug("Loading", "Loading assets");
+        Gdx.app.debug(LOADING, "Loading assets");
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
         assetManager.load("speel_map2.tmx", TiledMap.class);
-
+        
         assetManager.load("GridGrayDotted.png", Texture.class);
         assetManager.load("characters/hValkyrie.png", Texture.class);
         assetManager.load("characters/gArcane.png", Texture.class);
@@ -122,7 +118,6 @@ class LoadingScreen extends ScreenAdapter {
 
         loadTileStatuses();
         loadMusic();
-
     }
 
     private void loadTileStatuses() {
@@ -145,25 +140,20 @@ class LoadingScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         super.render(delta);
-
         assetManager.update();
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        batch.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(cam.combined);
         batch.begin();
-
         batch.draw(logo, logoPos.x, logoPos.y);
         batch.draw(emptyBar, ebPos.x, ebPos.y);
         batch.draw(fullBar, fbPos.x, fbPos.y, fullBar.getWidth() * assetManager.getProgress(), fullBar.getHeight());
-
         batch.end();
 
         if (assetManager.getProgress() == 1.0f) {
-
             game.getMusicManager().initializeMusic();
-
             Gdx.app.log("Screens", "Starting NetworkingScreen");
             game.setScreen(new NetworkingScreen(game, assetManager));
         }

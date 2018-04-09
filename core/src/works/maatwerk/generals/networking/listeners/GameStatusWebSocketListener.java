@@ -64,22 +64,20 @@ public class GameStatusWebSocketListener extends WebSocketAdapter {
     }
 
     private void joinGame(WebSocket webSocket) {
-        if (!webSocket.isOpen()) Gdx.app.error(Tag.NETWORKING, "Tried to join game before websocket was open");
+        if (!webSocket.isOpen())
+            Gdx.app.error(Tag.NETWORKING, "Tried to join game before websocket was open");
         Gdx.app.debug("JSON", "Creating an object for a JoinGame request");
-
         //write to a string
         Random rand = new Random();
         JoinGameMessage joinGameMessage = new JoinGameMessage("gameid#1", "player" + rand.nextInt());
         Packet packet = new Packet(MessageType.JOIN_GAME, joinGameMessage);
         Gdx.app.debug(Tag.NETWORKING, "Sending a JoinGame request");
-
         sendPacket(packet, webSocket);
     }
 
     private void sendPacket(Packet packet, WebSocket webSocket) {
         String packetText = json.toJson(packet);
         Gdx.app.debug(Tag.NETWORKING, "Sending packet from listener: " + packetText);
-
         webSocket.send(packetText);
     }
 

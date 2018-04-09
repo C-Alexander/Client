@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -33,8 +31,6 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final AssetManager assetManager;
     private final Generals game;
-    private TmxMapLoader mapLoader;
-    private OrthogonalTiledMapRenderer renderer;
     private MapManager map;
     private Stage stage;
     private Table table;
@@ -265,7 +261,6 @@ class PlayingScreen extends ScreenAdapter {
 
             Label lblStats = new Label(character.getGameStats().toString(), skin);
 
-
             table.top().left();
             float cellsize = table.add(new Image(character.getTexture())).padRight(30).getActorWidth();
 
@@ -283,7 +278,6 @@ class PlayingScreen extends ScreenAdapter {
             table.add(lblRank).left();
             table.add(lblRankValue).left();
         }
-
         stage.addActor(table);
     }
 

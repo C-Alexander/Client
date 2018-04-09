@@ -13,12 +13,13 @@ import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.sun.media.jfxmedia.logging.Logger;
 import works.maatwerk.generals.TileMapStage;
 import works.maatwerk.generals.utils.PathFinder;
 import works.maatwerk.generals.utils.logger.*;
 import works.maatwerk.generals.music.MusicManager;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @SuppressWarnings("WeakerAccess")
 public class MapManager extends Stage {
@@ -30,11 +31,12 @@ public class MapManager extends Stage {
     @SuppressWarnings("CanBeFinal")
     private ArrayList<Character> characterMap;
     private Character[][] characterLayer;
-    private static Vector2 mapDimensions;
+    private Vector2 mapDimensions;
     private final TileMapStage tileMapStage;
     private final InputMultiplexer multiplexer;
     private TextureRegion grid;
     private boolean[][] movementRange;
+    private boolean[][] attackRange;
 
     /**
      * @param assetManager
@@ -44,7 +46,6 @@ public class MapManager extends Stage {
     public MapManager(AssetManager assetManager, InputMultiplexer inputMultiplexer, MusicManager musicManager) {
         this.assetManager = assetManager;
         this.multiplexer = inputMultiplexer;
-
         tileMapStage = new TileMapStage(assetManager, this);
         this.musicManager = musicManager;
         characterMap = new ArrayList<Character>();
@@ -63,7 +64,6 @@ public class MapManager extends Stage {
         mapDimensions = new Vector2(layer.getWidth(), layer.getHeight());
         this.characterLayer = new Character[layer.getWidth()][layer.getHeight()];
         this.initializeGrid();
-
         startMusic();
     }
 
@@ -107,56 +107,80 @@ public class MapManager extends Stage {
     public void leftClickTile(Vector2 location) {
         Character character = characterLayer[(int) location.x][(int) location.y];
         if (character != null) {
-            if (this.getCharacterSelected() == null) {
-                this.setCharacterSelected(character);
-
-                tileMapStage.setSelectedTile((int) location.x, (int) location.y);
-                movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, (int) location.x, (int) location.y);
-                tileMapStage.setMovementStatuses(movementRange);
-                //TODO: UpdateUI
-            } else {
-                if (this.getCharacterSelected() != null) {
-                    this.getCharacterSelected().attack(character);
-                    this.setCharacterSelected(null);
-                    tileMapStage.clearAllStatuses();
-                }
-            }
-        } else {
-            if (this.getCharacterSelected() != null && this.movementRange[(int) location.x][(int) location.y]) {
-                moveCharacter(this.getCharacterSelected(), location);
-                this.setCharacterSelected(null);
+            if(attackRange != null && attackRange[(int) location.x][(int) location.y]){
+                getCharacterSelected().attack(character);
+                setCharacterSelected(null);
+                attackRange = null;
                 tileMapStage.clearAllStatuses();
+                return;
+            }
+            setCharacterSelected(character);
+            tileMapStage.setSelectedTile((int) location.x, (int) location.y);
+            movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, (int) location.x, (int) location.y);
+            tileMapStage.setMovementStatuses(movementRange);
+            attackRange = null;
+            //TODO: UpdateUI
+        } else if (this.getCharacterSelected() != null) {
+            tileMapStage.clearAllStatuses();
+            if(movementRange != null && movementRange[(int) location.x][(int) location.y]) {
+                moveCharacter(getCharacterSelected(), location);
+                movementRange = null;
+                attackRange = PathFinder.getAttackRange(getRangeMap(), getCharacterSelected(), (int) location.x, (int) location.y);
+                tileMapStage.setAttackStatuses(attackRange);
+                return;
+            }
+            setCharacterSelected(null);
+            attackRange = null;
+        }
+    }
+    
+    private int[][] getRangeMap() {
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
+        int horizontalTiles = layer.getWidth();
+        int verticalTiles = layer.getHeight();
+        int[][] rangeMap = new int[horizontalTiles][verticalTiles];
+        for (int x = 0; x < horizontalTiles; x++) {
+            for (int y = 0; y < verticalTiles; y++) {
+                rangeMap[x][y] = getRangeCost(x, y);
             }
         }
+        return rangeMap;
     }
 
     private int[][] getMovementMap() {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
-
         int horizontalTiles = layer.getWidth();
         int verticalTiles = layer.getHeight();
-
         int[][] movementMap = new int[horizontalTiles][verticalTiles];
-
         for (int x = 0; x < horizontalTiles; x++) {
             for (int y = 0; y < verticalTiles; y++) {
-                boolean passable = true;
-                int cost = 1;
-
-                for (MapLayer mapLayer : map.getLayers()) {
-                    layer = (TiledMapTileLayer) mapLayer;
-
-                    if (layer.getCell(x, y) == null) continue;
-
-                    if (layer.getCell(x, y).getTile().getProperties().containsKey("passable"))
-                                    passable = layer.getCell(x, y).getTile().getProperties().get("passable", true, Boolean.class);
-                                    cost += layer.getCell(x, y).getTile().getProperties().get("movementCost", 0, Integer.class);
-                }
-
-                movementMap[x][y] = passable ? cost : -1;
+                movementMap[x][y] = getMovementCost(x, y);
             }
         }
         return movementMap;
+    }
+    
+    private int getRangeCost(int x, int y) {
+        return getCost(x, y, "noAttack", "rangeCost");
+    }
+    
+    private int getMovementCost(int x, int y) {
+        return getCost(x, y, "passable", "movementCost");
+    }
+    
+    private int getCost(int x, int y, String key, String property) {
+        boolean passable = true;
+        int cost = 1;
+        TiledMapTileLayer layer;
+        for (MapLayer mapLayer : map.getLayers()) {
+            layer = (TiledMapTileLayer) mapLayer;
+            if (layer.getCell(x, y) == null)
+                continue;
+            if (layer.getCell(x, y).getTile().getProperties().containsKey(key))
+                passable = layer.getCell(x, y).getTile().getProperties().get(key, true, Boolean.class);
+            cost += layer.getCell(x, y).getTile().getProperties().get(property, 0, Integer.class);
+        }
+        return passable ? cost : -1;
     }
 
     /**
@@ -203,7 +227,7 @@ public class MapManager extends Stage {
      */
     public void moveCharacter(Character character, Vector2 location) {
         if (location.x > mapDimensions.x || location.y > mapDimensions.y || location.x < 0 || location.y < 0) {
-            Logger.logMsg(1, "Out of boundaries");
+            Logger.getLogger(MapManager.class.getName()).log(Level.FINE, "Out of boundaries");
             return;
         }
         removeCharacter(character);
@@ -224,12 +248,8 @@ public class MapManager extends Stage {
      * @return cell from location
      */
     public TiledMapTileLayer.Cell getCell(Vector2 location) {
-
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
-
-        @SuppressWarnings("UnnecessaryLocalVariable") TiledMapTileLayer.Cell cell = layer.getCell((int) location.x, (int) location.y);
-
-        return cell;
+        return layer.getCell((int) location.x, (int) location.y);
     }
 
     /**
@@ -261,8 +281,8 @@ public class MapManager extends Stage {
 
     public Vector2 getTileSize() {
         return new Vector2(
-                ((TiledMapTileLayer)map.getLayers().get(0)).getTileWidth(),
-                ((TiledMapTileLayer)map.getLayers().get(0)).getTileHeight()
+            ((TiledMapTileLayer)map.getLayers().get(0)).getTileWidth(),
+            ((TiledMapTileLayer)map.getLayers().get(0)).getTileHeight()
         );
     }
 

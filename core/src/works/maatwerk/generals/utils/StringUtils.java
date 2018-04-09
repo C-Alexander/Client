@@ -6,6 +6,7 @@ package works.maatwerk.generals.utils;
 public final class StringUtils {
 
     private StringUtils() {
+        throw new IllegalStateException("Utility class");
     }
 
     /**

@@ -15,8 +15,7 @@ import java.io.StringWriter;
  * Created by teund on 26/03/2018.
  */
 @SuppressWarnings("SpellCheckingInspection")
-class AccountRunnable implements Runnable {
-
+public class AccountRunnable implements Runnable {
     private static final String URL_LOGIN = "http://dev.maatwerk.works/login";
     private static final String URL_REGISTER = "http://dev.maatwerk.works/register";
     private Generals game = new Generals();
@@ -41,9 +40,9 @@ class AccountRunnable implements Runnable {
      */
     private void restAPI() {
         if (isLoggingIn){
-            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
+            restPostLogin(getHttpRequest(URL_LOGIN, Net.HttpMethods.POST, new Pair<String, String>("Content-Type", "application/json")));
         }else{
-            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<>("Content-Type", "application/json")));
+            restPostRegister(getHttpRequest(URL_REGISTER, Net.HttpMethods.POST, new Pair<String, String>("Content-Type", "application/json")));
         }
     }
 
@@ -91,6 +90,7 @@ class AccountRunnable implements Runnable {
 
         //send!
         Gdx.net.sendHttpRequest(request, null);
+        game.setScreen(new LogInScreen(game, assetManager));
     }
 
     private Json getJson() {

@@ -7,6 +7,10 @@ package works.maatwerk.generals.utils;
  */
 public class PathFinder {
     
+    private PathFinder() {
+        throw new IllegalStateException("Utility class");
+    }
+    
     /**
      * Calculates the possiblities where a character can move according to the field.
      * 
