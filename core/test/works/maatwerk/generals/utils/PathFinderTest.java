@@ -75,4 +75,53 @@ public class PathFinderTest {
         boolean[][] result = PathFinder.getAttackRange(tiles, character, x, y);
         assertArrayEquals(expResult, result);
     }
+    
+    /**
+     * Test of getPossibleMoves method, of class PathFinder.
+     */
+    @Test
+    public void testGetPossibleMovesBig() {
+        Race r = new Race("Test", new Stats(9, 3, 1, 5, 1));
+        Character c = new Character(r, new Rank(), 0, null, null);
+        int sides = 100;
+        int posX = 50;
+        int posY = 50;
+        int[][] tiles = new int[sides + 1][sides + 1];
+        boolean[][] expResult = new boolean[sides + 1][sides + 1];
+        for(int x = 0; x <= sides; x++) {
+            for(int y = 0; y <= sides; y++) {
+                tiles[x][y] = 1;
+                if(Math.abs(x - posX) + Math.abs(y - posY) <= 10) {
+                    expResult[x][y] = true;
+                }
+            }
+        }
+        boolean[][] result = PathFinder.getPossibleMoves(tiles, c, posX, posY);
+        assertArrayEquals(expResult, result);
+    }
+    
+    /**
+     * Test of getPossibleMoves method, of class PathFinder.
+     */
+    @Test
+    public void testGetAttackRangeBig() {
+        Race r = new Race("Test", new Stats(9, 3, 1, 5, 1));
+        Character c = new Character(r, new Rank(), 0, null, null);
+        c.setWeapon(new Weapon("Test weapon", 10, null, false, null));
+        int sides = 100;
+        int posX = 50;
+        int posY = 50;
+        int[][] tiles = new int[sides + 1][sides + 1];
+        boolean[][] expResult = new boolean[sides + 1][sides + 1];
+        for(int x = 0; x <= sides; x++) {
+            for(int y = 0; y <= sides; y++) {
+                tiles[x][y] = 1;
+                if(Math.abs(x - posX) + Math.abs(y - posY) <= 10) {
+                    expResult[x][y] = true;
+                }
+            }
+        }
+        boolean[][] result = PathFinder.getAttackRange(tiles, c, posX, posY);
+        assertArrayEquals(expResult, result);
+    }
 }
