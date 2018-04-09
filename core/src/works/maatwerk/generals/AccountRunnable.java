@@ -3,6 +3,7 @@ package works.maatwerk.generals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.net.HttpStatus;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import javafx.util.Pair;
@@ -81,7 +82,7 @@ class AccountRunnable implements Runnable {
     }
 
     private void setSessionFromResponse(Net.HttpResponse httpResponse) {
-        if (httpResponse.getStatus().getStatusCode() == 200) {
+        if (httpResponse.getStatus().getStatusCode() == HttpStatus.SC_OK) {
             Session session = game.getAccountManager().getSessionFromResponse(httpResponse);
 
             if (session == null) {

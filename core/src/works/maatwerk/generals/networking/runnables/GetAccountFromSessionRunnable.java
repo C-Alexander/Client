@@ -12,13 +12,13 @@ import works.maatwerk.generals.utils.logger.Tag;
 
 import java.io.StringWriter;
 
-public class GetSessionRunnable implements Runnable {
+public class GetAccountFromSessionRunnable implements Runnable {
 
     private final AccountManager accountManager;
     private final int userId;
     private final String sessionId;
 
-    public GetSessionRunnable(AccountManager accountManager, int userId, String sessionId) {
+    public GetAccountFromSessionRunnable(AccountManager accountManager, int userId, String sessionId) {
         this.accountManager = accountManager;
         this.userId = userId;
         this.sessionId = sessionId;

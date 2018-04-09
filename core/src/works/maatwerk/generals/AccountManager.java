@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import works.maatwerk.generals.enums.LoginStatus;
 import works.maatwerk.generals.models.Account;
 import works.maatwerk.generals.models.Session;
-import works.maatwerk.generals.networking.runnables.GetSessionRunnable;
+import works.maatwerk.generals.networking.runnables.GetAccountFromSessionRunnable;
 import works.maatwerk.generals.utils.logger.Tag;
 
 public class AccountManager implements Disposable {
@@ -28,7 +28,7 @@ public class AccountManager implements Disposable {
 
         Gdx.app.log(Tag.ACCOUNT, "Checking for existing session...");
         setLoginStatus(LoginStatus.CHECKING_SESSION);
-        new Thread(new GetSessionRunnable(this, userId, sessionId)).start();
+        new Thread(new GetAccountFromSessionRunnable(this, userId, sessionId)).start();
     }
 
     @Override
