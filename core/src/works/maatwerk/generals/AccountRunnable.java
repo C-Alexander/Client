@@ -65,22 +65,7 @@ class AccountRunnable implements Runnable {
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(final Net.HttpResponse httpResponse) {
-                if (httpResponse.getStatus().getStatusCode() == 200) {
-                    Session session = game.getAccountManager().getSessionFromResponse(httpResponse);
-
-                    if (session == null) {
-                        Gdx.app.error(Tag.ACCOUNT, "Failed to deserialize");
-                    } else game.getAccountManager().setSession(session, true);
-                    Gdx.app.postRunnable(new Runnable() {
-                        @Override
-                        public void run() {
-                            game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
-                        }
-                    });
-                } else {
-                    Gdx.app.log(Tag.NETWORKING, "Bad Status Code from Login Attempt: " + httpResponse.getStatus().getStatusCode()
-                            + " response: \n" + httpResponse.getResultAsString());
-                }
+                handleResponse(httpResponse);
             }
 
             @Override
@@ -93,6 +78,25 @@ class AccountRunnable implements Runnable {
                 Gdx.app.error(Tag.NETWORKING, "Cancelled... why ");
             }
         });
+    }
+
+    private void handleResponse(Net.HttpResponse httpResponse) {
+        if (httpResponse.getStatus().getStatusCode() == 200) {
+            Session session = game.getAccountManager().getSessionFromResponse(httpResponse);
+
+            if (session == null) {
+                Gdx.app.error(Tag.ACCOUNT, "Failed to deserialize");
+            } else game.getAccountManager().setSession(session, true);
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+                }
+            });
+        } else {
+            Gdx.app.log(Tag.NETWORKING, "Bad Status Code from Login Attempt: " + httpResponse.getStatus().getStatusCode()
+                    + " response: \n" + httpResponse.getResultAsString());
+        }
     }
 
     private void restPostRegister(Net.HttpRequest request) {

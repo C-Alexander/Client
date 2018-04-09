@@ -15,6 +15,7 @@ import works.maatwerk.generals.utils.logger.Tag;
 public class AccountManager implements Disposable {
     Session session;
     LoginStatus loginStatus = LoginStatus.LOGGED_OUT;
+    public static final String PLAYER_IDENTIFIER = "player";
 
 
     public void init() {
@@ -47,9 +48,9 @@ public class AccountManager implements Disposable {
         session.setId(body.getString("id"));
 
         Account player = new Account();
-        player.setId(body.get("player").getInt("id"));
-        player.setUsername(body.get("player").getString("username"));
-        player.setPassword(body.get("player").getString("password"));
+        player.setId(body.get(PLAYER_IDENTIFIER).getInt("id"));
+        player.setUsername(body.get(PLAYER_IDENTIFIER).getString("username"));
+        player.setPassword(body.get(PLAYER_IDENTIFIER).getString("password"));
 
         session.setPlayer(player);
 

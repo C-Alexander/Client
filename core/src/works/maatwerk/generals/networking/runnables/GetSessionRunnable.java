@@ -31,7 +31,6 @@ public class GetSessionRunnable implements Runnable {
 
         request.setContent(content.getWriter().getWriter().toString());
 
-        System.out.println(request.getContent());
         Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
