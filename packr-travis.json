@@ -1,6 +1,6 @@
 {
     "platform": "windows64",
-    "jdk": "$JAVA_HOME",
+    "jdk": "/usr/lib/jvm/java-8-oracle",
     "executable": "win-64-client",
     "classpath": [
         "dist/desktop.jar"
