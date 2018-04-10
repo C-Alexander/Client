@@ -165,13 +165,18 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.app.debug("Input", "Initializing CameraInputController");
 
         CameraInputController cameraInputController = new CameraInputController(camera);
-        if (Gdx.app.getType() == Application.ApplicationType.Android) cameraInputController.translateUnits = 1500;
-        else cameraInputController.translateUnits = 1000;
+        if (Gdx.app.getType() == Application.ApplicationType.Android) {
+            cameraInputController.translateUnits = 1500;
+            cameraInputController.translateButton = Buttons.LEFT;
+
+        } else {
+            cameraInputController.translateUnits = 1000;
+            cameraInputController.translateButton = Buttons.RIGHT;
+        }
         cameraInputController.scrollFactor = 0;
         cameraInputController.forwardButton = -1000;
         cameraInputController.rotateButton = -1000;
         cameraInputController.rotateAngle = 0;
-        cameraInputController.translateButton = Buttons.RIGHT;
         cameraInputController.pinchZoomFactor = 0;
 
         multiplexer.addProcessor(cameraInputController);
