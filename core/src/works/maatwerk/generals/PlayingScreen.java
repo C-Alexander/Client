@@ -1,14 +1,15 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -20,8 +21,8 @@ import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.models.Character;
+import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.networking.NetworkManager;
 import works.maatwerk.generals.utils.BackgroundColor;
 import works.maatwerk.generals.utils.StringUtils;
@@ -33,8 +34,6 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final AssetManager assetManager;
     private final Generals game;
-    private TmxMapLoader mapLoader;
-    private OrthogonalTiledMapRenderer renderer;
     private MapManager map;
     private Stage stage;
     private Table table;
@@ -123,25 +122,12 @@ class PlayingScreen extends ScreenAdapter {
         map.addCharacter(character20);
     }
 
-    @Override
-    public void show() {
-        initializeCamera();
-        initializeInputMultiplexer();
-        initializeNetworking();
-        map.initializeMap("");
-        loadOwnTeam();
-        loadEnemyTeam();
-        Gdx.input.vibrate(5000);
-        initializeVolumeControls();
-        initializeCameraInputController();
-    }
-
     private void initializeVolumeControls() {
         multiplexer.addProcessor(new MusicController(game.getMusicManager()));
     }
 
     private void initializeNetworking() {
-        NetworkManager networkManager = new NetworkManager();
+        NetworkManager networkManager = new NetworkManager(game);
         networkManager.connect();
     }
 
@@ -198,6 +184,71 @@ class PlayingScreen extends ScreenAdapter {
         camera.update();
     }
 
+    private void addUI(Table table){
+        Skin skin = assetManager.get("skin/uiskin.json");
+
+        Gdx.input.setInputProcessor(stage);
+
+        Label label = new Label("Character X", skin);
+        label.setFontScale(1);
+
+        BackgroundColor backgroundColor = new BackgroundColor("skin/white.png");
+        backgroundColor.setColor(0, 129, 128, 255);
+        table.setBackground(backgroundColor);
+
+        updateCharacterLabel(table, map.getCharacterSelected());
+    }
+
+    //todo:: Move the UI stuff to another class.
+    private void updateCharacterLabel(Table table, Character character){
+        table.clearChildren();
+        if (character != null){
+            Skin skin = assetManager.get("skin/uiskin.json");
+
+            Label lblName = new Label("Name:", skin);
+            Label lblNameValue = new Label(character.getName(), skin);
+
+            Label lblRace = new Label("Race:", skin);
+            Label lblRaceValue = new Label(character.getRace().getName(), skin);
+
+            Label lblRank = new Label("Rank:", skin);
+            Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
+
+            Label lblStats = new Label(character.getGameStats().toString(), skin);
+
+            table.top().left();
+            float cellsize = table.add(new Image(character.getTexture())).padRight(30).getActorWidth();
+
+            table.add(lblName).left().padRight(10);
+            table.add(lblNameValue).left();
+            table.add(lblStats).left().padLeft(60);
+
+            table.row().padTop(-10);
+            table.add().padRight(30).setActorWidth(cellsize);
+            table.add(lblRace).left();
+            table.add(lblRaceValue).left();
+
+            table.row().padTop(-7);
+            table.add().padRight(30).setActorWidth(cellsize);
+            table.add(lblRank).left();
+            table.add(lblRankValue).left();
+        }
+        stage.addActor(table);
+    }
+    
+    @Override
+    public void show() {
+        initializeCamera();
+        initializeInputMultiplexer();
+        initializeNetworking();
+        map.initializeMap("");
+        loadOwnTeam();
+        loadEnemyTeam();
+        Gdx.input.vibrate(5000);
+        initializeVolumeControls();
+        initializeCameraInputController();
+    }
+
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
@@ -231,60 +282,6 @@ class PlayingScreen extends ScreenAdapter {
 
         stage.act(delta);
         stage.draw();
-    }
-
-    private void addUI(Table table){
-        Skin skin = assetManager.get("skin/uiskin.json");
-
-        Gdx.input.setInputProcessor(stage);
-
-        Label label = new Label("Character X", skin);
-        label.setFontScale(1);
-
-        BackgroundColor backgroundColor = new BackgroundColor("skin/white.png");
-        backgroundColor.setColor(0, 129, 128, 255);
-        table.setBackground(backgroundColor);
-
-        updateCharacterLabel(table, map.getCharacterSelected());
-    }
-
-    //todo:: Move the UI stuff to another class.
-    private void updateCharacterLabel(Table table, Character character){
-        table.clearChildren();
-        if (character != null){
-            Skin skin = assetManager.get("skin/uiskin.json");
-
-            Label lblName = new Label("Name:", skin);
-            Label lblNameValue = new Label(character.getName(), skin);
-
-            Label lblRace = new Label("Race:", skin);
-            Label lblRaceValue = new Label(character.getRace().getName(), skin);
-
-            Label lblRank = new Label("Rank:", skin);
-            Label lblRankValue = new Label(StringUtils.ucFirst(character.getRank().getRankName().toString()), skin);
-
-            Label lblStats = new Label(character.getGameStats().toString(), skin);
-
-
-            table.top().left();
-            float cellsize = table.add(new Image(character.getTexture())).padRight(30).getActorWidth();
-
-            table.add(lblName).left().padRight(10);
-            table.add(lblNameValue).left();
-            table.add(lblStats).left().padLeft(60);
-
-            table.row().padTop(-10);
-            table.add().padRight(30).setActorWidth(cellsize);
-            table.add(lblRace).left();
-            table.add(lblRaceValue).left();
-
-            table.row().padTop(-7);
-            table.add().padRight(30).setActorWidth(cellsize);
-            table.add(lblRank).left();
-            table.add(lblRankValue).left();
-        }
-
-        stage.addActor(table);
     }
 
     @Override

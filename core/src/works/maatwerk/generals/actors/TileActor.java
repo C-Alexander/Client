@@ -8,20 +8,19 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import works.maatwerk.generals.enums.TileStatus;
 import works.maatwerk.generals.models.MapManager;
 import works.maatwerk.generals.responselisteners.TileListener;
-
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by teund on 06/03/2018.
  */
 public class TileActor extends Actor {
-    private AssetManager assetManager;
-    private HashMap<String, Sprite> tilestatuses;
+    private final AssetManager assetManager;
+    private final Map<String, Sprite> tilestatuses;
     private TileStatus status = TileStatus.NONE;
 
-    public TileActor(HashMap<String, Sprite> tilestatuses, AssetManager assetManager, MapManager mapManager) {
+    public TileActor(Map<String, Sprite> tilestatuses, AssetManager assetManager, MapManager mapManager) {
         this.assetManager = assetManager;
-        this.addListener(new TileListener(this, mapManager));
+        addListener(new TileListener(this, mapManager));
         this.tilestatuses = tilestatuses;
     }
 
@@ -33,15 +32,8 @@ public class TileActor extends Actor {
         this.status = status;
     }
 
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
-        drawStatus(batch);
-    }
-
     private void drawStatus(Batch batch) {
-
-        String statusString = null;
+        String statusString;
         switch (status) {
             case ATTACK_AVAILABLE:
                 statusString = "HealA";
@@ -76,14 +68,6 @@ public class TileActor extends Actor {
             default:
                 return;
         }
-//
-//        if (true) {
-//            Sprite spr = assetManager.get("tileobjects/tilestatus.atlas", TextureAtlas.class).createSprite("AttackA");
-//            batch.setColor(255, 255, 255, 1);
-//            batch.draw(spr, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
-//            return;
-//        }
-      //  if (statusString != "MoveU") Gdx.app.log("status", statusString);
         if (!tilestatuses.containsKey(statusString)) {
             tilestatuses.put(statusString,
                     assetManager.get("tileobjects/tilestatus.atlas", TextureAtlas.class).createSprite(statusString));
@@ -91,5 +75,9 @@ public class TileActor extends Actor {
         batch.draw(tilestatuses.get(statusString), getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
     }
 
-
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        drawStatus(batch);
+    }
 }

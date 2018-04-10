@@ -4,27 +4,79 @@ package works.maatwerk.generals.models;
  * Created by teund on 21/03/2018.
  */
 public class Account {
-    private String Username;
-    private String Password;
-
-    public String getUsername() {
-        return Username;
+    private int id;
+    private String username;
+    private String password;
+    
+    /**
+     * Default constructor
+     */
+    public Account() {
     }
-
-    public String getPassword() {
-        return Password;
-    }
-
+    
+    /**
+     * 
+     * @param username
+     * @param password 
+     */
     public Account(String username, String password) {
-        Username = username;
-        Password = password;
+        this.username = username;
+        this.password = password;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getId() {
+        return id;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getUsername() {
+        return username;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getPassword() {
+        return password;
+    }
+    
+    /**
+     * 
+     * @param id 
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    /**
+     * 
+     * @param username 
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    /**
+     * 
+     * @param password 
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "{"
-                + "\"Username\":\"" + Username + "\""
-                + ",\"Password\":\"" + Password + "\""
+                + "\"Username\":\"" + username + "\""
+                + ",\"Password\":\"" + password + "\""
                 + "}";
     }
 }

@@ -64,8 +64,8 @@ public class Character extends Actor {
         this.rank = rank;
         this.assetManager = assetManager;
         this.location = location;
-        debuffs = new ArrayList<Debuff>(); //INFO: Houd de class in de diamond
-        minions = new ArrayList<Character>(); //INFO: Houd de class in de diamond
+        debuffs = new ArrayList<>(); //INFO: Houd de class in de diamond
+        minions = new ArrayList<>(); //INFO: Houd de class in de diamond
     }
     
     /**
@@ -304,7 +304,7 @@ public class Character extends Actor {
      */
     public List<Character> matchEnded() {
         if (!this.isAlive())
-            return new ArrayList<Character>();
+            return new ArrayList<>();
         rank.update();
         debuffs.clear();
         return matchEndedMinions();
@@ -393,7 +393,7 @@ public class Character extends Actor {
      * @return
      */
     private List<Character> matchEndedMinions() {
-        List<Character> output = new ArrayList<Character>();
+        List<Character> output = new ArrayList<>();
         Iterator<Character> iterator = minions.iterator();
         while (iterator.hasNext()) {
             Character c = iterator.next();

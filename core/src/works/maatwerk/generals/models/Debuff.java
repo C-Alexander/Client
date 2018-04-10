@@ -17,8 +17,14 @@ public class Debuff {
      */
     public Debuff(int turns, Stats staticDebuff, Stats dynamicDebuff) {
         this.turns = turns;
-        this.staticDebuff = staticDebuff.cloneStats();
-        this.dynamicDebuff = dynamicDebuff.cloneStats();
+        if(staticDebuff != null)
+            this.staticDebuff = staticDebuff.cloneStats();
+        else
+            this.staticDebuff = null;
+        if(dynamicDebuff != null)
+            this.dynamicDebuff = dynamicDebuff.cloneStats();
+        else
+            this.dynamicDebuff = null;
     }
     
     /**
