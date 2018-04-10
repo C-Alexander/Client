@@ -45,10 +45,7 @@ public class PathFinder {
 	Integer[][] output = input;
         int weaponrange = (character.getWeapon() == null ? 1 : character.getWeapon().getRange());
 	int moves = (movement ? character.getGameStats().getMovement() : weaponrange) - movesUsed;
-        boolean outOfMoves = moves <= 0;
-        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= output.length || v.getY() >= output[0].length;
-        boolean returnOutput = outOfMoves || outOfBounds;
-        if(returnOutput) {
+        if(x(moves, v, output.length, output[0].length)) {
             return output;
         }
 	boolean improve = output[v.getX()][v.getY()] == null ? true : output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
@@ -61,6 +58,12 @@ public class PathFinder {
             output = genIntMap(movement, tiles, character, v.subOneY(), output, used, false);
 	}
 	return output;
+    }
+    
+    private static boolean x(int moves, Vector v, int lengthX, int lengthY) {
+        boolean outOfMoves = moves <= 0;
+        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= lengthX || v.getY() >= lengthY;
+        return outOfMoves || outOfBounds;
     }
     
     private static Integer[][] getIntArray(int[][] tiles) {
