@@ -24,10 +24,9 @@ before_deploy:
 - git config --local user.email "alexander@teamcorgi.com"
 - git tag "$TRAVIS_BUILD_NUMBER"
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
-- wget http://libgdx.badlogicgames.com/packr/packr.jar -P distCache
+- wget -nc http://libgdx.badlogicgames.com/packr/packr.jar -P distCache
 - java -jar distCache/packr.jar packr-travis.json
 - zip -r build.zip dist
-- ls
 
 script: true
 
