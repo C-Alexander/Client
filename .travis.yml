@@ -12,7 +12,10 @@ cache:
 before_install:
 - chmod +x gradlew
 
-install: true
+install: 
+- ./gradlew desktop:dist
+- mkdir -p dist
+- mkdir -p distCache
 
 build: true
 
@@ -20,9 +23,6 @@ before_deploy:
 - git config --local user.name "Alexander"
 - git config --local user.email "alexander@teamcorgi.com"
 - git tag "$TRAVIS_BUILD_NUMBER"
-- ./gradlew desktop:dist
-- mkdir -p dist
-- mkdir -p distCache
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
 - wget http://libgdx.badlogicgames.com/packr/packr.jar -P distCache
 - java -jar distCache/packr.jar packr-travis.json
@@ -41,4 +41,3 @@ deploy:
   file: build.zip
   on:
     branches: master
-    tags: true
