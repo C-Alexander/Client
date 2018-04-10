@@ -63,41 +63,41 @@ class PlayingScreen extends ScreenAdapter {
         character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character2);
         Character character3 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.AXE, assetManager, new Vector2(14,2));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character3.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character3);
         Character character4 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.SWORD, assetManager, new Vector2(15,5));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character4.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character4);
         Character character5 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(14,4));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character5.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character5);
         Character character6 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(16,4));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character6.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character6);
         Character character7 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 3));
-        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        character7.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character7);
         Character character8 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.BOW, assetManager, new Vector2(17,3));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character8.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character8);
         Character character9 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.BOW, assetManager, new Vector2(16,2));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character9.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character9);
         Character character10 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.BOW, assetManager, new Vector2(18,2));
-        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character10.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character10);
     }
 
     //TODO: Jesus fucking christ Teun wat is dit
     private void loadEnemyTeam(){
         Character character11 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), WeaponClass.ARCANE, assetManager, new Vector2(13,27));
-        character11.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character11.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character11);
         Character character12 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.ARCANE, assetManager, new Vector2(12, 28));
-        character12.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        character12.setWeapon(new Weapon("Axe", 2, new Stats(), false, null));
         map.addCharacter(character12);
         Character character13 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.ARCANE, assetManager, new Vector2(14,28));
-        character13.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character13.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character13);
         Character character14 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.SPEAR, assetManager, new Vector2(15,25));
         character14.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
@@ -112,13 +112,13 @@ class PlayingScreen extends ScreenAdapter {
         character17.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character17);
         Character character18 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.CORRUPT, assetManager, new Vector2(17,27));
-        character18.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character18.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character18);
         Character character19 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.CORRUPT, assetManager, new Vector2(16,28));
-        character19.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character19.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character19);
         Character character20 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.CORRUPT, assetManager, new Vector2(18,28));
-        character20.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        character20.setWeapon(new Weapon("Axe",2,new Stats(),false,null));
         map.addCharacter(character20);
     }
 
