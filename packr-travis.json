@@ -11,6 +11,6 @@
     ],
     "minimizejre": "oraclejre8",
     "output": "dist/out-win64",
-    "verbose": "true"
+    "verbose": "true",
     "cachejre": "distCache/jre"
 }
