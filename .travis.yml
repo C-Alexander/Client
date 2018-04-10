@@ -17,6 +17,9 @@ install: true
 build: true
 
 before_deploy:
+- git config --local user.name "Alexander"
+- git config --local user.email "alexander@teamcorgi.com"
+- git tag "$TRAVIS_BUILD_NUMBER"
 - ./gradlew desktop:dist
 - mkdir -p dist
 - mkdir -p distCache
@@ -34,7 +37,6 @@ deploy:
   provider: releases
   api_key:
     secure: $API_KEY
-  file:
-  - dist.zip
+  file: build.zip
   on:
     branches: master
