@@ -27,6 +27,7 @@ before_deploy:
 - wget http://libgdx.badlogicgames.com/packr/packr.jar -P distCache
 - java -jar distCache/packr.jar packr-travis.json
 - zip -r build.zip dist
+- ls
 
 script: true
 
@@ -40,3 +41,4 @@ deploy:
   file: build.zip
   on:
     branches: master
+    tags: true
