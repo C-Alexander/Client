@@ -37,6 +37,8 @@ class PlayingScreen extends ScreenAdapter {
     private MapManager map;
     private Stage stage;
     private Table table;
+    private Character Hero1;
+    private Character Hero2;
 
     PlayingScreen(Generals game, AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -74,9 +76,9 @@ class PlayingScreen extends ScreenAdapter {
         Character character6 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(16,4));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character6);
-        Character character7 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 3));
-        character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
-        map.addCharacter(character7);
+        Hero2 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 3));
+        Hero2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(Hero2);
         Character character8 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.BOW, assetManager, new Vector2(17,3));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character8);
@@ -108,9 +110,9 @@ class PlayingScreen extends ScreenAdapter {
         Character character16 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SPEAR, assetManager, new Vector2(16,26));
         character16.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character16);
-        Character character17 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 27));
-        character17.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
-        map.addCharacter(character17);
+        Hero1 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 27));
+        Hero1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(Hero1);
         Character character18 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.CORRUPT, assetManager, new Vector2(17,27));
         character18.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character18);
@@ -175,6 +177,12 @@ class PlayingScreen extends ScreenAdapter {
         cameraInputController.pinchZoomFactor = 0;
 
         multiplexer.addProcessor(cameraInputController);
+    }
+
+    private void checkEndGame(){
+        if(!Hero1.isAlive()||!Hero2.isAlive()){
+            game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+        }
     }
 
     private void initializeCamera() {
@@ -265,6 +273,7 @@ class PlayingScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
+
         map.update();
         super.render(delta);
         batch.setProjectionMatrix(camera.combined);
@@ -282,6 +291,7 @@ class PlayingScreen extends ScreenAdapter {
 
         stage.act(delta);
         stage.draw();
+        checkEndGame();
     }
 
     @Override
