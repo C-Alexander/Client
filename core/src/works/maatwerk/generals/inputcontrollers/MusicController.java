@@ -14,13 +14,12 @@ public class MusicController extends InputAdapter {
     }
 
     private void adjustVolume(int change) {
-        if (musicManager.getCurrentSong() == null) return;
-
+        if (musicManager.getCurrentSong() == null)
+            return;
         float volumeChange = getVolumeChange(change);
         if (volumeChange < 0 && musicManager.getCurrentSong().getVolume() < 0) {
             volumeChange = 0;
         }
-
         float newVolume = Math.min(Math.max(musicManager.getCurrentSong().getVolume() + volumeChange, 0f), 1f);
         musicManager.getCurrentSong().setVolume(newVolume);
         Gdx.app.getPreferences(Tag.MUSIC).putFloat("Volume", newVolume);
