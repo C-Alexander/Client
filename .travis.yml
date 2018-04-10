@@ -10,14 +10,20 @@ cache:
 before_install:
 - chmod +x gradlew
 
+install: true
 
-before_deploy:
+build: 
 - ./gradlew desktop:dist
 - mkdir dist
 - mkdir distCache
+
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
 - wget http://libgdx.badlogicgames.com/packr/packr.jar -P /distCache
 - java -jar /distCache/packr.jar packr-travis.json
+
+test: true
+
+before_deploy:
 - zip -r build.zip /dist
 
 deploy:
