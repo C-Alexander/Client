@@ -46,7 +46,7 @@ public class PathFinder {
 	Integer[][] output = input;
         int weaponrange = getWeaponRange(character.getWeapon());
 	int moves = getMovesLeft(movement, character.getGameStats().getMovement(), weaponrange, movesUsed);
-        if(continueFunction(moves, v, output, tiles)) {
+        if(discontinueFunction(moves, v, output, tiles)) {
             return output;
         }
         int used = movesUsed + (start ? 0 : tiles[v.getX()][v.getY()]);
@@ -76,10 +76,10 @@ public class PathFinder {
         return output - movesUsed;
     }
     
-    private static boolean continueFunction(int moves, Vector v, Integer[][] array, int[][] tiles) {
+    private static boolean discontinueFunction(int moves, Vector v, Integer[][] array, int[][] tiles) {
         boolean outOfMoves = moves <= 0;
         boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= array.length || v.getY() >= array[0].length;
-        boolean wouldNotImprove = array[v.getX()][v.getY()] != null && array[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
+        boolean wouldNotImprove = !outOfBounds && array[v.getX()][v.getY()] != null && array[v.getX()][v.getY()] >= (moves - tiles[v.getX()][v.getY()]);
         return outOfMoves || outOfBounds || wouldNotImprove;
     }
     

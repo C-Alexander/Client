@@ -9,13 +9,13 @@ import works.maatwerk.generals.AccountManager;
 import works.maatwerk.generals.enums.LoginStatus;
 import works.maatwerk.generals.utils.Settings;
 import works.maatwerk.generals.utils.logger.Tag;
-
 import java.io.StringWriter;
 
 public class GetAccountFromSessionRunnable implements Runnable {
     private final AccountManager accountManager;
     private final int userId;
     private final String sessionId;
+    
     public GetAccountFromSessionRunnable(AccountManager accountManager, int userId, String sessionId) {
         this.accountManager = accountManager;
         this.userId = userId;
