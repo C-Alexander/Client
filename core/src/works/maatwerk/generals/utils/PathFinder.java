@@ -48,12 +48,12 @@ public class PathFinder {
             weaponrange = character.getWeapon().getRange();
         }
 	int moves = (movement ? character.getGameStats().getMovement() : weaponrange) - movesUsed;
-        boolean outOfMoves = moves <= 0;
-        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= output.length || v.getY() >= output[0].length;
-        if(outOfMoves || outOfBounds/*x(moves, v, output.length, output[0].length)*/) {
+        /*boolean outOfMoves = moves <= 0;
+        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= output.length || v.getY() >= output[0].length;*/
+        if(x(moves, v, output.length, output[0].length)) {
             return output;
         }
-	if(output[v.getX()][v.getY()] == null && output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()])) {
+	if(output[v.getX()][v.getY()] != null && output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()])) {
             return output;
         }
         int used = movesUsed + (start ? 0 : tiles[v.getX()][v.getY()]);
