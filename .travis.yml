@@ -26,6 +26,7 @@ before_deploy:
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
 - wget -nc http://libgdx.badlogicgames.com/packr/packr.jar -P distCache
 - java -jar distCache/packr.jar packr-travis.json
+- rm -f dist/desktop.jar
 - zip -r build.zip dist
 
 script: true
