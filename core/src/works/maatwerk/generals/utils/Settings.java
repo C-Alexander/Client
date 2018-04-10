@@ -9,8 +9,8 @@ public class Settings {
 
     public static final String REST_DEV_URL = "http://dev.maatwerk.works";
     public static final String WS_DEV_URL = "ws://dev.maatwerk.works";
-    public static final String REST_PROD_URL = "http://maatwerk.works";
-    public static final String WS_PROD_URL = "ws://maatwerk.works";
+    public static final String REST_PROD_URL = "http://prod.maatwerk.works";
+    public static final String WS_PROD_URL = "ws://prod.maatwerk.works";
     public static final String REST_LOCAL_URL = "http://localhost:9000";
     public static final String WS_LOCAL_URL = "ws://localhost:9000";
     private static final ReentrantLock wsLock = new ReentrantLock();

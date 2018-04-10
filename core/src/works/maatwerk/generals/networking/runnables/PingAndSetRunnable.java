@@ -17,6 +17,7 @@ public class PingAndSetRunnable implements Runnable {
     private class MyHttpResponseListener implements Net.HttpResponseListener {
         @Override
         public void handleHttpResponse(Net.HttpResponse httpResponse) {
+            Gdx.app.log(Tag.NETWORKING, "Successfully contacted " + Settings.REST_LOCAL_URL);
         }
 
         @Override
