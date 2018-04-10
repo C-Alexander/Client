@@ -6,7 +6,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.net.HttpStatus;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
-import javafx.util.Pair;
+import net.dermetfan.utils.Pair;
 import works.maatwerk.generals.models.Account;
 import works.maatwerk.generals.models.Session;
 import works.maatwerk.generals.utils.Settings;
