@@ -27,8 +27,8 @@ before_deploy:
 - git tag "$TRAVIS_BUILD_NUMBER"
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
 - cd distCache
-- cd ../
 - wget -nc http://libgdx.badlogicgames.com/packr/packr.jar
+- cd ../
 - java -jar distCache/packr.jar packr-travis.json
 - rm -f dist/desktop.jar
 - zip -r build.zip dist
