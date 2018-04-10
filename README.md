@@ -7,4 +7,4 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/Maatworks/Client?branch=master)](https://bettercodehub.com/)
 
 
-Simply install the launcher to run. Most of the time. 20% of the time.
+Simply install the launcher to run. Most of the time. 18% of the time.
