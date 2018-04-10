@@ -14,16 +14,16 @@ public class KeepAlive extends Timer.Task {
     private final WebSocket webSocket;
     private final String keepAlivePacket;
 
+    public KeepAlive(WebSocket webSocket) {
+        this.webSocket = webSocket;
+        Packet packet = new Packet(MessageType.KEEPALIVE, null);
+        Json json = new Json(JsonWriter.OutputType.json);
+        this.keepAlivePacket = json.toJson(packet);
+    }
+    
     @Override
     public void run() {
         Gdx.app.debug(Tag.NETWORKING, "Sending KeepAlive to WebSocket");
         webSocket.send(keepAlivePacket);
-    }
-
-    public KeepAlive(WebSocket webSocket) {
-        this.webSocket = webSocket;
-        Packet Packet = new Packet(MessageType.KEEPALIVE, null);
-        Json json = new Json(JsonWriter.OutputType.json);
-        this.keepAlivePacket = json.toJson(Packet);
     }
 }

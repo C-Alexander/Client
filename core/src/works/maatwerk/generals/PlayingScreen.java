@@ -1,26 +1,28 @@
 package works.maatwerk.generals;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import works.maatwerk.generals.enums.RankName;
 import works.maatwerk.generals.inputcontrollers.MusicController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomController;
 import works.maatwerk.generals.inputcontrollers.PinchZoomDetector;
 import works.maatwerk.generals.inputcontrollers.ZoomController;
-import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.models.Character;
+import works.maatwerk.generals.models.*;
 import works.maatwerk.generals.networking.NetworkManager;
 import works.maatwerk.generals.utils.BackgroundColor;
 import works.maatwerk.generals.utils.StringUtils;
@@ -32,11 +34,11 @@ class PlayingScreen extends ScreenAdapter {
     private final InputMultiplexer multiplexer;
     private final AssetManager assetManager;
     private final Generals game;
-    private TmxMapLoader mapLoader;
-    private OrthogonalTiledMapRenderer renderer;
     private MapManager map;
     private Stage stage;
     private Table table;
+    private Character Hero1;
+    private Character Hero2;
 
     PlayingScreen(Generals game, AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -54,34 +56,72 @@ class PlayingScreen extends ScreenAdapter {
         addUI(table);
     }
 
-    @Override
-    public void show() {
-        initializeCamera();
-        initializeInputMultiplexer();
-        initializeNetworking();
-
-        map.initializeMap("");
-        Character character1 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(6,2));
+    //TODO: Jesus fucking christ Teun wat is dit
+    private void loadOwnTeam(){
+        Character character1 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), WeaponClass.AXE, assetManager, new Vector2(13,3));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character1);
-        Character character2 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.AXE, new Vector2(5, 2));
+        Character character2 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.AXE, assetManager, new Vector2(12, 2));
         character2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
         map.addCharacter(character2);
-        Character character3 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.SWORD, new Vector2(4,2));
+        Character character3 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.AXE, assetManager, new Vector2(14,2));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character3);
-        Character character4 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.CORRUPT, new Vector2(6,29));
+        Character character4 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.SWORD, assetManager, new Vector2(15,5));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character4);
-        Character character5 = new Character(new Race("Test", new Stats()), assetManager, ClassEnum.ARCANE, new Vector2(5,29));
+        Character character5 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(14,4));
         character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
         map.addCharacter(character5);
+        Character character6 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SWORD, assetManager, new Vector2(16,4));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character6);
+        Hero2 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 3));
+        Hero2.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(Hero2);
+        Character character8 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.BOW, assetManager, new Vector2(17,3));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character8);
+        Character character9 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.BOW, assetManager, new Vector2(16,2));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character9);
+        Character character10 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.BOW, assetManager, new Vector2(18,2));
+        character1.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character10);
+    }
 
-        Gdx.input.vibrate(5000);
-
-
-        initializeVolumeControls();
-        initializeCameraInputController();
+    //TODO: Jesus fucking christ Teun wat is dit
+    private void loadEnemyTeam(){
+        Character character11 = new Character(new Race("Test", new Stats()), new Rank(RankName.GENERAL), WeaponClass.ARCANE, assetManager, new Vector2(13,27));
+        character11.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character11);
+        Character character12 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.ARCANE, assetManager, new Vector2(12, 28));
+        character12.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(character12);
+        Character character13 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.ARCANE, assetManager, new Vector2(14,28));
+        character13.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character13);
+        Character character14 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.SPEAR, assetManager, new Vector2(15,25));
+        character14.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character14);
+        Character character15 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.SPEAR, assetManager, new Vector2(14,26));
+        character15.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character15);
+        Character character16 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.SPEAR, assetManager, new Vector2(16,26));
+        character16.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character16);
+        Hero1 = new Character(new Race("Test", new Stats()), new Rank(RankName.HERO), WeaponClass.VALKYRIE, assetManager, new Vector2(15, 27));
+        Hero1.setWeapon(new Weapon("Axe", 1, new Stats(), false, null));
+        map.addCharacter(Hero1);
+        Character character18 = new Character(new Race("Test", new Stats()),new Rank(RankName.GENERAL), WeaponClass.CORRUPT, assetManager, new Vector2(17,27));
+        character18.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character18);
+        Character character19 = new Character(new Race("Test", new Stats()),new Rank(RankName.GRUNT), WeaponClass.CORRUPT, assetManager, new Vector2(16,28));
+        character19.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character19);
+        Character character20 = new Character(new Race("Test", new Stats()), new Rank(RankName.GRUNT), WeaponClass.CORRUPT, assetManager, new Vector2(18,28));
+        character20.setWeapon(new Weapon("Axe",1,new Stats(),false,null));
+        map.addCharacter(character20);
     }
 
     private void initializeVolumeControls() {
@@ -89,7 +129,7 @@ class PlayingScreen extends ScreenAdapter {
     }
 
     private void initializeNetworking() {
-        NetworkManager networkManager = new NetworkManager();
+        NetworkManager networkManager = new NetworkManager(game);
         networkManager.connect();
     }
 
@@ -127,16 +167,27 @@ class PlayingScreen extends ScreenAdapter {
         Gdx.app.debug("Input", "Initializing CameraInputController");
 
         CameraInputController cameraInputController = new CameraInputController(camera);
-        if (Gdx.app.getType() == Application.ApplicationType.Android) cameraInputController.translateUnits = 1500;
-        else cameraInputController.translateUnits = 1000;
+        if (Gdx.app.getType() == Application.ApplicationType.Android) {
+            cameraInputController.translateUnits = 1500;
+            cameraInputController.translateButton = Buttons.LEFT;
+
+        } else {
+            cameraInputController.translateUnits = 1000;
+            cameraInputController.translateButton = Buttons.RIGHT;
+        }
         cameraInputController.scrollFactor = 0;
         cameraInputController.forwardButton = -1000;
         cameraInputController.rotateButton = -1000;
         cameraInputController.rotateAngle = 0;
-        cameraInputController.translateButton = Buttons.RIGHT;
         cameraInputController.pinchZoomFactor = 0;
 
         multiplexer.addProcessor(cameraInputController);
+    }
+
+    private void checkEndGame(){
+        if(!Hero1.isAlive()||!Hero2.isAlive()){
+            game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+        }
     }
 
     private void initializeCamera() {
@@ -144,41 +195,6 @@ class PlayingScreen extends ScreenAdapter {
 
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-
-        Gdx.app.debug("Camera", "Resizing screen");
-
-        map.getViewport().update(width, height);
-        map.getTileMapStage().getViewport().update(width, height);
-
-        camera.viewportWidth = width;
-        camera.viewportHeight = height;
-        camera.update();
-    }
-
-    @Override
-    public void render(float delta) {
-        map.update();
-        super.render(delta);
-        batch.setProjectionMatrix(camera.combined);
-
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-
-        camera.update();
-
-        map.render(delta,camera,batch);
-        updateCharacterLabel(table, map.getCharacterSelected());
-
-        batch.end();
-
-        stage.act(delta);
-        stage.draw();
     }
 
     private void addUI(Table table){
@@ -213,7 +229,6 @@ class PlayingScreen extends ScreenAdapter {
 
             Label lblStats = new Label(character.getGameStats().toString(), skin);
 
-
             table.top().left();
             float cellsize = table.add(new Image(character.getTexture())).padRight(30).getActorWidth();
 
@@ -231,8 +246,57 @@ class PlayingScreen extends ScreenAdapter {
             table.add(lblRank).left();
             table.add(lblRankValue).left();
         }
-
         stage.addActor(table);
+    }
+    
+    @Override
+    public void show() {
+        initializeCamera();
+        initializeInputMultiplexer();
+        initializeNetworking();
+        map.initializeMap("");
+        loadOwnTeam();
+        loadEnemyTeam();
+        Gdx.input.vibrate(5000);
+        initializeVolumeControls();
+        initializeCameraInputController();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        Gdx.app.debug("Camera", "Resizing screen");
+
+        map.getViewport().update(width, height);
+        map.getTileMapStage().getViewport().update(width, height);
+
+        camera.viewportWidth = width;
+        camera.viewportHeight = height;
+        camera.update();
+    }
+
+    @Override
+    public void render(float delta) {
+
+        map.update();
+        super.render(delta);
+        batch.setProjectionMatrix(camera.combined);
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+
+        camera.update();
+
+        map.render(delta,camera,batch);
+        updateCharacterLabel(table, map.getCharacterSelected());
+
+        batch.end();
+
+        stage.act(delta);
+        stage.draw();
+        checkEndGame();
     }
 
     @Override

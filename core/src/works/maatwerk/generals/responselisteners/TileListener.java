@@ -31,7 +31,6 @@ public class TileListener extends ClickListener{
     public void clicked(InputEvent event, float x, float y) {
         super.clicked(event, x, y);
         Gdx.app.log("TileListener", "An actor was clicked");
-
         Vector2 location = new Vector2(tileActor.getX()/this.tileSize, tileActor.getY()/this.tileSize);
         this.map.leftClickTile(location);
     }

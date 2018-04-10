@@ -19,14 +19,12 @@ public class MusicManager implements Disposable {
 
     public MusicManager(AssetManager assetManager) {
         this.assetManager = assetManager;
-        this.songs = new ArrayList<Music>();
+        this.songs = new ArrayList<>();
         musicListener = new MusicListener(this);
-
     }
 
     public void playMusic(String filename) {
         Gdx.app.log(Tag.MUSIC, "Looking for: " + filename + " to play");
-
         for (Music music : songs) {
             if (assetManager.getAssetFileName(music).equals(filename)) {
                 playSongFromStart(music, false);
@@ -37,10 +35,9 @@ public class MusicManager implements Disposable {
 
     public void playRandomMusic() {
         Gdx.app.log(Tag.MUSIC, "Playing random song");
-
-        if (songs.size() < 1) {
+        if (songs.isEmpty()) {
             initializeMusic();
-            if (songs.size() < 1) {
+            if (songs.isEmpty()) {
                 Gdx.app.error(Tag.MUSIC, "Could not find any music to play randomly.");
                 return;
             }
@@ -81,12 +78,9 @@ public class MusicManager implements Disposable {
 
     public void initializeMusic() {
         Gdx.app.log(Tag.MUSIC, "Initializing MusicManager");
-
         stopAllMusic();
-
         songs.clear();
         currentSong = null;
-
         for (FileHandle fileHandle : Gdx.files.internal(Paths.MUSIC_FOLDER).list(".mp3")) {
             songs.add(assetManager.get(fileHandle.path(), Music.class));
         }
@@ -101,7 +95,6 @@ public class MusicManager implements Disposable {
 
     private void playSongFromStart(Music songToPlay, boolean playDifferentSongAfter) {
         Gdx.app.log(Tag.MUSIC, "Playing a song from the start");
-
         songToPlay.setPosition(0);
         songToPlay.setLooping(!playDifferentSongAfter);
         songToPlay.setVolume(Gdx.app.getPreferences(Tag.MUSIC).getFloat("Volume", 0.5f));
@@ -113,9 +106,7 @@ public class MusicManager implements Disposable {
 
     private void playNextSong() {
         Gdx.app.log(Tag.MUSIC, "Playing the next song");
-
         int currentSongIndex = songs.indexOf(currentSong);
-
         if (currentSongIndex + 1 < songs.size()) {
             playSongFromStart(songs.get(currentSongIndex + 1), true);
         } else {
@@ -131,16 +122,14 @@ public class MusicManager implements Disposable {
     public void dispose() {
         for (Music song : songs) {
             song.dispose();
-            Gdx.app.getPreferences(Tag.MUSIC).flush();
         }
+        Gdx.app.getPreferences(Tag.MUSIC).flush();
     }
 
     private class MusicListener implements Music.OnCompletionListener {
-
         private final MusicManager musicManager;
-
+        
         MusicListener(MusicManager musicManager) {
-
             this.musicManager = musicManager;
         }
 

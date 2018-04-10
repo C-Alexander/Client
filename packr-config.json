@@ -10,6 +10,9 @@
        "Xmx1G"
     ],
     "minimizejre": "oraclejre8",
+  "resources": [
+    "/var/lib/jenkins/workspace/PT-Client/android/assets/data"
+  ],
     "output": "out-win64",
     "verbose": "true"
 }
