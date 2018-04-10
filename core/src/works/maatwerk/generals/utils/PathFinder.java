@@ -50,10 +50,7 @@ public class PathFinder {
 	int moves = (movement ? character.getGameStats().getMovement() : weaponrange) - movesUsed;
         /*boolean outOfMoves = moves <= 0;
         boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= output.length || v.getY() >= output[0].length;*/
-        if(x(moves, v, output.length, output[0].length)) {
-            return output;
-        }
-	if(output[v.getX()][v.getY()] != null && output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()])) {
+        if(continueFunction(moves, v, output, tiles)) {
             return output;
         }
         int used = movesUsed + (start ? 0 : tiles[v.getX()][v.getY()]);
@@ -67,10 +64,11 @@ public class PathFinder {
 	return output;
     }
     
-    private static boolean x(int moves, Vector v, int lengthX, int lengthY) {
+    private static boolean continueFunction(int moves, Vector v, Integer[][] array, int[][] tiles) {
         boolean outOfMoves = moves <= 0;
-        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= lengthX || v.getY() >= lengthY;
-        return outOfMoves || outOfBounds;
+        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= array.length || v.getY() >= array[0].length;
+        boolean wouldNotImprove = array[v.getX()][v.getY()] != null && array[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
+        return outOfMoves || outOfBounds || wouldNotImprove;
     }
     
     private static Integer[][] getIntArray(int[][] tiles) {
