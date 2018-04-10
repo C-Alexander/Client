@@ -24,7 +24,7 @@ install:
 - cat desktop/build.gradle
 - git config --local user.name "Alexander"
 - git config --local user.email "alexander@teamcorgi.com"
-- git tag "$TRAVIS_BUILD_NUMBER"
+- git tag "Client-V$TRAVIS_BUILD_NUMBER"
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
 - cd distCache
 - wget -nc http://libgdx.badlogicgames.com/packr/packr.jar
@@ -50,3 +50,9 @@ deploy:
   file: build.zip
   on:
     branches: master
+    
+# safelist
+branches:
+  only:
+  - master
+  - stable
