@@ -11,6 +11,7 @@
     ],
     "minimizejre": "oraclejre8",
     "output": "dist/out-win64",
+    "resources": ["android/assets/data"],
     "verbose": "true",
     "cachejre": "distCache/jre"
 }
