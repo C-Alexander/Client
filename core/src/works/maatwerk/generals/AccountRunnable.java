@@ -6,7 +6,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.net.HttpStatus;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
-import javafx.util.Pair;
+import net.dermetfan.utils.Pair;
 import works.maatwerk.generals.models.Account;
 import works.maatwerk.generals.models.Session;
 import works.maatwerk.generals.utils.Settings;
@@ -88,7 +88,7 @@ public class AccountRunnable implements Runnable {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
-                    game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+                    game.setScreen(new PlayingScreen(game, assetManager));
                 }
             });
         } else {
@@ -105,7 +105,12 @@ public class AccountRunnable implements Runnable {
 
         //send!
         Gdx.net.sendHttpRequest(request, null);
-        game.setScreen(new LogInScreen(game, assetManager));
+        Gdx.app.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                game.setScreen(new LogInScreen(game, assetManager));
+            }
+        });
     }
 
     private Json getJson() {

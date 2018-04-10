@@ -16,6 +16,8 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import works.maatwerk.generals.networking.runnables.PingAndSetRunnable;
+import works.maatwerk.generals.utils.Settings;
 import works.maatwerk.generals.utils.files.Paths;
 import works.maatwerk.generals.utils.logger.Tag;
 
@@ -46,6 +48,14 @@ class LoadingScreen extends ScreenAdapter {
 
         loadLoadingBar();
         initializeLoadingBar();
+
+        pingAndSetURL();
+    }
+
+    private void pingAndSetURL() {
+        if (Settings.getRestUrl().equals(Settings.REST_LOCAL_URL)) {
+            new Thread(new PingAndSetRunnable()).start();
+        }
     }
 
     private void initializeCamera() {
@@ -182,4 +192,5 @@ class LoadingScreen extends ScreenAdapter {
 
         waitingForLogin = true;
     }
+
 }
