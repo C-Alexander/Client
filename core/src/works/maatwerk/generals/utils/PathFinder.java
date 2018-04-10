@@ -1,6 +1,7 @@
 package works.maatwerk.generals.utils;
 
 import works.maatwerk.generals.models.Vector;
+import works.maatwerk.generals.models.Weapon;
 
 /**
  *
@@ -43,13 +44,8 @@ public class PathFinder {
     
     private static Integer[][] genIntMap(boolean movement, int[][] tiles, works.maatwerk.generals.models.Character character, Vector v, Integer[][] input, int movesUsed, boolean start) {
 	Integer[][] output = input;
-        int weaponrange = 1;
-        if(character.getWeapon() != null) {
-            weaponrange = character.getWeapon().getRange();
-        }
-	int moves = (movement ? character.getGameStats().getMovement() : weaponrange) - movesUsed;
-        /*boolean outOfMoves = moves <= 0;
-        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= output.length || v.getY() >= output[0].length;*/
+        int weaponrange = getWeaponRange(character.getWeapon());
+	int moves = getMovesLeft(movement, character.getGameStats().getMovement(), weaponrange, movesUsed);
         if(continueFunction(moves, v, output, tiles)) {
             return output;
         }
@@ -62,6 +58,22 @@ public class PathFinder {
             output = genIntMap(movement, tiles, character, v.subOneY(), output, used, false);
 	}
 	return output;
+    }
+    
+    private static int getWeaponRange(Weapon weapon) {
+        if(weapon != null) {
+            return weapon.getRange();
+        }
+        return 1;
+    }
+    
+    private static int getMovesLeft(boolean movement, int moves, int range, int movesUsed) {
+        int output;
+        if(movement)
+            output = moves;
+        else
+            output = range;
+        return output - movesUsed;
     }
     
     private static boolean continueFunction(int moves, Vector v, Integer[][] array, int[][] tiles) {
@@ -89,10 +101,14 @@ public class PathFinder {
         boolean[][] output = new boolean[i][j];
         for(int x = 0; x < i; x++) {
             for(int y = 0; y < j; y++) {
-                if(array[x][y] != null && array[x][y] >= 0)
+                if(isZeroOrPositive(array[x][y]))
                     output[x][y] = true;
             }
         }
         return output;
+    }
+    
+    private static boolean isZeroOrPositive(Integer number) {
+        return (number != null && number >= 0);
     }
 }
