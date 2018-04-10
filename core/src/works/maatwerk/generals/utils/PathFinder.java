@@ -53,7 +53,7 @@ public class PathFinder {
         }
 	//boolean improve = output[v.getX()][v.getY()] == null ? true : output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
         //int used = movesUsed + (start ? 0 : tiles[v.getX()][v.getY()]);
-        boolean improve = true;
+        boolean improve = output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
         int used = movesUsed + tiles[v.getX()][v.getY()];
 	if(tiles[v.getX()][v.getY()] > 0 && tiles[v.getX()][v.getY()] <= moves && improve) {
             output[v.getX()][v.getY()] = moves - tiles[v.getX()][v.getY()];
