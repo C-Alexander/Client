@@ -1,13 +1,16 @@
 language: java
 jdk: oraclejdk8
 
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
   - .gradle
   - gradle
   - distCache
-
-
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
 
 before_install:
 - chmod +x gradlew
@@ -16,10 +19,6 @@ install:
 - ./gradlew desktop:dist
 - mkdir -p dist
 - mkdir -p distCache
-
-build: true
-
-before_deploy:
 - ls
 - ls distCache
 - cat desktop/build.gradle
@@ -31,6 +30,10 @@ before_deploy:
 - wget -nc http://libgdx.badlogicgames.com/packr/packr.jar
 - cd ../
 - java -jar distCache/packr.jar packr-travis.json
+
+build: true
+
+before_deploy:
 - rm -f dist/desktop.jar
 - zip -r build.zip dist
 
