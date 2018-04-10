@@ -1,0 +1,16 @@
+{
+    "platform": "windows64",
+    "jdk": "$JAVA_HOME",
+    "executable": "win-64-client",
+    "classpath": [
+        "dist/desktop.jar"
+    ],
+    "mainclass": "works.maatwerk.generals.desktop.DesktopLauncher",
+    "vmargs": [
+       "Xmx1G"
+    ],
+    "minimizejre": "oraclejre8",
+    "output": "dist/out-win64",
+    "verbose": "true"
+    "cachejre": "distCache/jre"
+}
