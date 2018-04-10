@@ -88,7 +88,7 @@ public class AccountRunnable implements Runnable {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
-                    game.setScreen(new PostGameScreen(game, assetManager, "BoxerShort1", 150, 20, 60, false));
+                    game.setScreen(new PlayingScreen(game, assetManager));
                 }
             });
         } else {
