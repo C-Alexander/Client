@@ -22,6 +22,7 @@ build: true
 before_deploy:
 - ls
 - ls distCache
+- cat desktop/build.gradle
 - git config --local user.name "Alexander"
 - git config --local user.email "alexander@teamcorgi.com"
 - git tag "$TRAVIS_BUILD_NUMBER"
