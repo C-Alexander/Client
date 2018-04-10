@@ -5,11 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import works.maatwerk.generals.AccountRunnable;
 import works.maatwerk.generals.Generals;
@@ -24,7 +20,7 @@ import works.maatwerk.generals.models.Account;
  */
 public class ScreensUtils {
     private static final String EMPTY = "";
-    private static final String REGISTER = "";
+    private static final String REGISTER = "Register";
     
     private ScreensUtils() {
         throw new IllegalStateException("Utility class");
