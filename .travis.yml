@@ -12,20 +12,21 @@ before_install:
 
 install: true
 
+before_deploy:
+- ./gradlew desktop:dist
+- mkdir -p dist
+- mkdir -p distCache
+- mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
+- wget http://libgdx.badlogicgames.com/packr/packr.jar -P distCache
+- java -jar /distCache/packr.jar packr-travis.json
+- zip -r build.zip dist
+
 script: true
 
 build: true
 
 test: true
 
-before_deploy:
-- ./gradlew desktop:dist
-- mkdir -p dist
-- mkdir -p distCache
-- mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
-- wget http://libgdx.badlogicgames.com/packr/packr.jar -P /distCache
-- java -jar /distCache/packr.jar packr-travis.json
-- zip -r build.zip dist
 
 deploy:
   provider: releases
