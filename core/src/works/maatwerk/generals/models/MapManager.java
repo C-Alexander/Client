@@ -33,7 +33,6 @@ public class MapManager extends Stage {
     private Character characterSelected;
     private Character[][] characterLayer;
     private Vector2 mapDimensions;
-    
     private TextureRegion grid;
     private boolean[][] movementRange;
     private boolean[][] attackRange;
@@ -116,7 +115,7 @@ public class MapManager extends Stage {
             }
             setCharacterSelected(character);
             tileMapStage.setSelectedTile((int) location.x, (int) location.y);
-            movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, (int) location.x, (int) location.y);
+            movementRange = PathFinder.getPossibleMoves(getMovementMap(), character, new Vector((int) location.x, (int) location.y));
             tileMapStage.setMovementStatuses(movementRange);
             attackRange = null;
             //TODO: UpdateUI
@@ -125,7 +124,7 @@ public class MapManager extends Stage {
             if(movementRange != null && movementRange[(int) location.x][(int) location.y]) {
                 moveCharacter(getCharacterSelected(), location);
                 movementRange = null;
-                attackRange = PathFinder.getAttackRange(getRangeMap(), getCharacterSelected(), (int) location.x, (int) location.y);
+                attackRange = PathFinder.getAttackRange(getRangeMap(), getCharacterSelected(), new Vector((int) location.x, (int) location.y));
                 tileMapStage.setAttackStatuses(attackRange);
                 return;
             }
@@ -267,7 +266,7 @@ public class MapManager extends Stage {
     }
 
     public void update() {
-        ArrayList<Character> remove = new ArrayList<Character>();
+        ArrayList<Character> remove = new ArrayList<>();
         for (Character c : characterMap) {
             if (!c.isAlive()) {
                 characterLayer[(int) c.getLocation().x][(int) c.getLocation().y] = null;

@@ -6,6 +6,7 @@ import works.maatwerk.generals.models.Character;
 import works.maatwerk.generals.models.Race;
 import works.maatwerk.generals.models.Rank;
 import works.maatwerk.generals.models.Stats;
+import works.maatwerk.generals.models.Vector;
 import works.maatwerk.generals.models.Weapon;
 
 /**
@@ -14,8 +15,8 @@ import works.maatwerk.generals.models.Weapon;
  * @email m.a.a.pijnenburg@gmail.com
  */
 public class PathFinderTest {
-    private Race race = new Race("Test", new Stats(9, 3, 1, 0, 1));
-    private Character character = new Character(race, new Rank(), 0, null, null);
+    private final Race race = new Race("Test", new Stats(9, 3, 1, 0, 1));
+    private final Character character = new Character(race, new Rank(), 0, null, null);
 
     /**
      * Test of getPossibleMoves method, of class PathFinder.
@@ -42,7 +43,7 @@ public class PathFinderTest {
             {true, true, true, true, false, false, true},
             {false, true, true, true, true, true, false}
         };
-        boolean[][] result = PathFinder.getPossibleMoves(tiles, character, x, y);
+        boolean[][] result = PathFinder.getPossibleMoves(tiles, character, new Vector(x, y));
         assertArrayEquals(expResult, result);
     }
 
@@ -72,7 +73,7 @@ public class PathFinderTest {
             {false, false, false, true, false, false, false},
             {false, false, false, false, false, false, false}
         };
-        boolean[][] result = PathFinder.getAttackRange(tiles, character, x, y);
+        boolean[][] result = PathFinder.getAttackRange(tiles, character, new Vector(x, y));
         assertArrayEquals(expResult, result);
     }
     
@@ -96,7 +97,7 @@ public class PathFinderTest {
                 }
             }
         }
-        boolean[][] result = PathFinder.getPossibleMoves(tiles, c, posX, posY);
+        boolean[][] result = PathFinder.getPossibleMoves(tiles, c, new Vector(posX, posY));
         assertArrayEquals(expResult, result);
     }
     
@@ -121,7 +122,7 @@ public class PathFinderTest {
                 }
             }
         }
-        boolean[][] result = PathFinder.getAttackRange(tiles, c, posX, posY);
+        boolean[][] result = PathFinder.getAttackRange(tiles, c, new Vector(posX, posY));
         assertArrayEquals(expResult, result);
     }
 }

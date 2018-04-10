@@ -1,5 +1,7 @@
 package works.maatwerk.generals.utils;
 
+import works.maatwerk.generals.models.Vector;
+
 /**
  *
  * @author Rick Pijnenburg - REXOTIUM
@@ -18,12 +20,11 @@ public class PathFinder {
      * 
      * @param tiles Contains the movement cost of that particular field. Negative values for impassible terrain.
      * @param character
-     * @param x Position of the character in the array. This is for the row.
-     * @param y Position of the character in the array. This is for the column.
+     * @param v
      * @return 
      */
-    public static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
-        return toBooleanArray(genIntMap(true, tiles, character, x, y, getIntArray(tiles), 0, true));
+    public static boolean[][] getPossibleMoves(int[][] tiles, works.maatwerk.generals.models.Character character, Vector v) {
+        return toBooleanArray(genIntMap(true, tiles, character, v, getIntArray(tiles), 0, true));
     }
 
     /**
@@ -33,33 +34,31 @@ public class PathFinder {
      * 
      * @param tiles Contains the attack range cost of that particular field. Negative values for impassible terrain.
      * @param character
-     * @param x Position of the character in the array. This is for the row.
-     * @param y Position of the character in the array. This is for the column.
+     * @param v
      * @return 
      */
-    public static boolean[][] getAttackRange(int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y) {
-        return toBooleanArray(genIntMap(false, tiles, character, x, y, getIntArray(tiles), 0, true));
+    public static boolean[][] getAttackRange(int[][] tiles, works.maatwerk.generals.models.Character character, Vector v) {
+        return toBooleanArray(genIntMap(false, tiles, character, v, getIntArray(tiles), 0, true));
     }
     
-    private static Integer[][] genIntMap(boolean movement, int[][] tiles, works.maatwerk.generals.models.Character character, int x, int y, Integer[][] input, int movesUsed, boolean start) {
+    private static Integer[][] genIntMap(boolean movement, int[][] tiles, works.maatwerk.generals.models.Character character, Vector v, Integer[][] input, int movesUsed, boolean start) {
 	Integer[][] output = input;
-	int moves = (movement ? character.getGameStats().getMovement() : (character.getWeapon() == null ? 1 : character.getWeapon().getRange())) - movesUsed;
-	//Moves used up
-        if (moves <= 0) {
+        int weaponrange = (character.getWeapon() == null ? 1 : character.getWeapon().getRange());
+	int moves = (movement ? character.getGameStats().getMovement() : weaponrange) - movesUsed;
+        boolean outOfMoves = moves <= 0;
+        boolean outOfBounds = v.getX() < 0 || v.getY() < 0 || v.getX() >= output.length || v.getY() >= output[0].length;
+        boolean returnOutput = outOfMoves || outOfBounds;
+        if(returnOutput) {
             return output;
         }
-	//Outside array
-        if(x < 0 || y < 0 || x >= output.length || y >= output[0].length) {
-            return output;
-        }
-	boolean improve = output[x][y] == null ? true : output[x][y] < (moves - tiles[x][y]);
-	if(tiles[x][y] > 0 && tiles[x][y] <= moves && improve) {
-            output[x][y] = moves - tiles[x][y];
-            int used = movesUsed + (start ? 0 : tiles[x][y]);
-            output = genIntMap(movement, tiles, character, x + 1, y, output, used, false);
-            output = genIntMap(movement, tiles, character, x - 1, y, output, used, false);
-            output = genIntMap(movement, tiles, character, x, y + 1, output, used, false);
-            output = genIntMap(movement, tiles, character, x, y - 1, output, used, false);
+	boolean improve = output[v.getX()][v.getY()] == null ? true : output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
+	if(tiles[v.getX()][v.getY()] > 0 && tiles[v.getX()][v.getY()] <= moves && improve) {
+            output[v.getX()][v.getY()] = moves - tiles[v.getX()][v.getY()];
+            int used = movesUsed + (start ? 0 : tiles[v.getX()][v.getY()]);
+            output = genIntMap(movement, tiles, character, v.addOneX(), output, used, false);
+            output = genIntMap(movement, tiles, character, v.subOneX(), output, used, false);
+            output = genIntMap(movement, tiles, character, v.addOneY(), output, used, false);
+            output = genIntMap(movement, tiles, character, v.subOneY(), output, used, false);
 	}
 	return output;
     }
