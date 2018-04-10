@@ -7,22 +7,17 @@ cache:
   - $HOME/.gradle/caches/modules-2/files-2.1
   - distCache
 
-stages: 
-- install
-- script
-- build
-- deploy
-- cache
+
 
 before_install:
 - chmod +x gradlew
 
 install: true
 
-build: 
-- ./gradlew desktop:dist
+build: true
 
 before_deploy:
+- ./gradlew desktop:dist
 - mkdir -p dist
 - mkdir -p distCache
 - mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
