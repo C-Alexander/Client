@@ -1,0 +1,30 @@
+language: java
+jdk: oraclejdk8
+
+cache:
+  directories:
+  - $HOME/.gradle/wrapper
+  - $HOME/.gradle/caches/modules-2/files-2.1
+  - distCache
+
+before_install:
+- chmod +x gradlew
+
+
+before_deploy:
+- ./gradlew desktop:dist
+- mkdir dist
+- mkdir distCache
+- mv desktop/build/libs/desktop-1.0.jar dist/desktop.jar
+- wget http://libgdx.badlogicgames.com/packr/packr.jar -P /distCache
+- java -jar /distCache/packr.jar packr-travis.json
+- zip -r build.zip /dist
+
+deploy:
+  provider: releases
+  api_key:
+    secure: $API_KEY
+  file:
+  - dist.zip
+  on:
+    branches: master
