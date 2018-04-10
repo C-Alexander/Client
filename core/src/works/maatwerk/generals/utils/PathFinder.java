@@ -51,10 +51,11 @@ public class PathFinder {
         if(x(moves, v, output.length, output[0].length)) {
             return output;
         }
-	boolean improve = output[v.getX()][v.getY()] == null ? true : output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
+	if(output[v.getX()][v.getY()] == null ? true : output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()])) {
+            return output;
+        }
         int used = movesUsed + (start ? 0 : tiles[v.getX()][v.getY()]);
-        //boolean improve = output[v.getX()][v.getY()] < (moves - tiles[v.getX()][v.getY()]);
-	if(tiles[v.getX()][v.getY()] > 0 && tiles[v.getX()][v.getY()] <= moves && improve) {
+	if(tiles[v.getX()][v.getY()] > 0 && tiles[v.getX()][v.getY()] <= moves) {
             output[v.getX()][v.getY()] = moves - tiles[v.getX()][v.getY()];
             output = genIntMap(movement, tiles, character, v.addOneX(), output, used, false);
             output = genIntMap(movement, tiles, character, v.subOneX(), output, used, false);
