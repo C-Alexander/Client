@@ -26,7 +26,7 @@ build:
 test: true
 
 before_deploy:
-- zip -r build.zip /dist
+- zip -r build.zip dist
 
 deploy:
   provider: releases
