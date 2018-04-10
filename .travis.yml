@@ -36,6 +36,7 @@ test: true
 
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: $API_KEY
   file: build.zip
