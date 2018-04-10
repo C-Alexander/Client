@@ -43,7 +43,10 @@ public class PathFinder {
     
     private static Integer[][] genIntMap(boolean movement, int[][] tiles, works.maatwerk.generals.models.Character character, Vector v, Integer[][] input, int movesUsed, boolean start) {
 	Integer[][] output = input;
-        int weaponrange = (character.getWeapon() == null ? 1 : character.getWeapon().getRange());
+        int weaponrange = 1;
+        if(character.getWeapon() != null) {
+            weaponrange = character.getWeapon().getRange();
+        }
 	int moves = (movement ? character.getGameStats().getMovement() : weaponrange) - movesUsed;
         if(x(moves, v, output.length, output[0].length)) {
             return output;
